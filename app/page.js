@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import StickyCall from './components/StickyCall';
@@ -417,6 +418,97 @@ export default function HomePage() {
                     <div className="coverage-map">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d210.12332420509554!2d20.465675801375372!3d44.881199950097724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a637b18ce8a37%3A0x45f6e9ef011b2c0!2sMobilni%20Vulkanizer%20Milan!5e0!3m2!1sen!2srs!4v1777627799738!5m2!1sen!2srs" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Lokacija - Mobilni Vulkanizer Milan, Beograd"></iframe>
                     </div>
+                </div>
+            </div>
+        </section>
+        
+        {/* ============ LOCATIONS ============ */}
+        <section className="locations-section" id="lokacije" role="region" aria-labelledby="locations-title">
+            <div className="container">
+                <div className="section-header">
+                    <div className="eyebrow">Stranice po lokacijama</div>
+                    <h2 id="locations-title">Pronađite svoju lokaciju</h2>
+                    <p>Detaljnije informacije o usluzi mobilnog vulkanizera za vaš deo Beograda — kliknite na svoju lokaciju.</p>
+                </div>
+
+                <div className="locations-grid">
+                    <Link href="/mobilni-vulkanizer-ceo-beograd" className="location-card reveal">
+                        <span className="location-card-pin">🏙️</span>
+                        <h3>Ceo Beograd</h3>
+                        <p>Pokrivam svih 17 opština grada — od centra do najudaljenijih naselja.</p>
+                        <span className="location-card-time">⏱️ <strong>15-60 min</strong> · sve opštine</span>
+                        <div>
+                            <span className="location-card-arrow">
+                                Pogledaj detalje
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </Link>
+
+                    <Link href="/mobilni-vulkanizer-novi-beograd" className="location-card reveal">
+                        <span className="location-card-pin">📍</span>
+                        <h3>Novi Beograd</h3>
+                        <p>Sve blokove, bulevare, poslovne zone i tržne centre — Ušće, Arena, Belville, Airport City.</p>
+                        <span className="location-card-time">⏱️ <strong>15-30 min</strong></span>
+                        <div>
+                            <span className="location-card-arrow">
+                                Pogledaj detalje
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </Link>
+
+                    <Link href="/mobilni-vulkanizer-zemun" className="location-card reveal">
+                        <span className="location-card-pin">📍</span>
+                        <h3>Zemun</h3>
+                        <p>Stari Zemun, Gardoš, Tošin bunar, Bežanijska kosa, Altina — sve adrese pokrivene.</p>
+                        <span className="location-card-time">⏱️ <strong>15-30 min</strong></span>
+                        <div>
+                            <span className="location-card-arrow">
+                                Pogledaj detalje
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </Link>
+
+                    <Link href="/mobilni-vulkanizer-borca" className="location-card reveal">
+                        <span className="location-card-pin">📍</span>
+                        <h3>Borča</h3>
+                        <p>Borča Centar, Greda, Sebeš, Borča III — od Pupinovog mosta do izlaza ka Pančevu.</p>
+                        <span className="location-card-time">⏱️ <strong>15-30 min</strong></span>
+                        <div>
+                            <span className="location-card-arrow">
+                                Pogledaj detalje
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </Link>
+
+                    <Link href="/mobilni-vulkanizer-krnjaca" className="location-card reveal">
+                        <span className="location-card-pin">📍</span>
+                        <h3>Krnjača</h3>
+                        <p>Krnjača Centar, Reva, Kotež, Padinska skela — i industrijska zona.</p>
+                        <span className="location-card-time">⏱️ <strong>15-30 min</strong></span>
+                        <div>
+                            <span className="location-card-arrow">
+                                Pogledaj detalje
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </Link>
+
+                    <Link href="/mobilni-vulkanizer-autoput-beograd" className="location-card reveal">
+                        <span className="location-card-pin">🛣️</span>
+                        <h3>Autoput Beograd</h3>
+                        <p>E-75, E-70, obilaznica, sve petlje — hitna intervencija na traci za zaustavljanje.</p>
+                        <span className="location-card-time">⏱️ <strong>Hitna intervencija 24/7</strong></span>
+                        <div>
+                            <span className="location-card-arrow">
+                                Pogledaj detalje
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </section>

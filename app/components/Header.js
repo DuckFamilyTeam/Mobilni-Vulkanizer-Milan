@@ -24,6 +24,7 @@ export default function Header() {
           </Link>
           <nav className="nav" role="navigation" aria-label="Glavna navigacija">
             <Link href="/#usluge">Usluge</Link>
+            <Link href="/#lokacije">Lokacije</Link>
             <Link href="/#cene">Cenovnik</Link>
             <Link href="/#galerija">Galerija</Link>
             <Link href="/#recenzije">Recenzije</Link>

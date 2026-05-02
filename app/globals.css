@@ -2301,3 +2301,125 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     .loc-cta-band { padding: 28px 22px; margin: 28px 0; }
     .loc-final-cta { padding: 50px 0; }
 }
+
+/* ============================================================
+   === LOCATIONS SECTION (na pocetnoj strani)
+   ============================================================ */
+.locations-section {
+    padding: 90px 0;
+    background:
+        radial-gradient(circle at 30% 50%, rgba(201, 169, 97, 0.06) 0%, transparent 50%),
+        var(--black-soft);
+    position: relative;
+}
+.locations-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(201, 169, 97, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201, 169, 97, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+}
+.locations-section .container { position: relative; z-index: 1; }
+.locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+    margin-top: 50px;
+}
+.location-card {
+    position: relative;
+    display: block;
+    padding: 32px 28px;
+    background: var(--black-elev);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    text-decoration: none;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+.location-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dark) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+.location-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201, 169, 97, 0.35);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+}
+.location-card:hover::before { transform: scaleX(1); }
+.location-card-pin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(201, 169, 97, 0.12);
+    color: var(--gold);
+    font-size: 22px;
+    margin-bottom: 16px;
+}
+.location-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--cream);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+}
+.location-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 18px;
+    min-height: 44px;
+}
+.location-card-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+.location-card-time strong { color: var(--gold); }
+.location-card-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: gap 0.2s ease;
+}
+.location-card:hover .location-card-arrow { gap: 12px; }
+.location-card-arrow svg {
+    width: 16px;
+    height: 16px;
+}
+
+@media (max-width: 768px) {
+    .locations-section { padding: 60px 0; }
+    .locations-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 36px; }
+    .location-card { padding: 26px 22px; }
+    .location-card h3 { font-size: 19px; }
+    .location-card p { min-height: auto; }
+}
