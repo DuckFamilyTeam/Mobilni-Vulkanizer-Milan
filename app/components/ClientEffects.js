@@ -85,17 +85,22 @@ export default function ClientEffects() {
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
     // ============ HEADER SCROLL EFFECT ============
+    // Use classList + rAF for smoother mobile scroll (avoids style recalculation on every scroll event)
+    let scrollTicking = false;
+    const header = document.querySelector('.header');
     const scrollHandler = () => {
-      const header = document.querySelector('.header');
-      if (!header) return;
-      const scroll = window.scrollY;
-      if (scroll > 50) {
-        header.style.background = 'rgba(10, 10, 10, 0.95)';
-        header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.5)';
-      } else {
-        header.style.background = 'rgba(10, 10, 10, 0.85)';
-        header.style.boxShadow = 'none';
-      }
+      if (scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(() => {
+        if (header) {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        }
+        scrollTicking = false;
+      });
     };
     window.addEventListener('scroll', scrollHandler, { passive: true });
 

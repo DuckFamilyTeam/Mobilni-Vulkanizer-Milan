@@ -135,7 +135,7 @@ export default function HomePage() {
                     </div>
         
                     <div className="hero-visual">
-                        <img src="/mobilni-vulkanizer-milan-na-intervenciji-u-beogradu.jpg" alt="Mobilni vulkanizer Milan na intervenciji u Beogradu - zamena gume na BMW vozilu" loading="eager" width="600" height="660" />
+                        <img src="/mobilni-vulkanizer-milan-na-intervenciji-u-beogradu.webp" alt="Mobilni vulkanizer Milan na intervenciji u Beogradu - zamena gume na BMW vozilu" loading="eager" fetchPriority="high" decoding="async" width="600" height="660" />
                         <div className="hero-badge">
                             <div className="hero-badge-num">A+</div>
                             <div className="hero-badge-txt">Premium servis</div>
@@ -524,31 +524,31 @@ export default function HomePage() {
         
                 <div className="gallery-grid">
                     <div className="gallery-item">
-                        <img src="/8.jpg" data-full="/8.jpg" alt="Mobilni vulkanizer Milan na intervenciji u centru Beograda - kombi pored Skupštine" loading="lazy" />
+                        <img src="/8.webp" data-full="/8.webp" alt="Mobilni vulkanizer Milan na intervenciji u centru Beograda - kombi pored Skupštine" loading="lazy" decoding="async" width="800" height="800" />
                         <div className="gallery-item-overlay"><span>Centar Beograda — intervencija na licu mesta</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/2.jpg" data-full="/2.jpg" alt="Zamena pneumatika na parkingu - mobilni vulkanizer Novi Beograd" loading="lazy" />
+                        <img src="/2.webp" data-full="/2.webp" alt="Zamena pneumatika na parkingu - mobilni vulkanizer Novi Beograd" loading="lazy" decoding="async" width="800" height="800" />
                         <div className="gallery-item-overlay"><span>Zamena gume — Novi Beograd</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/6.jpg" data-full="/6.jpg" alt="Milan menja gumu na licu mesta - mobilni vulkanizer u akciji u Beogradu" loading="lazy" />
+                        <img src="/6.webp" data-full="/6.webp" alt="Milan menja gumu na licu mesta - mobilni vulkanizer u akciji u Beogradu" loading="lazy" decoding="async" width="800" height="800" />
                         <div className="gallery-item-overlay"><span>Zamena gume kod klijenta</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/4.jpg" data-full="/4.jpg" alt="Mobilni vulkanizer servis BMW X6 noću u Beogradu - 24h dostupan" loading="lazy" />
+                        <img src="/4.webp" data-full="/4.webp" alt="Mobilni vulkanizer servis BMW X6 noću u Beogradu - 24h dostupan" loading="lazy" decoding="async" width="800" height="800" />
                         <div className="gallery-item-overlay"><span>Servis luksuznih vozila</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/7.jpg" data-full="/7.jpg" alt="Hitna noćna zamena gume na BMW limuzini - vulkanizer Beograd 24h" loading="lazy" />
+                        <img src="/7.webp" data-full="/7.webp" alt="Hitna noćna zamena gume na BMW limuzini - vulkanizer Beograd 24h" loading="lazy" decoding="async" width="800" height="800" />
                         <div className="gallery-item-overlay"><span>Hitna intervencija noću</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/1.jpg" data-full="/1.jpg" alt="Mobilni vulkanizer Milan kombi - 24h vulkanizer Beograd na poziv" loading="lazy" />
+                        <img src="/1.webp" data-full="/1.webp" alt="Mobilni vulkanizer Milan kombi - 24h vulkanizer Beograd na poziv" loading="lazy" decoding="async" width="800" height="800" />
                         <div className="gallery-item-overlay"><span>Kombi Milan — 24h dostupan</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/3.jpg" data-full="/3.jpg" alt="Profesionalna vulkanizerska oprema u mobilnom kombiju - balanser i montirka" loading="lazy" />
+                        <img src="/3.webp" data-full="/3.webp" alt="Profesionalna vulkanizerska oprema u mobilnom kombiju - balanser i montirka" loading="lazy" decoding="async" width="800" height="800" />
                         <div className="gallery-item-overlay"><span>Profesionalna oprema u kombiju</span></div>
                     </div>
                 </div>
@@ -720,7 +720,7 @@ export default function HomePage() {
                     </div>
         
                     <div className="about-visual">
-                        <img src="/mobilni-vulkanizer-milan-na-intervenciji-u-beogradu.jpg" alt="Milan - mobilni vulkanizer Beograd na terenu - profesionalna intervencija" loading="lazy" />
+                        <img src="/mobilni-vulkanizer-milan-na-intervenciji-u-beogradu.webp" alt="Milan - mobilni vulkanizer Beograd na terenu - profesionalna intervencija" loading="lazy" decoding="async" width="600" height="660" />
                     </div>
                 </div>
             </div>

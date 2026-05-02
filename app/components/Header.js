@@ -33,7 +33,7 @@ export default function Header() {
               onClick={closeMenu}
             >
               <img
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Mobilni Vulkanizer Milan logo - 24h vulkanizer Beograd"
                 className="logo-img"
                 width="44"

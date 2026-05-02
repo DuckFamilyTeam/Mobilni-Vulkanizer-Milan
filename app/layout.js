@@ -1,5 +1,30 @@
 import './globals.css';
+import { Inter, Bebas_Neue, Playfair_Display } from 'next/font/google';
 import ClientEffects from './components/ClientEffects';
+
+const inter = Inter({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-inter',
+  preload: true,
+});
+
+const bebasNeue = Bebas_Neue({
+  subsets: ['latin', 'latin-ext'],
+  weight: '400',
+  display: 'swap',
+  variable: '--font-bebas',
+  preload: true,
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['700', '800', '900'],
+  display: 'swap',
+  variable: '--font-playfair',
+  preload: false, // not above the fold
+});
 
 export const metadata = {
   metadataBase: new URL('https://mobilnivulkanizermilan.com'),
@@ -126,14 +151,14 @@ const localBusinessJsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="sr-RS">
+    <html lang="sr-RS" className={`${inter.variable} ${bebasNeue.variable} ${playfairDisplay.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link rel="preconnect" href="https://mobilnivulkanizermilan.com" />
         <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap"
+          rel="preload"
+          as="image"
+          href="/mobilni-vulkanizer-milan-na-intervenciji-u-beogradu.webp"
+          type="image/webp"
+          fetchPriority="high"
         />
         <script
           type="application/ld+json"
