@@ -28,7 +28,7 @@ const faqJsonLd = {
   '@type': 'FAQPage',
   mainEntity: [
     { '@type': 'Question', name: 'Da li dolazite noću i vikendom?', acceptedAnswer: { '@type': 'Answer', text: 'Da, radimo non-stop, 365 dana u godini — uključujući noć, vikende i praznike. Dodaje se samo noćna taksa za intervencije između 22h i 06h.' } },
-    { '@type': 'Question', name: 'Koliko košta dolazak mobilnog vulkanizera?', acceptedAnswer: { '@type': 'Answer', text: 'Dolazak je besplatan za sve adrese unutar Beograda. Plaća se samo izvršena usluga prema važećem cenovniku.' } },
+    { '@type': 'Question', name: 'Koliko košta dolazak mobilnog vulkanizera?', acceptedAnswer: { '@type': 'Answer', text: 'Konačna cena zavisi od vaše lokacije, vremena intervencije, karakteristika vozila i tipa posla. Pozovite nas i daćemo vam fiksnu procenu pre polaska.' } },
     { '@type': 'Question', name: 'Koliko brzo stižete na lokaciju?', acceptedAnswer: { '@type': 'Answer', text: 'Prosečno vreme dolaska je 15-30 minuta od poziva. Vreme zavisi od trenutne lokacije i saobraćaja, ali uvek dajemo realnu procenu pre dolaska.' } },
     { '@type': 'Question', name: 'Za koje tipove vozila pružate usluge?', acceptedAnswer: { '@type': 'Answer', text: 'Servisiramo putnička osobna vozila i SUV-ove svih marki i modela. Za kombije i veća vozila pozovite nas radi konsultacije.' } },
     { '@type': 'Question', name: 'Šta ako guma nije popravljiva?', acceptedAnswer: { '@type': 'Answer', text: 'Ukoliko guma nije popravljiva, možemo ugraditi vašu rezervnu gumu ili po dogovoru obezbediti i ugraditi novu gumu na licu mesta.' } },
@@ -46,7 +46,7 @@ const reviewsJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Product',
   name: 'Mobilna vulkanizerska usluga - Beograd',
-  image: 'https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/vulaknizermilan.png',
+  image: 'https://www.mobilnivulkanizermilan.com/logo.png',
   description: 'Mobilni vulkanizer u Beogradu sa dolaskom za 15-30 minuta, 24 časa dnevno.',
   brand: { '@type': 'Brand', name: 'Mobilni Vulkanizer Milan' },
   aggregateRating: { '@type': 'AggregateRating', ratingValue: '5.0', reviewCount: '127' },
@@ -135,7 +135,7 @@ export default function HomePage() {
                     </div>
         
                     <div className="hero-visual">
-                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/23.jpeg" alt="Mobilni vulkanizer Milan na intervenciji u Beogradu" loading="eager" width="600" height="660" />
+                        <img src="/mobilni-vulkanizer-milan-na-intervenciji-u-beogradu.jpg" alt="Mobilni vulkanizer Milan na intervenciji u Beogradu - zamena gume na BMW vozilu" loading="eager" width="600" height="660" />
                         <div className="hero-badge">
                             <div className="hero-badge-num">A+</div>
                             <div className="hero-badge-txt">Premium servis</div>
@@ -218,7 +218,7 @@ export default function HomePage() {
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v6m0 0v6m0-6h6m-6 0H6"/><circle cx="12" cy="12" r="10"/></svg>
                         </div>
                         <h3>Kontrola i dopuna pritiska</h3>
-                        <p>Proveravam i punim sve četiri gume na ispravan pritisak — brzo, besplatno uz svaku uslugu. Punjenje azotom po želji.</p>
+                        <p>Proveravam i punim sve četiri gume na ispravan pritisak — brzo i precizno uz svaku uslugu. Punjenje azotom po želji.</p>
                     </article>
                 </div>
             </div>
@@ -394,7 +394,7 @@ export default function HomePage() {
                         <div className="eyebrow">Mapa pokrivanja</div>
                         <h2 id="coverage-title">Pokrivam ceo Beograd i okolinu</h2>
                         <p style={{ color: 'var(--text-muted)', fontSize: '16px', lineHeight: '1.7', marginTop: '16px' }}>
-                            Bez obzira da li ste u centru, na Novom Beogradu, u Zemunu ili u prigradskim naseljima — dolazim na bilo koju adresu unutar šire teritorije Beograda. Dolazak je uvek besplatan.
+                            Bez obzira da li ste u centru, na Novom Beogradu, u Zemunu ili u prigradskim naseljima — dolazim na bilo koju adresu unutar šire teritorije Beograda. Brz odziv, profesionalna usluga.
                         </p>
         
                         <div className="coverage-list">
@@ -524,36 +524,32 @@ export default function HomePage() {
         
                 <div className="gallery-grid">
                     <div className="gallery-item">
-                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/23-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/23.jpeg" alt="Krpljenje gume na adresi klijenta - Novi Beograd" loading="lazy" />
-                        <div className="gallery-item-overlay"><span>Krpljenje gume — Novi Beograd</span></div>
+                        <img src="/8.jpg" data-full="/8.jpg" alt="Mobilni vulkanizer Milan na intervenciji u centru Beograda - kombi pored Skupštine" loading="lazy" />
+                        <div className="gallery-item-overlay"><span>Centar Beograda — intervencija na licu mesta</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/22-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/22.jpeg" alt="Zamena pneumatika na licu mesta" loading="lazy" />
-                        <div className="gallery-item-overlay"><span>Zamena pneumatika</span></div>
+                        <img src="/2.jpg" data-full="/2.jpg" alt="Zamena pneumatika na parkingu - mobilni vulkanizer Novi Beograd" loading="lazy" />
+                        <div className="gallery-item-overlay"><span>Zamena gume — Novi Beograd</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/21-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/21.jpeg" alt="Profesionalan alat za vulkanizerske usluge" loading="lazy" />
-                        <div className="gallery-item-overlay"><span>Profesionalan alat</span></div>
+                        <img src="/6.jpg" data-full="/6.jpg" alt="Milan menja gumu na licu mesta - mobilni vulkanizer u akciji u Beogradu" loading="lazy" />
+                        <div className="gallery-item-overlay"><span>Zamena gume kod klijenta</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/19-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/19.jpeg" alt="Mobilni vulkanizer u akciji - Beograd" loading="lazy" />
-                        <div className="gallery-item-overlay"><span>Intervencija u Beogradu</span></div>
+                        <img src="/4.jpg" data-full="/4.jpg" alt="Mobilni vulkanizer servis BMW X6 noću u Beogradu - 24h dostupan" loading="lazy" />
+                        <div className="gallery-item-overlay"><span>Servis luksuznih vozila</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/18-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/18.jpeg" alt="Balansiranje točkova kod kuće" loading="lazy" />
-                        <div className="gallery-item-overlay"><span>Balansiranje točkova</span></div>
+                        <img src="/7.jpg" data-full="/7.jpg" alt="Hitna noćna zamena gume na BMW limuzini - vulkanizer Beograd 24h" loading="lazy" />
+                        <div className="gallery-item-overlay"><span>Hitna intervencija noću</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/17-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/17.jpeg" alt="Hitna intervencija mobilnog vulkanizera" loading="lazy" />
-                        <div className="gallery-item-overlay"><span>Hitna intervencija</span></div>
+                        <img src="/1.jpg" data-full="/1.jpg" alt="Mobilni vulkanizer Milan kombi - 24h vulkanizer Beograd na poziv" loading="lazy" />
+                        <div className="gallery-item-overlay"><span>Kombi Milan — 24h dostupan</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/16-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/16.jpeg" alt="Servis vozila u Beogradu" loading="lazy" />
-                        <div className="gallery-item-overlay"><span>Servis na licu mesta</span></div>
-                    </div>
-                    <div className="gallery-item">
-                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/14-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/14.jpeg" alt="Mobilni vulkanizer Milan" loading="lazy" />
-                        <div className="gallery-item-overlay"><span>Tim u akciji</span></div>
+                        <img src="/3.jpg" data-full="/3.jpg" alt="Profesionalna vulkanizerska oprema u mobilnom kombiju - balanser i montirka" loading="lazy" />
+                        <div className="gallery-item-overlay"><span>Profesionalna oprema u kombiju</span></div>
                     </div>
                 </div>
             </div>
@@ -724,7 +720,7 @@ export default function HomePage() {
                     </div>
         
                     <div className="about-visual">
-                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/11.jpeg" alt="Milan - mobilni vulkanizer Beograd" loading="lazy" />
+                        <img src="/mobilni-vulkanizer-milan-na-intervenciji-u-beogradu.jpg" alt="Milan - mobilni vulkanizer Beograd na terenu - profesionalna intervencija" loading="lazy" />
                     </div>
                 </div>
             </div>
@@ -756,7 +752,7 @@ export default function HomePage() {
                             <span className="faq-icon">+</span>
                         </button>
                         <div className="faq-answer">
-                            <p>Dolazak je <strong>besplatan</strong> za sve adrese unutar Beograda. Plaćate samo izvršenu uslugu prema važećem cenovniku. Cene možete videti u sekciji "Cenovnik" iznad.</p>
+                            <p>Konačna cena zavisi od <strong>4 ključna faktora</strong>: vaše lokacije, vremena intervencije, karakteristika vozila i tipa posla. Pozovite nas i pre polaska ćete dobiti <strong>fiksnu procenu troškova</strong> — bez skrivenih troškova i bez iznenađenja na licu mesta.</p>
                         </div>
                     </article>
         

@@ -8,8 +8,8 @@ export default function Footer() {
           <div className="footer-about">
             <Link href="/" className="logo">
               <img
-                src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/vulaknizermilan.png"
-                alt="Logo"
+                src="/logo.png"
+                alt="Mobilni Vulkanizer Milan - logo firme"
                 className="logo-img"
                 width="44"
                 height="44"

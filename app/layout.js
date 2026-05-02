@@ -27,7 +27,7 @@ export const metadata = {
     description:
       'Probušena guma? Zamena pneumatika? Dolazim na bilo koju lokaciju u Beogradu — brzo, profesionalno, u bilo koje doba dana ili noći.',
     images: [
-      'https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/vulaknizermilan.png',
+      'https://www.mobilnivulkanizermilan.com/logo.png',
     ],
     siteName: 'Mobilni Vulkanizer Milan',
   },
@@ -37,13 +37,13 @@ export const metadata = {
     description:
       'Probušena guma? Pozovite Milana — dolazim za 15-30 min na bilo koju lokaciju u Beogradu. Non-stop 24h.',
     images: [
-      'https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/vulaknizermilan.png',
+      'https://www.mobilnivulkanizermilan.com/logo.png',
     ],
   },
   icons: {
-    icon: 'https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/vulaknizermilan.png',
+    icon: 'https://www.mobilnivulkanizermilan.com/logo.png',
     apple:
-      'https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/vulaknizermilan.png',
+      'https://www.mobilnivulkanizermilan.com/logo.png',
   },
   other: {
     'theme-color': '#0a0a0a',
@@ -72,8 +72,8 @@ const localBusinessJsonLd = {
   telephone: '+381641290929',
   priceRange: '$$',
   image:
-    'https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/vulaknizermilan.png',
-  logo: 'https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/vulaknizermilan.png',
+    'https://www.mobilnivulkanizermilan.com/logo.png',
+  logo: 'https://www.mobilnivulkanizermilan.com/logo.png',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Beograd',

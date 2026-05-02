@@ -33,8 +33,8 @@ export default function Header() {
               onClick={closeMenu}
             >
               <img
-                src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/vulaknizermilan.png"
-                alt="Mobilni Vulkanizer Milan logo"
+                src="/logo.png"
+                alt="Mobilni Vulkanizer Milan logo - 24h vulkanizer Beograd"
                 className="logo-img"
                 width="44"
                 height="44"
