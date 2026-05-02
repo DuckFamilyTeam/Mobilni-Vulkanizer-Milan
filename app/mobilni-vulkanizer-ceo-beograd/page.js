@@ -3,18 +3,18 @@ import Footer from '../components/Footer';
 import StickyCall from '../components/StickyCall';
 
 export const metadata = {
-  title: 'Mobilni Vulkanizer Ceo Beograd | Pokrivenost svih opština — 24/7',
+  title: 'Mobilni Vulkanizer Ceo Beograd | Pokrivenost celog grada — 24/7',
   description:
-    'Mobilni vulkanizer za ceo Beograd — pokrivam sve opštine. Centar 15-30 min, najudaljeniji delovi grada 30-60 min. Krpljenje gume, zamena pneumatika, balansiranje. 10+ godina iskustva. +381 64 12 90 929.',
+    'Mobilni vulkanizer za ceo Beograd — pokrivam ceo grad. Bliže lokacije 15-30 min, najudaljeniji delovi 30-60 min. Krpljenje gume, zamena pneumatika, balansiranje. 10+ godina iskustva. +381 64 12 90 929.',
   keywords:
-    'mobilni vulkanizer ceo beograd, vulkanizer beograd, vulkanizer dolazi beograd, mobilni vulkanizer sve opštine, vulkanizer 24h beograd, krpljenje gume beograd',
+    'mobilni vulkanizer ceo beograd, vulkanizer beograd, vulkanizer dolazi beograd, mobilni vulkanizer beograd, vulkanizer 24h beograd, krpljenje gume beograd',
   alternates: {
     canonical: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
   },
   openGraph: {
-    title: 'Mobilni Vulkanizer Ceo Beograd | Sve opštine, 24/7',
+    title: 'Mobilni Vulkanizer Ceo Beograd | 24/7',
     description:
-      'Pokrivam ceo Beograd — od centra do najudaljenijih opština. Stižem brzo, sa preko 10 godina iskustva u zanatu.',
+      'Pokrivam ceo Beograd. Bliže lokacije 15-30 min, najudaljeniji delovi 30-60 min. Sa preko 10 godina iskustva u zanatu.',
     url: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
     locale: 'sr_RS',
     type: 'website',
@@ -37,15 +37,14 @@ export default function CeoBeogradPage() {
             <h1 id="loc-title">
               Mobilni vulkanizer <span className="accent">ceo Beograd</span>
               <br />
-              sve opštine, 24h
+              dolazim 24h, ceo grad
             </h1>
 
             <p className="loc-hero-lead">
               Bilo gde u Beogradu da ste — stižem. Sa preko 10 godina iskustva
-              u vulkanizerskom zanatu, pokrivam svih 17 opština grada. U
-              centralnim zonama dolazak je u proseku 15 do 30 minuta; za
-              najudaljenije delove (Mladenovac, Lazarevac, Obrenovac,
-              Padinska skela) računajte <strong>30 do 60 minuta</strong>.
+              u vulkanizerskom zanatu, pokrivam ceo grad. Za bliže lokacije u
+              Beogradu dolazak je u proseku 15 do 30 minuta; za najudaljenije
+              delove grada računajte <strong>30 do 60 minuta</strong>.
               Profesionalan rad, garancija na uslugu, non-stop 24 časa
               dnevno.
             </p>
@@ -77,7 +76,7 @@ export default function CeoBeogradPage() {
             </div>
 
             <span className="loc-hero-quick">
-              ⚡ <strong>Sve opštine · Centar 15-30 min · Periferija 30-60 min</strong>
+              ⚡ <strong>Bliže lokacije 15-30 min · Najudaljeniji delovi 30-60 min</strong>
             </span>
           </div>
         </div>
@@ -88,33 +87,33 @@ export default function CeoBeogradPage() {
           <div className="loc-content-inner">
             <h2>Mobilna vulkanizerska usluga za ceo Beograd</h2>
             <p>
-              Beograd je veliki grad. Od centra Starog grada do periferije ima
-              i po 50 kilometara — i kad nekome ko živi u Mladenovcu pukne
+              Beograd je veliki grad. Od centra do oboda ima i po više
+              desetina kilometara — i kad nekome ko živi na obodu grada pukne
               guma u dva ujutru, ne vredi mu da zna da neki vulkanizer u
-              Vračaru radi non-stop. Treba mu neko ko stiže do njega. Zato kao{' '}
+              centru radi non-stop. Treba mu neko ko stiže do njega. Zato kao{' '}
               <strong>mobilni vulkanizer za ceo Beograd</strong> sa preko
-              decenije iskustva, ne pravim razliku između opština: stižem
-              svuda, ali otvoreno govorim koliko vremena treba — bez
-              "obećanja od 15 minuta" za adresu koja je 40 km daleko.
+              decenije iskustva, ne pravim razliku između delova grada:
+              stižem svuda, ali otvoreno govorim koliko vremena treba — bez
+              "obećanja od 15 minuta" za adresu koja je daleko od centra.
             </p>
 
             <p>
               Vreme dolaska zavisi od toga gde se trenutno nalazim i gde ste
-              vi. Za centralne opštine i bliža naselja računajte 15 do 30
-              minuta. Za udaljene delove grada — Mladenovac, Lazarevac,
-              Obrenovac, Padinska skela, Sopot, Barajevo, Grocka — vreme
-              dolaska je <strong>30 do 60 minuta</strong>. Uvek vam dam
-              realnu procenu pre nego što krenem, da znate tačno na čemu ste.
+              vi. Za bliže lokacije u Beogradu računajte 15 do 30 minuta. Za
+              najudaljenije delove grada vreme dolaska je{' '}
+              <strong>30 do 60 minuta</strong>. Uvek vam dam realnu procenu
+              pre nego što krenem, da znate tačno na čemu ste — bez lažnih
+              obećanja i bez nepotrebnog kašnjenja.
             </p>
 
             <div className="loc-quick-stats">
               <div className="loc-stat">
                 <div className="loc-stat-num">15-30</div>
-                <div className="loc-stat-label">min · centar</div>
+                <div className="loc-stat-label">min · bliže lokacije</div>
               </div>
               <div className="loc-stat">
                 <div className="loc-stat-num">30-60</div>
-                <div className="loc-stat-label">min · periferija</div>
+                <div className="loc-stat-label">min · udaljeniji delovi</div>
               </div>
               <div className="loc-stat">
                 <div className="loc-stat-num">10+</div>
@@ -126,23 +125,23 @@ export default function CeoBeogradPage() {
               </div>
             </div>
 
-            <h2>Centralne opštine — 15 do 30 minuta</h2>
+            <h2>Bliže lokacije u Beogradu — 15 do 30 minuta</h2>
             <p>
-              U centralnim opštinama Beograda dolazak je u proseku 15-30
-              minuta od poziva. To uključuje 10 gradskih opština:
+              Za bliže lokacije u Beogradu dolazak je u proseku{' '}
+              <strong>15 do 30 minuta</strong> od poziva. To su sve adrese
+              koje su u dohvatu standardnog gradskog saobraćaja — bilo da
+              ste ispred zgrade, na poslu, na parkingu tržnog centra ili
+              pored neke od većih saobraćajnica. Pokrivenost je puna, vreme
+              reagovanja brzo, a procenu vremena uvek dobijate odmah po
+              pozivu.
             </p>
-            <ul>
-              <li>Stari grad — Knez Mihailova, Skadarlija, Kalemegdan, Dorćol</li>
-              <li>Vračar — Crveni krst, Neimar, Trg Slavija</li>
-              <li>Savski venac — Dedinje, Senjak, Topčidersko brdo</li>
-              <li>Novi Beograd — svi blokovi, bulevari, poslovne zone</li>
-              <li>Zemun — od Gardoša do Bežanijske kose</li>
-              <li>Palilula — Karaburma, Kotež, Krnjača, Borča</li>
-              <li>Voždovac — Banjica, Kumodraž, Šumice, Jajinci</li>
-              <li>Zvezdara — Konjarnik, Mirijevo, Mali Mokri Lug</li>
-              <li>Čukarica — Banovo brdo, Žarkovo, Cerak, Sremčica</li>
-              <li>Rakovica — Kanarevo brdo, Resnik, Petlovo brdo</li>
-            </ul>
+            <p>
+              Najčešće intervencije u ovim delovima Beograda su klasične —
+              probušena guma usled šrafa ili eksera, "noćno punjenje" koje
+              vlasnik primeti tek ujutru, sezonska zamena letnjih i zimskih
+              guma, balansiranje. Sve to radim na licu mesta, sa kompletnim
+              alatom i materijalom u servisnom vozilu.
+            </p>
 
             <div className="loc-cta-band">
               <h3>Već sad vam treba vulkanizer u Beogradu?</h3>
@@ -155,23 +154,22 @@ export default function CeoBeogradPage() {
               </a>
             </div>
 
-            <h2>Prigradske opštine — 30 do 60 minuta</h2>
+            <h2>Najudaljeniji delovi grada — 30 do 60 minuta</h2>
             <p>
-              Za udaljenije delove grada vreme dolaska je realno{' '}
-              <strong>30-60 minuta</strong>, u zavisnosti od saobraćaja i
-              tačne adrese. Tu spadaju prigradske opštine sa udaljenim
-              naseljima:
+              Za najudaljenije delove Beograda vreme dolaska je realno{' '}
+              <strong>30 do 60 minuta</strong>, u zavisnosti od saobraćaja i
+              tačne adrese. Ovo su delovi grada koji su značajno udaljeni od
+              centra — i tu se ne pravi pretvaranje da se može stići "za 15
+              minuta". Iskreno govorim koliko ću vam trebati, i tačno toliko
+              stignem.
             </p>
-            <ul>
-              <li>Surčin — uključujući aerodrom Nikola Tesla i okolinu</li>
-              <li>Obrenovac — centar i okolna sela (do ~40 km od centra Beograda)</li>
-              <li>Lazarevac — udaljen oko 55-60 km od centra grada</li>
-              <li>Mladenovac — najudaljeniji ka jugu (~45-50 km)</li>
-              <li>Sopot — Ralja, Mali Požarevac i okolina</li>
-              <li>Barajevo — sva naselja u okviru opštine</li>
-              <li>Grocka — Vinča, Kaluđerica, Brestovik, Grocka centar</li>
-              <li>Padinska skela, Ovča, Borča III i dalje izlazi grada</li>
-            </ul>
+            <p>
+              I za udaljenije adrese radim potpuno isti obim posla kao i u
+              gradu — krpljenje, zamenu pneumatika, balansiranje, ispravku
+              felni, kontrolu pritiska. Sve što ima fiksna vulkanizerska
+              radnja, imam i ja u kombiju, i nije problem da se to nađe pred
+              vašom kućom u dva ujutru.
+            </p>
 
             <h2>Sve usluge — kod vaše adrese</h2>
             <p>
@@ -193,22 +191,23 @@ export default function CeoBeogradPage() {
             <h2>Zašto sa mnom — 10+ godina iskustva</h2>
             <p>
               Vulkanizerski zanat radim već <strong>preko decenije</strong> —
-              i u tom vremenu sam pokrio bukvalno svaku opštinu u Beogradu.
-              Od noćnih intervencija na Avali do prepodnevnih krpljenja u
-              Bloku 70, od porodičnih kuća u Kotežu do servisnih intervencija
-              u industrijskim zonama Surčina — sve su to standardni dani na
-              terenu. Tačno znam kako da pristupim svakoj situaciji, koju
-              opremu da uzmem i kojim putem da idem.
+              i u tom vremenu sam pokrio bukvalno svaki deo Beograda. Od
+              noćnih intervencija u udaljenim naseljima do prepodnevnih
+              krpljenja u srcu grada, od porodičnih kuća na obodu do
+              servisnih intervencija u industrijskim zonama — sve su to
+              standardni dani na terenu. Tačno znam kako da pristupim svakoj
+              situaciji, koju opremu da uzmem i kojim putem da idem do vaše
+              tačne adrese.
             </p>
 
             <h2>Pošteno o vremenu i ceni</h2>
             <p>
-              Ne obećavam ono što ne mogu. Ako ste u Mladenovcu u 23h, neću
-              vam reći "stižem za 15 minuta". Reći ću vam stvarnu procenu —
-              pa i ako je 50 minuta. Cena se određuje pre početka rada, na
-              osnovu lokacije, vremena, vozila i vrste intervencije, bez
-              skrivenih troškova. To je, posle 10+ godina, jedini način koji
-              mi je ostao da poslujem.
+              Ne obećavam ono što ne mogu. Ako ste u udaljenijem delu grada
+              u 23h, neću vam reći "stižem za 15 minuta". Reći ću vam stvarnu
+              procenu — pa i ako je 50 minuta. Cena se određuje pre početka
+              rada, na osnovu lokacije, vremena, vozila i vrste intervencije,
+              bez skrivenih troškova. To je, posle 10+ godina, jedini način
+              koji mi je ostao da poslujem.
             </p>
 
             <h2>Pozovi sada — pokrivam ceo Beograd</h2>
@@ -229,8 +228,8 @@ export default function CeoBeogradPage() {
             <div className="eyebrow">Hitan poziv</div>
             <h2>Bilo gde u Beogradu — stižem</h2>
             <p>
-              Sve opštine, sva naselja. Centar 15-30 min, periferija 30-60
-              min. Non-stop 24 časa.
+              Pokrivam ceo grad. Bliže lokacije 15-30 min, najudaljeniji
+              delovi 30-60 min. Non-stop 24 časa.
             </p>
             <div className="loc-final-cta-num">
               <a href="tel:+381641290929">+381 64 12 90 929</a>
