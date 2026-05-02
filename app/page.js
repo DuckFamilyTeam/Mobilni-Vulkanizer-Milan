@@ -1,0 +1,811 @@
+import Header from './components/Header';
+import Footer from './components/Footer';
+import StickyCall from './components/StickyCall';
+
+const servicesJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Mobilna vulkanizerska usluga',
+  provider: { '@id': 'https://mobilnivulkanizermilan.com/#business' },
+  areaServed: { '@type': 'City', name: 'Beograd' },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Vulkanizerske usluge',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Krpljenje probušene gume na licu mesta' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Zamena letnjih i zimskih pneumatika' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Balansiranje točkova' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Ispravka felni' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hitna vučna služba' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Kontrola i dopuna pritiska u gumama' } },
+    ],
+  },
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Da li dolazite noću i vikendom?', acceptedAnswer: { '@type': 'Answer', text: 'Da, radimo non-stop, 365 dana u godini — uključujući noć, vikende i praznike. Dodaje se samo noćna taksa za intervencije između 22h i 06h.' } },
+    { '@type': 'Question', name: 'Koliko košta dolazak mobilnog vulkanizera?', acceptedAnswer: { '@type': 'Answer', text: 'Dolazak je besplatan za sve adrese unutar Beograda. Plaća se samo izvršena usluga prema važećem cenovniku.' } },
+    { '@type': 'Question', name: 'Koliko brzo stižete na lokaciju?', acceptedAnswer: { '@type': 'Answer', text: 'Prosečno vreme dolaska je 15-30 minuta od poziva. Vreme zavisi od trenutne lokacije i saobraćaja, ali uvek dajemo realnu procenu pre dolaska.' } },
+    { '@type': 'Question', name: 'Za koje tipove vozila pružate usluge?', acceptedAnswer: { '@type': 'Answer', text: 'Servisiramo putnička osobna vozila i SUV-ove svih marki i modela. Za kombije i veća vozila pozovite nas radi konsultacije.' } },
+    { '@type': 'Question', name: 'Šta ako guma nije popravljiva?', acceptedAnswer: { '@type': 'Answer', text: 'Ukoliko guma nije popravljiva, možemo ugraditi vašu rezervnu gumu ili po dogovoru obezbediti i ugraditi novu gumu na licu mesta.' } },
+    { '@type': 'Question', name: 'Pokrivate li prigradska mesta?', acceptedAnswer: { '@type': 'Answer', text: 'Primarno pokrivamo ceo Beograd uključujući prigradska naselja (Borča, Surčin, Mirijevo, Resnik, Kaluđerica). Za dalje lokacije pozovite — dogovaramo se.' } },
+    { '@type': 'Question', name: 'Mogu li platiti karticom?', acceptedAnswer: { '@type': 'Answer', text: 'Trenutno prihvatamo gotovinu i prenos preko mobilne aplikacije banke (instant plaćanje). Za firme dostupno je i fakturisanje.' } },
+    { '@type': 'Question', name: 'Kakvu garanciju pružate na rad?', acceptedAnswer: { '@type': 'Answer', text: 'Na svako krpljenje gume dajemo garanciju od 30 dana. Korišćenu opremu i materijale takođe garantujemo prema deklaracijama proizvođača.' } },
+    { '@type': 'Question', name: 'Šta ako pada kiša ili sneg?', acceptedAnswer: { '@type': 'Answer', text: 'Radimo po svim vremenskim uslovima. Naša vozila su opremljena tako da možemo bezbedno raditi i u kiši, snegu ili magli.' } },
+    { '@type': 'Question', name: 'Koliko traje krpljenje probušene gume?', acceptedAnswer: { '@type': 'Answer', text: 'Standardno krpljenje gume traje 15-25 minuta od početka rada. Zamena pneumatika 20-40 minuta, zavisno od broja guma.' } },
+    { '@type': 'Question', name: 'Da li mogu rezervisati termin unapred?', acceptedAnswer: { '@type': 'Answer', text: 'Da, ako vam odgovara unapred dogovoren termin (npr. zamena letnjih i zimskih guma), pozovite ili pišite na Viber/WhatsApp. Hitne intervencije imaju prioritet.' } },
+    { '@type': 'Question', name: 'Šta sve nosite sa sobom?', acceptedAnswer: { '@type': 'Answer', text: 'Kompletan profesionalan set: kompresor, dizalica, vulkanizerski alat, materijal za krpljenje, balanser, opremu za demontažu i montažu. Sve što imamo u radnji.' } },
+  ],
+};
+
+const reviewsJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Mobilna vulkanizerska usluga - Beograd',
+  image: 'https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/vulaknizermilan.png',
+  description: 'Mobilni vulkanizer u Beogradu sa dolaskom za 15-30 minuta, 24 časa dnevno.',
+  brand: { '@type': 'Brand', name: 'Mobilni Vulkanizer Milan' },
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '5.0', reviewCount: '127' },
+  review: [
+    { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'Ljuba' }, reviewBody: 'Momak kulturan, brz, dosao je odmah i promenio sve 4 gume u roku od 15 minuta, pritom pazio da nista ne osteti ispod auta dizalicom itd.... sve preporuke!' },
+    { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'Ana Markusev' }, reviewBody: 'Dečko je profesionalan i brz, sve pohvale!' },
+    { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'bracarada bracarada' }, reviewBody: 'Svaka cast za brzinu i organizaciju. Za kratko vreme resen problem. Sve pohvale za Milana.' },
+    { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'spasojevic radmila' }, reviewBody: 'Sve pohvale za uslugu, ljubaznost i brzinu. Topla preporuka.' },
+    { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'Masa Sladic' }, reviewBody: 'Sve pohvale za Milana, mobilnog vulkanizera. Vrlo ljubazan, vrlo brzo je došao na adresu. Brzo mi je zamenio gume, tako da sam sve svoje obveze obavila bez odlaganja. Toplo ga preporučujem. Čestitam, oduševljena sam. Zauvijek vaš klijent.' },
+    { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'Jovan Neskovic' }, reviewBody: 'Sve pohvale za ekipu, pre svega na ljudskosti i ljubaznosti! Pored toga što su na teren izašli neverovatno brzo, momci su bili izuzetno prijatni i smireni, što mi je mnogo značilo u onom stresu na putu.' },
+    { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'Aleksandar Jovanovic' }, reviewBody: 'Ekspresna usluga, brz dolazak, resavanje problema u veoma kratkom vremenskom intervalu. Preporuka.' },
+  ],
+};
+
+export default function HomePage() {
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsJsonLd) }}
+      />
+
+      <Header />
+
+        {/* ============ HERO ============ */}
+        <section className="hero" role="region" aria-labelledby="hero-title">
+            <div className="container">
+                <div className="hero-grid">
+                    <div className="hero-content">
+                        <div className="hero-availability">
+                            <span className="live-pulse"></span>
+                            Trenutno dostupan · Dolazim za 15-30 min
+                        </div>
+        
+                        <h1 id="hero-title">
+                            Mobilni vulkanizer<br />
+                            <span className="accent">u Beogradu</span><br />
+                            24h non-stop
+                        </h1>
+        
+                        <p className="hero-lead">
+                            Probušena guma? Zamena pneumatika? Dolazim na bilo koju lokaciju u Beogradu — brzo, profesionalno, u bilo koje doba dana ili noći. Jedan poziv je sve što vam treba.
+                        </p>
+        
+                        <div className="hero-cta">
+                            <a href="tel:+381641290929" className="btn-primary" aria-label="Pozovite +381 64 12 90 929">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                Pozovi: +381 64 12 90 929
+                            </a>
+                            <a href="https://wa.me/381641290929" className="btn-secondary" aria-label="Kontaktirajte preko WhatsApp-a">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                                WhatsApp
+                            </a>
+                            <a href="viber://chat?number=%2B381641290929" className="btn-secondary" aria-label="Kontaktirajte preko Viber-a">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.4 0C9.473.028 5.333.344 3.02 2.467 1.302 4.187.696 6.7.633 9.817.57 12.933.488 18.776 6.124 20.36h.005l-.004 2.42s-.037.98.61 1.18c.78.244 1.24-.5 1.987-1.3.41-.45.97-1.1 1.4-1.6 3.85.32 6.81-.42 7.15-.53.78-.25 5.2-.82 5.92-6.68.74-6.04-.36-9.86-2.34-11.58l-.013-.005c-.6-.55-3-2.3-8.36-2.32 0 0-.633-.04-1.075-.04zm.122 1.7c.376.001.92.04.92.04 4.535.018 6.706 1.385 7.214 1.85 1.673 1.434 2.528 4.876 1.903 9.917-.602 4.896-4.184 5.205-4.84 5.412-.28.087-2.882.732-6.158.515 0 0-2.443 2.95-3.205 3.715-.119.123-.26.17-.354.149-.132-.033-.17-.193-.168-.426l.022-4.022c-4.764-1.32-4.486-6.295-4.434-8.898.054-2.602.55-4.736 1.999-6.168 1.957-1.78 5.475-2.044 7.1-2.085 0 0 0 .001 0 0zm.529 2.748a.328.328 0 0 0-.327.343c0 .183.146.337.328.341 2.38.05 4.336 1.65 4.357 4.622a.328.328 0 0 0 .327.328h.005a.328.328 0 0 0 .323-.333c-.024-3.302-2.232-5.255-4.999-5.302a.32.32 0 0 0-.014 0zm-3.879.997c-.207-.025-.414.018-.587.135h-.014c-.402.236-.764.534-1.07.886-.255.302-.394.609-.43.905-.022.176.013.352.103.51.22.45.488.875.799 1.265a14.31 14.31 0 0 0 1.71 1.953c.668.659 1.41 1.245 2.213 1.747h.01l.01.005.014.009c.025.013.05.027.075.038.798.426 1.658.737 2.55.926.916.21 1.85.339 2.79.385h.107c.298-.013.581-.144.785-.366.358-.397.63-.866.799-1.376a.832.832 0 0 0-.014-.547c-.117-.235-.267-.45-.444-.638-.382-.402-.835-.728-1.336-.96a.825.825 0 0 0-.776-.005c-.252.158-.48.347-.681.564l-.014.018c-.085.103-.21.158-.342.149a8.93 8.93 0 0 1-2.04-.736 6.143 6.143 0 0 1-1.77-1.255c-.245-.234-.47-.49-.671-.764a.378.378 0 0 1 .009-.45l.014-.014c.215-.205.404-.435.563-.685a.825.825 0 0 0-.005-.78c-.234-.5-.56-.952-.96-1.336a2.484 2.484 0 0 0-.638-.444 1.018 1.018 0 0 0-.275-.067zm4.099.61a.327.327 0 0 0-.336.319.327.327 0 0 0 .314.336c.835.04 1.622.382 2.218.965.595.582.926 1.36.96 2.196a.328.328 0 0 0 .328.314h.018a.328.328 0 0 0 .314-.336 4.06 4.06 0 0 0-1.155-2.642 4.083 4.083 0 0 0-2.66-1.151zm.617 1.252a.327.327 0 0 0-.354.299.327.327 0 0 0 .299.355c1.013.062 1.539.612 1.616 1.66a.328.328 0 0 0 .327.305h.024a.328.328 0 0 0 .305-.351 2.408 2.408 0 0 0-.717-1.586 2.49 2.49 0 0 0-1.5-.682z"/></svg>
+                                Viber
+                            </a>
+                        </div>
+        
+                        <div className="hero-stats">
+                            <div>
+                                <div className="stat-num">15min</div>
+                                <div className="stat-label">Prosečno do dolaska</div>
+                            </div>
+                            <div>
+                                <div className="stat-num">24h</div>
+                                <div className="stat-label">Non-stop dostupan</div>
+                            </div>
+                            <div>
+                                <div className="stat-num">500+</div>
+                                <div className="stat-label">Zadovoljnih klijenata</div>
+                            </div>
+                            <div>
+                                <div className="stat-num">5.0★</div>
+                                <div className="stat-label">Prosečna ocena</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div className="hero-visual">
+                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/23.jpeg" alt="Mobilni vulkanizer Milan na intervenciji u Beogradu" loading="eager" width="600" height="660" />
+                        <div className="hero-badge">
+                            <div className="hero-badge-num">A+</div>
+                            <div className="hero-badge-txt">Premium servis</div>
+                        </div>
+                        <div className="hero-quick-contact">
+                            <div className="hero-quick-contact-label">Hitan poziv</div>
+                            <div className="hero-quick-contact-num">+381 64 12 90 929</div>
+                            <div className="hero-quick-contact-actions">
+                                <a href="tel:+381641290929" className="quick-action">📞 Pozovi</a>
+                                <a href="https://wa.me/381641290929" className="quick-action">💬 Poruka</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        {/* ============ EMERGENCY BAR ============ */}
+        <div className="emergency-bar" role="region" aria-label="Hitna intervencija">
+            <div className="container">
+                <div className="emergency-bar-inner">
+                    <span className="emergency-bar-text">⚡ Probušena guma sada? Stigao sam za 15-30 minuta na vašu adresu</span>
+                    <a href="tel:+381641290929" className="emergency-bar-cta">📞 Hitno - Pozovi</a>
+                </div>
+            </div>
+        </div>
+        
+        {/* ============ SERVICES ============ */}
+        <section className="services" id="usluge" role="region" aria-labelledby="services-title">
+            <div className="container">
+                <div className="section-header">
+                    <div className="eyebrow">Naše usluge</div>
+                    <h2 id="services-title">Sve što vam treba — na licu mesta</h2>
+                    <p>Mobilna ekipa opremljena profesionalnim alatima i materijalima. Bez vučne službe, bez čekanja u redu.</p>
+                </div>
+        
+                <div className="services-grid">
+                    <article className="service-card reveal">
+                        <div className="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></svg>
+                        </div>
+                        <h3>Krpljenje probušene gume</h3>
+                        <p>Brzo i pouzdano krpljenje na licu mesta — bez potrebe za vučnom službom ili odlaskom do vulkanizera. Garancija 30 dana.</p>
+                    </article>
+        
+                    <article className="service-card reveal">
+                        <div className="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 0 1 9-9"/></svg>
+                        </div>
+                        <h3>Zamena pneumatika</h3>
+                        <p>Menjam letnje i zimske gume direktno kod vas — kod kuće, na poslu, ili bilo gde na putu. Sezonska promena za sve modele.</p>
+                    </article>
+        
+                    <article className="service-card reveal">
+                        <div className="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="2" x2="12" y2="22"/><path d="M2 12h20"/></svg>
+                        </div>
+                        <h3>Balansiranje točkova</h3>
+                        <p>Profesionalno balansiranje za bezbedniju vožnju i ravnomerniju potrošnju guma. Donosim balansirku na vašu adresu.</p>
+                    </article>
+        
+                    <article className="service-card reveal">
+                        <div className="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        </div>
+                        <h3>Ispravka felni</h3>
+                        <p>Ispravka oštećenih i deformisanih felni za duži vek trajanja, stabilniji pritisak i bolju estetiku vašeg vozila.</p>
+                    </article>
+        
+                    <article className="service-card reveal">
+                        <div className="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                        </div>
+                        <h3>Hitna vučna služba</h3>
+                        <p>U slučaju da vozilo nije u voznom stanju, organizujem hitan prevoz do najbližeg ovlašćenog servisa po dogovoru.</p>
+                    </article>
+        
+                    <article className="service-card reveal">
+                        <div className="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v6m0 0v6m0-6h6m-6 0H6"/><circle cx="12" cy="12" r="10"/></svg>
+                        </div>
+                        <h3>Kontrola i dopuna pritiska</h3>
+                        <p>Proveravam i punim sve četiri gume na ispravan pritisak — brzo, besplatno uz svaku uslugu. Punjenje azotom po želji.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        {/* ============ WHY US ============ */}
+        <section className="why" role="region" aria-labelledby="why-title">
+            <div className="container">
+                <div className="why-grid">
+                    <div>
+                        <div className="eyebrow">Zašto baš mi</div>
+                        <h2 id="why-title">Pouzdanost koja dolazi k vama</h2>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '17px', lineHeight: '1.7', marginTop: '20px' }}>
+                            Nisam običan vulkanizer. Mobilna ekipa koja shvata da svaki minut čekanja pored puta znači stres i izgubljeno vreme. Zato dolazim brzo, radim profesionalno i naplaćujem pošteno.
+                        </p>
+                    </div>
+        
+                    <div className="why-features">
+                        <div className="why-feature">
+                            <div className="why-feature-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <div>
+                                <h4>Dolazak za 15–30 minuta</h4>
+                                <p>Uvek sam u pokretu po Beogradu — nema dugog čekanja, reagujem odmah.</p>
+                            </div>
+                        </div>
+        
+                        <div className="why-feature">
+                            <div className="why-feature-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <div>
+                                <h4>5-zvezdična usluga</h4>
+                                <p>Stotine zadovoljnih klijenata i odlične recenzije govore umesto nas.</p>
+                            </div>
+                        </div>
+        
+                        <div className="why-feature">
+                            <div className="why-feature-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            </div>
+                            <div>
+                                <h4>Transparentne cene</h4>
+                                <p>Cenu znate pre nego što počnem — bez skrivenih troškova ili iznenađenja.</p>
+                            </div>
+                        </div>
+        
+                        <div className="why-feature">
+                            <div className="why-feature-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <div>
+                                <h4>Garantovana kvalitetna usluga</h4>
+                                <p>Profesionalan alat i kvalitetni materijali sa garancijom na rad od 30 dana.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        {/* ============ PRICING / TRANSPARENT ============ */}
+        <section className="pricing" id="cene" role="region" aria-labelledby="pricing-title">
+            <div className="container">
+                <div className="section-header">
+                    <div className="eyebrow">Cenovnik</div>
+                    <h2 id="pricing-title">Pošteno o ceni — bez iznenađenja</h2>
+                    <p>Kao vodeći mobilni vulkanizer u Beogradu, naš prioritet je da na vašu lokaciju stignemo u rekordnom roku <strong style={{ color: 'var(--gold)' }}>(15–30 min)</strong> sa kompletnom opremom. Zbog specifičnosti rada na terenu, nemamo fiksne šablonske cene jer <strong style={{ color: 'var(--gold)' }}>NE ŽELIMO DA VAM NAPLATIMO</strong> nešto što vam nije potrebno.</p>
+                </div>
+        
+                <div className="pricing-factors">
+                    <div className="pricing-factors-header">
+                        <h3>Konačna cena zavisi isključivo od 4 ključna faktora</h3>
+                    </div>
+        
+                    <div className="pricing-factors-grid">
+                        <div className="pricing-factor reveal">
+                            <div className="pricing-factor-num">01</div>
+                            <div className="pricing-factor-content">
+                                <h4>Vaša lokacija i tip terena</h4>
+                                <p>Gde se tačno nalazite u Beogradu i kakav je pristup vozilu.</p>
+                            </div>
+                        </div>
+        
+                        <div className="pricing-factor reveal">
+                            <div className="pricing-factor-num">02</div>
+                            <div className="pricing-factor-content">
+                                <h4>Vreme intervencije</h4>
+                                <p>Radnim danom, vikendom ili noćna tarifa 00–24h.</p>
+                            </div>
+                        </div>
+        
+                        <div className="pricing-factor reveal">
+                            <div className="pricing-factor-num">03</div>
+                            <div className="pricing-factor-content">
+                                <h4>Karakteristike vašeg vozila</h4>
+                                <p>Veličina guma, tip felni, Run-flat sistemi.</p>
+                            </div>
+                        </div>
+        
+                        <div className="pricing-factor reveal">
+                            <div className="pricing-factor-num">04</div>
+                            <div className="pricing-factor-content">
+                                <h4>Stepen oštećenja i opis posla</h4>
+                                <p>Jednostavna krpaža, zamena cele gume ili kompleksna pomoć na putu.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div className="pricing-cta-block">
+                    <div className="pricing-cta-inner">
+                        <div className="pricing-cta-eyebrow">⚡ 30 sekundi je dovoljno</div>
+                        <h3 className="pricing-cta-title">Kako da dobijete tačnu cenu?</h3>
+                        <p className="pricing-cta-desc">Najpošteniji način da saznate cenu je da nas pozovete odmah. Na osnovu vaših informacija, daćemo vam <strong>fiksnu procenu troškova pre polaska</strong> naše ekipe.</p>
+        
+                        <ul className="pricing-cta-list">
+                            <li>Bez skrivenih troškova</li>
+                            <li>Bez neprijatnih iznenađenja na licu mesta</li>
+                            <li>Plaćate samo realan rad i izlazak na teren</li>
+                        </ul>
+        
+                        <a href="tel:+381641290929" className="btn-primary pricing-cta-btn">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            POZOVI ODMAH ZA CENU
+                        </a>
+                        <span className="pricing-cta-hint">Klikom na dugme direktno birate broj</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        {/* ============ PROCESS ============ */}
+        <section className="process" role="region" aria-labelledby="process-title">
+            <div className="container">
+                <div className="section-header">
+                    <div className="eyebrow">Kako funkcioniše</div>
+                    <h2 id="process-title">Jednostavno kao 1—2—3—4</h2>
+                    <p>Od prvog poziva do rešenog problema, ceo proces traje obično ispod sat vremena.</p>
+                </div>
+        
+                <div className="process-grid">
+                    <div className="process-step reveal">
+                        <span className="process-num">01</span>
+                        <h4>Pozovite nas</h4>
+                        <p>Nazovite Milana na +381 64 12 90 929 i opišite problem i lokaciju.</p>
+                    </div>
+                    <div className="process-step reveal">
+                        <span className="process-num">02</span>
+                        <h4>Potvrda dolaska</h4>
+                        <p>Odmah potvrđujem i dajem procenu vremena dolaska — obično 15-30 min.</p>
+                    </div>
+                    <div className="process-step reveal">
+                        <span className="process-num">03</span>
+                        <h4>Dolazim k vama</h4>
+                        <p>Mobilni tim stiže opremljen svim potrebnim alatima i materijalom.</p>
+                    </div>
+                    <div className="process-step reveal">
+                        <span className="process-num">04</span>
+                        <h4>Rešeno!</h4>
+                        <p>Guma je popravljena ili zamenjena — nastavljate put bezbrižno.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        {/* ============ COVERAGE ============ */}
+        <section className="coverage" id="pokrivanje" role="region" aria-labelledby="coverage-title">
+            <div className="container">
+                <div className="coverage-grid">
+                    <div>
+                        <div className="eyebrow">Mapa pokrivanja</div>
+                        <h2 id="coverage-title">Pokrivam ceo Beograd i okolinu</h2>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '16px', lineHeight: '1.7', marginTop: '16px' }}>
+                            Bez obzira da li ste u centru, na Novom Beogradu, u Zemunu ili u prigradskim naseljima — dolazim na bilo koju adresu unutar šire teritorije Beograda. Dolazak je uvek besplatan.
+                        </p>
+        
+                        <div className="coverage-list">
+                            <div className="coverage-item">Stari grad</div>
+                            <div className="coverage-item">Novi Beograd</div>
+                            <div className="coverage-item">Zemun</div>
+                            <div className="coverage-item">Vračar</div>
+                            <div className="coverage-item">Voždovac</div>
+                            <div className="coverage-item">Palilula</div>
+                            <div className="coverage-item">Zvezdara</div>
+                            <div className="coverage-item">Čukarica</div>
+                            <div className="coverage-item">Rakovica</div>
+                            <div className="coverage-item">Surčin</div>
+                            <div className="coverage-item">Borča</div>
+                            <div className="coverage-item">Mirijevo</div>
+                            <div className="coverage-item">Resnik</div>
+                            <div className="coverage-item">Kaluđerica</div>
+                        </div>
+                    </div>
+        
+                    <div className="coverage-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d210.12332420509554!2d20.465675801375372!3d44.881199950097724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a637b18ce8a37%3A0x45f6e9ef011b2c0!2sMobilni%20Vulkanizer%20Milan!5e0!3m2!1sen!2srs!4v1777627799738!5m2!1sen!2srs" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Lokacija - Mobilni Vulkanizer Milan, Beograd"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        {/* ============ GALLERY ============ */}
+        <section className="gallery-section" id="galerija" role="region" aria-labelledby="gallery-title">
+            <div className="container">
+                <div className="section-header">
+                    <div className="eyebrow">Galerija radova</div>
+                    <h2 id="gallery-title">Stvarne intervencije, stvarni klijenti</h2>
+                    <p>Dokumentacija sa terena — od probušenih guma na autoputu do zamene zimskih guma ispred kuće.</p>
+                </div>
+        
+                <div className="gallery-grid">
+                    <div className="gallery-item">
+                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/23-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/23.jpeg" alt="Krpljenje gume na adresi klijenta - Novi Beograd" loading="lazy" />
+                        <div className="gallery-item-overlay"><span>Krpljenje gume — Novi Beograd</span></div>
+                    </div>
+                    <div className="gallery-item">
+                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/22-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/22.jpeg" alt="Zamena pneumatika na licu mesta" loading="lazy" />
+                        <div className="gallery-item-overlay"><span>Zamena pneumatika</span></div>
+                    </div>
+                    <div className="gallery-item">
+                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/21-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/21.jpeg" alt="Profesionalan alat za vulkanizerske usluge" loading="lazy" />
+                        <div className="gallery-item-overlay"><span>Profesionalan alat</span></div>
+                    </div>
+                    <div className="gallery-item">
+                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/19-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/19.jpeg" alt="Mobilni vulkanizer u akciji - Beograd" loading="lazy" />
+                        <div className="gallery-item-overlay"><span>Intervencija u Beogradu</span></div>
+                    </div>
+                    <div className="gallery-item">
+                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/18-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/18.jpeg" alt="Balansiranje točkova kod kuće" loading="lazy" />
+                        <div className="gallery-item-overlay"><span>Balansiranje točkova</span></div>
+                    </div>
+                    <div className="gallery-item">
+                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/17-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/17.jpeg" alt="Hitna intervencija mobilnog vulkanizera" loading="lazy" />
+                        <div className="gallery-item-overlay"><span>Hitna intervencija</span></div>
+                    </div>
+                    <div className="gallery-item">
+                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/16-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/16.jpeg" alt="Servis vozila u Beogradu" loading="lazy" />
+                        <div className="gallery-item-overlay"><span>Servis na licu mesta</span></div>
+                    </div>
+                    <div className="gallery-item">
+                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/14-150x150.jpeg" data-full="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/14.jpeg" alt="Mobilni vulkanizer Milan" loading="lazy" />
+                        <div className="gallery-item-overlay"><span>Tim u akciji</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        {/* ============ REVIEWS ============ */}
+        <section className="reviews" id="recenzije" role="region" aria-labelledby="reviews-title">
+            <div className="container">
+                <div className="section-header">
+                    <div className="eyebrow">Recenzije klijenata</div>
+                    <h2 id="reviews-title">Šta kažu naši klijenti</h2>
+                </div>
+        
+                <div className="reviews-rating">
+                    <div className="reviews-stars-big">★★★★★</div>
+                    <div className="reviews-rating-num">5.0 / 5.0</div>
+                    <div className="reviews-rating-label">Bazirano na 127+ recenzija sa Google-a, Facebook-a i Viber-a</div>
+                    <a href="https://www.google.com/maps/place/Mobilni+Vulkanizer+Milan/@44.8812194,20.4630735,621m/data=!3m2!1e3!4b1!4m6!3m5!1s0x475a637b18ce8a37:0x45f6e9ef011b2c0!8m2!3d44.8812156!4d20.4656484!16s%2Fg%2F11z5_7wp4p?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '18px', padding: '10px 18px', background: 'rgba(201, 169, 97, 0.1)', border: '1px solid var(--gold)', borderRadius: '100px', color: 'var(--gold)', fontSize: '13px', fontWeight: '600', textDecoration: 'none', transition: 'all 0.2s' }}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C7.802 0 4.4 3.403 4.4 7.602C4.4 11.8 7.469 16.812 12 24c4.531-7.188 7.6-12.2 7.6-16.398C19.6 3.402 16.198 0 12 0zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                        Pogledaj sve recenzije na Google
+                    </a>
+                </div>
+        
+                <div className="reviews-grid">
+                    <article className="review-card reveal">
+                        <div className="review-stars">★★★★★</div>
+                        <p className="review-body">"Momak kulturan, brz, dosao je odmah i promenio sve 4 gume u roku od 15 minuta, pritom pazio da nista ne osteti ispod auta dizalicom itd.... sve preporuke!"</p>
+                        <div className="review-meta">
+                            <div className="review-author">
+                                <div className="review-avatar">L</div>
+                                <div>
+                                    <div className="review-name">Ljuba</div>
+                                    <div className="review-date">Google recenzija</div>
+                                </div>
+                            </div>
+                            <div className="review-source">Google</div>
+                        </div>
+                    </article>
+        
+                    <article className="review-card reveal">
+                        <div className="review-stars">★★★★★</div>
+                        <p className="review-body">"Dečko je profesionalan i brz, sve pohvale!"</p>
+                        <div className="review-meta">
+                            <div className="review-author">
+                                <div className="review-avatar">A</div>
+                                <div>
+                                    <div className="review-name">Ana Markusev</div>
+                                    <div className="review-date">Google recenzija</div>
+                                </div>
+                            </div>
+                            <div className="review-source">Google</div>
+                        </div>
+                    </article>
+        
+                    <article className="review-card reveal">
+                        <div className="review-stars">★★★★★</div>
+                        <p className="review-body">"Svaka cast za brzinu i organizaciju. Za kratko vreme resen problem. Sve pohvale za Milana."</p>
+                        <div className="review-meta">
+                            <div className="review-author">
+                                <div className="review-avatar">B</div>
+                                <div>
+                                    <div className="review-name">bracarada bracarada</div>
+                                    <div className="review-date">Google recenzija</div>
+                                </div>
+                            </div>
+                            <div className="review-source">Google</div>
+                        </div>
+                    </article>
+        
+                    <article className="review-card reveal">
+                        <div className="review-stars">★★★★★</div>
+                        <p className="review-body">"Sve pohvale za uslugu, ljubaznost i brzinu 👏🏼 Topla preporuka."</p>
+                        <div className="review-meta">
+                            <div className="review-author">
+                                <div className="review-avatar">S</div>
+                                <div>
+                                    <div className="review-name">Spasojević Radmila</div>
+                                    <div className="review-date">Google recenzija</div>
+                                </div>
+                            </div>
+                            <div className="review-source">Google</div>
+                        </div>
+                    </article>
+        
+                    <article className="review-card reveal">
+                        <div className="review-stars">★★★★★</div>
+                        <p className="review-body">"Sve pohvale za Milana, mobilnog vulkanizera. Vrlo ljubazan, vrlo brzo je došao na adresu. Brzo mi je zamenio gume, tako da sam sve svoje obveze obavila bez odlaganja. Toplo ga preporučujem. Čestitam, oduševljena sam. Zauvijek vaš klijent."</p>
+                        <div className="review-meta">
+                            <div className="review-author">
+                                <div className="review-avatar">M</div>
+                                <div>
+                                    <div className="review-name">Maša Sladić</div>
+                                    <div className="review-date">Google recenzija</div>
+                                </div>
+                            </div>
+                            <div className="review-source">Google</div>
+                        </div>
+                    </article>
+        
+                    <article className="review-card reveal">
+                        <div className="review-stars">★★★★★</div>
+                        <p className="review-body">"Sve pohvale za ekipu, pre svega na ljudskosti i ljubaznosti! Pored toga što su na teren izašli neverovatno brzo, momci su bili izuzetno prijatni i smireni, što mi je mnogo značilo u onom stresu na putu. Zamenu gume su odradili profesionalno i uz osmeh, bez ikakvog požurivanja ili mrzovolje. Retkost je danas sresti ovakve majstore koji su i vrhunski stručnjaci i sjajni ljudi. Svaka preporuka!"</p>
+                        <div className="review-meta">
+                            <div className="review-author">
+                                <div className="review-avatar">J</div>
+                                <div>
+                                    <div className="review-name">Jovan Nešković</div>
+                                    <div className="review-date">Google recenzija</div>
+                                </div>
+                            </div>
+                            <div className="review-source">Google</div>
+                        </div>
+                    </article>
+        
+                    <article className="review-card reveal">
+                        <div className="review-stars">★★★★★</div>
+                        <p className="review-body">"Ekspresna usluga, brz dolazak, resavanje problema u veoma kratkom vremenskom intervalu. Preporuka."</p>
+                        <div className="review-meta">
+                            <div className="review-author">
+                                <div className="review-avatar">A</div>
+                                <div>
+                                    <div className="review-name">Aleksandar Jovanović</div>
+                                    <div className="review-date">Google recenzija</div>
+                                </div>
+                            </div>
+                            <div className="review-source">Google</div>
+                        </div>
+                    </article>
+                </div>
+        
+                <div style={{ textAlign: 'center', marginTop: '50px', padding: '32px', background: 'var(--black-elev)', border: '1px solid var(--line)', borderRadius: '16px' }}>
+                    <h3 style={{ fontFamily: '\'Inter\', sans-serif', fontSize: '18px', fontWeight: '700', marginBottom: '8px', color: 'var(--cream)' }}>Bili ste naš klijent?</h3>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '14px', marginBottom: '18px' }}>Vaša recenzija nam mnogo znači — i pomaže drugima koji traže pouzdanog vulkanizera.</p>
+                    <a href="https://www.google.com/maps/place/Mobilni+Vulkanizer+Milan/@44.8812194,20.4630735,621m/data=!3m2!1e3!4b1!4m6!3m5!1s0x475a637b18ce8a37:0x45f6e9ef011b2c0!8m2!3d44.8812156!4d20.4656484!16s%2Fg%2F11z5_7wp4p?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 28px', background: 'linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%)', color: 'var(--black)', borderRadius: '100px', fontWeight: '700', fontSize: '14px', textDecoration: 'none' }}>
+                        ★ Ostavite recenziju na Google
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        {/* ============ ABOUT ============ */}
+        <section className="about" id="o-meni" role="region" aria-labelledby="about-title">
+            <div className="container">
+                <div className="about-grid">
+                    <div className="about-content">
+                        <div className="eyebrow">Upoznajte Milana</div>
+                        <h2 id="about-title">Posao radim sa srcem, već više od 10 godina</h2>
+        
+                        <p>
+                            Vulkanizerstvo nije moj posao — to je moj zanat. Više od decenije iskustva u radu sa svim tipovima vozila, od malih gradskih automobila do velikih SUV-ova.
+                        </p>
+        
+                        <p>
+                            Pre par godina sam shvatio nešto očigledno: ljudima koji ostanu bez gume usred noći ili pored auto-puta — ne treba im novi vulkanizer u njihovom kraju. Treba im vulkanizer koji **dolazi k njima**, odmah, profesionalno i bez izgovora.
+                        </p>
+        
+                        <blockquote className="about-quote">
+                            "Svaka guma koju popravim je nečija sigurnost. To shvatam ozbiljno svaki put."
+                        </blockquote>
+        
+                        <p>
+                            Zato vozim opremljeno servisno vozilo po celom Beogradu, 24 časa dnevno. Sa profesionalnim alatom, kvalitetnim materijalima i poštenim cenama. Bez skrivenih troškova, bez izgovora, bez kašnjenja.
+                        </p>
+        
+                        <a href="tel:+381641290929" className="btn-primary">
+                            📞 Pozovite Milana
+                        </a>
+                    </div>
+        
+                    <div className="about-visual">
+                        <img src="https://mobilnivulkanizermilan.com/wp-content/uploads/2026/04/11.jpeg" alt="Milan - mobilni vulkanizer Beograd" loading="lazy" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        {/* ============ FAQ ============ */}
+        <section className="faq" id="faq" role="region" aria-labelledby="faq-title">
+            <div className="container">
+                <div className="section-header">
+                    <div className="eyebrow">Česta pitanja</div>
+                    <h2 id="faq-title">Imate pitanja? Imamo odgovore</h2>
+                    <p>Sve što biste mogli da pitate pre nego što pozovete — ovde je odgovoreno.</p>
+                </div>
+        
+                <div className="faq-list">
+                    <article className="faq-item">
+                        <button className="faq-question" aria-expanded="false">
+                            <span>Da li dolazite noću i vikendom?</span>
+                            <span className="faq-icon">+</span>
+                        </button>
+                        <div className="faq-answer">
+                            <p>Da, radim non-stop, 365 dana u godini — uključujući noć, vikende i praznike. Dodaje se samo noćna taksa za intervencije između 22h i 06h.</p>
+                        </div>
+                    </article>
+        
+                    <article className="faq-item">
+                        <button className="faq-question" aria-expanded="false">
+                            <span>Koliko košta dolazak mobilnog vulkanizera?</span>
+                            <span className="faq-icon">+</span>
+                        </button>
+                        <div className="faq-answer">
+                            <p>Dolazak je <strong>besplatan</strong> za sve adrese unutar Beograda. Plaćate samo izvršenu uslugu prema važećem cenovniku. Cene možete videti u sekciji "Cenovnik" iznad.</p>
+                        </div>
+                    </article>
+        
+                    <article className="faq-item">
+                        <button className="faq-question" aria-expanded="false">
+                            <span>Koliko brzo stižete na lokaciju?</span>
+                            <span className="faq-icon">+</span>
+                        </button>
+                        <div className="faq-answer">
+                            <p>Prosečno vreme dolaska je <strong>15-30 minuta</strong> od poziva. Vreme zavisi od trenutne lokacije i saobraćaja, ali uvek dajem realnu procenu pre dolaska.</p>
+                        </div>
+                    </article>
+        
+                    <article className="faq-item">
+                        <button className="faq-question" aria-expanded="false">
+                            <span>Za koje tipove vozila pružate usluge?</span>
+                            <span className="faq-icon">+</span>
+                        </button>
+                        <div className="faq-answer">
+                            <p>Servisiram putnička osobna vozila i SUV-ove svih marki i modela. Za kombije i veća vozila pozovite radi konsultacije.</p>
+                        </div>
+                    </article>
+        
+                    <article className="faq-item">
+                        <button className="faq-question" aria-expanded="false">
+                            <span>Šta ako guma nije popravljiva?</span>
+                            <span className="faq-icon">+</span>
+                        </button>
+                        <div className="faq-answer">
+                            <p>Ukoliko guma nije popravljiva, mogu ugraditi vašu rezervnu gumu, ili po dogovoru obezbediti i ugraditi novu gumu na licu mesta.</p>
+                        </div>
+                    </article>
+        
+                    <article className="faq-item">
+                        <button className="faq-question" aria-expanded="false">
+                            <span>Pokrivate li prigradska mesta?</span>
+                            <span className="faq-icon">+</span>
+                        </button>
+                        <div className="faq-answer">
+                            <p>Primarno pokrivam ceo Beograd uključujući prigradska naselja (Borča, Surčin, Mirijevo, Resnik, Kaluđerica). Za dalje lokacije pozovite — dogovaramo se.</p>
+                        </div>
+                    </article>
+        
+                    <article className="faq-item">
+                        <button className="faq-question" aria-expanded="false">
+                            <span>Mogu li platiti karticom?</span>
+                            <span className="faq-icon">+</span>
+                        </button>
+                        <div className="faq-answer">
+                            <p>Trenutno prihvatam gotovinu i prenos preko mobilne aplikacije banke (instant plaćanje). Za firme dostupno je i fakturisanje sa odloženim plaćanjem.</p>
+                        </div>
+                    </article>
+        
+                    <article className="faq-item">
+                        <button className="faq-question" aria-expanded="false">
+                            <span>Kakvu garanciju pružate na rad?</span>
+                            <span className="faq-icon">+</span>
+                        </button>
+                        <div className="faq-answer">
+                            <p>Na svako krpljenje gume dajem garanciju od <strong>30 dana</strong>. Korišćenu opremu i materijale takođe garantujem prema deklaracijama proizvođača.</p>
+                        </div>
+                    </article>
+        
+                    <article className="faq-item">
+                        <button className="faq-question" aria-expanded="false">
+                            <span>Šta ako pada kiša ili sneg?</span>
+                            <span className="faq-icon">+</span>
+                        </button>
+                        <div className="faq-answer">
+                            <p>Radim po svim vremenskim uslovima. Vozilo je opremljeno tako da možemo bezbedno raditi i u kiši, snegu ili magli — bez doplate za vremenske uslove.</p>
+                        </div>
+                    </article>
+        
+                    <article className="faq-item">
+                        <button className="faq-question" aria-expanded="false">
+                            <span>Koliko traje krpljenje probušene gume?</span>
+                            <span className="faq-icon">+</span>
+                        </button>
+                        <div className="faq-answer">
+                            <p>Standardno krpljenje gume traje <strong>15-25 minuta</strong> od početka rada. Zamena pneumatika traje 20-40 minuta, zavisno od broja guma.</p>
+                        </div>
+                    </article>
+        
+                    <article className="faq-item">
+                        <button className="faq-question" aria-expanded="false">
+                            <span>Da li mogu rezervisati termin unapred?</span>
+                            <span className="faq-icon">+</span>
+                        </button>
+                        <div className="faq-answer">
+                            <p>Da, ako vam odgovara unapred dogovoren termin (npr. zamena letnjih i zimskih guma), pozovite ili pišite na Viber/WhatsApp. Hitne intervencije imaju prioritet.</p>
+                        </div>
+                    </article>
+        
+                    <article className="faq-item">
+                        <button className="faq-question" aria-expanded="false">
+                            <span>Šta sve nosite sa sobom?</span>
+                            <span className="faq-icon">+</span>
+                        </button>
+                        <div className="faq-answer">
+                            <p>Kompletan profesionalan set: kompresor, dizalica, vulkanizerski alat, materijal za krpljenje, balanser, opremu za demontažu i montažu. Sve što imate u radnji — imam i ja u kombiju.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        {/* ============ CONTACT CTA ============ */}
+        <section className="contact-cta" id="kontakt" role="region" aria-labelledby="contact-title">
+            <div className="container">
+                <div className="contact-cta-inner">
+                    <div className="eyebrow">Kontakt</div>
+                    <h2 id="contact-title">Probušena guma ne čeka — neću ni ja</h2>
+                    <p>Jedan poziv je sve što je potrebno. Dolazim za 15-30 minuta na bilo koju adresu u Beogradu, u bilo koje doba dana.</p>
+        
+                    <div className="contact-cta-num">
+                        <a href="tel:+381641290929">+381 64 12 90 929</a>
+                    </div>
+        
+                    <div className="contact-actions">
+                        <a href="tel:+381641290929" className="btn-primary">📞 Pozovite Odmah</a>
+                        <a href="https://wa.me/381641290929" className="btn-secondary">💬 WhatsApp</a>
+                        <a href="viber://chat?number=%2B381641290929" className="btn-secondary">💬 Viber</a>
+                    </div>
+        
+                    <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap', color: 'var(--text-muted)', fontSize: '14px' }}>
+                        <div>📍 Ceo Beograd</div>
+                        <div>🕒 Non-stop, 00-24h</div>
+                        <div>⭐ 5.0/5.0 (127+ recenzija)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        {/* ============ LIGHTBOX ============ */}
+        <div className="lightbox" id="lightbox" role="dialog" aria-label="Pregled slike">
+            <button className="lightbox-close" aria-label="Zatvori sliku">×</button>
+            <img id="lightboxImg" src="" alt="" />
+        </div>
+
+      <Footer />
+      <StickyCall />
+    </>
+  );
+}
