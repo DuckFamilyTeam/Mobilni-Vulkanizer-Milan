@@ -26,6 +26,14 @@ export default function Footer() {
           </div>
 
           <div className="footer-col">
+            <h5>Blog</h5>
+            <ul>
+              <li><Link href="/blog">Svi članci</Link></li>
+              <li><Link href="/blog/krpljenje-probusene-gume">Krpljenje gume — vodič</Link></li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
             <h5>Usluge</h5>
             <ul>
               <li><Link href="/#usluge">Krpljenje gume</Link></li>
