@@ -52,6 +52,7 @@ export default function Header() {
               <Link href="/#galerija">Galerija</Link>
               <Link href="/#recenzije">Recenzije</Link>
               <Link href="/#faq">FAQ</Link>
+              <Link href="/#kontakt">Kontakt</Link>
               <Link href="/blog">Blog</Link>
             </nav>
 
@@ -121,6 +122,9 @@ export default function Header() {
             </Link>
             <Link href="/#faq" onClick={closeMenu}>
               FAQ
+            </Link>
+            <Link href="/#kontakt" onClick={closeMenu}>
+              Kontakt
             </Link>
             <Link href="/blog" onClick={closeMenu}>
               <span aria-hidden="true">📝</span> Blog
