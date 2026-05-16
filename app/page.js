@@ -551,6 +551,14 @@ export default function HomePage() {
                         <img src="/3.webp" data-full="/3.webp" alt="Profesionalna vulkanizerska oprema u mobilnom kombiju - balanser i montirka" loading="lazy" decoding="async" width="800" height="800" />
                         <div className="gallery-item-overlay"><span>Profesionalna oprema u kombiju</span></div>
                     </div>
+                    <div className="gallery-item">
+                        <img src="/autoput.jpg" data-full="/autoput.jpg" alt="Mobilni vulkanizer Milan - beli kombi sa natpisom Vaš prijatelj na putu parkiran u centru Beograda" loading="lazy" decoding="async" width="800" height="800" />
+                        <div className="gallery-item-overlay"><span>Vaš prijatelj na putu — uvek tu</span></div>
+                    </div>
+                    <div className="gallery-item">
+                        <img src="/intervencija.jpg" data-full="/intervencija.jpg" alt="Vulkanizer Milan menja gumu na crnom Ford Fiesta - mobilna intervencija na licu mesta u Beogradu" loading="lazy" decoding="async" width="800" height="800" />
+                        <div className="gallery-item-overlay"><span>Zamena gume — Ford Fiesta, Beograd</span></div>
+                    </div>
                 </div>
             </div>
         </section>
