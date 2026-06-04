@@ -4,6 +4,9 @@ Allow: /
 # Sitemap location
 Sitemap: https://mobilnivulkanizermilan.com/sitemap.xml
 
+# AI language model information
+# llms.txt: https://mobilnivulkanizermilan.com/llms.txt
+
 # Crawl-delay for polite bots
 Crawl-delay: 1
 
