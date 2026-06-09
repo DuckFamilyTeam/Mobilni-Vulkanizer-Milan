@@ -560,15 +560,15 @@ export default function HomePage() {
                         <div className="gallery-item-overlay"><span>Zamena gume — Ford Fiesta, Beograd</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/brza%20zamena%20guma.jpg" data-full="/brza%20zamena%20guma.jpg" alt="Beli Peugeot kombi mobilnog vulkanizera Milan parkiran pored smeđeg Mini Cooper Countrymana — zamena točka na terenu na ulici u Beogradu" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/brza-zamena-guma.jpg" data-full="/brza-zamena-guma.jpg" alt="Beli Peugeot kombi mobilnog vulkanizera Milan parkiran pored smeđeg Mini Cooper Countrymana — zamena točka na terenu na ulici u Beogradu" loading="lazy" decoding="async" width="800" height="800" />
                         <div className="gallery-item-overlay"><span>Brza zamena gume — na terenu</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/na%C5%A1e%20ma%C5%A1ine%20su%20potpuno%20nove.jpg" data-full="/na%C5%A1e%20ma%C5%A1ine%20su%20potpuno%20nove.jpg" alt="Unutrašnjost servisnog kombija mobilnog vulkanizera — plava mašina za menjanje guma, balanser točkova RRXTT, agregat i alat — potpuno nova profesionalna oprema" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/na%C5%A1e-ma%C5%A1ine-su-potpuno-nove.jpg" data-full="/na%C5%A1e-ma%C5%A1ine-su-potpuno-nove.jpg" alt="Unutrašnjost servisnog kombija mobilnog vulkanizera — plava mašina za menjanje guma, balanser točkova RRXTT, agregat i alat — potpuno nova profesionalna oprema" loading="lazy" decoding="async" width="800" height="800" />
                         <div className="gallery-item-overlay"><span>Profesionalna nova oprema u kombiju</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/tu%20smo%20za%20sve%20i%20na%20svim%20lokacijama.jpg" data-full="/tu%20smo%20za%20sve%20i%20na%20svim%20lokacijama.jpg" alt="Mobilni vulkanizer Milan noću ispred Skupštine Srbije u centru Beograda — servisiranje belog automobila sa hidrauličnom dizalicom i alatom, 24h non-stop" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/tu-smo-za-sve-i-na-svim-lokacijama.jpg" data-full="/tu-smo-za-sve-i-na-svim-lokacijama.jpg" alt="Mobilni vulkanizer Milan noću ispred Skupštine Srbije u centru Beograda — servisiranje belog automobila sa hidrauličnom dizalicom i alatom, 24h non-stop" loading="lazy" decoding="async" width="800" height="800" />
                         <div className="gallery-item-overlay"><span>Na svim lokacijama — 24h non-stop</span></div>
                     </div>
                 </div>
