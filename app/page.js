@@ -571,6 +571,22 @@ export default function HomePage() {
                         <img src="/tu-smo-za-sve-i-na-svim-lokacijama.jpg" data-full="/tu-smo-za-sve-i-na-svim-lokacijama.jpg" alt="Mobilni vulkanizer Milan noću ispred Skupštine Srbije u centru Beograda — servisiranje belog automobila sa hidrauličnom dizalicom i alatom, 24h non-stop" loading="lazy" decoding="async" width="800" height="800" />
                         <div className="gallery-item-overlay"><span>Na svim lokacijama — 24h non-stop</span></div>
                     </div>
+                    <div className="gallery-item">
+                        <img src="/kombi-oprema.jpg" data-full="/kombi-oprema.jpg" alt="Unutrašnjost mobilnog vulkanizerskog kombija — plava mašina za montažu guma, balansirka i žuti kompresor, profesionalna oprema na jednom mestu" loading="lazy" decoding="async" width="800" height="800" />
+                        <div className="gallery-item-overlay"><span>Oprema u kombiju — sve na jednom mestu</span></div>
+                    </div>
+                    <div className="gallery-item">
+                        <img src="/punjenje-gume-land-rover.jpg" data-full="/punjenje-gume-land-rover.jpg" alt="Vulkanizer puni gumu Land Rover vozila pored mobilnog servisnog kombija — intervencija na licu mesta" loading="lazy" decoding="async" width="800" height="800" />
+                        <div className="gallery-item-overlay"><span>Punjenje gume — Land Rover, na licu mesta</span></div>
+                    </div>
+                    <div className="gallery-item">
+                        <img src="/land-rover-dizalica.jpg" data-full="/land-rover-dizalica.jpg" alt="Land Rover Defender na hidrauličnoj dizalici — skidanje točka na parkingu, mobilna vulkanizerska intervencija" loading="lazy" decoding="async" width="800" height="800" />
+                        <div className="gallery-item-overlay"><span>Zamena točka — Land Rover Defender</span></div>
+                    </div>
+                    <div className="gallery-item">
+                        <img src="/montaza-gume-land-rover.jpg" data-full="/montaza-gume-land-rover.jpg" alt="Vulkanizer montira gumu na Land Rover Defender — intervencija na terenu, parking, mobilni vulkanizer Beograd" loading="lazy" decoding="async" width="800" height="800" />
+                        <div className="gallery-item-overlay"><span>Montaža gume — Land Rover, parking</span></div>
+                    </div>
                 </div>
             </div>
         </section>
