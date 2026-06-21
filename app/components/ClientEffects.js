@@ -118,6 +118,7 @@ export default function ClientEffects() {
               e.preventDefault();
               const offsetTop = target.offsetTop - 70;
               window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+              history.pushState(null, null, href);
             }
           }
           return;
@@ -127,6 +128,7 @@ export default function ClientEffects() {
           e.preventDefault();
           const offsetTop = target.offsetTop - 70;
           window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+          history.pushState(null, null, href);
         }
       };
       anchor.addEventListener('click', handler);
