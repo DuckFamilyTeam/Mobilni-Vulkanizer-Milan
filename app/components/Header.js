@@ -46,13 +46,13 @@ export default function Header() {
             </Link>
 
             <nav className="nav" role="navigation" aria-label="Glavna navigacija">
-              <Link href="/#usluge">Usluge</Link>
-              <Link href="/#lokacije">Lokacije</Link>
-              <Link href="/#cene">Cenovnik</Link>
-              <Link href="/#galerija">Galerija</Link>
-              <Link href="/#recenzije">Recenzije</Link>
-              <Link href="/#faq">FAQ</Link>
-              <Link href="/#kontakt">Kontakt</Link>
+              <a href="/#usluge">Usluge</a>
+              <a href="/#lokacije">Lokacije</a>
+              <a href="/#cene">Cenovnik</a>
+              <a href="/#galerija">Galerija</a>
+              <a href="/#recenzije">Recenzije</a>
+              <a href="/#faq">FAQ</a>
+              <a href="/#kontakt">Kontakt</a>
               <Link href="/blog">Blog</Link>
             </nav>
 
@@ -108,24 +108,24 @@ export default function Header() {
             role="navigation"
             aria-label="Glavni linkovi"
           >
-            <Link href="/#usluge" onClick={closeMenu}>
+            <a href="/#usluge" onClick={closeMenu}>
               Usluge
-            </Link>
-            <Link href="/#cene" onClick={closeMenu}>
+            </a>
+            <a href="/#cene" onClick={closeMenu}>
               Cenovnik
-            </Link>
-            <Link href="/#galerija" onClick={closeMenu}>
+            </a>
+            <a href="/#galerija" onClick={closeMenu}>
               Galerija
-            </Link>
-            <Link href="/#recenzije" onClick={closeMenu}>
+            </a>
+            <a href="/#recenzije" onClick={closeMenu}>
               Recenzije
-            </Link>
-            <Link href="/#faq" onClick={closeMenu}>
+            </a>
+            <a href="/#faq" onClick={closeMenu}>
               FAQ
-            </Link>
-            <Link href="/#kontakt" onClick={closeMenu}>
+            </a>
+            <a href="/#kontakt" onClick={closeMenu}>
               Kontakt
-            </Link>
+            </a>
             <Link href="/blog" onClick={closeMenu}>
               <span aria-hidden="true">📝</span> Blog
             </Link>
