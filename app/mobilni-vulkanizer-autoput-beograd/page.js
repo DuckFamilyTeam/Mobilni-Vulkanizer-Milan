@@ -7,7 +7,7 @@ export const metadata = {
   description:
     'Mobilni vulkanizer na autoputu Beograd — hitna intervencija na E-75, E-70, obilaznici. Krpljenje gume, zamena pneumatika, dolazak na traku za zaustavljanje. 10+ godina iskustva, non-stop 24h. +381 64 12 90 929.',
   keywords:
-    'mobilni vulkanizer autoput beograd, vulkanizer autoput, hitna pomoć guma autoput, vulkanizer e75 beograd, vulkanizer obilaznica beograd, pomoć na putu vulkanizer',
+    'mobilni vulkanizer autoput beograd, vulkanizer autoput, hitna pomoć guma autoput, vulkanizer e75 beograd, vulkanizer obilaznica beograd, pomoć na putu vulkanizer, vulkanizer dolazi na adresu autoput, vulkanizer noću autoput, vulkanizer vikend autoput, vulkanizer praznici autoput',
   alternates: {
     canonical: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-autoput-beograd',
   },

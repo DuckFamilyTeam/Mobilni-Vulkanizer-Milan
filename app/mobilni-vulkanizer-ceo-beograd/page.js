@@ -7,7 +7,7 @@ export const metadata = {
   description:
     'Mobilni vulkanizer za ceo Beograd — pokrivam ceo grad. Bliže lokacije 15-30 min, najudaljeniji delovi 30-60 min. Krpljenje gume, zamena pneumatika, balansiranje. 10+ godina iskustva. +381 64 12 90 929.',
   keywords:
-    'mobilni vulkanizer ceo beograd, vulkanizer beograd, vulkanizer dolazi beograd, mobilni vulkanizer beograd, vulkanizer 24h beograd, krpljenje gume beograd',
+    'mobilni vulkanizer ceo beograd, vulkanizer beograd, vulkanizer dolazi beograd, mobilni vulkanizer beograd, vulkanizer 24h beograd, krpljenje gume beograd, vulkanizer dolazi na adresu, vulkanizer noću, vulkanizer vikend, jeftini vulkanizer beograd, vulkanizer praznici',
   alternates: {
     canonical: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
   },

@@ -7,7 +7,7 @@ export const metadata = {
   description:
     'Mobilni vulkanizer Borča — dolazim na vašu adresu u Borči za 15-30 minuta. Krpljenje gume, zamena pneumatika, balansiranje. 10+ godina iskustva, non-stop 24h. Pozovite +381 64 12 90 929.',
   keywords:
-    'mobilni vulkanizer borca, vulkanizer borča, krpljenje gume borča, zamena guma borča, vulkanizer dolazi borča, vulkanizer 24h borča',
+    'mobilni vulkanizer borca, vulkanizer borča, krpljenje gume borča, zamena guma borča, vulkanizer dolazi borča, vulkanizer 24h borča, vulkanizer dolazi na adresu borča, vulkanizer noću borča, vulkanizer vikend borča',
   alternates: {
     canonical: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-borca',
   },

@@ -1,28 +1,84 @@
-User-agent: *
-Allow: /
+# robots.txt — AI-friendly configuration (2026)
+# mobilnivulkanizermilan.com
 
-# Sitemap location
-Sitemap: https://mobilnivulkanizermilan.com/sitemap.xml
-
-# AI language model information
-# llms.txt: https://mobilnivulkanizermilan.com/llms.txt
-
-# Crawl-delay for polite bots
-Crawl-delay: 1
-
-# Specific rules for major bots
+# ─── GOOGLE ───────────────────────────────────────
 User-agent: Googlebot
 Allow: /
 
+# Gemini / Vertex AI training
+User-agent: Google-Extended
+Allow: /
+
+# ─── OPENAI / CHATGPT ─────────────────────────────
+# Training crawler
+User-agent: GPTBot
+Allow: /
+
+# Search index crawler (ChatGPT Search)
+User-agent: OAI-SearchBot
+Allow: /
+
+# Live browsing agent (user-triggered)
+User-agent: ChatGPT-User
+Allow: /
+
+# ─── ANTHROPIC / CLAUDE ───────────────────────────
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# ─── PERPLEXITY ───────────────────────────────────
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# ─── xAI / GROK ───────────────────────────────────
+User-agent: xAI-Bot
+Allow: /
+
+# ─── META / LLAMA ─────────────────────────────────
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# ─── MICROSOFT / BING / COPILOT ───────────────────
 User-agent: Bingbot
 Allow: /
 
-# Block bad bots
-User-agent: SemrushBot
-Disallow: /
+User-agent: BingPreview
+Allow: /
 
-User-agent: AhrefsBot
-Disallow: /
+# ─── APPLE ────────────────────────────────────────
+User-agent: Applebot
+Allow: /
 
-User-agent: MJ12bot
-Disallow: /
+# Apple Intelligence training
+User-agent: Applebot-Extended
+Allow: /
+
+# ─── OSTALI AI CRAWLERI ───────────────────────────
+User-agent: cohere-ai
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# ─── OPŠTE PRAVILO ────────────────────────────────
+User-agent: *
+Allow: /
+
+# ─── SITEMAP ──────────────────────────────────────
+Sitemap: https://mobilnivulkanizermilan.com/sitemap.xml
+Sitemap: https://mobilnivulkanizermilan.com/llms.txt

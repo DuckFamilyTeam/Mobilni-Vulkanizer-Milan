@@ -7,7 +7,7 @@ export const metadata = {
   description:
     'Mobilni vulkanizer Krnjača — dolazim za 15-30 minuta na bilo koju adresu u Krnjači, Reva, Kotežu i okolini. Krpljenje gume, zamena pneumatika, balansiranje. 10+ godina iskustva. +381 64 12 90 929.',
   keywords:
-    'mobilni vulkanizer krnjača, vulkanizer krnjaca, krpljenje gume krnjača, zamena guma krnjača, vulkanizer reva, vulkanizer kotež, vulkanizer 24h krnjača',
+    'mobilni vulkanizer krnjača, vulkanizer krnjaca, krpljenje gume krnjača, zamena guma krnjača, vulkanizer reva, vulkanizer kotež, vulkanizer 24h krnjača, vulkanizer dolazi na adresu krnjača, vulkanizer noću krnjača, vulkanizer vikend krnjača',
   alternates: {
     canonical: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-krnjaca',
   },

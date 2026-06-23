@@ -7,7 +7,7 @@ export const metadata = {
   description:
     'Mobilni vulkanizer Novi Beograd — dolazim na sve blokove, bulevare i poslovne zone za 15-30 minuta. Krpljenje gume, zamena pneumatika, balansiranje. 10+ godina iskustva, non-stop 24h. +381 64 12 90 929.',
   keywords:
-    'mobilni vulkanizer novi beograd, vulkanizer novi beograd, krpljenje gume novi beograd, zamena guma novi beograd, vulkanizer blok 21, vulkanizer blok 45, vulkanizer 24h novi beograd',
+    'mobilni vulkanizer novi beograd, vulkanizer novi beograd, krpljenje gume novi beograd, zamena guma novi beograd, vulkanizer blok 21, vulkanizer blok 45, vulkanizer 24h novi beograd, vulkanizer dolazi na adresu novi beograd, vulkanizer noću novi beograd, vulkanizer vikend novi beograd',
   alternates: {
     canonical: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd',
   },

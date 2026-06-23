@@ -7,7 +7,7 @@ export const metadata = {
   description:
     'Mobilni vulkanizer Zemun — dolazim na bilo koju adresu u Zemunu za 15-30 minuta. Od Gardoša do Bežanijske kose. Krpljenje gume, zamena pneumatika, balansiranje. 10+ godina iskustva. +381 64 12 90 929.',
   keywords:
-    'mobilni vulkanizer zemun, vulkanizer zemun, krpljenje gume zemun, zamena guma zemun, vulkanizer gardoš, vulkanizer bežanijska kosa, vulkanizer 24h zemun',
+    'mobilni vulkanizer zemun, vulkanizer zemun, krpljenje gume zemun, zamena guma zemun, vulkanizer gardoš, vulkanizer bežanijska kosa, vulkanizer 24h zemun, vulkanizer dolazi na adresu zemun, vulkanizer noću zemun, vulkanizer vikend zemun',
   alternates: {
     canonical: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-zemun',
   },

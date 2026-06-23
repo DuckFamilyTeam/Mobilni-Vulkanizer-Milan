@@ -32,7 +32,7 @@ export const metadata = {
   description:
     'Mobilni vulkanizer Beograd — Milan dolazi na vašu adresu za 15-30 minuta. Krpljenje gume, zamena pneumatika, balansiranje. Non-stop 24h, 7 dana u nedelji. Pozovite +381 64 12 90 929',
   keywords:
-    'mobilni vulkanizer beograd, vulkanizer dolazi, hitna pomoć guma, krpljenje gume beograd, zamena pneumatika beograd, vulkanizer 24h, mobilni vulkanizer milan, probušena guma beograd, vulkanizer non-stop',
+    'mobilni vulkanizer beograd, vulkanizer dolazi, hitna pomoć guma, krpljenje gume beograd, zamena pneumatika beograd, vulkanizer 24h, mobilni vulkanizer milan, probušena guma beograd, vulkanizer non-stop, vulkanizer dolazi na adresu, vulkanizer noću, vulkanizer vikend, jeftini vulkanizer beograd, vulkanizer praznici',
   authors: [{ name: 'Mobilni Vulkanizer Milan' }],
   robots: {
     index: true,
@@ -83,6 +83,27 @@ export const viewport = {
   width: 'device-width',
   initialScale: 1.0,
   viewportFit: 'cover',
+};
+
+const webSiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://mobilnivulkanizermilan.com/#website',
+  name: 'Mobilni Vulkanizer Milan',
+  url: 'https://mobilnivulkanizermilan.com',
+  description: 'Mobilna vulkanizerska usluga u Beogradu — dolazak za 15–30 minuta, non-stop 24h.',
+  inLanguage: 'sr-RS',
+  publisher: {
+    '@id': 'https://mobilnivulkanizermilan.com/#business',
+  },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://mobilnivulkanizermilan.com/blog?q={search_term_string}',
+    },
+    'query-input': 'required name=search_term_string',
+  },
 };
 
 const localBusinessJsonLd = {
@@ -178,6 +199,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           href="/mobilni-vulkanizer-milan-na-intervenciji-u-beogradu.webp"
           type="image/webp"
           fetchPriority="high"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }}
         />
         <script
           type="application/ld+json"
