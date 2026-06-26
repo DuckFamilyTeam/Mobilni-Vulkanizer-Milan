@@ -21,9 +21,38 @@ export const metadata = {
   },
 };
 
+const locationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-borca#service',
+  name: 'Mobilni Vulkanizer Borča',
+  description:
+    'Mobilna vulkanizerska usluga u Borči — dolazak na vašu adresu za 15-30 minuta. Non-stop 24h.',
+  url: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-borca',
+  provider: {
+    '@id': 'https://mobilnivulkanizermilan.com/#business',
+  },
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: 'Borča',
+    containedInPlace: { '@type': 'City', name: 'Beograd' },
+  },
+  serviceType: 'Mobilna vulkanizerska usluga',
+  availableChannel: {
+    '@type': 'ServiceChannel',
+    serviceUrl: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-borca',
+    servicePhone: '+381641290929',
+    availableLanguage: 'Serbian',
+  },
+};
+
 export default function BorcaPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(locationJsonLd) }}
+      />
       <Header />
 
       <section className="loc-hero" role="region" aria-labelledby="loc-title">

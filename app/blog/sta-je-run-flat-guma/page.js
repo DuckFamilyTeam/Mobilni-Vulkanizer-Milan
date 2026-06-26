@@ -22,9 +22,38 @@ export const metadata = {
   },
 };
 
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  '@id': 'https://mobilnivulkanizermilan.com/blog/sta-je-run-flat-guma',
+  headline: 'Šta je Run-Flat guma — prednosti, mane i da li se može krpiti | Mobilni Vulkanizer Milan',
+  description:
+    'Run-flat guma vam omogućava da nastavite vožnju i posle probijanja — ali do kada i koliko brzo? Sve o run-flat tehnologiji, prednostima, manama i da li se može krpiti.',
+  url: 'https://mobilnivulkanizermilan.com/blog/sta-je-run-flat-guma',
+  datePublished: '2026-06-23',
+  dateModified: '2026-06-23',
+  author: {
+    '@type': 'Person',
+    name: 'Milan',
+    url: 'https://mobilnivulkanizermilan.com',
+  },
+  publisher: {
+    '@id': 'https://mobilnivulkanizermilan.com/#business',
+  },
+  inLanguage: 'sr-RS',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://mobilnivulkanizermilan.com/blog/sta-je-run-flat-guma',
+  },
+};
+
 export default function RunFlatPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <Header />
 
       {/* ===== HERO ===== */}

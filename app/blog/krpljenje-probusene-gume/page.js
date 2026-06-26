@@ -24,9 +24,38 @@ export const metadata = {
   },
 };
 
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  '@id': 'https://mobilnivulkanizermilan.com/blog/krpljenje-probusene-gume',
+  headline: 'Krpljenje probušene gume: Kompletan vodič | Mobilni Vulkanizer Milan',
+  description:
+    'Korak-po-korak vodič za krpljenje probušene gume — od bezbednosnih mera do umetanja čepa. Kada možete sami, a kada pozovite vulkanizera. Mobilni vulkanizer Milan, Beograd.',
+  url: 'https://mobilnivulkanizermilan.com/blog/krpljenje-probusene-gume',
+  datePublished: '2025-05-01',
+  dateModified: '2026-06-23',
+  author: {
+    '@type': 'Person',
+    name: 'Milan',
+    url: 'https://mobilnivulkanizermilan.com',
+  },
+  publisher: {
+    '@id': 'https://mobilnivulkanizermilan.com/#business',
+  },
+  inLanguage: 'sr-RS',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://mobilnivulkanizermilan.com/blog/krpljenje-probusene-gume',
+  },
+};
+
 export default function KrpljenjeGumePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <Header />
 
       {/* ===== HERO ===== */}

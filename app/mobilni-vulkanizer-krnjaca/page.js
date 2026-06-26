@@ -21,9 +21,38 @@ export const metadata = {
   },
 };
 
+const locationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-krnjaca#service',
+  name: 'Mobilni Vulkanizer Krnjača',
+  description:
+    'Mobilna vulkanizerska usluga u Krnjači — dolazak za 15-30 minuta na bilo koju adresu u Krnjači, Revi, Kotežu i okolini. Non-stop 24h.',
+  url: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-krnjaca',
+  provider: {
+    '@id': 'https://mobilnivulkanizermilan.com/#business',
+  },
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: 'Krnjača',
+    containedInPlace: { '@type': 'City', name: 'Beograd' },
+  },
+  serviceType: 'Mobilna vulkanizerska usluga',
+  availableChannel: {
+    '@type': 'ServiceChannel',
+    serviceUrl: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-krnjaca',
+    servicePhone: '+381641290929',
+    availableLanguage: 'Serbian',
+  },
+};
+
 export default function KrnjacaPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(locationJsonLd) }}
+      />
       <Header />
 
       <section className="loc-hero" role="region" aria-labelledby="loc-title">

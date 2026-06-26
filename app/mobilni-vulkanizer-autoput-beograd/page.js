@@ -21,9 +21,38 @@ export const metadata = {
   },
 };
 
+const locationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-autoput-beograd#service',
+  name: 'Mobilni Vulkanizer Autoput Beograd',
+  description:
+    'Mobilna vulkanizerska usluga na autoputu Beograd — hitna intervencija na E-75, E-70, obilaznici. Dolazak na traku za zaustavljanje. Non-stop 24h.',
+  url: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-autoput-beograd',
+  provider: {
+    '@id': 'https://mobilnivulkanizermilan.com/#business',
+  },
+  areaServed: [
+    { '@type': 'Road', name: 'E-75 Beograd' },
+    { '@type': 'Road', name: 'E-70 Beograd' },
+    { '@type': 'Road', name: 'Beogradska obilaznica' },
+  ],
+  serviceType: 'Hitna mobilna vulkanizerska usluga na autoputu',
+  availableChannel: {
+    '@type': 'ServiceChannel',
+    serviceUrl: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-autoput-beograd',
+    servicePhone: '+381641290929',
+    availableLanguage: 'Serbian',
+  },
+};
+
 export default function AutoputPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(locationJsonLd) }}
+      />
       <Header />
 
       <section className="loc-hero" role="region" aria-labelledby="loc-title">

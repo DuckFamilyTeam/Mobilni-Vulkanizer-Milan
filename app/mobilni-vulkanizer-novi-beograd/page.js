@@ -21,9 +21,38 @@ export const metadata = {
   },
 };
 
+const locationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd#service',
+  name: 'Mobilni Vulkanizer Novi Beograd',
+  description:
+    'Mobilna vulkanizerska usluga na Novom Beogradu — dolazak na sve blokove, bulevare i poslovne zone za 15-30 minuta. Non-stop 24h.',
+  url: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd',
+  provider: {
+    '@id': 'https://mobilnivulkanizermilan.com/#business',
+  },
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: 'Novi Beograd',
+    containedInPlace: { '@type': 'City', name: 'Beograd' },
+  },
+  serviceType: 'Mobilna vulkanizerska usluga',
+  availableChannel: {
+    '@type': 'ServiceChannel',
+    serviceUrl: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd',
+    servicePhone: '+381641290929',
+    availableLanguage: 'Serbian',
+  },
+};
+
 export default function NoviBeogradPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(locationJsonLd) }}
+      />
       <Header />
 
       <section className="loc-hero" role="region" aria-labelledby="loc-title">

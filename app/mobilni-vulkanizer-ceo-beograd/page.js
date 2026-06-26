@@ -21,9 +21,38 @@ export const metadata = {
   },
 };
 
+const locationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd#service',
+  name: 'Mobilni Vulkanizer Ceo Beograd',
+  description:
+    'Mobilna vulkanizerska usluga za ceo Beograd — pokriva svih 17 opština. Bliže lokacije 15-30 min, najudaljeniji delovi 30-60 min. Non-stop 24h.',
+  url: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
+  provider: {
+    '@id': 'https://mobilnivulkanizermilan.com/#business',
+  },
+  areaServed: {
+    '@type': 'City',
+    name: 'Beograd',
+    containedInPlace: { '@type': 'Country', name: 'Srbija' },
+  },
+  serviceType: 'Mobilna vulkanizerska usluga',
+  availableChannel: {
+    '@type': 'ServiceChannel',
+    serviceUrl: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
+    servicePhone: '+381641290929',
+    availableLanguage: 'Serbian',
+  },
+};
+
 export default function CeoBeogradPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(locationJsonLd) }}
+      />
       <Header />
 
       <section className="loc-hero" role="region" aria-labelledby="loc-title">

@@ -22,9 +22,38 @@ export const metadata = {
   },
 };
 
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  '@id': 'https://mobilnivulkanizermilan.com/blog/balansiranje-tockova',
+  headline: 'Balansiranje točkova — koliko često treba da se radi | Mobilni Vulkanizer Milan',
+  description:
+    'Kada i zašto balansirati točkove? Simptomi nebalansiranog točka, koliko često je potrebno, i zašto to zanemarivanje košta više nego što mislite. Vulkanizer Milan, Beograd.',
+  url: 'https://mobilnivulkanizermilan.com/blog/balansiranje-tockova',
+  datePublished: '2026-06-23',
+  dateModified: '2026-06-23',
+  author: {
+    '@type': 'Person',
+    name: 'Milan',
+    url: 'https://mobilnivulkanizermilan.com',
+  },
+  publisher: {
+    '@id': 'https://mobilnivulkanizermilan.com/#business',
+  },
+  inLanguage: 'sr-RS',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://mobilnivulkanizermilan.com/blog/balansiranje-tockova',
+  },
+};
+
 export default function BalansiranjeTocovaPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <Header />
 
       {/* ===== HERO ===== */}

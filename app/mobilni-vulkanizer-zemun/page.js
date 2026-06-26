@@ -21,9 +21,38 @@ export const metadata = {
   },
 };
 
+const locationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-zemun#service',
+  name: 'Mobilni Vulkanizer Zemun',
+  description:
+    'Mobilna vulkanizerska usluga u Zemunu — dolazak na bilo koju adresu za 15-30 minuta. Od Gardoša do Bežanijske kose. Non-stop 24h.',
+  url: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-zemun',
+  provider: {
+    '@id': 'https://mobilnivulkanizermilan.com/#business',
+  },
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: 'Zemun',
+    containedInPlace: { '@type': 'City', name: 'Beograd' },
+  },
+  serviceType: 'Mobilna vulkanizerska usluga',
+  availableChannel: {
+    '@type': 'ServiceChannel',
+    serviceUrl: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-zemun',
+    servicePhone: '+381641290929',
+    availableLanguage: 'Serbian',
+  },
+};
+
 export default function ZemunPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(locationJsonLd) }}
+      />
       <Header />
 
       <section className="loc-hero" role="region" aria-labelledby="loc-title">

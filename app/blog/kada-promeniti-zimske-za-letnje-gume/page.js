@@ -22,9 +22,38 @@ export const metadata = {
   },
 };
 
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  '@id': 'https://mobilnivulkanizermilan.com/blog/kada-promeniti-zimske-za-letnje-gume',
+  headline: 'Kada promeniti zimske za letnje gume (i obrnuto) | Zakon Srbije | Mobilni Vulkanizer Milan',
+  description:
+    'Kada po zakonu Srbije morate imati zimske gume? Koji je pravi trenutak za sezonsku zamenu? Sve što vozač treba da zna — od zakonskih obaveza do praktičnih saveta.',
+  url: 'https://mobilnivulkanizermilan.com/blog/kada-promeniti-zimske-za-letnje-gume',
+  datePublished: '2026-06-23',
+  dateModified: '2026-06-23',
+  author: {
+    '@type': 'Person',
+    name: 'Milan',
+    url: 'https://mobilnivulkanizermilan.com',
+  },
+  publisher: {
+    '@id': 'https://mobilnivulkanizermilan.com/#business',
+  },
+  inLanguage: 'sr-RS',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://mobilnivulkanizermilan.com/blog/kada-promeniti-zimske-za-letnje-gume',
+  },
+};
+
 export default function ZimskeLetnjePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <Header />
 
       {/* ===== HERO ===== */}
