@@ -55,6 +55,7 @@ export default function RunFlatPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <Header />
+      <main id="main-content">
 
       {/* ===== HERO ===== */}
       <section className="blog-post-hero" role="region" aria-labelledby="post-title">
@@ -380,6 +381,7 @@ export default function RunFlatPage() {
         </div>
       </section>
 
+      </main>
       <Footer />
       <StickyCall />
     </>

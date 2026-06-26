@@ -78,6 +78,7 @@ export default function HomePage() {
       />
 
       <Header />
+      <main id="main-content">
 
         {/* ============ HERO ============ */}
         <section className="hero" role="region" aria-labelledby="hero-title">
@@ -242,37 +243,37 @@ export default function HomePage() {
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                             </div>
                             <div>
-                                <h4>Dolazak za 15–30 minuta</h4>
+                                <h3>Dolazak za 15–30 minuta</h3>
                                 <p>Uvek sam u pokretu po Beogradu — nema dugog čekanja, reagujem odmah.</p>
                             </div>
                         </div>
-        
+
                         <div className="why-feature">
                             <div className="why-feature-icon">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             </div>
                             <div>
-                                <h4>5-zvezdična usluga</h4>
+                                <h3>5-zvezdična usluga</h3>
                                 <p>Stotine zadovoljnih klijenata i odlične recenzije govore umesto nas.</p>
                             </div>
                         </div>
-        
+
                         <div className="why-feature">
                             <div className="why-feature-icon">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                             </div>
                             <div>
-                                <h4>Transparentne cene</h4>
+                                <h3>Transparentne cene</h3>
                                 <p>Cenu znate pre nego što počnem — bez skrivenih troškova ili iznenađenja.</p>
                             </div>
                         </div>
-        
+
                         <div className="why-feature">
                             <div className="why-feature-icon">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                             </div>
                             <div>
-                                <h4>Garantovana kvalitetna usluga</h4>
+                                <h3>Garantovana kvalitetna usluga</h3>
                                 <p>Profesionalan alat i kvalitetni materijali sa garancijom na rad od 30 dana.</p>
                             </div>
                         </div>
@@ -928,6 +929,7 @@ export default function HomePage() {
             <img id="lightboxImg" src="" alt="" />
         </div>
 
+      </main>
       <Footer />
       <StickyCall />
     </>

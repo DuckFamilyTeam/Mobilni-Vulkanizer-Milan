@@ -27,7 +27,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     --cream: #f4ead5;
     --text: #e8e6e1;
     --text-muted: #8a8680;
-    --text-dim: #5a564f;
+    --text-dim: #7a756d;
     --line: #2a2820;
     --emergency: #e63946;
     --success: #4ade80;
@@ -630,7 +630,7 @@ section {
     flex-shrink: 0;
 }
 
-.why-feature h4 {
+.why-feature h3 {
     font-family: var(--font-inter), 'Inter', sans-serif;
     font-size: 17px;
     font-weight: 700;
@@ -1498,7 +1498,7 @@ section {
     /* === WHY US === */
     .why-grid { gap: 32px; }
     .why-features { gap: 22px; }
-    .why-feature h4 { font-size: 16px; }
+    .why-feature h3 { font-size: 16px; }
     .why-feature p { font-size: 13px; }
 
     /* === PRICING === */

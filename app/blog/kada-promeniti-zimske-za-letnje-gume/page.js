@@ -55,6 +55,7 @@ export default function ZimskeLetnjePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <Header />
+      <main id="main-content">
 
       {/* ===== HERO ===== */}
       <section className="blog-post-hero" role="region" aria-labelledby="post-title">
@@ -324,6 +325,7 @@ export default function ZimskeLetnjePage() {
         </div>
       </section>
 
+      </main>
       <Footer />
       <StickyCall />
     </>

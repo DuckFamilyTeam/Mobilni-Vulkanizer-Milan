@@ -54,6 +54,7 @@ export default function KrnjacaPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(locationJsonLd) }}
       />
       <Header />
+      <main id="main-content">
 
       <section className="loc-hero" role="region" aria-labelledby="loc-title">
         <div className="container">
@@ -289,6 +290,7 @@ export default function KrnjacaPage() {
         </div>
       </section>
 
+      </main>
       <Footer />
       <StickyCall />
     </>

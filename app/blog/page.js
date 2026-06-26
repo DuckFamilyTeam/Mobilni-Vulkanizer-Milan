@@ -69,6 +69,7 @@ export default function BlogPage() {
   return (
     <>
       <Header />
+      <main id="main-content">
 
       <section className="blog-listing-hero" role="region" aria-labelledby="blog-title">
         <div className="container">
@@ -226,6 +227,7 @@ export default function BlogPage() {
         </div>
       </section>
 
+      </main>
       <Footer />
       <StickyCall />
     </>
