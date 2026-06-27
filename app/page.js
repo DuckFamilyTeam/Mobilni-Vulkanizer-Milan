@@ -525,67 +525,67 @@ export default function HomePage() {
         
                 <div className="gallery-grid">
                     <div className="gallery-item">
-                        <img src="/8.webp" data-full="/8.webp" alt="Mobilni vulkanizer Milan na intervenciji u centru Beograda - kombi pored Skupštine" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/8.webp" data-full="/8.webp" alt="Mobilni vulkanizer Milan na intervenciji u centru Beograda - kombi pored Skupštine" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Centar Beograda — intervencija na licu mesta</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/2.webp" data-full="/2.webp" alt="Zamena pneumatika na parkingu - mobilni vulkanizer Novi Beograd" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/2.webp" data-full="/2.webp" alt="Zamena pneumatika na parkingu - mobilni vulkanizer Novi Beograd" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Zamena gume — Novi Beograd</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/6.webp" data-full="/6.webp" alt="Milan menja gumu na licu mesta - mobilni vulkanizer u akciji u Beogradu" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/6.webp" data-full="/6.webp" alt="Milan menja gumu na licu mesta - mobilni vulkanizer u akciji u Beogradu" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Zamena gume kod klijenta</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/4.webp" data-full="/4.webp" alt="Mobilni vulkanizer servis BMW X6 noću u Beogradu - 24h dostupan" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/4.webp" data-full="/4.webp" alt="Mobilni vulkanizer servis BMW X6 noću u Beogradu - 24h dostupan" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Servis luksuznih vozila</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/7.webp" data-full="/7.webp" alt="Hitna noćna zamena gume na BMW limuzini - vulkanizer Beograd 24h" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/7.webp" data-full="/7.webp" alt="Hitna noćna zamena gume na BMW limuzini - vulkanizer Beograd 24h" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Hitna intervencija noću</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/1.webp" data-full="/1.webp" alt="Mobilni vulkanizer Milan kombi - 24h vulkanizer Beograd na poziv" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/1.webp" data-full="/1.webp" alt="Mobilni vulkanizer Milan kombi - 24h vulkanizer Beograd na poziv" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Kombi Milan — 24h dostupan</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/3.webp" data-full="/3.webp" alt="Profesionalna vulkanizerska oprema u mobilnom kombiju - balanser i montirka" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/3.webp" data-full="/3.webp" alt="Profesionalna vulkanizerska oprema u mobilnom kombiju - balanser i montirka" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Profesionalna oprema u kombiju</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/autoput.jpg" data-full="/autoput.jpg" alt="Mobilni vulkanizer Milan - beli kombi sa natpisom Vaš prijatelj na putu parkiran u centru Beograda" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/autoput.webp" data-full="/autoput.webp" alt="Mobilni vulkanizer Milan - beli kombi sa natpisom Vaš prijatelj na putu parkiran u centru Beograda" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Vaš prijatelj na putu — uvek tu</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/intervencija.jpg" data-full="/intervencija.jpg" alt="Vulkanizer Milan menja gumu na crnom Ford Fiesta - mobilna intervencija na licu mesta u Beogradu" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/intervencija.webp" data-full="/intervencija.webp" alt="Vulkanizer Milan menja gumu na crnom Ford Fiesta - mobilna intervencija na licu mesta u Beogradu" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Zamena gume — Ford Fiesta, Beograd</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/brza-zamena-guma.jpg" data-full="/brza-zamena-guma.jpg" alt="Beli Peugeot kombi mobilnog vulkanizera Milan parkiran pored smeđeg Mini Cooper Countrymana — zamena točka na terenu na ulici u Beogradu" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/brza-zamena-guma.webp" data-full="/brza-zamena-guma.webp" alt="Beli Peugeot kombi mobilnog vulkanizera Milan parkiran pored smeđeg Mini Cooper Countrymana — zamena točka na terenu na ulici u Beogradu" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Brza zamena gume — na terenu</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/na%C5%A1e-ma%C5%A1ine-su-potpuno-nove.jpg" data-full="/na%C5%A1e-ma%C5%A1ine-su-potpuno-nove.jpg" alt="Unutrašnjost servisnog kombija mobilnog vulkanizera — plava mašina za menjanje guma, balanser točkova RRXTT, agregat i alat — potpuno nova profesionalna oprema" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/nase-masine-su-potpuno-nove.webp" data-full="/nase-masine-su-potpuno-nove.webp" alt="Unutrašnjost servisnog kombija mobilnog vulkanizera — plava mašina za menjanje guma, balanser točkova RRXTT, agregat i alat — potpuno nova profesionalna oprema" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Profesionalna nova oprema u kombiju</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/tu-smo-za-sve-i-na-svim-lokacijama.jpg" data-full="/tu-smo-za-sve-i-na-svim-lokacijama.jpg" alt="Mobilni vulkanizer Milan noću ispred Skupštine Srbije u centru Beograda — servisiranje belog automobila sa hidrauličnom dizalicom i alatom, 24h non-stop" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/tu-smo-za-sve-i-na-svim-lokacijama.webp" data-full="/tu-smo-za-sve-i-na-svim-lokacijama.webp" alt="Mobilni vulkanizer Milan noću ispred Skupštine Srbije u centru Beograda — servisiranje belog automobila sa hidrauličnom dizalicom i alatom, 24h non-stop" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Na svim lokacijama — 24h non-stop</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/kombi-oprema.jpg" data-full="/kombi-oprema.jpg" alt="Unutrašnjost mobilnog vulkanizerskog kombija — plava mašina za montažu guma, balansirka i žuti kompresor, profesionalna oprema na jednom mestu" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/kombi-oprema.webp" data-full="/kombi-oprema.webp" alt="Unutrašnjost mobilnog vulkanizerskog kombija — plava mašina za montažu guma, balansirka i žuti kompresor, profesionalna oprema na jednom mestu" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Oprema u kombiju — sve na jednom mestu</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/punjenje-gume-land-rover.jpg" data-full="/punjenje-gume-land-rover.jpg" alt="Vulkanizer puni gumu Land Rover vozila pored mobilnog servisnog kombija — intervencija na licu mesta" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/punjenje-gume-land-rover.webp" data-full="/punjenje-gume-land-rover.webp" alt="Vulkanizer puni gumu Land Rover vozila pored mobilnog servisnog kombija — intervencija na licu mesta" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Punjenje gume — Land Rover, na licu mesta</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/land-rover-dizalica.jpg" data-full="/land-rover-dizalica.jpg" alt="Land Rover Defender na hidrauličnoj dizalici — skidanje točka na parkingu, mobilna vulkanizerska intervencija" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/land-rover-dizalica.webp" data-full="/land-rover-dizalica.webp" alt="Land Rover Defender na hidrauličnoj dizalici — skidanje točka na parkingu, mobilna vulkanizerska intervencija" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Zamena točka — Land Rover Defender</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/montaza-gume-land-rover.jpg" data-full="/montaza-gume-land-rover.jpg" alt="Vulkanizer montira gumu na Land Rover Defender — intervencija na terenu, parking, mobilni vulkanizer Beograd" loading="lazy" decoding="async" width="800" height="800" />
+                        <img src="/montaza-gume-land-rover.webp" data-full="/montaza-gume-land-rover.webp" alt="Vulkanizer montira gumu na Land Rover Defender — intervencija na terenu, parking, mobilni vulkanizer Beograd" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Montaža gume — Land Rover, parking</span></div>
                     </div>
                 </div>

@@ -4,8 +4,8 @@ import Script from 'next/script';
 import ClientEffects from './components/ClientEffects';
 
 const inter = Inter({
-  subsets: ['latin', 'latin-ext'],
-  weight: ['400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
   display: 'swap',
   variable: '--font-inter',
   preload: true,
@@ -20,8 +20,8 @@ const bebasNeue = Bebas_Neue({
 });
 
 const playfairDisplay = Playfair_Display({
-  subsets: ['latin', 'latin-ext'],
-  weight: ['700', '800', '900'],
+  subsets: ['latin'],
+  weight: ['700', '900'],
   display: 'swap',
   variable: '--font-playfair',
   preload: false, // not above the fold
@@ -221,19 +221,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-MKN47RW3');`,
           }}
         />
-        {/* GA4 — direktno inicijalizujemo kao fallback ako GTM ne proradi */}
-        <Script
-          id="ga4-script"
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-6D2KDDJT9X"
-        />
-        <Script
-          id="ga4-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6D2KDDJT9X');`,
-          }}
-        />
+        {/* GA4 je pokriven kroz GTM tag — dupli direktni script uklonjen */}
       </body>
     </html>
   );
