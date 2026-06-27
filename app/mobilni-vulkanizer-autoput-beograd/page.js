@@ -23,27 +23,53 @@ export const metadata = {
 
 const locationJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Service',
-  '@id': 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-autoput-beograd#service',
-  name: 'Mobilni Vulkanizer Autoput Beograd',
-  description:
-    'Mobilna vulkanizerska usluga na autoputu Beograd — hitna intervencija na E-75, E-70, obilaznici. Dolazak na traku za zaustavljanje. Non-stop 24h.',
-  url: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-autoput-beograd',
-  provider: {
-    '@id': 'https://mobilnivulkanizermilan.com/#business',
-  },
-  areaServed: [
-    { '@type': 'Road', name: 'E-75 Beograd' },
-    { '@type': 'Road', name: 'E-70 Beograd' },
-    { '@type': 'Road', name: 'Beogradska obilaznica' },
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-autoput-beograd#service',
+      name: 'Mobilni Vulkanizer Autoput Beograd',
+      description:
+        'Mobilna vulkanizerska usluga na autoputu Beograd — hitna intervencija na E-75, E-70, obilaznici. Dolazak na traku za zaustavljanje. Non-stop 24h.',
+      url: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-autoput-beograd',
+      provider: { '@id': 'https://mobilnivulkanizermilan.com/#business' },
+      areaServed: [
+        { '@type': 'Road', name: 'E-75 Beograd' },
+        { '@type': 'Road', name: 'E-70 Beograd' },
+        { '@type': 'Road', name: 'Beogradska obilaznica' },
+      ],
+      serviceType: 'Hitna mobilna vulkanizerska usluga na autoputu',
+      availableChannel: {
+        '@type': 'ServiceChannel',
+        serviceUrl: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-autoput-beograd',
+        servicePhone: '+381641290929',
+        availableLanguage: 'Serbian',
+      },
+    },
+    {
+      '@type': 'AutoRepair',
+      '@id': 'https://mobilnivulkanizermilan.com/#business',
+      name: 'Mobilni Vulkanizer Milan',
+      description: 'Profesionalna mobilna vulkanizerska usluga u Beogradu. Dolazak na adresu za 15–30 minuta, non-stop 24h.',
+      url: 'https://mobilnivulkanizermilan.com',
+      telephone: '+381641290929',
+      priceRange: '$$',
+      image: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-milan-na-intervenciji-u-beogradu.webp',
+      address: { '@type': 'PostalAddress', addressLocality: 'Beograd', addressCountry: 'RS' },
+      geo: { '@type': 'GeoCoordinates', latitude: 44.8125, longitude: 20.4612 },
+      areaServed: [
+        { '@type': 'Road', name: 'E-75 Beograd' },
+        { '@type': 'Road', name: 'E-70 Beograd' },
+        { '@type': 'Road', name: 'Beogradska obilaznica' },
+      ],
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+        opens: '00:00',
+        closes: '23:59',
+      },
+      aggregateRating: { '@type': 'AggregateRating', ratingValue: '5.0', reviewCount: '127', bestRating: '5' },
+    },
   ],
-  serviceType: 'Hitna mobilna vulkanizerska usluga na autoputu',
-  availableChannel: {
-    '@type': 'ServiceChannel',
-    serviceUrl: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-autoput-beograd',
-    servicePhone: '+381641290929',
-    availableLanguage: 'Serbian',
-  },
 };
 
 export default function AutoputPage() {
