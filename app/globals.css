@@ -487,7 +487,7 @@ section {
 
 .emergency-bar-cta {
     background: white;
-    color: var(--emergency);
+    color: #b91028; /* #b91028 on white = 6.3:1 — WCAG AA ✓ (var(--emergency) #e63946 fails at 3.98:1) */
     padding: 8px 18px;
     border-radius: 100px;
     font-weight: 700;
@@ -752,7 +752,7 @@ section {
     display: block;
 }
 
-.process-step h4 {
+.process-step h3 {
     font-family: var(--font-inter), 'Inter', sans-serif;
     font-size: 18px;
     font-weight: 700;
@@ -1217,7 +1217,7 @@ section {
     max-width: 320px;
 }
 
-.footer-col h5 {
+.footer-col h4 {
     font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
     font-size: 14px;
     color: var(--gold);
@@ -1244,7 +1244,7 @@ section {
     align-items: center;
     flex-wrap: wrap;
     gap: 16px;
-    color: var(--text-dim);
+    color: var(--text-muted); /* #8a8680 on #0a0a0a = 5.48:1 — WCAG AA ✓ (--text-dim #7a756d = 4.33:1 fail) */
     font-size: 13px;
 }
 
@@ -1536,7 +1536,7 @@ section {
         font-size: 56px;
         margin-bottom: 8px;
     }
-    .process-step h4 { font-size: 16px; }
+    .process-step h3 { font-size: 16px; }
     .process-step p { font-size: 13px; line-height: 1.5; }
 
     /* === COVERAGE === */
@@ -1660,7 +1660,7 @@ section {
         font-size: 12px;
         padding-bottom: 20px !important;
     }
-    .footer-col h5 { font-size: 13px; margin-bottom: 12px; }
+    .footer-col h4 { font-size: 13px; margin-bottom: 12px; }
     .footer-col li { margin-bottom: 6px; }
     .footer-col a { font-size: 13px; }
     .footer-about p { font-size: 13px; }

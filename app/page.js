@@ -136,7 +136,7 @@ export default function HomePage() {
                     </div>
         
                     <div className="hero-visual">
-                        <img src="/mobilni-vulkanizer-milan-na-intervenciji-u-beogradu.webp" alt="Mobilni vulkanizer Milan na intervenciji u Beogradu - zamena gume na BMW vozilu" loading="eager" fetchPriority="high" decoding="async" width="600" height="660" />
+                        <img src="/mobilni-vulkanizer-milan-na-intervenciji-u-beogradu.webp" alt="Mobilni vulkanizer Milan na intervenciji u Beogradu - zamena gume na BMW vozilu" loading="eager" fetchPriority="high" decoding="sync" width="600" height="660" />
                         <div className="hero-badge">
                             <div className="hero-badge-num">A+</div>
                             <div className="hero-badge-txt">Premium servis</div>
@@ -365,22 +365,22 @@ export default function HomePage() {
                 <div className="process-grid">
                     <div className="process-step reveal">
                         <span className="process-num">01</span>
-                        <h4>Pozovite nas</h4>
+                        <h3>Pozovite nas</h3>
                         <p>Nazovite Milana na +381 64 12 90 929 i opišite problem i lokaciju.</p>
                     </div>
                     <div className="process-step reveal">
                         <span className="process-num">02</span>
-                        <h4>Potvrda dolaska</h4>
+                        <h3>Potvrda dolaska</h3>
                         <p>Odmah potvrđujem i dajem procenu vremena dolaska — obično 15-30 min.</p>
                     </div>
                     <div className="process-step reveal">
                         <span className="process-num">03</span>
-                        <h4>Dolazim k vama</h4>
+                        <h3>Dolazim k vama</h3>
                         <p>Mobilni tim stiže opremljen svim potrebnim alatima i materijalom.</p>
                     </div>
                     <div className="process-step reveal">
                         <span className="process-num">04</span>
-                        <h4>Rešeno!</h4>
+                        <h3>Rešeno!</h3>
                         <p>Guma je popravljena ili zamenjena — nastavljate put bezbrižno.</p>
                     </div>
                 </div>
