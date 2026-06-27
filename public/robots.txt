@@ -81,4 +81,3 @@ Allow: /
 
 # ─── SITEMAP ──────────────────────────────────────
 Sitemap: https://mobilnivulkanizermilan.com/sitemap.xml
-Sitemap: https://mobilnivulkanizermilan.com/llms.txt

@@ -53,4 +53,4 @@
 
 ## Kompletan sadržaj
 
-Za AI sisteme koji zahtevaju potpuni sadržaj: https://mobilnivulkanizermilan.com/llms-full.txt
+- [Kompletan sadržaj svih stranica](https://www.mobilnivulkanizermilan.com/llms-full.txt): Detaljne informacije o svim uslugama, lokacijama i blog člancima za AI sisteme
