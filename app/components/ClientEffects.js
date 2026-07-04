@@ -135,19 +135,30 @@ export default function ClientEffects() {
       anchorHandlers.push({ anchor, handler });
     });
 
-    // ============ CALL TRACKING ============
+    // ============ CONTACT CLICK TRACKING (GTM dataLayer) ============
+    // GTM ne kreira window.gtag — eventi se šalju kroz dataLayer.push,
+    // a u GTM-u ih hvata Custom Event trigger (phone_call / whatsapp_click / viber_click).
+    const trackEvent = (eventName, label) => {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: eventName,
+        contact_method: label,
+        page_path: window.location.pathname,
+      });
+    };
+
     const callHandlers = [];
-    document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
-      const handler = () => {
-        if (typeof window.gtag !== 'undefined') {
-          window.gtag('event', 'phone_call', {
-            event_category: 'engagement',
-            event_label: 'Mobile call clicked',
-          });
-        }
-      };
-      link.addEventListener('click', handler);
-      callHandlers.push({ link, handler });
+    const trackSelectors = [
+      ['a[href^="tel:"]', 'phone_call', 'tel'],
+      ['a[href*="wa.me"]', 'whatsapp_click', 'whatsapp'],
+      ['a[href^="viber:"]', 'viber_click', 'viber'],
+    ];
+    trackSelectors.forEach(([selector, eventName, label]) => {
+      document.querySelectorAll(selector).forEach((link) => {
+        const handler = () => trackEvent(eventName, label);
+        link.addEventListener('click', handler);
+        callHandlers.push({ link, handler });
+      });
     });
 
     // ============ CLEANUP ============
