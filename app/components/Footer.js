@@ -23,6 +23,10 @@ export default function Footer() {
               Profesionalna mobilna vulkanizerska usluga u Beogradu. Dolazim na
               vašu adresu — brzo, profesionalno, u bilo koje doba dana ili noći.
             </p>
+            <p style={{ marginTop: '12px' }}>
+              💳 Plaćanje: Gotovina · Dina · Visa · MasterCard · Maestro ·
+              American Express · IPS QR kod
+            </p>
           </div>
 
           <div className="footer-col">
@@ -64,12 +68,13 @@ export default function Footer() {
               <li><a href="viber://chat?number=%2B381641290929">💬 Viber</a></li>
               <li>📍 Ceo Beograd</li>
               <li>🕒 Non-stop 00-24h</li>
+              <li>💳 Gotovina · kartice · IPS QR</li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <div>© 2026 Mobilni Vulkanizer Milan · Beograd · Sva prava zadržana.</div>
+          <div>© 2026 Mobilni Vulkanizer Milan · Beograd · PIB: 115779198 · Sva prava zadržana.</div>
           <div>
             Sajt razvio:{' '}
             <a

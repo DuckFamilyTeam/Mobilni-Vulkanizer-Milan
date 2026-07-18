@@ -118,6 +118,9 @@ const localBusinessJsonLd = {
   url: 'https://mobilnivulkanizermilan.com/',
   telephone: '+381641290929',
   priceRange: '$$',
+  paymentAccepted: 'Gotovina, Dina, Visa, MasterCard, Maestro, American Express, IPS QR kod',
+  currenciesAccepted: 'RSD',
+  taxID: '115779198',
   image:
     'https://www.mobilnivulkanizermilan.com/logo.png',
   logo: 'https://www.mobilnivulkanizermilan.com/logo.png',

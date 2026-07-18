@@ -33,7 +33,7 @@ const faqJsonLd = {
     { '@type': 'Question', name: 'Za koje tipove vozila pružate usluge?', acceptedAnswer: { '@type': 'Answer', text: 'Servisiramo putnička osobna vozila i SUV-ove svih marki i modela. Za kombije i veća vozila pozovite nas radi konsultacije.' } },
     { '@type': 'Question', name: 'Šta ako guma nije popravljiva?', acceptedAnswer: { '@type': 'Answer', text: 'Ukoliko guma nije popravljiva, možemo ugraditi vašu rezervnu gumu ili po dogovoru obezbediti i ugraditi novu gumu na licu mesta.' } },
     { '@type': 'Question', name: 'Pokrivate li prigradska mesta?', acceptedAnswer: { '@type': 'Answer', text: 'Primarno pokrivamo ceo Beograd uključujući prigradska naselja (Borča, Surčin, Mirijevo, Resnik, Kaluđerica). Za dalje lokacije pozovite — dogovaramo se.' } },
-    { '@type': 'Question', name: 'Mogu li platiti karticom?', acceptedAnswer: { '@type': 'Answer', text: 'Trenutno prihvatamo gotovinu i prenos preko mobilne aplikacije banke (instant plaćanje). Za firme dostupno je i fakturisanje.' } },
+    { '@type': 'Question', name: 'Mogu li platiti karticom?', acceptedAnswer: { '@type': 'Answer', text: 'Da — prihvatamo gotovinu, sve platne kartice (Dina, Visa, MasterCard, Maestro, American Express) i plaćanje IPS QR kodom. Za firme je dostupno i fakturisanje sa odloženim plaćanjem.' } },
     { '@type': 'Question', name: 'Kakvu garanciju pružate na rad?', acceptedAnswer: { '@type': 'Answer', text: 'Na svako krpljenje gume dajemo garanciju od 30 dana. Korišćenu opremu i materijale takođe garantujemo prema deklaracijama proizvođača.' } },
     { '@type': 'Question', name: 'Šta ako pada kiša ili sneg?', acceptedAnswer: { '@type': 'Answer', text: 'Radimo po svim vremenskim uslovima. Naša vozila su opremljena tako da možemo bezbedno raditi i u kiši, snegu ili magli.' } },
     { '@type': 'Question', name: 'Koliko traje krpljenje probušene gume?', acceptedAnswer: { '@type': 'Answer', text: 'Standardno krpljenje gume traje 15-25 minuta od početka rada. Zamena pneumatika 20-40 minuta, zavisno od broja guma.' } },
@@ -839,7 +839,7 @@ export default function HomePage() {
                             <span className="faq-icon">+</span>
                         </button>
                         <div className="faq-answer">
-                            <p>Trenutno prihvatam gotovinu i prenos preko mobilne aplikacije banke (instant plaćanje). Za firme dostupno je i fakturisanje sa odloženim plaćanjem.</p>
+                            <p>Da — prihvatamo gotovinu, sve platne kartice (<strong>Dina, Visa, MasterCard, Maestro, American Express</strong>) i plaćanje <strong>IPS QR kodom</strong>. Za firme je dostupno i fakturisanje sa odloženim plaćanjem.</p>
                         </div>
                     </article>
         
