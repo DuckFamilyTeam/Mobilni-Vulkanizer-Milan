@@ -3,6 +3,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import StickyCall from './components/StickyCall';
 import SectionDivider from './components/SectionDivider';
+import GbpRating from './components/GbpRating';
+import { getGbpRating } from './lib/googlePlaces';
 
 const servicesJsonLd = {
   '@context': 'https://schema.org',
@@ -43,14 +45,15 @@ const faqJsonLd = {
   ],
 };
 
-const reviewsJsonLd = {
+function buildReviewsJsonLd(rating, reviewCount) {
+  return {
   '@context': 'https://schema.org',
   '@type': 'Product',
   name: 'Mobilna vulkanizerska usluga - Beograd',
   image: 'https://www.mobilnivulkanizermilan.com/logo.png',
   description: 'Mobilni vulkanizer u Beogradu sa dolaskom za 15-30 minuta, 24 časa dnevno.',
   brand: { '@type': 'Brand', name: 'Mobilni Vulkanizer Milan' },
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: '5.0', reviewCount: '127' },
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: String(rating.toFixed(1)), reviewCount: String(reviewCount) },
   review: [
     { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'Ljuba' }, reviewBody: 'Momak kulturan, brz, dosao je odmah i promenio sve 4 gume u roku od 15 minuta, pritom pazio da nista ne osteti ispod auta dizalicom itd.... sve preporuke!' },
     { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'Ana Markusev' }, reviewBody: 'Dečko je profesionalan i brz, sve pohvale!' },
@@ -60,9 +63,13 @@ const reviewsJsonLd = {
     { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'Jovan Neskovic' }, reviewBody: 'Sve pohvale za ekipu, pre svega na ljudskosti i ljubaznosti! Pored toga što su na teren izašli neverovatno brzo, momci su bili izuzetno prijatni i smireni, što mi je mnogo značilo u onom stresu na putu.' },
     { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'Aleksandar Jovanovic' }, reviewBody: 'Ekspresna usluga, brz dolazak, resavanje problema u veoma kratkom vremenskom intervalu. Preporuka.' },
   ],
-};
+  };
+}
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { rating, reviewCount } = await getGbpRating();
+  const reviewsJsonLd = buildReviewsJsonLd(rating, reviewCount);
+
   return (
     <>
       <script
@@ -130,12 +137,11 @@ export default function HomePage() {
                                 <div className="stat-label">Zadovoljnih klijenata</div>
                             </div>
                             <div>
-                                <div className="stat-num">5.0★</div>
-                                <div className="stat-label">Prosečna ocena</div>
+                                <GbpRating variant="stat" rating={rating} reviewCount={reviewCount} />
                             </div>
                         </div>
                     </div>
-        
+
                     <div className="hero-visual">
                         <img src="/montaza-gume-land-rover.webp" alt="Mobilni vulkanizer Milan montira gumu na Land Rover na parkingu u Beogradu" loading="eager" fetchPriority="high" decoding="sync" width="600" height="660" />
                         <div className="hero-badge">
@@ -517,15 +523,7 @@ export default function HomePage() {
                     <h2 id="reviews-title">Šta kažu naši klijenti</h2>
                 </div>
         
-                <div className="reviews-rating">
-                    <div className="reviews-stars-big">★★★★★</div>
-                    <div className="reviews-rating-num">5.0 / 5.0</div>
-                    <div className="reviews-rating-label">Bazirano na 127+ recenzija sa Google-a, Facebook-a i Viber-a</div>
-                    <a href="https://www.google.com/maps/place/Mobilni+Vulkanizer+Milan/@44.8812194,20.4630735,621m/data=!3m2!1e3!4b1!4m6!3m5!1s0x475a637b18ce8a37:0x45f6e9ef011b2c0!8m2!3d44.8812156!4d20.4656484!16s%2Fg%2F11z5_7wp4p?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '18px', padding: '10px 18px', background: 'rgba(201, 169, 97, 0.1)', border: '1px solid var(--gold)', borderRadius: '100px', color: 'var(--gold)', fontSize: '13px', fontWeight: '600', textDecoration: 'none', transition: 'all 0.2s' }}>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C7.802 0 4.4 3.403 4.4 7.602C4.4 11.8 7.469 16.812 12 24c4.531-7.188 7.6-12.2 7.6-16.398C19.6 3.402 16.198 0 12 0zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-                        Pogledaj sve recenzije na Google
-                    </a>
-                </div>
+                <GbpRating variant="full" rating={rating} reviewCount={reviewCount} />
         
                 <div className="reviews-grid">
                     <article className="review-card reveal">
@@ -709,7 +707,7 @@ export default function HomePage() {
                     <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap', color: 'var(--text-muted)', fontSize: '14px' }}>
                         <div>📍 Ceo Beograd</div>
                         <div>🕒 Non-stop, 00-24h</div>
-                        <div>⭐ 5.0/5.0 (127+ recenzija)</div>
+                        <div>⭐ {rating.toFixed(1)}/5.0 ({reviewCount}+ recenzija)</div>
                     </div>
                 </div>
             </div>
