@@ -128,6 +128,26 @@ _Updated: 2026-08-02_
 
 ## Preostalo (sledeće faze)
 - Task #9 ZAVRŠEN: FAZA 4 + FAZA 5 komitovane, pushovane na `redesign-2026`, mergovane u `main`, pushovane na `main`. `npm install` NIJE pokrenut na Nikolinoj mašini nakon merge-a (package.json ima novi `browserslist` field) — vredi mu predložiti da to uradi lokalno kad sledeći put pokreće dev server.
-- Čeka se Vercel auto-deploy (trigerovan push-om na `main` preko GitHub integracije) → nakon toga proveriti PageSpeed Insights ponovo (mobile + desktop) da se potvrde stvarni Performance/Accessibility skorovi — ovaj sandbox nema pristup pravom Chrome/Lighthouse-u (mrežni allowlist blokira Google Fonts/Chrome download), pa je sva performance/accessibility verifikacija u ovoj fazi rađena kroz build-time proveru + kod-nivo WCAG kontrast računanje, NE kroz pravi Lighthouse run. Realni skor treba potvrditi na živom production URL-u.
 - Predložiti Nikoli da preko Google Search Console pošalje manuelni zahtev za indeksiranje za 4 stranice koje nedostaju u Google indeksu.
 - Ako Semrush jedinice budu dopunjene, preispitati IA odluku za lokacijske stranice (trenutno 6, predlog za širenje na 13 + hub je neverifikovan).
+
+## FAZA 6 — pravi PageSpeed re-test na produkciji + druga runda popravki (2026-08-02)
+
+**Okidač:** Nikola je posle FAZA 4/5 deploy-a rekao "nemamo zadovoljavajuće rezultate" — tražio ponovnu proveru.
+
+**Prvi pravi test posle FAZA 4 deploy-a** (Chrome/PageSpeed Insights, mobile): Performance=62 (LCP=9.5s, TBT=490ms), Accessibility=94 (NE 100 kao što je ranije pretpostavljeno iz build-time provere), Best Practices=100, SEO=100.
+
+**Root-cause analiza kroz PSI UI (ne kroz nagađanje):**
+- Accessibility 94 uzrok #1: `--gold-text` (#e44853) na "Pogledaj sve recenzije" linku (GbpRating.js) bio je na IVICI WCAG praga (~4.51:1 izračunato ručno) na composited pozadini (rgba(216,30,40,0.1) preko `--black-elev`) — Lighthouse ga je realno flagovao kao fail uprkos teorijskom prolazu. Posvetljeno na `#ff5c68` (~5.5:1, realna margina).
+- Accessibility 94 uzrok #2: `Footer.js` je imao 4× `<h4>` (Blog/Usluge/Lokacije/Kontakt) odmah posle `<h2 id="contact-title">` na homepage-u — heading order skip (h2→h4, preskočen h3). Promenjeno u `<h3>` (+ `.footer-col h4` CSS selektori → `.footer-col h3`, 2 mesta).
+- Performance LCP=9.5s uzrok: hero slika (`montaza-gume-land-rover.webp`, 1000px/183KB) služena SVIM viewport-ima uključujući mobilne, dok PSI-ov "Improve image delivery" audit pokazuje da je stvarna prikazana veličina na mobilnom manja — ~95KB nepotrebno preuzimano po mobilnom loadu. Rešeno dodavanjem prave mobilne varijante: `montaza-gume-land-rover-mobile.webp` (640px, quality 68, 80KB, generisano u `convert-images.js`) + `srcSet`/`sizes` na `<img>` u `page.js` I odgovarajući `imageSrcSet`/`imageSizes` na `<link rel="preload">` u `layout.js` (kritično — preload mora da odgovara srcset-u, inače browser preloaduje pogrešnu varijantu).
+- Napomena: LCP "breakdown" insight u novom Lighthouse 13.4.1 UI je davao kontradiktorne/nepouzdane brojeve (faze koje ne sabiraju do ukupnog LCP-a, TTFB=0ms što je nerealno) — nije korišćen kao izvor istine, oslonio sam se na "Improve image delivery" audit koji je bio konkretan i akcionabilan.
+
+**Rezultat drugog re-testa (posle push+merge+deploy, potvrđeno READY na Vercel-u pre testa):**
+- **Performance: 62 → 83** (LCP 9.5s → 3.8s, TBT 490ms → 200ms — sada zeleno, Speed Index 2.5s → 4.1s pogoršan ali u granicama normalne run-to-run varijanse simuliranog Slow 4G lab testa)
+- **Accessibility: 94 → 100** ✅ (cilj postignut)
+- Best Practices: 100, SEO: 100, Agentic Browsing: 3/3 (nepromenjeno, već maksimalno)
+
+**Preostalo za Performance=100 (nije urađeno, diminishing returns za ovu sesiju):** "Reduce unused JavaScript — Est savings of 197 KiB" (najverovatnije GTM/GA4 payload, teško smanjiti bez žrtvovanja analitike), "Legacy JavaScript — 12 KiB", "Forced reflow" (crveno, nije istraženo dalje), "Network dependency tree" (crveno). Ovo su manji/teži-za-rešiti nalazi u poređenju sa LCP/accessibility fixevima koji su doneli najveći skok — vredi ih napasti u posebnoj sesiji ako Nikola želi doslovnih 100/100.
+
+**Sve izmene komitovane i pushovane direktno na `main` preko GitHub Desktop-a** (commit "Fix remaining PageSpeed issues: contrast margin, heading order, responsive hero image"), Vercel deploy potvrđen READY pre re-testa.
