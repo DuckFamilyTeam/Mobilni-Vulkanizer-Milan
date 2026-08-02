@@ -195,6 +195,8 @@ export default async function RootLayout({ children }) {
           rel="preload"
           as="image"
           href="/montaza-gume-land-rover.webp"
+          imageSrcSet="/montaza-gume-land-rover-mobile.webp 640w, /montaza-gume-land-rover.webp 1000w"
+          imageSizes="(max-width: 768px) 100vw, 540px"
           type="image/webp"
           fetchPriority="high"
         />

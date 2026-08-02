@@ -143,7 +143,17 @@ export default async function HomePage() {
                     </div>
 
                     <div className="hero-visual">
-                        <img src="/montaza-gume-land-rover.webp" alt="Mobilni vulkanizer Milan montira gumu na Land Rover na parkingu u Beogradu" loading="eager" fetchPriority="high" decoding="sync" width="600" height="660" />
+                        <img
+                            src="/montaza-gume-land-rover.webp"
+                            srcSet="/montaza-gume-land-rover-mobile.webp 640w, /montaza-gume-land-rover.webp 1000w"
+                            sizes="(max-width: 768px) 100vw, 540px"
+                            alt="Mobilni vulkanizer Milan montira gumu na Land Rover na parkingu u Beogradu"
+                            loading="eager"
+                            fetchPriority="high"
+                            decoding="sync"
+                            width="600"
+                            height="660"
+                        />
                         <div className="hero-badge">
                             <div className="hero-badge-num">A+</div>
                             <div className="hero-badge-txt">Premium servis</div>

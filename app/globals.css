@@ -28,8 +28,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
        na sve tri tamne pozadine (--black/--black-soft/--black-elev). --gold ostaje
        nepromenjen za border/background/dugmad (tamo važi 3:1 pravilo za UI elemente
        i veliki/bold tekst, gde original već prolazi) — --gold-text se koristi SAMO
-       za boju teksta na tamnoj pozadini, radi accessibility popravke. */
-    --gold-text: #e44853;
+       za boju teksta na tamnoj pozadini, radi accessibility popravke.
+       2026-08-02: #e44853 je bio na ivici (~4.51:1, izračunato) na composited
+       pozadini iza "Pogledaj sve recenzije" linka (rgba(216,30,40,0.1) preko
+       --black-elev) — Lighthouse ga je stvarno flagovao kao fail. Posvetljeno
+       na #ff5c68 (~5.5:1 na najgoroj pozadini) da ostavi realnu marginu. */
+    --gold-text: #ff5c68;
     --cream: #f3f1ec;
     --text: #e8e6e1;
     --text-muted: #9a938c;
@@ -1228,7 +1232,7 @@ section {
     max-width: 320px;
 }
 
-.footer-col h4 {
+.footer-col h3 {
     font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
     font-size: 14px;
     color: var(--gold-text);
@@ -1671,7 +1675,7 @@ section {
         font-size: 12px;
         padding-bottom: 20px !important;
     }
-    .footer-col h4 { font-size: 13px; margin-bottom: 12px; }
+    .footer-col h3 { font-size: 13px; margin-bottom: 12px; }
     .footer-col li { margin-bottom: 6px; }
     .footer-col a { font-size: 13px; }
     .footer-about p { font-size: 13px; }

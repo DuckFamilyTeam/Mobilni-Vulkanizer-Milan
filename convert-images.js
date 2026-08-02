@@ -39,13 +39,14 @@ const conversions = [
   { src: 'kombi-oprema.jpg',                              out: 'kombi-oprema.webp',                          width: 900 },
   { src: 'punjenje-gume-land-rover.jpg',                  out: 'punjenje-gume-land-rover.webp',              width: 900 },
   { src: 'land-rover-dizalica.jpg',                       out: 'land-rover-dizalica.webp',                   width: 900 },
-  { src: 'montaza-gume-land-rover.jpg',                   out: 'montaza-gume-land-rover.webp',               width: 1000 }, // hero/LCP
+  { src: 'montaza-gume-land-rover.jpg',                   out: 'montaza-gume-land-rover.webp',               width: 1000 }, // hero/LCP desktop/tablet
+  { src: 'montaza-gume-land-rover.jpg',                   out: 'montaza-gume-land-rover-mobile.webp',        width: 640, quality: 68 }, // hero/LCP mobile — PageSpeed je flagovao 1000w kao ~95KiB preveliku za mobilni prikaz (669x891 stvarna prikazana veličina)
 ];
 
 async function convert() {
   console.log('🔄 Konvertovanje JPG → WebP...\n');
 
-  for (const { src, out, width } of conversions) {
+  for (const { src, out, width, quality } of conversions) {
     const srcPath = path.join(publicDir, src);
     const outPath = path.join(publicDir, out);
 
@@ -57,7 +58,7 @@ async function convert() {
     try {
       await sharp(srcPath)
         .resize({ width, withoutEnlargement: true })
-        .webp({ quality: 72, effort: 6 })
+        .webp({ quality: quality || 72, effort: 6 })
         .toFile(outPath);
 
       const origSize = fs.statSync(srcPath).size;

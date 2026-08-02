@@ -30,7 +30,7 @@ export default function Footer() {
           </div>
 
           <div className="footer-col">
-            <h4>Blog</h4>
+            <h3>Blog</h3>
             <ul>
               <li><Link href="/blog">Svi članci</Link></li>
               <li><Link href="/blog/krpljenje-probusene-gume">Krpljenje gume — vodič</Link></li>
@@ -38,7 +38,7 @@ export default function Footer() {
           </div>
 
           <div className="footer-col">
-            <h4>Usluge</h4>
+            <h3>Usluge</h3>
             <ul>
               <li><Link href="/#usluge">Krpljenje gume</Link></li>
               <li><Link href="/#usluge">Zamena pneumatika</Link></li>
@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
 
           <div className="footer-col">
-            <h4>Lokacije</h4>
+            <h3>Lokacije</h3>
             <ul>
               <li><Link href="/mobilni-vulkanizer-ceo-beograd">Ceo Beograd</Link></li>
               <li><Link href="/mobilni-vulkanizer-novi-beograd">Novi Beograd</Link></li>
@@ -61,7 +61,7 @@ export default function Footer() {
           </div>
 
           <div className="footer-col">
-            <h4>Kontakt</h4>
+            <h3>Kontakt</h3>
             <ul>
               <li><a href="tel:+381641290929">📞 +381 64 12 90 929</a></li>
               <li><a href="https://wa.me/381641290929">💬 WhatsApp</a></li>
