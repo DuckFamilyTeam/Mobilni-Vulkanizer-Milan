@@ -49,7 +49,7 @@ export default function Header() {
               <a href="/#usluge">Usluge</a>
               <a href="/#lokacije">Lokacije</a>
               <a href="/#cene">Cenovnik</a>
-              <a href="/#galerija">Galerija</a>
+              <Link href="/galerija">Galerija</Link>
               <a href="/#recenzije">Recenzije</a>
               <a href="/#faq">FAQ</a>
               <a href="/#kontakt">Kontakt</a>
@@ -114,9 +114,9 @@ export default function Header() {
             <a href="/#cene" onClick={closeMenu}>
               Cenovnik
             </a>
-            <a href="/#galerija" onClick={closeMenu}>
+            <Link href="/galerija" onClick={closeMenu}>
               Galerija
-            </a>
+            </Link>
             <a href="/#recenzije" onClick={closeMenu}>
               Recenzije
             </a>
