@@ -80,10 +80,20 @@ _Updated: 2026-08-02_
 - Commit napravljen na grani `redesign-2026` (nije mergovano u main, nije push-ovano na GitHub, nije deploy-ovano).
 - Nikolina lokalna mašina: pošto je node_modules na njegovom Windows disku sad neusklađen sa package.json (next 14.2.35 vs instalirano 14.2.15), treba da pokrene `npm install` lokalno (na svom Windows-u, ne kroz ovaj sandbox) pre sledećeg `npm run dev`.
 
+## FAZA 2 — završeno (2026-08-02), grana `redesign-2026`, commit `9d5ce54`
+- Task #6 (video): pokušan AI video (Kling 3.0 Turbo, scena vulkanizera noću) — Nikola je odbio potrošnju kredita u trenutku generisanja. Odloženo, nije blokirajuće. Sajt radi potpuno dobro bez videa.
+- Task #7 (SEO/schema pass) završen:
+  - `public/sitemap.xml` — dodat `/galerija`.
+  - `public/llms.txt` — dodat link ka `/galerija`.
+  - Svih 6 lokacijskih stranica (`app/mobilni-vulkanizer-*/page.js`) prebačeno sa hardkodovane ocene `5.0/127` na **živu GBP ocenu** — isti `getGbpRating()` helper kao na početnoj, i u JSON-LD (`aggregateRating`) i u vidljivom `loc-stat-num` prikazu (gde postoji). Konzistentno sa početnom stranicom.
+- Build verifikovan čist u `/tmp/verify-build`: 16/16 statičkih stranica, ~97.4KB First Load JS po stranici, nema regresije.
+- Git lock fajlovi (`.git/index.lock`, `tmp_obj_*`) i dalje se pojavljuju povremeno na Windows-mount putanji — rešeno standardnim `mv` workaround-om, commit prošao čisto.
+
 ## Preostalo (sledeće faze)
-- Task #5: GBP live rating (Google Places API integracija) — ključ je u `.env.local`, treba server-side fetch komponenta.
-- Task #6: Hero/promo video (AI-generisan, odobreno od Nikole).
-- Task #7: SEO/AEO/schema pass za novu strukturu (Sava) — llms.txt, JSON-LD provera nakon svih izmena.
-- Task #8: Pravi Lighthouse/Core Web Vitals test (nije moguć u ovom sandboxu bez browsera) — uraditi preko Vercel preview + Chrome DevTools ili PageSpeed Insights nakon push-a.
-- Task #9: Push grane, Vercel preview link, odobrenje, pa tek onda merge u main/produkciju.
+- Task #8: Pravi Lighthouse/Core Web Vitals test — nije moguć iz ovog sandboxa (nema browser/network pristup ka živom URL-u niti ka Google Fonts/Places API). Čeka se live preview URL.
+- Task #9: **Deploy — čeka tvoju akciju.** Sandbox nema git push kredencijale ka GitHub-u (`DuckFamilyTeam/Mobilni-Vulkanizer-Milan`), pa ne mogu sam da push-ujem granu. Grana `redesign-2026` sa svim komitovanim izmenama već postoji lokalno u ovom istom folderu (na tvom računaru) — samo treba push-ovati je iz tvog terminala:
+  1. `git push origin redesign-2026`
+  2. `npm install` (node_modules je i dalje na next 14.2.15, package.json sad traži 14.2.35)
+  - Nakon push-a, Vercel-ov GitHub integration (projekat `mobilni-vulkanizer-milan`, `prj_ZO9J5zRAqp8ZWPQUFqNgfVSdr3Ix`) treba automatski da napravi preview deployment za tu granu — mogu ga proveriti/dovući link preko Vercel MCP-a čim mi kažeš da si push-ovao.
+  - `GOOGLE_PLACES_API_KEY` NIJE podešen kao env var na Vercel projektu (nema alata da ga ja postavim odavde) — bez njega sajt i dalje radi ispravno jer se automatski vraća na fallback `5.0/127` (što je trenutno i realna ocena), ali za pravu živu vezu sa Places API-jem treba ga dodati ručno: Vercel Dashboard → project `mobilni-vulkanizer-milan` → Settings → Environment Variables → `GOOGLE_PLACES_API_KEY` = (vrednost iz `.env.local`).
 - Ako Semrush jedinice budu dopunjene, preispitati IA odluku za lokacijske stranice (trenutno 6, predlog za širenje na 13 + hub je neverifikovan).
