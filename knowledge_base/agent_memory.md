@@ -89,6 +89,13 @@ _Updated: 2026-08-02_
 - Build verifikovan čist u `/tmp/verify-build`: 16/16 statičkih stranica, ~97.4KB First Load JS po stranici, nema regresije.
 - Git lock fajlovi (`.git/index.lock`, `tmp_obj_*`) i dalje se pojavljuju povremeno na Windows-mount putanji — rešeno standardnim `mv` workaround-om, commit prošao čisto.
 
+## FAZA 3 — završeno (2026-08-02), grana `redesign-2026`, commit `affe7dd`
+- Video: Nikola je odbio AI-generisani video, pa je tražio realne kandidate — Unsplash nema video sekciju (proverено uživo), Pexels ima (besplatna licenca, ista logika kao AI opcija — bez autorskog rizika). Ponuđeno par kandidata fokusiranih na "probušena/pumpanje gume", Nikola je umesto linka **uploadovao svoj snimak** (`pumpanje_gume.mp4`, 28.5s, 2560×1440, h264, 30.7MB).
+- Obrada: `ffmpeg` scale→1280×720, crf 27, bez audio trake (original nema zvuk), `+faststart` → `public/pumpanje-gume.mp4` (1.46MB, ~95% manje). Poster frame izvučen na 1.2s i konvertovan u `public/pumpanje-gume-poster.webp` (41KB).
+- Nova sekcija na početnoj (`app/page.js`) posle "Kako funkcioniše" procesa, pre Coverage: "Kako izgleda intervencija na terenu" — `<video>` sa `poster`, `muted`, `loop`, `playsInline`, `preload="none"`, BEZ `src`-a inicijalno (samo `data-src`).
+- `app/components/ClientEffects.js`: dodat drugi `IntersectionObserver` (`.lazy-video`) koji tek kad sekcija uđe u viewport postavlja `video.src`, zove `.load()` i `.play()` — video se ne preuzima uopšte dok korisnik ne dođe do te sekcije. Nula uticaja na LCP/First Load JS (build i dalje 97.4KB).
+- CSS dodat u `globals.css`: `.video-showcase`, `.video-frame` (hrom border + crveni inner glow, konzistentno sa dizajn sistemom), `.lazy-video`.
+
 ## Preostalo (sledeće faze)
 - Task #8: Pravi Lighthouse/Core Web Vitals test — nije moguć iz ovog sandboxa (nema browser/network pristup ka živom URL-u niti ka Google Fonts/Places API). Čeka se live preview URL.
 - Task #9: **Deploy — čeka tvoju akciju.** Sandbox nema git push kredencijale ka GitHub-u (`DuckFamilyTeam/Mobilni-Vulkanizer-Milan`), pa ne mogu sam da push-ujem granu. Grana `redesign-2026` sa svim komitovanim izmenama već postoji lokalno u ovom istom folderu (na tvom računaru) — samo treba push-ovati je iz tvog terminala:
