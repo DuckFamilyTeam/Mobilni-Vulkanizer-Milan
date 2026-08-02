@@ -96,11 +96,43 @@ _Updated: 2026-08-02_
 - `app/components/ClientEffects.js`: dodat drugi `IntersectionObserver` (`.lazy-video`) koji tek kad sekcija uđe u viewport postavlja `video.src`, zove `.load()` i `.play()` — video se ne preuzima uopšte dok korisnik ne dođe do te sekcije. Nula uticaja na LCP/First Load JS (build i dalje 97.4KB).
 - CSS dodat u `globals.css`: `.video-showcase`, `.video-frame` (hrom border + crveni inner glow, konzistentno sa dizajn sistemom), `.lazy-video`.
 
+## FAZA 4 — završeno (2026-08-02), grana `redesign-2026`, NIJE KOMITOVANO (vidi napomenu ispod)
+
+**Ispravka:** `redesign-2026` JESTE mergovan u `main` (PR #1, #2) i JESTE deployed na produkciju — `mobilnivulkanizermilan.com` je od 2026-08-01/02 live sa redizajnom. Prethodna napomena "Deploy čeka tvoju akciju" u ovom fajlu je bila zastarela.
+
+**Okidač:** Nikola je pokrenuo pravi PageSpeed Insights test na živom sajtu (Performance mobile=64/desktop=89, Accessibility=94, Best Practices=100, SEO=100) i tražio popravku do 100/100 + uklanjanje lažnog "5.0★/127+ recenzija" (potvrdio da NIJE realna ocena) + realni GBP podaci.
+
+- **Realna GBP ocena verifikovana uživo** (Google Maps, CID `0x45f6e9ef011b2c0`): **4.9★, 57 recenzija, verifikovan profil**, "Open 24 hours". `app/lib/googlePlaces.js` FALLBACK ažuriran sa `5.0/127` na `4.9/57`. `app/layout.js` RootLayout postao async i sad koristi isti `getGbpRating()` za sitewide JSON-LD (ranije bio odvojen hardkodovan `5.0/127` objekat, nezavisan od helpera — to je bio propust). Uklonjeno "+" preterivanje iza broja recenzija u `GbpRating.js` i `page.js` (57+ → 57).
+- **LCP bag pronađen i ispravljen:** `app/layout.js` preload je greškom ciljao sliku iz About sekcije (`mobilni-vulkanizer-milan-na-intervenciji-u-beogradu.webp`) umesto stvarne hero/LCP slike (`montaza-gume-land-rover.webp`). Ovo je verovatno bio najveći pojedinačni uzrok mobile LCP=11s u Lighthouse-u.
+- **Slike optimizovane:** `convert-images.js` ažuriran (resize na 900w za galeriju/1000w za hero + quality 82→72, regenerisano iz izvornih .jpg fajlova da se izbegne dupla webp kompresija). 9 slika, ukupno ~2.1MB → ~960MB (55% manje): hero 330KB→188KB, ostale 27-83% manje pojedinačno.
+- **`experimental.optimizeCss` (critters) testiran i ODBAČEN** — izolovano testirano u `/tmp` build-u, kompajlira čisto ali NE proizvodi nikakav vidljiv efekat (nema inline critical CSS, isti blocking `<link>`), a `critters` paket je arhiviran/neodržavan → nepotreban rizik za nula dobitka. Nije primenjeno na pravi projekat.
+- **`browserslist` dodat** u `package.json` (moderni evergreen target) — cilja "Legacy JavaScript" audit nalaz, nizak rizik, mali/neizmerljiv dobitak lokalno (bundle size se nije promenio u /tmp build-u, ali je i dalje korektna praksa).
+- **`ClientEffects.js` refaktorisan** — sav setup (FAQ, lightbox, reveal/video observeri, scroll, tracking) sad se izvršava unutar `requestIdleCallback` (sa `setTimeout` fallback za Safari) umesto direktno u `useEffect`, da ne blokira glavnu nit tokom hidratacije (cilja TBT=350ms i "Forced reflow" nalaz).
+- **Accessibility kontrast popravke** (cilja 94→100, WCAG AA 4.5:1 za normalan tekst):
+  - `--gold` (crvena, #d6202d) kao TEKST boja davala je samo 3.49-3.87:1 na tamnim pozadinama — fail za tekst koji nije "large text". Dodata nova varijabla `--gold-text: #e44853` (ista nijansa, posvetljena da prođe 4.5:1+ na sve 3 tamne pozadine) i primenjena na svih ~40 mesta gde se `--gold` koristila kao `color:` (tekst), UKLJUČUJUĆI 2 inline JSX stila u `Footer.js`/`GbpRating.js`. `--gold` NETAKNUTA za border/background (tamo važi labaviji 3:1 prag za UI elemente, original već prolazi).
+  - `--text-dim` (#7a756d, 3.90-4.33:1, fail) — pronađena 3 preostala mesta u `globals.css` (linije ~2012/2795/2950: pricing hint, blog card date, blog meta separator) koja je PRETHODNA sesija (komit `aa44570`) propustila da popravi (ostavila je komentar "fail" na liniji 1258 ali samo tu jednu instancu popravila). Sve 3 prebačene na `--text-muted` (5.88-6.53:1, isti fix kao ranije).
+  - `--chrome-dark`/`--emergency` proverene — koriste se samo za border/background, ne za tekst, nema akcije potrebne.
+- Build verifikovan čist u `/tmp/vk-build` (native disk, font-fetch mokovan SAMO za tu proveru, isti pattern kao Faza 1): 16/16 statičkih stranica, ~97.4KB First Load JS (nepromenjeno — očekivano, ove izmene ne diraju JS bundle veličinu).
+
+**⚠️ BLOKER — nije komitovano:** `.git/index.lock` i `.git/HEAD.lock` postoje u repo-u i ne mogu se obrisati iz sandboxa (`rm`/`mv`/`python os.remove` svi vraćaju "Operation not permitted", ali `truncate` radi — znači nešto na Windows strani (OneDrive sync? antivirus? otvoren git GUI/VS Code sa ovim repo-om?) drži file handle otvoren i sprečava brisanje/rename, iako je vlasništvo fajla ispravno na sandbox strani). `git add`/`git commit` ne rade dok se ovo ne reši. Sve izmene su realne, sačuvane na disku (18 fajlova, `git status` ih vidi kao modified), samo nisu komitovane. Nikola treba da:
+  1. Zatvori sve git GUI alate/VS Code prozore koji imaju ovaj repo otvoren, proveri da OneDrive nije usred sinhronizacije foldera
+  2. Obriše `.git\index.lock` i `.git\HEAD.lock` ručno (prazni fajlovi, bezbedno za brisanje) ILI samo pokuša `git add -A` — ako se lock sam oslobodio kad se proces koji ga drži zatvori, proći će
+  3. `git add -A && git commit -m "..."` (predložena poruka data u chatu) `&& git push origin redesign-2026`
+  4. `npm install` (package.json ima novi `browserslist` field, node_modules treba refresh)
+  - Pošto je `main` već produkcija (ne `redesign-2026` kao preview), za produkciju treba i merge `redesign-2026` → `main` (npr. nov PR na GitHub-u) posle push-a, ili push direktno na `main` ako Nikola želi da preskoči preview korak ovaj put.
+- `GOOGLE_PLACES_API_KEY` i dalje NIJE podešen na Vercel-u — sajt radi ispravno na fallback-u (sad tačnom, 4.9/57), ali za automatski živi update ocene treba dodati ključ: Vercel Dashboard → project `mobilni-vulkanizer-milan` → Settings → Environment Variables.
+
+## FAZA 5 — AI/Google vidljivost audit (2026-08-02), isto NIJE KOMITOVANO
+
+**Okidač:** Nikola pitao da li su sve stranice vidljive AI sistemima i Google-u.
+
+- **robots.txt / sitemap.xml** — live fetch potvrdio identično lokalnoj verziji, svi glavni AI crawler-i eksplicitno dozvoljeni (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, itd.), svih 13 URL-ova u sitemap-u, tačan metadata.
+- **Canonical/noindex** — svih 13 stranica ima ispravan canonical tag, nema noindex nigde.
+- **llms.txt / llms-full.txt** — live, dostupni, listaju svih 13 stranica. Pronađena i ispravljena lažna "5.0/127+" tvrdnja koju je prethodni fix-pass propustio (ovo su statički `public/` tekst fajlovi, ne React komponente, pa ih grep kroz `app/` nije pokrio): `public/llms.txt` linija 3, `public/llms-full.txt` linije 3 i 25 — sve tri promenjene sa "ocena 5.0/5.0 na osnovu 127+ recenzija" / "Ocena 5.0 — 127+ recenzija" na realno "4.9/5.0 na osnovu 57 Google recenzija" / "Ocena 4.9 — 57 recenzija".
+- **Google `site:` provera uživo** — samo 9/13 stranica indeksirano. Nedostaju: `/galerija`, `/mobilni-vulkanizer-novi-beograd`, `/mobilni-vulkanizer-krnjaca`, `/mobilni-vulkanizer-autoput-beograd`. Potvrđeno da `/galerija` radi savršeno live (nije tehnički problem) — sitemap `lastmod` je 2026-08-02 (vrlo sveže), najverovatnije Google još nije stigao da ih iskrola. Nije podnet manuelni zahtev za indeksiranje kroz Search Console.
+
 ## Preostalo (sledeće faze)
-- Task #8: Pravi Lighthouse/Core Web Vitals test — nije moguć iz ovog sandboxa (nema browser/network pristup ka živom URL-u niti ka Google Fonts/Places API). Čeka se live preview URL.
-- Task #9: **Deploy — čeka tvoju akciju.** Sandbox nema git push kredencijale ka GitHub-u (`DuckFamilyTeam/Mobilni-Vulkanizer-Milan`), pa ne mogu sam da push-ujem granu. Grana `redesign-2026` sa svim komitovanim izmenama već postoji lokalno u ovom istom folderu (na tvom računaru) — samo treba push-ovati je iz tvog terminala:
-  1. `git push origin redesign-2026`
-  2. `npm install` (node_modules je i dalje na next 14.2.15, package.json sad traži 14.2.35)
-  - Nakon push-a, Vercel-ov GitHub integration (projekat `mobilni-vulkanizer-milan`, `prj_ZO9J5zRAqp8ZWPQUFqNgfVSdr3Ix`) treba automatski da napravi preview deployment za tu granu — mogu ga proveriti/dovući link preko Vercel MCP-a čim mi kažeš da si push-ovao.
-  - `GOOGLE_PLACES_API_KEY` NIJE podešen kao env var na Vercel projektu (nema alata da ga ja postavim odavde) — bez njega sajt i dalje radi ispravno jer se automatski vraća na fallback `5.0/127` (što je trenutno i realna ocena), ali za pravu živu vezu sa Places API-jem treba ga dodati ručno: Vercel Dashboard → project `mobilni-vulkanizer-milan` → Settings → Environment Variables → `GOOGLE_PLACES_API_KEY` = (vrednost iz `.env.local`).
+- Task #9: **Commit + push FAZA 4 + FAZA 5 izmena — čeka Nikolinu akciju** (vidi bloker gore, isti lock problem).
+- Nakon push-a: proveriti PageSpeed Insights ponovo (mobile + desktop) da se potvrde stvarni Performance/Accessibility skorovi — ovaj sandbox nema pristup pravom Chrome/Lighthouse-u (mrežni allowlist blokira Google Fonts/Chrome download), pa je sva performance/accessibility verifikacija u ovoj fazi rađena kroz build-time proveru + kod-nivo WCAG kontrast računanje, NE kroz pravi Lighthouse run. Realni skor treba potvrditi na živom preview/production URL-u.
+- Predložiti Nikoli da preko Google Search Console pošalje manuelni zahtev za indeksiranje za 4 stranice koje nedostaju u Google indeksu.
 - Ako Semrush jedinice budu dopunjene, preispitati IA odluku za lokacijske stranice (trenutno 6, predlog za širenje na 13 + hub je neverifikovan).

@@ -5,8 +5,13 @@
 //
 // Keširano preko Next.js fetch cache-a (revalidate: 86400 = jednom dnevno), tako da
 // realna potrošnja Places API kvote ostaje minimalna (~1 poziv/dan po deployment-u).
+//
+// FALLBACK je ručno verifikovan sa živog GBP profila (google.com/maps, CID
+// 0x45f6e9ef011b2c0) — 2026-08-02: 4.9★, 57 recenzija, verifikovan profil.
+// Ažurirati ovu vrednost povremeno ručno DOK GOOGLE_PLACES_API_KEY nije podešen
+// na Vercel-u (bez ključa sajt uvek koristi ovaj fallback, nikad live vrednost).
 
-const FALLBACK = { rating: 5.0, reviewCount: 127 };
+const FALLBACK = { rating: 4.9, reviewCount: 57 };
 const BUSINESS_QUERY = 'Mobilni Vulkanizer Milan, Beograd';
 
 export async function getGbpRating() {

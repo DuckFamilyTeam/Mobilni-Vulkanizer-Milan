@@ -81,7 +81,7 @@ export default function Footer() {
               href="https://www.duckfamilyteam.online/"
               target="_blank"
               rel="noopener"
-              style={{ color: 'var(--gold)', fontWeight: 700, textDecoration: 'none' }}
+              style={{ color: 'var(--gold-text)', fontWeight: 700, textDecoration: 'none' }}
             >
               Duck Family Team
             </a>

@@ -14,5 +14,14 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sharp": "^0.35.2"
-  }
+  },
+  "browserslist": [
+    "chrome >= 90",
+    "edge >= 90",
+    "firefox >= 88",
+    "safari >= 14",
+    "ios_saf >= 14",
+    "not dead",
+    "not op_mini all"
+  ]
 }

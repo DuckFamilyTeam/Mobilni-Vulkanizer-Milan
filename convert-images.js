@@ -25,23 +25,27 @@ const jpgFiles = [
   // Rename target (nase-masine... bez dijakritika)
 ];
 
-// Mapping: source JPG → output WebP name
+// Mapping: source JPG → output WebP name → max širina (px) za stvarnu prikaznu veličinu.
+// Svi ovi fajlovi se prikazuju ili kao ~800x800 galerija thumbnail (sizes max 400px CSS,
+// znači 900w pokriva i 2x retina) ili kao hero slika (max ~540px CSS na desktopu,
+// max ~400px CSS na mobilnom @2.6x DPR ≈ 1040px — 1000w je siguran max).
+// quality 72 (sa 82) — vizuelno skoro identično za foto sadržaj, ali znatno manji fajl.
 const conversions = [
-  { src: 'autoput.jpg',                                   out: 'autoput.webp' },
-  { src: 'intervencija.jpg',                              out: 'intervencija.webp' },
-  { src: 'brza-zamena-guma.jpg',                          out: 'brza-zamena-guma.webp' },
-  { src: 'naše-mašine-su-potpuno-nove.jpg',               out: 'nase-masine-su-potpuno-nove.webp' },
-  { src: 'tu-smo-za-sve-i-na-svim-lokacijama.jpg',        out: 'tu-smo-za-sve-i-na-svim-lokacijama.webp' },
-  { src: 'kombi-oprema.jpg',                              out: 'kombi-oprema.webp' },
-  { src: 'punjenje-gume-land-rover.jpg',                  out: 'punjenje-gume-land-rover.webp' },
-  { src: 'land-rover-dizalica.jpg',                       out: 'land-rover-dizalica.webp' },
-  { src: 'montaza-gume-land-rover.jpg',                   out: 'montaza-gume-land-rover.webp' },
+  { src: 'autoput.jpg',                                   out: 'autoput.webp',                              width: 900 },
+  { src: 'intervencija.jpg',                              out: 'intervencija.webp',                          width: 900 },
+  { src: 'brza-zamena-guma.jpg',                          out: 'brza-zamena-guma.webp',                      width: 900 },
+  { src: 'naše-mašine-su-potpuno-nove.jpg',               out: 'nase-masine-su-potpuno-nove.webp',           width: 900 },
+  { src: 'tu-smo-za-sve-i-na-svim-lokacijama.jpg',        out: 'tu-smo-za-sve-i-na-svim-lokacijama.webp',    width: 900 },
+  { src: 'kombi-oprema.jpg',                              out: 'kombi-oprema.webp',                          width: 900 },
+  { src: 'punjenje-gume-land-rover.jpg',                  out: 'punjenje-gume-land-rover.webp',              width: 900 },
+  { src: 'land-rover-dizalica.jpg',                       out: 'land-rover-dizalica.webp',                   width: 900 },
+  { src: 'montaza-gume-land-rover.jpg',                   out: 'montaza-gume-land-rover.webp',               width: 1000 }, // hero/LCP
 ];
 
 async function convert() {
   console.log('🔄 Konvertovanje JPG → WebP...\n');
 
-  for (const { src, out } of conversions) {
+  for (const { src, out, width } of conversions) {
     const srcPath = path.join(publicDir, src);
     const outPath = path.join(publicDir, out);
 
@@ -52,7 +56,8 @@ async function convert() {
 
     try {
       await sharp(srcPath)
-        .webp({ quality: 82, effort: 6 })
+        .resize({ width, withoutEnlargement: true })
+        .webp({ quality: 72, effort: 6 })
         .toFile(outPath);
 
       const origSize = fs.statSync(srcPath).size;
