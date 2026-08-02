@@ -349,7 +349,32 @@ export default async function HomePage() {
                 </div>
             </div>
         </section>
-        
+
+        <SectionDivider />
+
+        {/* ============ VIDEO SHOWCASE (stvarna intervencija na terenu) ============ */}
+        <section className="video-showcase" role="region" aria-labelledby="video-showcase-title">
+            <div className="container">
+                <div className="section-header reveal">
+                    <div className="eyebrow">Pogledajte uživo</div>
+                    <h2 id="video-showcase-title">Kako izgleda intervencija na terenu</h2>
+                    <p>Kratak snimak sa jedne od intervencija — kontrola pritiska i pumpanje gume, na licu mesta.</p>
+                </div>
+                <div className="video-frame reveal">
+                    <video
+                        className="lazy-video"
+                        data-src="/pumpanje-gume.mp4"
+                        poster="/pumpanje-gume-poster.webp"
+                        muted
+                        loop
+                        playsInline
+                        preload="none"
+                        aria-label="Pumpanje i kontrola pritiska gume na terenu"
+                    />
+                </div>
+            </div>
+        </section>
+
         {/* ============ COVERAGE (kratko, mapa + link na lokacije) ============ */}
         <section className="coverage" id="pokrivanje" role="region" aria-labelledby="coverage-title">
             <div className="container">

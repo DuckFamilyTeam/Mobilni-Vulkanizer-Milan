@@ -3298,3 +3298,34 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 @media (prefers-reduced-motion: reduce) {
     .flame-cta::after { animation: none; opacity: 0.4; }
 }
+
+/* ============ VIDEO SHOWCASE ============ */
+.video-showcase {
+    padding: 64px 0;
+}
+.video-frame {
+    max-width: 860px;
+    margin: 32px auto 0;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--chrome-dark);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(201, 204, 209, 0.08) inset;
+    background: var(--black-elev);
+}
+.video-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: inherit;
+    box-shadow: 0 0 40px rgba(216, 30, 40, 0.15) inset;
+}
+.lazy-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: var(--black-elev);
+}
