@@ -5,6 +5,7 @@
 ## Osnovno
 
 - [Početna](https://mobilnivulkanizermilan.com/): Mobilni vulkanizer Beograd — dolazak za 15–30 min, non-stop 24h
+- [Galerija](https://mobilnivulkanizermilan.com/galerija): Fotografije sa terena — oprema, vozila, intervencije uživo
 - [Blog](https://mobilnivulkanizermilan.com/blog): Saveti i vodiči o gumama, krpljenju i bezbednoj vožnji
 - [Kontakt](https://mobilnivulkanizermilan.com/#kontakt): Telefon, WhatsApp, Viber, Google Maps
 

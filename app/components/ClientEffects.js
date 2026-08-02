@@ -84,6 +84,26 @@ export default function ClientEffects() {
 
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
+    // ============ LAZY VIDEO (učitava i pušta tek kad uđe u view, nula uticaja na LCP) ============
+    const videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const video = entry.target;
+            const src = video.dataset.src;
+            if (src && !video.src) {
+              video.src = src;
+              video.load();
+              video.play().catch(() => {});
+            }
+            videoObserver.unobserve(video);
+          }
+        });
+      },
+      { threshold: 0.25, rootMargin: '200px 0px' }
+    );
+    document.querySelectorAll('.lazy-video').forEach((el) => videoObserver.observe(el));
+
     // ============ HEADER SCROLL EFFECT ============
     // Use classList + rAF for smoother mobile scroll (avoids style recalculation on every scroll event)
     let scrollTicking = false;
@@ -173,6 +193,7 @@ export default function ClientEffects() {
       );
       callHandlers.forEach(({ link, handler }) => link.removeEventListener('click', handler));
       observer.disconnect();
+      videoObserver.disconnect();
     };
   }, [pathname]);
 
