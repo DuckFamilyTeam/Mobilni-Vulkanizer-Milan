@@ -66,4 +66,24 @@ _Updated: 2026-08-02_
 - Deploy bezbednost: rad u feature branch-u + preview link za odobrenje pre diranja produkcije (`mobilnivulkanizermilan.com`).
 
 ## Open questions / awaiting Nikola
-- Nema blokirajućih pitanja trenutno — plan odobren za Task #1 (Semrush keyword research), zatim čeka eksplicitno "kreni" od Nikole pre nego što se dirne kod (po njegovom zahtevu).
+- Nema blokirajućih pitanja trenutno.
+
+## FAZA 1 — završeno (2026-08-02), grana `redesign-2026`, commit d674051
+- Semrush je bio bez API jedinica (mcp-access potrebno) — IA lokacija odlučena na osnovu poznate geografije, NIJE verifikovano pravim brojevima pretrage. Vidi Task #1 metadata.
+- Dizajn sistem: `:root` u `app/globals.css` promenjen sa gold/cream na crno/crveno/hrom/plamen (58 hardkodovanih rgba(201,169,97,*) automatski postala rgba(216,30,40,*) preko sed-a, jer je čitav sajt već građen na CSS custom properties — nije trebalo ručno menjati svaki selektor). Dodati `--chrome`, `--chrome-dark`, `--flame-start`, `--flame-end`.
+- Novi signature element: `app/components/SectionDivider.js` (ukršteni-ključ/felna motiv u hrom boji) + `.flame-cta` klasa (plamen glow na CTA dugmadima, animiran ali `prefers-reduced-motion` safe).
+- Homepage (`app/page.js`) rasterećena: Pricing skraćen (uklonjen 4-faktora grid), Coverage skraćen (uklonjena duga lista opština, mapa sad koristi embed bez API ključa), Gallery sa 16 na 8 slika + link na novu `/galerija` stranicu (puna galerija tamo), Reviews sa 7 na 3 kartice, FAQ sa 12 na 6 pitanja, About skraćen. Hero slika promenjena na `montaza-gume-land-rover.webp` po Nikolinom zahtevu.
+- Nova stranica `app/galerija/page.js` sa svih 16 slika + lightbox (radi jer `ClientEffects` je globalan u layout.js).
+- Header.js nav: "Galerija" sad vodi na `/galerija` umesto `/#galerija`.
+- **VAŽNO — bezbednosni nalaz van plana:** `npm install` je otkrio da je Next.js 14.2.15 pogođen aktivnim CVE-2025-55184/CVE-2025-67779 (DoS, visoka ozbiljnost, BEZ workaround-a prema Vercel-u). Ažurirano na `next@14.2.35` (najnoviji patch u 14.x liniji, bez breaking promena — react ostaje `^18.2.0` kompatibilan). `npm audit` i dalje prijavljuje 2 nalaza koji zahtevaju Next 15/16 za potpuni fix (SSRF via rewrites, neautentifikovano otkrivanje Server Function endpointa) — **provereno da sajt trenutno NIJE izložen** (nema `rewrites()` u next.config.js, nema `'use server'` nigde u kodu). Migracija na Next 15/16 je odvojena, veća odluka za budućnost — ne blokira redizajn.
+- Build environment napomena: node_modules na Windows-mount putanji je jako spor za `npm install`/`next build` (cross-OS I/O). Verifikacija urađena u `/tmp/verify-build` (native linux disk u sandboxu) — build prošao čisto (16/16 statičkih stranica, ~97KB First Load JS po stranici). Google Fonts fetch je blokiran u sandboxu (mrežni allowlist), pa je build u `/tmp` privremeno mokovan samo za tu proveru — **realni projekat (Windows mount) NIJE dirnut tom izmenom**, samo `package.json`/`package-lock.json` ažurirani na next@14.2.35.
+- Commit napravljen na grani `redesign-2026` (nije mergovano u main, nije push-ovano na GitHub, nije deploy-ovano).
+- Nikolina lokalna mašina: pošto je node_modules na njegovom Windows disku sad neusklađen sa package.json (next 14.2.35 vs instalirano 14.2.15), treba da pokrene `npm install` lokalno (na svom Windows-u, ne kroz ovaj sandbox) pre sledećeg `npm run dev`.
+
+## Preostalo (sledeće faze)
+- Task #5: GBP live rating (Google Places API integracija) — ključ je u `.env.local`, treba server-side fetch komponenta.
+- Task #6: Hero/promo video (AI-generisan, odobreno od Nikole).
+- Task #7: SEO/AEO/schema pass za novu strukturu (Sava) — llms.txt, JSON-LD provera nakon svih izmena.
+- Task #8: Pravi Lighthouse/Core Web Vitals test (nije moguć u ovom sandboxu bez browsera) — uraditi preko Vercel preview + Chrome DevTools ili PageSpeed Insights nakon push-a.
+- Task #9: Push grane, Vercel preview link, odobrenje, pa tek onda merge u main/produkciju.
+- Ako Semrush jedinice budu dopunjene, preispitati IA odluku za lokacijske stranice (trenutno 6, predlog za širenje na 13 + hub je neverifikovan).
