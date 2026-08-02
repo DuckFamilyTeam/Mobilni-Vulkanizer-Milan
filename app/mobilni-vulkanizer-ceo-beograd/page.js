@@ -1,6 +1,7 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import StickyCall from '../components/StickyCall';
+import { getGbpRating } from '../lib/googlePlaces';
 
 export const metadata = {
   title: 'Mobilni Vulkanizer Ceo Beograd | Pokrivenost celog grada — 24/7',
@@ -21,7 +22,8 @@ export const metadata = {
   },
 };
 
-const locationJsonLd = {
+function buildLocationJsonLd(rating, reviewCount) {
+  return {
   '@context': 'https://schema.org',
   '@graph': [
     {
@@ -63,12 +65,16 @@ const locationJsonLd = {
         opens: '00:00',
         closes: '23:59',
       },
-      aggregateRating: { '@type': 'AggregateRating', ratingValue: '5.0', reviewCount: '127', bestRating: '5' },
+      aggregateRating: { '@type': 'AggregateRating', ratingValue: String(rating.toFixed(1)), reviewCount: String(reviewCount), bestRating: '5' },
     },
   ],
 };
+}
 
-export default function CeoBeogradPage() {
+export default async function CeoBeogradPage() {
+  const { rating, reviewCount } = await getGbpRating();
+  const locationJsonLd = buildLocationJsonLd(rating, reviewCount);
+
   return (
     <>
       <script
