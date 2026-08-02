@@ -96,7 +96,7 @@ _Updated: 2026-08-02_
 - `app/components/ClientEffects.js`: dodat drugi `IntersectionObserver` (`.lazy-video`) koji tek kad sekcija uđe u viewport postavlja `video.src`, zove `.load()` i `.play()` — video se ne preuzima uopšte dok korisnik ne dođe do te sekcije. Nula uticaja na LCP/First Load JS (build i dalje 97.4KB).
 - CSS dodat u `globals.css`: `.video-showcase`, `.video-frame` (hrom border + crveni inner glow, konzistentno sa dizajn sistemom), `.lazy-video`.
 
-## FAZA 4 — završeno (2026-08-02), grana `redesign-2026`, NIJE KOMITOVANO (vidi napomenu ispod)
+## FAZA 4 — završeno, komitovano, mergovano u main i pushovano (2026-08-02)
 
 **Ispravka:** `redesign-2026` JESTE mergovan u `main` (PR #1, #2) i JESTE deployed na produkciju — `mobilnivulkanizermilan.com` je od 2026-08-01/02 live sa redizajnom. Prethodna napomena "Deploy čeka tvoju akciju" u ovom fajlu je bila zastarela.
 
@@ -114,15 +114,10 @@ _Updated: 2026-08-02_
   - `--chrome-dark`/`--emergency` proverene — koriste se samo za border/background, ne za tekst, nema akcije potrebne.
 - Build verifikovan čist u `/tmp/vk-build` (native disk, font-fetch mokovan SAMO za tu proveru, isti pattern kao Faza 1): 16/16 statičkih stranica, ~97.4KB First Load JS (nepromenjeno — očekivano, ove izmene ne diraju JS bundle veličinu).
 
-**⚠️ BLOKER — nije komitovano:** `.git/index.lock` i `.git/HEAD.lock` postoje u repo-u i ne mogu se obrisati iz sandboxa (`rm`/`mv`/`python os.remove` svi vraćaju "Operation not permitted", ali `truncate` radi — znači nešto na Windows strani (OneDrive sync? antivirus? otvoren git GUI/VS Code sa ovim repo-om?) drži file handle otvoren i sprečava brisanje/rename, iako je vlasništvo fajla ispravno na sandbox strani). `git add`/`git commit` ne rade dok se ovo ne reši. Sve izmene su realne, sačuvane na disku (18 fajlova, `git status` ih vidi kao modified), samo nisu komitovane. Nikola treba da:
-  1. Zatvori sve git GUI alate/VS Code prozore koji imaju ovaj repo otvoren, proveri da OneDrive nije usred sinhronizacije foldera
-  2. Obriše `.git\index.lock` i `.git\HEAD.lock` ručno (prazni fajlovi, bezbedno za brisanje) ILI samo pokuša `git add -A` — ako se lock sam oslobodio kad se proces koji ga drži zatvori, proći će
-  3. `git add -A && git commit -m "..."` (predložena poruka data u chatu) `&& git push origin redesign-2026`
-  4. `npm install` (package.json ima novi `browserslist` field, node_modules treba refresh)
-  - Pošto je `main` već produkcija (ne `redesign-2026` kao preview), za produkciju treba i merge `redesign-2026` → `main` (npr. nov PR na GitHub-u) posle push-a, ili push direktno na `main` ako Nikola želi da preskoči preview korak ovaj put.
+**✅ BLOKER REŠEN (2026-08-02, preko computer-use na Nikolinom desktopu):** Nikola je prijavio da GitHub Desktop javlja "Commit failed — A lock file already exists in the repository". Otvorio sam GitHub Desktop uživo i potvrdio isti nalaz. Kroz File Explorer (direktno na Windows fajl-sistemu, van sandbox FUSE mount-a koji nije mogao da obriše te fajlove) pronađeno u `.git\`: aktivni `HEAD.lock` i `index.lock` (plus gomila starih `.bak`/`.bak.<timestamp>` varijanti od ranijih neuspešnih pokušaja — verovatno GitHub Desktop-ovih auto-retry rename-ova). Obrisana oba aktivna lock fajla (Shift+Delete, permanentno) → commit odmah prošao. Zatim: push `redesign-2026` → merge `redesign-2026` u `main` u GitHub Desktop-u → push `main`. Svih 21 fajl je sad na produkciji (`main` grana), Vercel auto-deploy bi trebalo da je pokrenut preko GitHub integracije.
 - `GOOGLE_PLACES_API_KEY` i dalje NIJE podešen na Vercel-u — sajt radi ispravno na fallback-u (sad tačnom, 4.9/57), ali za automatski živi update ocene treba dodati ključ: Vercel Dashboard → project `mobilni-vulkanizer-milan` → Settings → Environment Variables.
 
-## FAZA 5 — AI/Google vidljivost audit (2026-08-02), isto NIJE KOMITOVANO
+## FAZA 5 — AI/Google vidljivost audit (2026-08-02), komitovano i pushovano zajedno sa FAZOM 4
 
 **Okidač:** Nikola pitao da li su sve stranice vidljive AI sistemima i Google-u.
 
@@ -132,7 +127,7 @@ _Updated: 2026-08-02_
 - **Google `site:` provera uživo** — samo 9/13 stranica indeksirano. Nedostaju: `/galerija`, `/mobilni-vulkanizer-novi-beograd`, `/mobilni-vulkanizer-krnjaca`, `/mobilni-vulkanizer-autoput-beograd`. Potvrđeno da `/galerija` radi savršeno live (nije tehnički problem) — sitemap `lastmod` je 2026-08-02 (vrlo sveže), najverovatnije Google još nije stigao da ih iskrola. Nije podnet manuelni zahtev za indeksiranje kroz Search Console.
 
 ## Preostalo (sledeće faze)
-- Task #9: **Commit + push FAZA 4 + FAZA 5 izmena — čeka Nikolinu akciju** (vidi bloker gore, isti lock problem).
-- Nakon push-a: proveriti PageSpeed Insights ponovo (mobile + desktop) da se potvrde stvarni Performance/Accessibility skorovi — ovaj sandbox nema pristup pravom Chrome/Lighthouse-u (mrežni allowlist blokira Google Fonts/Chrome download), pa je sva performance/accessibility verifikacija u ovoj fazi rađena kroz build-time proveru + kod-nivo WCAG kontrast računanje, NE kroz pravi Lighthouse run. Realni skor treba potvrditi na živom preview/production URL-u.
+- Task #9 ZAVRŠEN: FAZA 4 + FAZA 5 komitovane, pushovane na `redesign-2026`, mergovane u `main`, pushovane na `main`. `npm install` NIJE pokrenut na Nikolinoj mašini nakon merge-a (package.json ima novi `browserslist` field) — vredi mu predložiti da to uradi lokalno kad sledeći put pokreće dev server.
+- Čeka se Vercel auto-deploy (trigerovan push-om na `main` preko GitHub integracije) → nakon toga proveriti PageSpeed Insights ponovo (mobile + desktop) da se potvrde stvarni Performance/Accessibility skorovi — ovaj sandbox nema pristup pravom Chrome/Lighthouse-u (mrežni allowlist blokira Google Fonts/Chrome download), pa je sva performance/accessibility verifikacija u ovoj fazi rađena kroz build-time proveru + kod-nivo WCAG kontrast računanje, NE kroz pravi Lighthouse run. Realni skor treba potvrditi na živom production URL-u.
 - Predložiti Nikoli da preko Google Search Console pošalje manuelni zahtev za indeksiranje za 4 stranice koje nedostaju u Google indeksu.
 - Ako Semrush jedinice budu dopunjene, preispitati IA odluku za lokacijske stranice (trenutno 6, predlog za širenje na 13 + hub je neverifikovan).
