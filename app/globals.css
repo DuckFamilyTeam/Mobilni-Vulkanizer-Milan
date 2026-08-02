@@ -24,6 +24,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     --gold: #d6202d;
     --gold-light: #ff4d5e;
     --gold-dark: #8f1017;
+    /* Isti crveni akcenat, posvetljen dovoljno da tekst zadovolji WCAG AA (4.5:1)
+       na sve tri tamne pozadine (--black/--black-soft/--black-elev). --gold ostaje
+       nepromenjen za border/background/dugmad (tamo važi 3:1 pravilo za UI elemente
+       i veliki/bold tekst, gde original već prolazi) — --gold-text se koristi SAMO
+       za boju teksta na tamnoj pozadini, radi accessibility popravke. */
+    --gold-text: #e44853;
     --cream: #f3f1ec;
     --text: #e8e6e1;
     --text-muted: #9a938c;
@@ -51,7 +57,7 @@ h1, h2, h3, h4 {
 
 .eyebrow {
     font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
-    color: var(--gold);
+    color: var(--gold-text);
     font-size: 14px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -135,7 +141,7 @@ section {
 .logo-text span {
     font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
     font-size: 11px;
-    color: var(--gold);
+    color: var(--gold-text);
     letter-spacing: 0.2em;
     margin-top: 2px;
 }
@@ -149,7 +155,7 @@ section {
     position: relative;
     white-space: nowrap;
 }
-.nav a:hover { color: var(--gold); }
+.nav a:hover { color: var(--gold-text); }
 
 @media (max-width: 1200px) {
     .nav { gap: 20px; }
@@ -329,7 +335,7 @@ section {
 .btn-secondary:hover {
     background: rgba(216, 30, 40, 0.1);
     border-color: var(--gold);
-    color: var(--gold);
+    color: var(--gold-text);
 }
 
 .hero-stats {
@@ -348,7 +354,7 @@ section {
     font-family: var(--font-playfair), 'Playfair Display', serif;
     font-size: 36px;
     font-weight: 900;
-    color: var(--gold);
+    color: var(--gold-text);
     line-height: 1;
     margin-bottom: 6px;
 }
@@ -405,7 +411,7 @@ section {
     font-family: var(--font-playfair), 'Playfair Display', serif;
     font-size: 28px;
     font-weight: 900;
-    color: var(--gold);
+    color: var(--gold-text);
     line-height: 1;
 }
 
@@ -432,7 +438,7 @@ section {
 
 .hero-quick-contact-label {
     font-size: 11px;
-    color: var(--gold);
+    color: var(--gold-text);
     text-transform: uppercase;
     letter-spacing: 0.15em;
     margin-bottom: 6px;
@@ -580,7 +586,7 @@ section {
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-    color: var(--gold);
+    color: var(--gold-text);
 }
 
 .service-card h3 {
@@ -631,7 +637,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--gold);
+    color: var(--gold-text);
     flex-shrink: 0;
 }
 
@@ -701,7 +707,7 @@ section {
     font-family: var(--font-playfair), 'Playfair Display', serif;
     font-size: 22px;
     font-weight: 800;
-    color: var(--gold);
+    color: var(--gold-text);
     white-space: nowrap;
 }
 
@@ -809,7 +815,7 @@ section {
 
 .coverage-item::before {
     content: '✓';
-    color: var(--gold);
+    color: var(--gold-text);
     font-weight: 700;
 }
 
@@ -902,7 +908,7 @@ section {
 }
 
 .reviews-stars-big {
-    color: var(--gold);
+    color: var(--gold-text);
     font-size: 32px;
     letter-spacing: 4px;
     margin-bottom: 8px;
@@ -939,7 +945,7 @@ section {
 .review-card:hover { border-color: var(--gold); }
 
 .review-stars {
-    color: var(--gold);
+    color: var(--gold-text);
     font-size: 14px;
     margin-bottom: 14px;
     letter-spacing: 2px;
@@ -993,7 +999,7 @@ section {
 
 .review-source {
     font-size: 11px;
-    color: var(--gold);
+    color: var(--gold-text);
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
@@ -1097,7 +1103,7 @@ section {
     transition: color 0.2s;
 }
 
-.faq-question:hover { color: var(--gold); }
+.faq-question:hover { color: var(--gold-text); }
 
 .faq-icon {
     width: 28px;
@@ -1105,7 +1111,7 @@ section {
     border-radius: 50%;
     background: rgba(216, 30, 40, 0.1);
     border: 1px solid rgba(216, 30, 40, 0.3);
-    color: var(--gold);
+    color: var(--gold-text);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1225,7 +1231,7 @@ section {
 .footer-col h4 {
     font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
     font-size: 14px;
-    color: var(--gold);
+    color: var(--gold-text);
     letter-spacing: 0.2em;
     margin-bottom: 16px;
     text-transform: uppercase;
@@ -1239,7 +1245,7 @@ section {
     font-size: 14px;
     transition: color 0.15s;
 }
-.footer-col a:hover { color: var(--gold); }
+.footer-col a:hover { color: var(--gold-text); }
 
 .footer-bottom {
     padding-top: 30px;
@@ -1930,7 +1936,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     background: rgba(216, 30, 40, 0.12);
     border: 1px solid rgba(216, 30, 40, 0.4);
     border-radius: 100px;
-    color: var(--gold);
+    color: var(--gold-text);
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.02em;
@@ -2003,7 +2009,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 .pricing-cta-hint {
     display: block;
     font-size: 12px;
-    color: var(--text-dim);
+    color: var(--text-muted); /* text-dim = 4.33:1 fail na 12px, isti fix kao red 1258 */
     font-style: italic;
     letter-spacing: 0.02em;
 }
@@ -2126,7 +2132,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     margin-bottom: 22px;
 }
 .loc-hero h1 .accent {
-    color: var(--gold);
+    color: var(--gold-text);
     font-style: italic;
 }
 .loc-hero-lead {
@@ -2211,7 +2217,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     height: 22px;
     border-radius: 50%;
     background: rgba(216, 30, 40, 0.15);
-    color: var(--gold);
+    color: var(--gold-text);
     font-weight: 800;
     font-size: 12px;
     display: flex;
@@ -2274,7 +2280,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 .loc-stat-num {
     font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
     font-size: 36px;
-    color: var(--gold);
+    color: var(--gold-text);
     line-height: 1;
     margin-bottom: 6px;
 }
@@ -2309,7 +2315,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 .loc-final-cta-num {
     font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
     font-size: clamp(40px, 6vw, 60px);
-    color: var(--gold);
+    color: var(--gold-text);
     letter-spacing: 0.02em;
     margin-bottom: 24px;
 }
@@ -2393,7 +2399,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     height: 44px;
     border-radius: 12px;
     background: rgba(216, 30, 40, 0.12);
-    color: var(--gold);
+    color: var(--gold-text);
     font-size: 22px;
     margin-bottom: 16px;
 }
@@ -2425,12 +2431,12 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     font-weight: 600;
     margin-bottom: 18px;
 }
-.location-card-time strong { color: var(--gold); }
+.location-card-time strong { color: var(--gold-text); }
 .location-card-arrow {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--gold);
+    color: var(--gold-text);
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
@@ -2552,7 +2558,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 .mobile-drawer-title {
     font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
     font-size: 22px;
-    color: var(--gold);
+    color: var(--gold-text);
     letter-spacing: 0.06em;
 }
 .mobile-drawer-close {
@@ -2573,7 +2579,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 .mobile-drawer-close:hover,
 .mobile-drawer-close:focus-visible {
     border-color: var(--gold);
-    color: var(--gold);
+    color: var(--gold-text);
     background: rgba(216, 30, 40, 0.06);
     outline: none;
 }
@@ -2604,7 +2610,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 .mobile-drawer-locations a:hover,
 .mobile-drawer-locations a:focus-visible {
     background: rgba(216, 30, 40, 0.08);
-    color: var(--gold);
+    color: var(--gold-text);
     padding-left: 16px;
     outline: none;
 }
@@ -2619,7 +2625,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     padding: 0 12px;
     font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
     font-size: 13px;
-    color: var(--gold);
+    color: var(--gold-text);
     text-transform: uppercase;
     letter-spacing: 0.14em;
 }
@@ -2689,7 +2695,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     margin-bottom: 20px;
 }
 .blog-listing-hero-inner h1 .accent {
-    color: var(--gold);
+    color: var(--gold-text);
     font-style: italic;
 }
 .blog-listing-lead {
@@ -2750,7 +2756,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 .blog-card-category {
     background: rgba(216, 30, 40, 0.12);
     border: 1px solid rgba(216, 30, 40, 0.35);
-    color: var(--gold);
+    color: var(--gold-text);
     padding: 4px 12px;
     border-radius: 100px;
     font-size: 11px;
@@ -2769,7 +2775,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     transition: color 0.2s;
     letter-spacing: -0.01em;
 }
-.blog-card:hover h2 { color: var(--gold); }
+.blog-card:hover h2 { color: var(--gold-text); }
 .blog-card p {
     color: var(--text-muted);
     font-size: 15px;
@@ -2786,14 +2792,14 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     border-top: 1px solid var(--line);
 }
 .blog-card-date {
-    color: var(--text-dim);
+    color: var(--text-muted); /* text-dim = 4.33:1 fail na 12px, isti fix kao red 1258 */
     font-size: 12px;
 }
 .blog-card-arrow {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--gold);
+    color: var(--gold-text);
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
@@ -2930,7 +2936,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     transition: color 0.2s;
     text-decoration: none;
 }
-.blog-post-back:hover { color: var(--gold); }
+.blog-post-back:hover { color: var(--gold-text); }
 
 .blog-post-meta {
     display: flex;
@@ -2941,7 +2947,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     color: var(--text-muted);
     flex-wrap: wrap;
 }
-.blog-post-meta-sep { color: var(--text-dim); }
+.blog-post-meta-sep { color: var(--text-muted); /* text-dim = 4.33:1 fail na 12px, isti fix kao red 1258 */ }
 
 .blog-post-hero-inner h1 {
     font-size: clamp(32px, 5vw, 58px);
@@ -2950,7 +2956,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     letter-spacing: -0.02em;
 }
 .blog-post-hero-inner h1 .accent {
-    color: var(--gold);
+    color: var(--gold-text);
     font-style: italic;
 }
 .blog-post-hero-lead {
@@ -3042,7 +3048,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     height: 22px;
     border-radius: 50%;
     background: rgba(216, 30, 40, 0.15);
-    color: var(--gold);
+    color: var(--gold-text);
     font-weight: 800;
     font-size: 11px;
     display: flex;
@@ -3086,7 +3092,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 .blog-step-num {
     font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
     font-size: 13px;
-    color: var(--gold);
+    color: var(--gold-text);
     letter-spacing: 0.2em;
     text-transform: uppercase;
     margin-bottom: 6px;
@@ -3132,7 +3138,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 }
 .blog-compare-label--ok {
     background: rgba(216, 30, 40, 0.12);
-    color: var(--gold);
+    color: var(--gold-text);
     border: 1px solid rgba(216, 30, 40, 0.3);
 }
 .blog-compare-label--pro {
@@ -3185,7 +3191,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 .blog-article-cta-num {
     font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
     font-size: clamp(38px, 6vw, 64px);
-    color: var(--gold);
+    color: var(--gold-text);
     letter-spacing: 0.02em;
     margin-bottom: 28px;
 }

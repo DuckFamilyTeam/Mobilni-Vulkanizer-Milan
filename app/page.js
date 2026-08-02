@@ -732,7 +732,7 @@ export default async function HomePage() {
                     <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap', color: 'var(--text-muted)', fontSize: '14px' }}>
                         <div>📍 Ceo Beograd</div>
                         <div>🕒 Non-stop, 00-24h</div>
-                        <div>⭐ {rating.toFixed(1)}/5.0 ({reviewCount}+ recenzija)</div>
+                        <div>⭐ {rating.toFixed(1)}/5.0 ({reviewCount} recenzija)</div>
                     </div>
                 </div>
             </div>

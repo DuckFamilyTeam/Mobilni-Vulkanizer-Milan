@@ -3,10 +3,40 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
+// requestIdleCallback sa setTimeout fallback-om (Safari nema requestIdleCallback).
+// Svrha: sav ovaj querySelectorAll/observer/listener setup nije potreban za prvi
+// render (FCP/LCP) niti je vidljiv korisniku pre nego što skroluje ili klikne —
+// odlaganjem na idle vreme oslobađamo glavnu nit tokom hidratacije, što direktno
+// smanjuje Total Blocking Time bez ikakvog vidljivog kašnjenja za korisnika.
+const onIdle =
+  typeof window !== 'undefined' && window.requestIdleCallback
+    ? window.requestIdleCallback
+    : (fn) => setTimeout(fn, 1);
+const cancelIdle =
+  typeof window !== 'undefined' && window.cancelIdleCallback
+    ? window.cancelIdleCallback
+    : clearTimeout;
+
 export default function ClientEffects() {
   const pathname = usePathname();
 
   useEffect(() => {
+    let teardown = () => {};
+
+    const idleId = onIdle(() => {
+      teardown = setupEffects();
+    }, { timeout: 2000 });
+
+    return () => {
+      cancelIdle(idleId);
+      teardown();
+    };
+  }, [pathname]);
+
+  return null;
+}
+
+function setupEffects() {
     // ============ FAQ TOGGLE ============
     const faqHandlers = [];
     document.querySelectorAll('.faq-question').forEach((btn) => {
@@ -195,7 +225,4 @@ export default function ClientEffects() {
       observer.disconnect();
       videoObserver.disconnect();
     };
-  }, [pathname]);
-
-  return null;
 }

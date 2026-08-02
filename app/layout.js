@@ -2,6 +2,7 @@ import './globals.css';
 import { Inter, Bebas_Neue, Playfair_Display } from 'next/font/google';
 import Script from 'next/script';
 import ClientEffects from './components/ClientEffects';
+import { getGbpRating } from './lib/googlePlaces';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -107,7 +108,8 @@ const webSiteJsonLd = {
   },
 };
 
-const localBusinessJsonLd = {
+function buildLocalBusinessJsonLd(rating, reviewCount) {
+  return {
   '@context': 'https://schema.org',
   '@type': 'AutoRepair',
   '@id': 'https://mobilnivulkanizermilan.com/#business',
@@ -164,17 +166,20 @@ const localBusinessJsonLd = {
   },
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: '5.0',
-    reviewCount: '127',
+    ratingValue: String(rating.toFixed(1)),
+    reviewCount: String(reviewCount),
     bestRating: '5',
     worstRating: '1',
   },
   sameAs: [
     'https://www.google.com/maps/place/Mobilni+Vulkanizer+Milan/@44.8812194,20.4630735,621m/data=!3m2!1e3!4b1!4m6!3m5!1s0x475a637b18ce8a37:0x45f6e9ef011b2c0!8m2!3d44.8812156!4d20.4656484!16s%2Fg%2F11z5_7wp4p?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D',
   ],
-};
+  };
+}
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const { rating, reviewCount } = await getGbpRating();
+  const localBusinessJsonLd = buildLocalBusinessJsonLd(rating, reviewCount);
   return (
     <html lang="sr-RS" className={`${inter.variable} ${bebasNeue.variable} ${playfairDisplay.variable}`}>
       <head>
@@ -183,10 +188,13 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        {/* Preload stvarne hero/LCP slike (hero-visual u page.js) — pre je ovde
+            greškom bila preload-ovana slika iz About sekcije koja se ne renderuje
+            do daleko niže na stranici, što je nepotrebno kasnilo LCP */}
         <link
           rel="preload"
           as="image"
-          href="/mobilni-vulkanizer-milan-na-intervenciji-u-beogradu.webp"
+          href="/montaza-gume-land-rover.webp"
           type="image/webp"
           fetchPriority="high"
         />
