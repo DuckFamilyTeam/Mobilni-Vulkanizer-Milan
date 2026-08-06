@@ -4,19 +4,19 @@ import StickyCall from '../components/StickyCall';
 import { getGbpRating } from '../lib/googlePlaces';
 
 export const metadata = {
-  title: 'Mobilni Vulkanizer Novi Beograd | 15-30 min — 24/7',
+  title: 'Mobilni Vulkanizer Novi Beograd | 15-30 min, 24/7',
   description:
-    'Mobilni vulkanizer Novi Beograd — dolazim na sve blokove, bulevare i poslovne zone za 15-30 minuta. Krpljenje gume, zamena pneumatika, balansiranje. 10+ godina iskustva, non-stop 24h. +381 64 12 90 929.',
+    'Mobilni vulkanizer Novi Beograd, dolazim na sve blokove, bulevare i poslovne zone za 15-30 minuta. Krpljenje gume, zamena pneumatika, balansiranje. 10+ godina iskustva, non-stop 24h. +381 64 12 90 929.',
   keywords:
     'mobilni vulkanizer novi beograd, vulkanizer novi beograd, krpljenje gume novi beograd, zamena guma novi beograd, vulkanizer blok 21, vulkanizer blok 45, vulkanizer 24h novi beograd, vulkanizer dolazi na adresu novi beograd, vulkanizer noću novi beograd, vulkanizer vikend novi beograd',
   alternates: {
-    canonical: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd',
+    canonical: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd',
   },
   openGraph: {
     title: 'Mobilni Vulkanizer Novi Beograd | 15-30 min, 24/7',
     description:
-      'Probušena guma na Novom Beogradu? Stižem na svaki blok, bulevar i parking u proseku za 15-30 minuta — sa preko 10 godina iskustva.',
-    url: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd',
+      'Probušena guma na Novom Beogradu? Stižem na svaki blok, bulevar i parking u proseku za 15-30 minuta. Preko 10 godina iskustva.',
+    url: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd',
     locale: 'sr_RS',
     type: 'website',
   },
@@ -28,40 +28,20 @@ function buildLocationJsonLd(rating, reviewCount) {
   '@graph': [
     {
       '@type': 'Service',
-      '@id': 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd#service',
+      '@id': 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd#service',
       name: 'Mobilni Vulkanizer Novi Beograd',
       description:
         'Mobilna vulkanizerska usluga na Novom Beogradu — dolazak na sve blokove, bulevare i poslovne zone za 15-30 minuta. Non-stop 24h.',
-      url: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd',
-      provider: { '@id': 'https://mobilnivulkanizermilan.com/#business' },
+      url: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd',
+      provider: { '@id': 'https://www.mobilnivulkanizermilan.com/#business' },
       areaServed: { '@type': 'AdministrativeArea', name: 'Novi Beograd', containedInPlace: { '@type': 'City', name: 'Beograd' } },
       serviceType: 'Mobilna vulkanizerska usluga',
       availableChannel: {
         '@type': 'ServiceChannel',
-        serviceUrl: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd',
+        serviceUrl: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd',
         servicePhone: '+381641290929',
         availableLanguage: 'Serbian',
       },
-    },
-    {
-      '@type': 'AutoRepair',
-      '@id': 'https://mobilnivulkanizermilan.com/#business',
-      name: 'Mobilni Vulkanizer Milan',
-      description: 'Profesionalna mobilna vulkanizerska usluga u Beogradu. Dolazak na adresu za 15–30 minuta, non-stop 24h.',
-      url: 'https://mobilnivulkanizermilan.com',
-      telephone: '+381641290929',
-      priceRange: '$$',
-      image: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-milan-na-intervenciji-u-beogradu.webp',
-      address: { '@type': 'PostalAddress', addressLocality: 'Beograd', addressCountry: 'RS' },
-      geo: { '@type': 'GeoCoordinates', latitude: 44.8125, longitude: 20.4612 },
-      areaServed: { '@type': 'AdministrativeArea', name: 'Novi Beograd', containedInPlace: { '@type': 'City', name: 'Beograd' } },
-      openingHoursSpecification: {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
-        opens: '00:00',
-        closes: '23:59',
-      },
-      aggregateRating: { '@type': 'AggregateRating', ratingValue: String(rating.toFixed(1)), reviewCount: String(reviewCount), bestRating: '5' },
     },
   ],
 };

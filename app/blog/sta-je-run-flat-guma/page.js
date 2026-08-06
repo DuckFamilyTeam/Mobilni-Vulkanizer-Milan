@@ -4,19 +4,19 @@ import StickyCall from '../../components/StickyCall';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Šta je Run-Flat guma — prednosti, mane i da li se može krpiti | Mobilni Vulkanizer Milan',
+  title: 'Šta je Run-Flat guma: prednosti, mane i da li se može krpiti | Mobilni Vulkanizer Milan',
   description:
-    'Run-flat guma vam omogućava da nastavite vožnju i posle probijanja — ali do kada i koliko brzo? Sve o run-flat tehnologiji, prednostima, manama i da li se može krpiti.',
+    'Run-flat guma vam omogućava da nastavite vožnju i posle probijanja, ali do kada i koliko brzo? Sve o run-flat tehnologiji, prednostima, manama i da li se može krpiti.',
   keywords:
     'run flat guma, run flat guma šta je, run flat krpljenje, run flat prednosti mane, run flat guma beograd, šta je run flat, self supporting run flat',
   alternates: {
-    canonical: 'https://mobilnivulkanizermilan.com/blog/sta-je-run-flat-guma',
+    canonical: 'https://www.mobilnivulkanizermilan.com/blog/sta-je-run-flat-guma',
   },
   openGraph: {
-    title: 'Šta je Run-Flat guma — prednosti, mane i da li se može krpiti',
+    title: 'Šta je Run-Flat guma: prednosti, mane i da li se može krpiti',
     description:
-      'Run-flat gume omogućavaju vožnju bez vazduha do 80 km. Sve što treba da znate — tehnologija, ograničenja, zamena i krpljenje.',
-    url: 'https://mobilnivulkanizermilan.com/blog/sta-je-run-flat-guma',
+      'Run-flat gume omogućavaju vožnju bez vazduha do 80 km. Sve što treba da znate: tehnologija, ograničenja, zamena i krpljenje.',
+    url: 'https://www.mobilnivulkanizermilan.com/blog/sta-je-run-flat-guma',
     locale: 'sr_RS',
     type: 'article',
   },
@@ -25,25 +25,25 @@ export const metadata = {
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
-  '@id': 'https://mobilnivulkanizermilan.com/blog/sta-je-run-flat-guma',
+  '@id': 'https://www.mobilnivulkanizermilan.com/blog/sta-je-run-flat-guma',
   headline: 'Šta je Run-Flat guma — prednosti, mane i da li se može krpiti | Mobilni Vulkanizer Milan',
   description:
-    'Run-flat guma vam omogućava da nastavite vožnju i posle probijanja — ali do kada i koliko brzo? Sve o run-flat tehnologiji, prednostima, manama i da li se može krpiti.',
-  url: 'https://mobilnivulkanizermilan.com/blog/sta-je-run-flat-guma',
+    'Run-flat guma vam omogućava da nastavite vožnju i posle probijanja, ali do kada i koliko brzo? Sve o run-flat tehnologiji, prednostima, manama i da li se može krpiti.',
+  url: 'https://www.mobilnivulkanizermilan.com/blog/sta-je-run-flat-guma',
   datePublished: '2026-06-23',
   dateModified: '2026-06-23',
   author: {
     '@type': 'Person',
     name: 'Milan',
-    url: 'https://mobilnivulkanizermilan.com',
+    url: 'https://www.mobilnivulkanizermilan.com',
   },
   publisher: {
-    '@id': 'https://mobilnivulkanizermilan.com/#business',
+    '@id': 'https://www.mobilnivulkanizermilan.com/#business',
   },
   inLanguage: 'sr-RS',
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': 'https://mobilnivulkanizermilan.com/blog/sta-je-run-flat-guma',
+    '@id': 'https://www.mobilnivulkanizermilan.com/blog/sta-je-run-flat-guma',
   },
 };
 
@@ -338,7 +338,7 @@ export default function RunFlatPage() {
             <p>
               Bila vaša guma run-flat ili standardna — ako ste zaglavili,
               Milan dolazi na vašu lokaciju za 15–30 minuta i procenjuje
-              situaciju na licu mesta.
+              situaciju na licu mesta. Radimo i <Link href="/mobilni-vulkanizer-ceo-beograd">montažu run-flat guma na adresi</Link>, u bilo kom delu Beograda.
             </p>
 
           </div>

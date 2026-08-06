@@ -4,19 +4,19 @@ import StickyCall from '../../components/StickyCall';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Balansiranje točkova — koliko često treba da se radi | Mobilni Vulkanizer Milan',
+  title: 'Balansiranje točkova: koliko često treba da se radi | Mobilni Vulkanizer Milan',
   description:
     'Kada i zašto balansirati točkove? Simptomi nebalansiranog točka, koliko često je potrebno, i zašto to zanemarivanje košta više nego što mislite. Vulkanizer Milan, Beograd.',
   keywords:
     'balansiranje tockova, kada balansirati gume, balansiranje točkova beograd, vibracije volana uzrok, nebalansirane gume simptomi, balansiranje koliko često',
   alternates: {
-    canonical: 'https://mobilnivulkanizermilan.com/blog/balansiranje-tockova',
+    canonical: 'https://www.mobilnivulkanizermilan.com/blog/balansiranje-tockova',
   },
   openGraph: {
-    title: 'Balansiranje točkova — koliko često i zašto je važno',
+    title: 'Balansiranje točkova: koliko često i zašto je važno',
     description:
-      'Vibracije na volanu? Neravnomerno habanje guma? Sve o balansiranju točkova — kada, koliko često i šta se dešava ako zanemarite.',
-    url: 'https://mobilnivulkanizermilan.com/blog/balansiranje-tockova',
+      'Vibracije na volanu? Neravnomerno habanje guma? Sve o balansiranju točkova: kada, koliko često i šta se dešava ako zanemarite.',
+    url: 'https://www.mobilnivulkanizermilan.com/blog/balansiranje-tockova',
     locale: 'sr_RS',
     type: 'article',
   },
@@ -25,25 +25,25 @@ export const metadata = {
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
-  '@id': 'https://mobilnivulkanizermilan.com/blog/balansiranje-tockova',
+  '@id': 'https://www.mobilnivulkanizermilan.com/blog/balansiranje-tockova',
   headline: 'Balansiranje točkova — koliko često treba da se radi | Mobilni Vulkanizer Milan',
   description:
     'Kada i zašto balansirati točkove? Simptomi nebalansiranog točka, koliko često je potrebno, i zašto to zanemarivanje košta više nego što mislite. Vulkanizer Milan, Beograd.',
-  url: 'https://mobilnivulkanizermilan.com/blog/balansiranje-tockova',
+  url: 'https://www.mobilnivulkanizermilan.com/blog/balansiranje-tockova',
   datePublished: '2026-06-23',
   dateModified: '2026-06-23',
   author: {
     '@type': 'Person',
     name: 'Milan',
-    url: 'https://mobilnivulkanizermilan.com',
+    url: 'https://www.mobilnivulkanizermilan.com',
   },
   publisher: {
-    '@id': 'https://mobilnivulkanizermilan.com/#business',
+    '@id': 'https://www.mobilnivulkanizermilan.com/#business',
   },
   inLanguage: 'sr-RS',
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': 'https://mobilnivulkanizermilan.com/blog/balansiranje-tockova',
+    '@id': 'https://www.mobilnivulkanizermilan.com/blog/balansiranje-tockova',
   },
 };
 
@@ -303,7 +303,8 @@ export default function BalansiranjeTocovaPage() {
             <p>
               Mobilni vulkanizer Milan nosi profesionalnu balansirku na
               terenu — zamena guma i balansiranje sve četiri na vašoj
-              adresi, bez odlaska u radnju.
+              adresi, bez odlaska u radnju. Ako vam je guma probušena, pročitajte i vodič za{' '}
+              <Link href="/blog/krpljenje-probusene-gume">krpljenje probušene gume</Link>.
             </p>
 
           </div>

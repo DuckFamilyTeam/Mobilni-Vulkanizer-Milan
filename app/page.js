@@ -393,7 +393,7 @@ export default async function HomePage() {
                         <div className="eyebrow">Mapa pokrivanja</div>
                         <h2 id="coverage-title">Pokrivam ceo Beograd i okolinu</h2>
                         <p style={{ color: 'var(--text-muted)', fontSize: '16px', lineHeight: '1.7', marginTop: '16px' }}>
-                            Bez obzira da li ste u centru, na Novom Beogradu, u Zemunu ili u prigradskim naseljima — dolazim na bilo koju adresu unutar šire teritorije Beograda. Brz odziv, profesionalna usluga.
+                            Bez obzira da li ste u centru, na Novom Beogradu, kao <Link href="/mobilni-vulkanizer-zemun">mobilni vulkanizer u Zemunu</Link>, ili kao <Link href="/mobilni-vulkanizer-borca">mobilni vulkanizer u Borči</Link> u prigradskim naseljima, dolazim na bilo koju adresu unutar šire teritorije Beograda. Brz odziv, profesionalna usluga.
                         </p>
                         <a href="#lokacije" className="btn-secondary" style={{ marginTop: '20px', display: 'inline-flex' }}>Pogledaj sve lokacije</a>
                     </div>

@@ -6,17 +6,17 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Kada promeniti zimske za letnje gume (i obrnuto) | Zakon Srbije | Mobilni Vulkanizer Milan',
   description:
-    'Kada po zakonu Srbije morate imati zimske gume? Koji je pravi trenutak za sezonsku zamenu? Sve što vozač treba da zna — od zakonskih obaveza do praktičnih saveta.',
+    'Zakon u Srbiji propisuje tačan period za zimske gume. U tekstu su datumi, kazne za nepoštovanje roka i praktični saveti za zamenu. Milan dolazi na adresu za montažu.',
   keywords:
     'kada promeniti zimske za letnje gume, sezonska zamena guma, zimske gume zakon srbija, kada montirati zimske gume, zimske letnje gume srbija, mobilni vulkanizer zamena guma beograd',
   alternates: {
-    canonical: 'https://mobilnivulkanizermilan.com/blog/kada-promeniti-zimske-za-letnje-gume',
+    canonical: 'https://www.mobilnivulkanizermilan.com/blog/kada-promeniti-zimske-za-letnje-gume',
   },
   openGraph: {
-    title: 'Kada promeniti zimske za letnje gume — Zakon Srbije i praktični saveti',
+    title: 'Kada promeniti zimske za letnje gume: zakon Srbije i praktični saveti',
     description:
-      'Zakonske obaveze i pravi trenutak za sezonsku zamenu guma — sve što treba da znate kao vozač u Srbiji.',
-    url: 'https://mobilnivulkanizermilan.com/blog/kada-promeniti-zimske-za-letnje-gume',
+      'Zakonske obaveze i pravi trenutak za sezonsku zamenu guma. Sve što treba da znate kao vozač u Srbiji.',
+    url: 'https://www.mobilnivulkanizermilan.com/blog/kada-promeniti-zimske-za-letnje-gume',
     locale: 'sr_RS',
     type: 'article',
   },
@@ -25,25 +25,25 @@ export const metadata = {
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
-  '@id': 'https://mobilnivulkanizermilan.com/blog/kada-promeniti-zimske-za-letnje-gume',
+  '@id': 'https://www.mobilnivulkanizermilan.com/blog/kada-promeniti-zimske-za-letnje-gume',
   headline: 'Kada promeniti zimske za letnje gume (i obrnuto) | Zakon Srbije | Mobilni Vulkanizer Milan',
   description:
-    'Kada po zakonu Srbije morate imati zimske gume? Koji je pravi trenutak za sezonsku zamenu? Sve što vozač treba da zna — od zakonskih obaveza do praktičnih saveta.',
-  url: 'https://mobilnivulkanizermilan.com/blog/kada-promeniti-zimske-za-letnje-gume',
+    'Zakon u Srbiji propisuje tačan period za zimske gume. U tekstu su datumi, kazne za nepoštovanje roka i praktični saveti za zamenu. Milan dolazi na adresu za montažu.',
+  url: 'https://www.mobilnivulkanizermilan.com/blog/kada-promeniti-zimske-za-letnje-gume',
   datePublished: '2026-06-23',
   dateModified: '2026-06-23',
   author: {
     '@type': 'Person',
     name: 'Milan',
-    url: 'https://mobilnivulkanizermilan.com',
+    url: 'https://www.mobilnivulkanizermilan.com',
   },
   publisher: {
-    '@id': 'https://mobilnivulkanizermilan.com/#business',
+    '@id': 'https://www.mobilnivulkanizermilan.com/#business',
   },
   inLanguage: 'sr-RS',
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': 'https://mobilnivulkanizermilan.com/blog/kada-promeniti-zimske-za-letnje-gume',
+    '@id': 'https://www.mobilnivulkanizermilan.com/blog/kada-promeniti-zimske-za-letnje-gume',
   },
 };
 
@@ -282,7 +282,7 @@ export default function ZimskeLetnjePage() {
             <p>
               Ukoliko vam je praktičnije, zamenu možemo obaviti direktno kod vas —
               bez odlaska u radnju, bez čekanja u redu. Dogovorite termin pre nego
-              što gužva počne.
+              što gužva počne, ili odmah <Link href="/mobilni-vulkanizer-ceo-beograd">zakažite zamenu guma na terenu</Link>.
             </p>
 
           </div>

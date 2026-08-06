@@ -7,18 +7,18 @@ export const metadata = {
   title:
     'Krpljenje probušene gume: Kompletan vodič | Mobilni Vulkanizer Milan',
   description:
-    'Korak-po-korak vodič za krpljenje probušene gume — od bezbednosnih mera do umetanja čepa. Kada možete sami, a kada pozovite vulkanizera. Mobilni vulkanizer Milan, Beograd.',
+    'Korak-po-korak vodič za krpljenje probušene gume, od bezbednosnih mera do umetanja čepa. Kada možete sami, a kada pozovite vulkanizera. Mobilni vulkanizer Milan, Beograd.',
   keywords:
     'krpljenje probušene gume, kako zakrpiti gumu, set za reparaciju gume, probušena guma šta raditi, čep za gumu, vulkanizer beograd',
   alternates: {
     canonical:
-      'https://mobilnivulkanizermilan.com/blog/krpljenje-probusene-gume',
+      'https://www.mobilnivulkanizermilan.com/blog/krpljenje-probusene-gume',
   },
   openGraph: {
     title: 'Krpljenje probušene gume: Kompletan vodič',
     description:
       'Naučite kako da sami zakrpite probušenu gumu i kada je jedino rešenje zvati stručnjaka.',
-    url: 'https://mobilnivulkanizermilan.com/blog/krpljenje-probusene-gume',
+    url: 'https://www.mobilnivulkanizermilan.com/blog/krpljenje-probusene-gume',
     locale: 'sr_RS',
     type: 'article',
   },
@@ -27,25 +27,25 @@ export const metadata = {
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
-  '@id': 'https://mobilnivulkanizermilan.com/blog/krpljenje-probusene-gume',
+  '@id': 'https://www.mobilnivulkanizermilan.com/blog/krpljenje-probusene-gume',
   headline: 'Krpljenje probušene gume: Kompletan vodič | Mobilni Vulkanizer Milan',
   description:
-    'Korak-po-korak vodič za krpljenje probušene gume — od bezbednosnih mera do umetanja čepa. Kada možete sami, a kada pozovite vulkanizera. Mobilni vulkanizer Milan, Beograd.',
-  url: 'https://mobilnivulkanizermilan.com/blog/krpljenje-probusene-gume',
+    'Korak-po-korak vodič za krpljenje probušene gume, od bezbednosnih mera do umetanja čepa. Kada možete sami, a kada pozovite vulkanizera. Mobilni vulkanizer Milan, Beograd.',
+  url: 'https://www.mobilnivulkanizermilan.com/blog/krpljenje-probusene-gume',
   datePublished: '2025-05-01',
   dateModified: '2026-06-23',
   author: {
     '@type': 'Person',
     name: 'Milan',
-    url: 'https://mobilnivulkanizermilan.com',
+    url: 'https://www.mobilnivulkanizermilan.com',
   },
   publisher: {
-    '@id': 'https://mobilnivulkanizermilan.com/#business',
+    '@id': 'https://www.mobilnivulkanizermilan.com/#business',
   },
   inLanguage: 'sr-RS',
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': 'https://mobilnivulkanizermilan.com/blog/krpljenje-probusene-gume',
+    '@id': 'https://www.mobilnivulkanizermilan.com/blog/krpljenje-probusene-gume',
   },
 };
 

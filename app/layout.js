@@ -29,10 +29,10 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://mobilnivulkanizermilan.com'),
-  title: 'Mobilni Vulkanizer Beograd | Milan — Dolazim za 15-30 min, NON-STOP 24h',
+  metadataBase: new URL('https://www.mobilnivulkanizermilan.com'),
+  title: 'Mobilni vulkanizer Beograd, dolazak za 15 do 30 minuta | Milan',
   description:
-    'Mobilni vulkanizer Beograd — Milan dolazi na vašu adresu za 15-30 minuta. Krpljenje gume, zamena pneumatika, balansiranje. Non-stop 24h, 7 dana u nedelji. Pozovite +381 64 12 90 929',
+    'Milan dolazi na vašu adresu za 15 do 30 minuta, non-stop 24 časa, svih 7 dana. Krpljenje, zamena i balansiranje guma na licu mesta. Pozovite +381 64 12 90 929.',
   keywords:
     'mobilni vulkanizer beograd, vulkanizer dolazi, hitna pomoć guma, krpljenje gume beograd, zamena pneumatika beograd, vulkanizer 24h, mobilni vulkanizer milan, probušena guma beograd, vulkanizer non-stop, vulkanizer dolazi na adresu, vulkanizer noću, vulkanizer vikend, jeftini vulkanizer beograd, vulkanizer praznici',
   authors: [{ name: 'Mobilni Vulkanizer Milan' }],
@@ -44,15 +44,15 @@ export const metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://mobilnivulkanizermilan.com/',
+    canonical: '/',
   },
   openGraph: {
     locale: 'sr_RS',
     type: 'website',
-    url: 'https://mobilnivulkanizermilan.com/',
-    title: 'Mobilni Vulkanizer Beograd | Milan — Dolazim za 15-30 min, 24h',
+    url: 'https://www.mobilnivulkanizermilan.com/',
+    title: 'Mobilni vulkanizer Beograd, dolazak za 15 do 30 minuta | Milan',
     description:
-      'Probušena guma? Zamena pneumatika? Dolazim na bilo koju lokaciju u Beogradu — brzo, profesionalno, u bilo koje doba dana ili noći.',
+      'Probušena guma? Zamena pneumatika? Dolazim na bilo koju lokaciju u Beogradu, brzo i profesionalno, u bilo koje doba dana ili noći.',
     images: [
       'https://www.mobilnivulkanizermilan.com/logo.png',
     ],
@@ -60,9 +60,9 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mobilni Vulkanizer Beograd | Milan — 15-30 min dolazak, 24h',
+    title: 'Mobilni vulkanizer Beograd, dolazak za 15 do 30 minuta | Milan',
     description:
-      'Probušena guma? Pozovite Milana — dolazim za 15-30 min na bilo koju lokaciju u Beogradu. Non-stop 24h.',
+      'Probušena guma? Pozovite Milana, dolazim za 15-30 min na bilo koju lokaciju u Beogradu. Non-stop 24h.',
     images: [
       'https://www.mobilnivulkanizermilan.com/logo.png',
     ],
@@ -90,19 +90,19 @@ export const viewport = {
 const webSiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  '@id': 'https://mobilnivulkanizermilan.com/#website',
+  '@id': 'https://www.mobilnivulkanizermilan.com/#website',
   name: 'Mobilni Vulkanizer Milan',
-  url: 'https://mobilnivulkanizermilan.com',
-  description: 'Mobilna vulkanizerska usluga u Beogradu — dolazak za 15–30 minuta, non-stop 24h.',
+  url: 'https://www.mobilnivulkanizermilan.com',
+  description: 'Mobilna vulkanizerska usluga u Beogradu, dolazak za 15 do 30 minuta, non-stop 24h.',
   inLanguage: 'sr-RS',
   publisher: {
-    '@id': 'https://mobilnivulkanizermilan.com/#business',
+    '@id': 'https://www.mobilnivulkanizermilan.com/#business',
   },
   potentialAction: {
     '@type': 'SearchAction',
     target: {
       '@type': 'EntryPoint',
-      urlTemplate: 'https://mobilnivulkanizermilan.com/blog?q={search_term_string}',
+      urlTemplate: 'https://www.mobilnivulkanizermilan.com/blog?q={search_term_string}',
     },
     'query-input': 'required name=search_term_string',
   },
@@ -112,12 +112,12 @@ function buildLocalBusinessJsonLd(rating, reviewCount) {
   return {
   '@context': 'https://schema.org',
   '@type': 'AutoRepair',
-  '@id': 'https://mobilnivulkanizermilan.com/#business',
+  '@id': 'https://www.mobilnivulkanizermilan.com/#business',
   name: 'Mobilni Vulkanizer Milan',
   alternateName: 'Mobilni Vulkanizer Beograd',
   description:
     'Mobilna vulkanizerska usluga u Beogradu. Dolazak na adresu za 15-30 minuta. Non-stop 24h. Krpljenje gume, zamena pneumatika, balansiranje, ispravka felni.',
-  url: 'https://mobilnivulkanizermilan.com/',
+  url: 'https://www.mobilnivulkanizermilan.com/',
   telephone: '+381641290929',
   priceRange: '$$',
   paymentAccepted: 'Gotovina, Dina, Visa, MasterCard, Maestro, American Express, IPS QR kod',

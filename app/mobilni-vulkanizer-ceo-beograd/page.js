@@ -4,19 +4,19 @@ import StickyCall from '../components/StickyCall';
 import { getGbpRating } from '../lib/googlePlaces';
 
 export const metadata = {
-  title: 'Mobilni Vulkanizer Ceo Beograd | Pokrivenost celog grada — 24/7',
+  title: 'Mobilni Vulkanizer Ceo Beograd | Pokrivenost celog grada, 24/7',
   description:
-    'Mobilni vulkanizer za ceo Beograd — pokrivam ceo grad. Bliže lokacije 15-30 min, najudaljeniji delovi 30-60 min. Krpljenje gume, zamena pneumatika, balansiranje. 10+ godina iskustva. +381 64 12 90 929.',
+    'Mobilni vulkanizer za ceo Beograd, pokrivam ceo grad. Bliže lokacije 15-30 min, najudaljeniji delovi 30-60 min. Krpljenje gume, zamena pneumatika, balansiranje. 10+ godina iskustva. +381 64 12 90 929.',
   keywords:
     'mobilni vulkanizer ceo beograd, vulkanizer beograd, vulkanizer dolazi beograd, mobilni vulkanizer beograd, vulkanizer 24h beograd, krpljenje gume beograd, vulkanizer dolazi na adresu, vulkanizer noću, vulkanizer vikend, jeftini vulkanizer beograd, vulkanizer praznici',
   alternates: {
-    canonical: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
+    canonical: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
   },
   openGraph: {
     title: 'Mobilni Vulkanizer Ceo Beograd | 24/7',
     description:
       'Pokrivam ceo Beograd. Bliže lokacije 15-30 min, najudaljeniji delovi 30-60 min. Sa preko 10 godina iskustva u zanatu.',
-    url: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
+    url: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
     locale: 'sr_RS',
     type: 'website',
   },
@@ -28,44 +28,20 @@ function buildLocationJsonLd(rating, reviewCount) {
   '@graph': [
     {
       '@type': 'Service',
-      '@id': 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd#service',
+      '@id': 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd#service',
       name: 'Mobilni Vulkanizer Ceo Beograd',
       description:
         'Mobilna vulkanizerska usluga za ceo Beograd — pokriva svih 17 opština. Bliže lokacije 15-30 min, najudaljeniji delovi 30-60 min. Non-stop 24h.',
-      url: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
-      provider: { '@id': 'https://mobilnivulkanizermilan.com/#business' },
+      url: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
+      provider: { '@id': 'https://www.mobilnivulkanizermilan.com/#business' },
       areaServed: { '@type': 'City', name: 'Beograd', containedInPlace: { '@type': 'Country', name: 'Srbija' } },
       serviceType: 'Mobilna vulkanizerska usluga',
       availableChannel: {
         '@type': 'ServiceChannel',
-        serviceUrl: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
+        serviceUrl: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
         servicePhone: '+381641290929',
         availableLanguage: 'Serbian',
       },
-    },
-    {
-      '@type': 'AutoRepair',
-      '@id': 'https://mobilnivulkanizermilan.com/#business',
-      name: 'Mobilni Vulkanizer Milan',
-      description: 'Profesionalna mobilna vulkanizerska usluga u Beogradu. Dolazak na adresu za 15–30 minuta, non-stop 24h.',
-      url: 'https://mobilnivulkanizermilan.com',
-      telephone: '+381641290929',
-      priceRange: '$$',
-      image: 'https://mobilnivulkanizermilan.com/mobilni-vulkanizer-milan-na-intervenciji-u-beogradu.webp',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Beograd',
-        addressCountry: 'RS',
-      },
-      geo: { '@type': 'GeoCoordinates', latitude: 44.8125, longitude: 20.4612 },
-      areaServed: { '@type': 'City', name: 'Beograd', containedInPlace: { '@type': 'Country', name: 'Srbija' } },
-      openingHoursSpecification: {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
-        opens: '00:00',
-        closes: '23:59',
-      },
-      aggregateRating: { '@type': 'AggregateRating', ratingValue: String(rating.toFixed(1)), reviewCount: String(reviewCount), bestRating: '5' },
     },
   ],
 };

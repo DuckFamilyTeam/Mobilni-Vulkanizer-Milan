@@ -1,18 +1,19 @@
+import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import StickyCall from '../components/StickyCall';
 
 export const metadata = {
-  title: 'Galerija radova | Mobilni Vulkanizer Milan — Beograd',
+  title: 'Galerija radova | Mobilni Vulkanizer Milan, Beograd',
   description:
-    'Fotografije sa terena — mobilni vulkanizer Milan na intervencijama širom Beograda. Zamena guma, krpljenje, hitne intervencije noću i danju, profesionalna oprema.',
+    'Fotografije sa terena: mobilni vulkanizer Milan na intervencijama širom Beograda. Zamena guma, krpljenje, hitne intervencije noću i danju, profesionalna oprema.',
   alternates: {
-    canonical: 'https://mobilnivulkanizermilan.com/galerija',
+    canonical: 'https://www.mobilnivulkanizermilan.com/galerija',
   },
   openGraph: {
     title: 'Galerija radova | Mobilni Vulkanizer Milan',
-    description: 'Stvarne intervencije, stvarni klijenti — pogledajte Milana na terenu širom Beograda.',
-    url: 'https://mobilnivulkanizermilan.com/galerija',
+    description: 'Stvarne intervencije, stvarni klijenti. Pogledajte Milana na terenu širom Beograda.',
+    url: 'https://www.mobilnivulkanizermilan.com/galerija',
     locale: 'sr_RS',
     type: 'website',
   },
@@ -70,6 +71,9 @@ export default function GalerijaPage() {
 
             <div style={{ textAlign: 'center', marginTop: '48px' }}>
               <a href="tel:+381641290929" className="btn-primary flame-cta">📞 Pozovi: +381 64 12 90 929</a>
+              <p style={{ marginTop: '16px' }}>
+                Pokrivamo ceo Beograd, <Link href="/mobilni-vulkanizer-ceo-beograd">zakažite dolazak</Link> na vašu adresu.
+              </p>
             </div>
           </div>
         </section>
