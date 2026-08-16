@@ -80,4 +80,4 @@ User-agent: *
 Allow: /
 
 # ─── SITEMAP ──────────────────────────────────────
-Sitemap: https://mobilnivulkanizermilan.com/sitemap.xml
+Sitemap: https://www.mobilnivulkanizermilan.com/sitemap.xml
