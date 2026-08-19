@@ -2,12 +2,11 @@ import './globals.css';
 import { Inter, Bebas_Neue, Playfair_Display } from 'next/font/google';
 import Script from 'next/script';
 import ClientEffects from './components/ClientEffects';
-import { getGbpRating } from './lib/googlePlaces';
 
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '600', '700'],
-  display: 'swap',
+  display: 'optional',
   variable: '--font-inter',
   preload: true,
 });
@@ -15,15 +14,15 @@ const inter = Inter({
 const bebasNeue = Bebas_Neue({
   subsets: ['latin', 'latin-ext'],
   weight: '400',
-  display: 'swap',
+  display: 'optional',
   variable: '--font-bebas',
-  preload: true,
+  preload: false,
 });
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
   weight: ['700', '900'],
-  display: 'swap',
+  display: 'optional',
   variable: '--font-playfair',
   preload: false, // not above the fold
 });
@@ -108,7 +107,7 @@ const webSiteJsonLd = {
   },
 };
 
-function buildLocalBusinessJsonLd(rating, reviewCount) {
+function buildLocalBusinessJsonLd() {
   return {
   '@context': 'https://schema.org',
   '@type': 'AutoRepair',
@@ -164,13 +163,6 @@ function buildLocalBusinessJsonLd(rating, reviewCount) {
     opens: '00:00',
     closes: '23:59',
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: String(rating.toFixed(1)),
-    reviewCount: String(reviewCount),
-    bestRating: '5',
-    worstRating: '1',
-  },
   sameAs: [
     'https://www.google.com/maps/place/Mobilni+Vulkanizer+Milan/@44.8812194,20.4630735,621m/data=!3m2!1e3!4b1!4m6!3m5!1s0x475a637b18ce8a37:0x45f6e9ef011b2c0!8m2!3d44.8812156!4d20.4656484!16s%2Fg%2F11z5_7wp4p?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D',
   ],
@@ -178,8 +170,7 @@ function buildLocalBusinessJsonLd(rating, reviewCount) {
 }
 
 export default async function RootLayout({ children }) {
-  const { rating, reviewCount } = await getGbpRating();
-  const localBusinessJsonLd = buildLocalBusinessJsonLd(rating, reviewCount);
+  const localBusinessJsonLd = buildLocalBusinessJsonLd();
   return (
     <html lang="sr-RS" className={`${inter.variable} ${bebasNeue.variable} ${playfairDisplay.variable}`}>
       <head>
@@ -225,7 +216,7 @@ export default async function RootLayout({ children }) {
         {/* GTM — afterInteractive: ne blokira render, učitava se tek kad je stranica interaktivna */}
         <Script
           id="gtm-init"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

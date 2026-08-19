@@ -45,30 +45,8 @@ const faqJsonLd = {
   ],
 };
 
-function buildReviewsJsonLd(rating, reviewCount) {
-  return {
-  '@context': 'https://schema.org',
-  '@type': 'Product',
-  name: 'Mobilna vulkanizerska usluga - Beograd',
-  image: 'https://www.mobilnivulkanizermilan.com/logo.png',
-  description: 'Mobilni vulkanizer u Beogradu sa dolaskom za 15-30 minuta, 24 časa dnevno.',
-  brand: { '@type': 'Brand', name: 'Mobilni Vulkanizer Milan' },
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: String(rating.toFixed(1)), reviewCount: String(reviewCount) },
-  review: [
-    { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'Ljuba' }, reviewBody: 'Momak kulturan, brz, dosao je odmah i promenio sve 4 gume u roku od 15 minuta, pritom pazio da nista ne osteti ispod auta dizalicom itd.... sve preporuke!' },
-    { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'Ana Markusev' }, reviewBody: 'Dečko je profesionalan i brz, sve pohvale!' },
-    { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'bracarada bracarada' }, reviewBody: 'Svaka cast za brzinu i organizaciju. Za kratko vreme resen problem. Sve pohvale za Milana.' },
-    { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'spasojevic radmila' }, reviewBody: 'Sve pohvale za uslugu, ljubaznost i brzinu. Topla preporuka.' },
-    { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'Masa Sladic' }, reviewBody: 'Sve pohvale za Milana, mobilnog vulkanizera. Vrlo ljubazan, vrlo brzo je došao na adresu. Brzo mi je zamenio gume, tako da sam sve svoje obveze obavila bez odlaganja. Toplo ga preporučujem. Čestitam, oduševljena sam. Zauvijek vaš klijent.' },
-    { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'Jovan Neskovic' }, reviewBody: 'Sve pohvale za ekipu, pre svega na ljudskosti i ljubaznosti! Pored toga što su na teren izašli neverovatno brzo, momci su bili izuzetno prijatni i smireni, što mi je mnogo značilo u onom stresu na putu.' },
-    { '@type': 'Review', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' }, author: { '@type': 'Person', name: 'Aleksandar Jovanovic' }, reviewBody: 'Ekspresna usluga, brz dolazak, resavanje problema u veoma kratkom vremenskom intervalu. Preporuka.' },
-  ],
-  };
-}
-
 export default async function HomePage() {
   const { rating, reviewCount } = await getGbpRating();
-  const reviewsJsonLd = buildReviewsJsonLd(rating, reviewCount);
 
   return (
     <>
@@ -80,11 +58,6 @@ export default async function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsJsonLd) }}
-      />
-
       <Header />
       <main id="main-content">
 
