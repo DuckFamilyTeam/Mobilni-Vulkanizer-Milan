@@ -1,3 +1,5 @@
+import 'server-only';
+
 // Server-only helper — poziva Google Places API (New) da dobije živu ocenu i broj
 // recenzija za GBP profil. Ako poziv ne uspe iz bilo kog razloga (nema ključa, mreža,
 // kvota, neočekivan odgovor), tiho vraća fallback vrednosti — sajt se nikad ne lomi

@@ -11,7 +11,7 @@ const servicesJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   serviceType: 'Mobilna vulkanizerska usluga',
-  provider: { '@id': 'https://mobilnivulkanizermilan.com/#business' },
+    provider: { '@id': 'https://www.mobilnivulkanizermilan.com/#business' },
   areaServed: { '@type': 'City', name: 'Beograd' },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
