@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import StickyCall from './components/StickyCall';
@@ -116,16 +117,14 @@ export default async function HomePage() {
                     </div>
 
                     <div className="hero-visual">
-                        <img
+                        <Image
                             src="/montaza-gume-land-rover.webp"
-                            srcSet="/montaza-gume-land-rover-mobile.webp 640w, /montaza-gume-land-rover.webp 1000w"
-                            sizes="(max-width: 768px) 100vw, 540px"
                             alt="Mobilni vulkanizer Milan montira gumu na Land Rover na parkingu u Beogradu"
-                            loading="eager"
-                            fetchPriority="high"
-                            decoding="sync"
                             width="600"
                             height="660"
+                            sizes="(max-width: 768px) 100vw, 540px"
+                            quality={75}
+                            priority
                         />
                         <div className="hero-badge">
                             <div className="hero-badge-num">A+</div>

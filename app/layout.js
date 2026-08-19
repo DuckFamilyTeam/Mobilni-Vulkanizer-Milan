@@ -179,18 +179,6 @@ export default async function RootLayout({ children }) {
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        {/* Preload stvarne hero/LCP slike (hero-visual u page.js) — pre je ovde
-            greškom bila preload-ovana slika iz About sekcije koja se ne renderuje
-            do daleko niže na stranici, što je nepotrebno kasnilo LCP */}
-        <link
-          rel="preload"
-          as="image"
-          href="/montaza-gume-land-rover.webp"
-          imageSrcSet="/montaza-gume-land-rover-mobile.webp 640w, /montaza-gume-land-rover.webp 1000w"
-          imageSizes="(max-width: 768px) 100vw, 540px"
-          type="image/webp"
-          fetchPriority="high"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }}
