@@ -99,6 +99,21 @@ function setupEffects() {
     };
     document.addEventListener('keydown', escHandler);
 
+    // ============ MAP ACTIVATE-ON-TAP ============
+    // Google Maps iframe embed inače "otima" wheel/touch geste čim je kursor/prst
+    // iznad njega, pa se skrolovanje stranice zaglavi na mapi. Mapa je do klika
+    // vizuelno ista, ali pointer-events:none (CSS), tako da skrol prolazi kroz nju;
+    // tek klik/dodir na overlay je aktivira za zum/pomeranje.
+    const mapHandlers = [];
+    document.querySelectorAll('.coverage-map-overlay').forEach((btn) => {
+      const handler = () => {
+        const wrapper = btn.closest('.coverage-map');
+        if (wrapper) wrapper.classList.add('active');
+      };
+      btn.addEventListener('click', handler);
+      mapHandlers.push({ btn, handler });
+    });
+
     // ============ REVEAL ANIMATIONS ============
     const observer = new IntersectionObserver(
       (entries) => {
@@ -222,6 +237,7 @@ function setupEffects() {
         anchor.removeEventListener('click', handler)
       );
       callHandlers.forEach(({ link, handler }) => link.removeEventListener('click', handler));
+      mapHandlers.forEach(({ btn, handler }) => btn.removeEventListener('click', handler));
       observer.disconnect();
       videoObserver.disconnect();
     };
