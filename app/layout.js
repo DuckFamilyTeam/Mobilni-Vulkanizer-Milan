@@ -166,6 +166,28 @@ function buildLocalBusinessJsonLd() {
   sameAs: [
     'https://www.google.com/maps/place/Mobilni+Vulkanizer+Milan/@44.8812194,20.4630735,621m/data=!3m2!1e3!4b1!4m6!3m5!1s0x475a637b18ce8a37:0x45f6e9ef011b2c0!8m2!3d44.8812156!4d20.4656484!16s%2Fg%2F11z5_7wp4p?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D',
   ],
+  department: [
+    {
+      '@type': 'AutoRepair',
+      '@id': 'https://www.mobilnivulkanizermilan.com/vulkanizerska-radnja-borca#radnja',
+      name: 'Vulkanizerska radnja Borča',
+      url: 'https://www.mobilnivulkanizermilan.com/vulkanizerska-radnja-borca',
+      telephone: '+381641290929',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Zrenjaninski put 146b',
+        addressLocality: 'Borča, Beograd',
+        addressRegion: 'Beograd',
+        addressCountry: 'RS',
+      },
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '17:00',
+      },
+    },
+  ],
   };
 }
 

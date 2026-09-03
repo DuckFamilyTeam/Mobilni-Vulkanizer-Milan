@@ -34,6 +34,7 @@ export default function Footer() {
             <ul>
               <li><Link href="/blog">Svi članci</Link></li>
               <li><Link href="/blog/krpljenje-probusene-gume">Krpljenje gume — vodič</Link></li>
+              <li><Link href="/blog/hotel-za-gume-beograd">Hotel za gume</Link></li>
             </ul>
           </div>
 
@@ -45,6 +46,8 @@ export default function Footer() {
               <li><Link href="/#usluge">Balansiranje</Link></li>
               <li><Link href="/#usluge">Ispravka felni</Link></li>
               <li><Link href="/#usluge">Vučna služba</Link></li>
+              <li><Link href="/vulkanizerska-radnja-borca">Hotel za gume</Link></li>
+              <li><Link href="/vulkanizerska-radnja-borca">Poliranje farova</Link></li>
             </ul>
           </div>
 
@@ -57,6 +60,7 @@ export default function Footer() {
               <li><Link href="/mobilni-vulkanizer-borca">Borča</Link></li>
               <li><Link href="/mobilni-vulkanizer-krnjaca">Krnjača</Link></li>
               <li><Link href="/mobilni-vulkanizer-autoput-beograd">Autoput Beograd</Link></li>
+              <li><Link href="/vulkanizerska-radnja-borca">Radnja — Zrenjaninski put 146b</Link></li>
             </ul>
           </div>
 
@@ -66,8 +70,10 @@ export default function Footer() {
               <li><a href="tel:+381641290929">📞 +381 64 12 90 929</a></li>
               <li><a href="https://wa.me/381641290929">💬 WhatsApp</a></li>
               <li><a href="viber://chat?number=%2B381641290929">💬 Viber</a></li>
-              <li>📍 Ceo Beograd</li>
-              <li>🕒 Non-stop 00-24h</li>
+              <li>📍 Mobilna usluga: Ceo Beograd</li>
+              <li>📍 Radnja: Zrenjaninski put 146b, Borča</li>
+              <li>🕒 Mobilna usluga non-stop 00-24h</li>
+              <li>🕒 Radnja: Pon–Pet 09–17h</li>
               <li>💳 Gotovina · kartice · IPS QR</li>
             </ul>
           </div>

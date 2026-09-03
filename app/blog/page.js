@@ -24,6 +24,16 @@ export const metadata = {
 
 const posts = [
   {
+    href: '/blog/hotel-za-gume-beograd',
+    category: 'Usluge',
+    readtime: '3 min čitanja',
+    date: 'Septembar 2026',
+    title: 'Hotel za gume u Beogradu: gde smestiti gume kad kod kuće nema mesta',
+    excerpt:
+      'Ostava puna, podrum ne postoji, balkon nije rešenje? Hotel za gume u našoj radnji u Borči čuva vaš rezervni set preko cele sezone, zaštićeno od sunca i vlage.',
+    label: 'Pročitaj više',
+  },
+  {
     href: '/blog/kada-promeniti-zimske-za-letnje-gume',
     category: 'Zakon & saveti',
     readtime: '7 min čitanja',

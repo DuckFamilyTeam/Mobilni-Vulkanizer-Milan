@@ -23,6 +23,8 @@ const servicesJsonLd = {
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Ispravka felni' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hitna vučna služba' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Kontrola i dopuna pritiska u gumama' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hotel za gume — sezonsko čuvanje' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Poliranje farova' } },
     ],
   },
 };
@@ -210,6 +212,22 @@ export default async function HomePage() {
                         <h3>Kontrola i dopuna pritiska</h3>
                         <p>Proveravam i punim sve četiri gume na ispravan pritisak — brzo i precizno uz svaku uslugu. Punjenje azotom po želji.</p>
                     </article>
+
+                    <Link href="/vulkanizerska-radnja-borca" className="service-card reveal">
+                        <div className="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="5"/><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M10 16h4"/></svg>
+                        </div>
+                        <h3>Hotel za gume</h3>
+                        <p>Čuvamo vaš rezervni set guma preko cele sezone u radnji u Borči, zaštićeno od sunca i vlage. Cena po dogovoru.</p>
+                    </Link>
+
+                    <Link href="/vulkanizerska-radnja-borca" className="service-card reveal">
+                        <div className="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>
+                        </div>
+                        <h3>Poliranje farova</h3>
+                        <p>Vraćamo providnost pomućenim farovima u radnji u Borči — bolja vidljivost noću. Cena po dogovoru.</p>
+                    </Link>
                 </div>
             </div>
         </section>
