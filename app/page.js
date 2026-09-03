@@ -165,29 +165,29 @@ export default async function HomePage() {
                 </div>
         
                 <div className="services-grid">
-                    <article className="service-card reveal">
+                    <Link href="/blog/krpljenje-probusene-gume" className="service-card reveal">
                         <div className="service-icon">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></svg>
                         </div>
                         <h3>Krpljenje probušene gume</h3>
                         <p>Brzo i pouzdano krpljenje na licu mesta — bez potrebe za vučnom službom ili odlaskom do vulkanizera. Garancija 30 dana.</p>
-                    </article>
+                    </Link>
         
-                    <article className="service-card reveal">
+                    <Link href="/blog/kada-promeniti-zimske-za-letnje-gume" className="service-card reveal">
                         <div className="service-icon">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 0 1 9-9"/></svg>
                         </div>
                         <h3>Zamena pneumatika</h3>
                         <p>Menjam letnje i zimske gume direktno kod vas — kod kuće, na poslu, ili bilo gde na putu. Sezonska promena za sve modele.</p>
-                    </article>
-        
-                    <article className="service-card reveal">
+                    </Link>
+
+                    <Link href="/blog/balansiranje-tockova" className="service-card reveal">
                         <div className="service-icon">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="2" x2="12" y2="22"/><path d="M2 12h20"/></svg>
                         </div>
                         <h3>Balansiranje točkova</h3>
                         <p>Profesionalno balansiranje za bezbedniju vožnju i ravnomerniju potrošnju guma. Donosim balansirku na vašu adresu.</p>
-                    </article>
+                    </Link>
         
                     <article className="service-card reveal">
                         <div className="service-icon">
