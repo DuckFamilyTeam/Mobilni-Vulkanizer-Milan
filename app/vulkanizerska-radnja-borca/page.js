@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Vulkanizerska radnja Borča | Zrenjaninski put 146b',
   description:
-    'Vulkanizerska radnja u Borči, Zrenjaninski put 146b — zamena i balansiranje guma, hotel za gume i poliranje farova. Radno vreme 09-17h, mobilna usluga 24/7.',
+    'Vulkanizerska radnja u Borči, Zrenjaninski put 146b — zamena i balansiranje guma, hotel za gume i poliranje farova. Radimo 0-24h, zakažite svoj termin.',
   keywords:
     'vulkanizerska radnja borča, vulkanizer zrenjaninski put, hotel za gume borča, poliranje farova beograd, zamena guma borča radnja, vulkanizer sa radnjom beograd',
   alternates: {
@@ -43,9 +43,17 @@ function buildRadnjaJsonLd() {
         },
         openingHoursSpecification: {
           '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-          opens: '09:00',
-          closes: '17:00',
+          dayOfWeek: [
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday',
+            'Sunday',
+          ],
+          opens: '00:00',
+          closes: '23:59',
         },
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
@@ -92,9 +100,10 @@ export default function VulkanizerskaRadnjaBorcaPage() {
 
             <p className="loc-hero-lead">
               Pored mobilne ekipe koja i dalje dolazi na vašu adresu 24/7, od septembra 2026.
-              radimo i u sopstvenoj radnji u Borči. Svratite na zamenu i balansiranje guma,
-              ostavite rezervni set na čuvanje u hotelu za gume, ili sredite farove poliranjem —
-              sve na jednom mestu.
+              radimo i u sopstvenoj radnji u Borči — takođe 0 do 24 časa, svaki dan. Svratite na
+              zamenu i balansiranje guma, ostavite rezervni set na čuvanje u hotelu za gume, ili
+              sredite farove poliranjem — sve na jednom mestu. Zakazivanje termina je moguće,
+              pozovite nas kad god vam odgovara.
             </p>
 
             <div className="loc-hero-cta">
@@ -124,7 +133,7 @@ export default function VulkanizerskaRadnjaBorcaPage() {
             </div>
 
             <span className="loc-hero-quick">
-              📍 <strong>Zrenjaninski put 146b, Borča</strong> · 🕒 Pon–Pet 09:00–17:00
+              📍 <strong>Zrenjaninski put 146b, Borča</strong> · 🕒 Radimo 0–24h, svaki dan
             </span>
           </div>
         </div>
@@ -137,7 +146,7 @@ export default function VulkanizerskaRadnjaBorcaPage() {
 
             <div className="loc-quick-stats">
               <div className="loc-stat">
-                <div className="loc-stat-num">09–17h</div>
+                <div className="loc-stat-num">0–24h</div>
                 <div className="loc-stat-label">radno vreme radnje</div>
               </div>
               <div className="loc-stat">
@@ -205,13 +214,13 @@ export default function VulkanizerskaRadnjaBorcaPage() {
             </div>
 
             <div className="loc-cta-band">
-              <h3>Svratite do radnje u Borči</h3>
+              <h3>Zakažite termin ili samo svratite</h3>
               <p>
-                Pozovite pre dolaska da dogovorimo termin — radno vreme radnje je 09:00–17:00,
-                radnim danima.
+                Radnja radi 0 do 24 časa, svaki dan u nedelji. Pozovite nas da zakažemo termin
+                unapred, ili svratite kad god vama odgovara.
               </p>
               <a href="tel:+381641290929" className="btn-primary">
-                📞 Pozovi: +381 64 12 90 929
+                📞 Pozovi i zakaži: +381 64 12 90 929
               </a>
             </div>
 
@@ -248,10 +257,10 @@ export default function VulkanizerskaRadnjaBorcaPage() {
         <div className="container">
           <div className="loc-final-cta-inner">
             <div className="eyebrow">Radnja i mobilna usluga</div>
-            <h2>Svratite do nas ili nas pozovite na adresu</h2>
+            <h2>Zakažite termin ili nas pozovite na adresu</h2>
             <p>
-              Radnja u Borči radi 09:00–17:00 radnim danima. Za hitne slučajeve van tog vremena,
-              mobilna ekipa je i dalje dostupna 24/7.
+              Radnja u Borči radi 0 do 24 časa, svaki dan u nedelji — kao i mobilna ekipa. Zakažite
+              termin unapred ili nas pozovite kad god vam odgovara.
             </p>
             <div className="loc-final-cta-num">
               <a href="tel:+381641290929">+381 64 12 90 929</a>

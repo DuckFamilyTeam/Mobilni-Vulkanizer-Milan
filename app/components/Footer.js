@@ -72,8 +72,8 @@ export default function Footer() {
               <li><a href="viber://chat?number=%2B381641290929">💬 Viber</a></li>
               <li>📍 Mobilna usluga: Ceo Beograd</li>
               <li>📍 Radnja: Zrenjaninski put 146b, Borča</li>
-              <li>🕒 Mobilna usluga non-stop 00-24h</li>
-              <li>🕒 Radnja: Pon–Pet 09–17h</li>
+              <li>🕒 Radimo 0–24h, svaki dan (mobilna usluga i radnja)</li>
+              <li>📅 Zakazivanje termina moguće — pozovite nas</li>
               <li>💳 Gotovina · kartice · IPS QR</li>
             </ul>
           </div>

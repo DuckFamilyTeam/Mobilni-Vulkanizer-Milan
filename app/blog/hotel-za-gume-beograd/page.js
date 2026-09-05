@@ -201,8 +201,9 @@ export default function HotelZaGumeBeogradPage() {
               <span className="accent">ili pozovite Milana na teren!</span>
             </h2>
             <p>
-              Radnja u Borči, Zrenjaninski put 146b, radi 09:00–17:00 radnim danima. Mobilna
-              usluga i dalje dolazi na vašu adresu, non-stop 24 časa dnevno.
+              Radnja u Borči, Zrenjaninski put 146b, radi 0–24h, svaki dan u nedelji — kao i
+              mobilna usluga koja i dalje dolazi na vašu adresu. Zakazivanje termina je moguće,
+              pozovite nas kad god vam odgovara.
             </p>
 
             <div className="blog-article-cta-num">
@@ -243,7 +244,7 @@ export default function HotelZaGumeBeogradPage() {
             </div>
 
             <span className="blog-article-cta-hint">
-              📍 Zrenjaninski put 146b, Borča · 🕒 Radnja 09–17h · Mobilna usluga 24/7
+              📍 Zrenjaninski put 146b, Borča · 🕒 Radimo 0–24h, svaki dan
             </span>
           </div>
         </div>

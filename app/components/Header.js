@@ -48,6 +48,7 @@ export default function Header() {
             <nav className="nav" role="navigation" aria-label="Glavna navigacija">
               <a href="/#usluge">Usluge</a>
               <a href="/#lokacije">Lokacije</a>
+              <Link href="/vulkanizerska-radnja-borca">Radnja Borča</Link>
               <a href="/#cene">Cenovnik</a>
               <Link href="/galerija">Galerija</Link>
               <a href="/#recenzije">Recenzije</a>
@@ -111,6 +112,9 @@ export default function Header() {
             <a href="/#usluge" onClick={closeMenu}>
               Usluge
             </a>
+            <Link href="/vulkanizerska-radnja-borca" onClick={closeMenu}>
+              <span aria-hidden="true">🏬</span> Radnja Borča
+            </Link>
             <a href="/#cene" onClick={closeMenu}>
               Cenovnik
             </a>
