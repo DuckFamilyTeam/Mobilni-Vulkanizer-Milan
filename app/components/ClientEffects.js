@@ -20,6 +20,32 @@ const cancelIdle =
 export default function ClientEffects() {
   const pathname = usePathname();
 
+  // Praćenje klika na kontakt (tel / WhatsApp / Viber) mora da radi ODMAH, ne tek kad
+  // browser proceni da je stranica "idle" (ispravljeno 2026-09-09) — inače se konverzija
+  // gubi ako posetilac klikne "Pozovi Milana" u prve dve sekunde, pre nego što bi idle
+  // callback dole stigao da zakači listener. Delegacija na document (capture) hvata klik
+  // odmah, iz bilo koje tačke stranice, i pokriva i linkove dodate posle prvog renderovanja.
+  useEffect(() => {
+    const trackEvent = (eventName, label) => {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: eventName,
+        contact_method: label,
+        page_path: window.location.pathname,
+      });
+    };
+    const handleContactClick = (e) => {
+      const link = e.target.closest && e.target.closest('a[href]');
+      if (!link) return;
+      const href = link.getAttribute('href') || '';
+      if (href.startsWith('tel:')) trackEvent('phone_call', 'tel');
+      else if (href.includes('wa.me')) trackEvent('whatsapp_click', 'whatsapp');
+      else if (href.startsWith('viber:')) trackEvent('viber_click', 'viber');
+    };
+    document.addEventListener('click', handleContactClick, true);
+    return () => document.removeEventListener('click', handleContactClick, true);
+  }, []);
+
   useEffect(() => {
     let teardown = () => {};
 
@@ -200,31 +226,8 @@ function setupEffects() {
       anchorHandlers.push({ anchor, handler });
     });
 
-    // ============ CONTACT CLICK TRACKING (GTM dataLayer) ============
-    // GTM ne kreira window.gtag — eventi se šalju kroz dataLayer.push,
-    // a u GTM-u ih hvata Custom Event trigger (phone_call / whatsapp_click / viber_click).
-    const trackEvent = (eventName, label) => {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: eventName,
-        contact_method: label,
-        page_path: window.location.pathname,
-      });
-    };
-
-    const callHandlers = [];
-    const trackSelectors = [
-      ['a[href^="tel:"]', 'phone_call', 'tel'],
-      ['a[href*="wa.me"]', 'whatsapp_click', 'whatsapp'],
-      ['a[href^="viber:"]', 'viber_click', 'viber'],
-    ];
-    trackSelectors.forEach(([selector, eventName, label]) => {
-      document.querySelectorAll(selector).forEach((link) => {
-        const handler = () => trackEvent(eventName, label);
-        link.addEventListener('click', handler);
-        callHandlers.push({ link, handler });
-      });
-    });
+    // Praćenje klika na kontakt (tel/WhatsApp/Viber) je izmešteno u zaseban, odmah aktivan
+    // useEffect gore (ne čeka idle) — vidi komentar tamo, ispravljeno 2026-09-09.
 
     // ============ CLEANUP ============
     return () => {
@@ -236,7 +239,6 @@ function setupEffects() {
       anchorHandlers.forEach(({ anchor, handler }) =>
         anchor.removeEventListener('click', handler)
       );
-      callHandlers.forEach(({ link, handler }) => link.removeEventListener('click', handler));
       mapHandlers.forEach(({ btn, handler }) => btn.removeEventListener('click', handler));
       observer.disconnect();
       videoObserver.disconnect();

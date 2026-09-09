@@ -231,10 +231,13 @@ export default async function RootLayout({ children }) {
         {children}
         <ClientEffects />
 
-        {/* GTM — afterInteractive: ne blokira render, učitava se tek kad je stranica interaktivna */}
+        {/* GTM — afterInteractive: ne blokira render, učitava se tek kad je stranica interaktivna.
+            Bilo pogrešno postavljeno na lazyOnload (učitava se tek pri browser idle-u, posle
+            window load-a) — ispravljeno 2026-09-09, jer je kasnilo baš za klik na "Pozovi Milana",
+            najčešću i najvredniju radnju na sajtu. */}
         <Script
           id="gtm-init"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
