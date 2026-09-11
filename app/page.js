@@ -389,7 +389,7 @@ export default async function HomePage() {
                     </div>
 
                     <div className="coverage-map">
-                        <iframe src="https://www.google.com/maps?q=44.8092631,20.4348278&z=13&output=embed" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Lokacija - Mobilni Vulkanizer Milan, Beograd"></iframe>
+                        <iframe src="https://www.google.com/maps?q=Zrenjaninski+put+146b+Beograd&z=13&output=embed" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Lokacija - Mobilni Vulkanizer Milan, Beograd"></iframe>
                         <button type="button" className="coverage-map-overlay" aria-label="Dodirnite da aktivirate mapu za zumiranje i pomeranje">
                             <span>Dodirnite za interakciju sa mapom</span>
                         </button>
