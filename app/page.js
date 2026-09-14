@@ -462,6 +462,19 @@ export default async function HomePage() {
                         </div>
                     </Link>
 
+                    <Link href="/mobilni-vulkanizer-pancevo" className="location-card reveal">
+                        <span className="location-card-pin">📍</span>
+                        <h3>Pančevo</h3>
+                        <p>Centar, Kotež, Tesla, Strelište, Vojlovica — i okolna mesta uz dogovor.</p>
+                        <span className="location-card-time">⏱️ <strong>~20 min</strong></span>
+                        <div>
+                            <span className="location-card-arrow">
+                                Pogledaj detalje
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </Link>
+
                     <Link href="/mobilni-vulkanizer-krnjaca" className="location-card reveal">
                         <span className="location-card-pin">📍</span>
                         <h3>Krnjača</h3>
