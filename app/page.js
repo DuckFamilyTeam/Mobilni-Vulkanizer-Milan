@@ -488,6 +488,19 @@ export default async function HomePage() {
                         </div>
                     </Link>
 
+                    <Link href="/mobilni-vulkanizer-aerodrom" className="location-card reveal">
+                        <span className="location-card-pin">✈️</span>
+                        <h3>Aerodrom</h3>
+                        <p>Aerodrom Nikola Tesla, Surčin, Bežanija, Bežanijska kosa — i Dobanovci uz dogovor.</p>
+                        <span className="location-card-time">⏱️ <strong>~30 min</strong></span>
+                        <div>
+                            <span className="location-card-arrow">
+                                Pogledaj detalje
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </Link>
+
                     <Link href="/mobilni-vulkanizer-autoput-beograd" className="location-card reveal">
                         <span className="location-card-pin">🛣️</span>
                         <h3>Autoput Beograd</h3>
