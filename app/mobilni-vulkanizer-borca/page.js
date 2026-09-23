@@ -212,9 +212,9 @@ export default async function BorcaPage() {
             <h2>Koliko košta i kada to saznate</h2>
             <p>
               Cena zavisi od adrese, doba dana i toga šta tačno treba uraditi. Kažem vam je
-              odmah kad me pozovete, pre nego što krenem, i posle se ne menja. Izlazak na teren
-              jeste skuplji od dolaska u radnju, i to vam otvoreno kažem, jer plaćate to što ja
-              dolazim kod vas.
+              odmah kad me pozovete, pre nego što krenem, i posle se ne menja. Za adrese u Borči
+              <strong>ne naplaćujem dolazak</strong>, plaćate samo rad. To je jedino naselje gde
+              je tako, zato što je i radnja tu.
             </p>
 
             <h2>Kako da me pozovete</h2>
