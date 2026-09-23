@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import StickyCall from '../components/StickyCall';
@@ -22,6 +23,25 @@ export const metadata = {
   },
 };
 
+const FAQ = [
+  {
+    q: 'Stojim na parkingu ispred bloka i ne znam broj ulaza. Kako da me nađete?',
+    a: 'Recite mi broj bloka i najbliži orijentir, tržni centar, školu ili bulevar. Ako ni to ne pomaže, pošaljite lokaciju preko Vibera ili WhatsApp-a, to je u blokovima najbrže.',
+  },
+  {
+    q: 'Radite li na parkinzima tržnih centara?',
+    a: 'Radim. Recite mi nivo i broj parking mesta. U podzemnim garažama sa niskim prilazom ostavljam kombi ispred i donosim dizalicu i alat do vašeg auta.',
+  },
+  {
+    q: 'Guma me je izdala na bulevaru i nemam gde da stanem. Šta da radim?',
+    a: 'Pomerite se do prvog bezbednog parkinga ili proširenja, uključite sva četiri žmigavca i zovite. Nemojte dugo voziti na praznoj gumi, jer se tada obično uništi i felna.',
+  },
+  {
+    q: 'Imam run flat gumu, da li se ona krpi?',
+    a: 'Zavisi od mesta i veličine oštećenja. To procenjujem na licu mesta. Ako se ne sme krpiti, montiram vašu rezervnu ili po dogovoru nabavljam novu.',
+  },
+];
+
 function buildLocationJsonLd(rating, reviewCount) {
   return {
   '@context': 'https://schema.org',
@@ -31,7 +51,7 @@ function buildLocationJsonLd(rating, reviewCount) {
       '@id': 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd#service',
       name: 'Mobilni Vulkanizer Novi Beograd',
       description:
-        'Mobilna vulkanizerska usluga na Novom Beogradu — dolazak na sve blokove, bulevare i poslovne zone za 15-30 minuta. Non-stop 24h.',
+        'Mobilna vulkanizerska usluga na Novom Beogradu, dolazak na sve blokove, bulevare i poslovne zone za 15-30 minuta. Non-stop 24h.',
       url: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd',
       provider: { '@id': 'https://www.mobilnivulkanizermilan.com/#business' },
       areaServed: { '@type': 'AdministrativeArea', name: 'Novi Beograd', containedInPlace: { '@type': 'City', name: 'Beograd' } },
@@ -42,6 +62,24 @@ function buildLocationJsonLd(rating, reviewCount) {
         servicePhone: '+381641290929',
         availableLanguage: 'Serbian',
       },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd#breadcrumb',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Početna', item: 'https://www.mobilnivulkanizermilan.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Mobilni vulkanizer Beograd', item: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd' },
+        { '@type': 'ListItem', position: 3, name: 'Novi Beograd', item: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd' },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-novi-beograd#faq',
+      mainEntity: FAQ.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
     },
   ],
 };
@@ -63,11 +101,6 @@ export default async function NoviBeogradPage() {
       <section className="loc-hero" role="region" aria-labelledby="loc-title">
         <div className="container">
           <div className="loc-hero-inner">
-            <div className="eyebrow">
-              <span className="live-pulse"></span>
-              Novi Beograd · Dostupan sada
-            </div>
-
             <h1 id="loc-title">
               Mobilni vulkanizer <span className="accent">Novi Beograd</span>
               <br />
@@ -75,19 +108,15 @@ export default async function NoviBeogradPage() {
             </h1>
 
             <p className="loc-hero-lead">
-              Probušena guma na bulevaru, u bloku, na parkingu Ušća ili u
-              poslovnoj zoni? Stižem na bilo koju adresu na Novom Beogradu u
-              proseku za 15 do 30 minuta. Više od 10 godina iskustva, kompletna
-              oprema u servisnom vozilu, profesionalan rad — non-stop 24 časa
-              dnevno.
+              Krpim i menjam gume na vašoj adresi na Novom Beogradu, u bilo kom bloku, i kod
+              vas sam za 15 do 30 minuta.
             </p>
 
             <div className="loc-hero-cta">
               <a
                 href="tel:+381641290929"
-                className="btn-primary"
-                aria-label="Pozovi mobilnog vulkanizera Novi Beograd"
-              >
+                className="js-tel btn-primary"
+                aria-label="Pozovi mobilnog vulkanizera Novi Beograd" data-cta="poziv">
                 <svg
                   width="20"
                   height="20"
@@ -103,40 +132,54 @@ export default async function NoviBeogradPage() {
                 </svg>
                 Pozovi: +381 64 12 90 929
               </a>
-              <a href="https://wa.me/381641290929" className="btn-secondary">
-                💬 WhatsApp
-              </a>
             </div>
 
+            <div className="loc-hero-alt">
+              <span className="loc-hero-alt-num">
+                Broj za kucanje i kopiranje: <strong>+381 64 12 90 929</strong>
+              </span>
+              <span className="loc-hero-alt-links">
+                <a href="https://wa.me/381641290929" className="btn-secondary btn-sm" data-cta="whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+                <a href="viber://chat?number=%2B381641290929" className="btn-secondary btn-sm" data-cta="viber">Viber</a>
+              </span>
+            </div>
+
+            <p className="loc-hero-why">
+              Vreme je realno zato što ceo dan radim u pokretu po gradu, pa prema vama krećem sa najbliže tačke, a ne iz jedne baze.
+            </p>
+
             <span className="loc-hero-quick">
-              ⚡ <strong>Svi blokovi · Bulevar Mihajla Pupina · Arena · Airport City</strong>
+              <strong>{rating.toFixed(1)}</strong> na Google Mapama, {reviewCount} recenzija
             </span>
           </div>
         </div>
       </section>
+
+      <nav className="loc-breadcrumb" aria-label="Putanja">
+        <div className="container">
+          <ol>
+            <li><Link href="/">Početna</Link></li>
+            <li><Link href="/mobilni-vulkanizer-ceo-beograd">Mobilni vulkanizer Beograd</Link></li>
+            <li aria-current="page">Novi Beograd</li>
+          </ol>
+        </div>
+      </nav>
 
       <section className="loc-content">
         <div className="container">
           <div className="loc-content-inner">
             <h2>Mobilni vulkanizer za ceo Novi Beograd</h2>
             <p>
-              Novi Beograd je urbano srce zapadnog dela grada — desetine
-              blokova, kilometri bulevara, ogromni parkinzi tržnih centara,
-              poslovne zone sa hiljadama vozila dnevno. Kada ovde nekome
-              pukne guma, vreme je više nego dragoceno. Zato kao{' '}
-              <strong>mobilni vulkanizer Novi Beograd</strong> ovaj deo grada
-              znam u prste — od najstarijih blokova oko Genex kule do novih
-              naselja na Belvilleu, od Bulevara Mihajla Pupina do parkinga ispred
-              Štark Arene.
+              Novi Beograd je desetine blokova, kilometri bulevara i ogromni parkinzi tržnih
+              centara. Kada ovde pukne guma, vreme je dragoceno. Kao{' '}
+              <strong>mobilni vulkanizer Novi Beograd</strong> ovaj deo grada znam u prste, od
+              blokova oko Genex kule do Belvillea i parkinga ispred Štark Arene.
             </p>
 
             <p>
-              Sa <strong>preko 10 godina iskustva</strong> u zanatu, brzo
-              dijagnostikujem o čemu se radi i znam najbrži put do vaše tačne
-              lokacije. Bilo da ste ispred zgrade u Bloku 45, na parkingu
-              Delta City, ispred poslovne zgrade na Bulevaru Zorana Đinđića,
-              ili negde između Brankovog mosta i Hyatt-a — adresa nije
-              prepreka.
+              Sa <strong>preko 10 godina iskustva</strong> u zanatu brzo vidim o čemu se radi i
+              znam najbrži put do vaše tačne lokacije, bilo da ste u Bloku 45 ili na parkingu
+              tržnog centra.
             </p>
 
             <div className="loc-quick-stats">
@@ -160,65 +203,51 @@ export default async function NoviBeogradPage() {
 
             <h2>Sve blokove i bulevare pokrivam</h2>
             <p>
-              Novi Beograd ima svoju logiku — blokove organizovane po
+              Novi Beograd ima svoju logiku, blokove organizovane po
               brojevima, sa parkinzima koje vozači dobro poznaju, ali i sa
               skrivenim ulicama gde GPS zna da pogreši. Zato ne tražim "negde
-              kod broja 17" — pitam vas tačan blok, broj zgrade i ulaz, i tako
+              kod broja 17", pitam vas tačan blok, broj zgrade i ulaz, i tako
               znam tačno gde da skrenem. Ovo je razlika između
               profesionalnog mobilnog vulkanizera i nekoga ko po prvi put
               dolazi u kraj.
             </p>
+            <p>
+              Pokriveni su blokovi od 19a do 70 i svi veliki pravci kroz naselje: bulevar
+              Mihajla Pupina, bulevar Zorana Đinđića, bulevar AVNOJ-a i bulevar umetnosti.
+              Isto važi i za tačke kod kojih se najčešće staje, Genex, Ušće, Štark Arena, Sava
+              centar, Belville, Delta City, Airport City i Tošin bunar, kao i za prilaze koje
+              svi koriste, Most na Adi, Brankov most i Gazela.
+            </p>
 
-            <h3>Najčešće lokacije gde stižem na Novom Beogradu</h3>
-            <ul>
-              <li>Blokovi 19a, 21, 23, 28, 29, 33, 44, 45, 61, 62, 63, 70 — sve adrese</li>
-              <li>Bulevar Mihajla Pupina, Bulevar Zorana Đinđića, Bulevar AVNOJ-a, Bulevar umetnosti</li>
-              <li>Ušće Shopping Center i okolni parking</li>
-              <li>Štark Arena, Sava Centar, Hotel Hyatt</li>
-              <li>Belville, Delta City, Airport City</li>
-              <li>Genex (Zapadna kapija), Tošin bunar — zone ka Zemunu</li>
-              <li>Most na Adi, Brankov most i Gazela — prilazi i izlazi</li>
-            </ul>
 
             <div className="loc-cta-band">
               <h3>Negde ste zaglavili na Novom Beogradu?</h3>
               <p>
-                Pozovite — kažite mi blok i broj, daću realnu procenu vremena
+                Pozovite, kažite mi blok i broj, daću realnu procenu vremena
                 pre nego što krenem.
               </p>
-              <a href="tel:+381641290929" className="btn-primary">
+              <a href="tel:+381641290929" className="js-tel btn-primary" data-cta="poziv">
                 📞 Pozovi odmah: +381 64 12 90 929
               </a>
             </div>
 
             <h2>Šta sve mogu da uradim na licu mesta</h2>
             <p>
-              U servisnom vozilu nosim kompletnu vulkanizersku opremu —
+              U servisnom vozilu nosim kompletnu vulkanizersku opremu,
               kompresor, hidrauličnu dizalicu, balansirku, profesionalan alat
               za demontažu i montažu, materijal za krpljenje, instrumente za
               proveru pritiska. Krpim probušene gume{' '}
-              <strong>iznutra (sa garancijom 30 dana)</strong>, menjam zimske i
+              <strong>iznutra</strong>, menjam zimske i
               letnje pneumatike, balansiram točkove do nule, ispravljam blago
               oštećene felne, kontrolišem i punim pritisak svih guma. Sve
-              standardne vulkanizerske intervencije — ali kod vas, ne vas kod
+              standardne vulkanizerske intervencije, ali kod vas, ne vas kod
               mene.
-            </p>
-
-            <h2>Zašto baš mobilni vulkanizer na Novom Beogradu</h2>
-            <p>
-              Saobraćaj na Novom Beogradu je gust, parkinzi su retko prazni, a
-              vučne službe znaju da se ovde najduže čekaju. Mobilni vulkanizer
-              vam štedi sve to — ne pomerate auto, ne plaćate vuču, ne gubite
-              radne sate. Posebno je važno za one koji ovde rade u poslovnim
-              zgradama na Pupinovom bulevaru, ili za roditelje koji pokupe
-              decu iz vrtića u nekom od blokova i ne smeju da krenu sa
-              probušenom gumom.
             </p>
 
             <h2>Kada me najčešće zovu sa Novog Beograda</h2>
             <p>
               Sa Novog Beograda pozivi dolaze tokom celog dana, ali postoje
-              tri tipične situacije. <strong>Prvo</strong> — pozivi iz
+              tri tipične situacije. <strong>Prvo</strong>, pozivi iz
               poslovnih zgrada na Pupinovom bulevaru i Bulevaru Zorana
               Đinđića. Ljudi izađu iz kancelarije u 18h, sednu u auto i
               vide da je guma puna. Često su u pitanju šrafovi pokupljeni na
@@ -226,41 +255,97 @@ export default async function NoviBeogradPage() {
               čovek krene kući bez gubitka vremena.
             </p>
             <p>
-              <strong>Drugo</strong> — pozivi sa parkinga tržnih centara.
-              Delta City, Ušće, Airport City Mall — svi imaju ogromne
+              <strong>Drugo</strong>, pozivi sa parkinga tržnih centara.
+              Delta City, Ušće, Airport City Mall, svi imaju ogromne
               parkinge gde ljudi parkiraju, obave kupovinu, i nakon dva sata
               vide ispraznjenu gumu. Tu sam naročito brz, jer sve te lokacije
               dobro znam i znam i kojim ulazom je najlakše prići.
             </p>
             <p>
-              <strong>Treće</strong> — pozivi iz blokova u kasnim satima.
+              <strong>Treće</strong>, pozivi iz blokova u kasnim satima.
               Stanovnici se vraćaju kući, parkiraju ispred zgrade, i tek
               ujutru otkriju da je guma izduvana preko noći (klasično "noćno
               punjenje" zbog šrafa ili eksera). Ovde najčešće radim ujutru
-              između 6h i 9h — pre nego što ljudi krenu na posao.
+              između 6h i 9h, pre nego što ljudi krenu na posao.
             </p>
 
-            <h2>Sezonska zamena guma — Novi Beograd</h2>
+            <h2>Pozovi me sada, Novi Beograd, 15-30 minuta</h2>
             <p>
-              Pored hitnih intervencija, mnogi sa Novog Beograda biraju da{' '}
-              <strong>sezonsku zamenu letnjih i zimskih guma</strong> obave
-              upravo preko mobilnog vulkanizera. Umesto da gubite pola dana
-              čekajući u redu, dogovorimo termin koji vama odgovara — pre
-              posla, tokom pauze za ručak, ili uveče kod kuće. Donosim
-              kompletan alat i balansirku, uradim sve na licu mesta. Posebno
-              je praktično za stanare zgrada u blokovima, gde fiksne radnje
-              nisu blizu.
+              Pozovite <strong>+381 64 12 90 929</strong>, kažite mi blok, broj zgrade i ulaz
+              i šta se desilo sa gumom. Vreme dolaska i cenu dobijate pre nego što krenem.
             </p>
+          </div>
+        </div>
+      </section>
 
-            <h2>Pozovi me sada — Novi Beograd, 15-30 minuta</h2>
+
+      <section className="loc-proof" role="region" aria-labelledby="loc-proof-title">
+        <div className="container">
+          <div className="loc-content-inner">
+            <h2 id="loc-proof-title">Šta kažu klijenti</h2>
+            <div className="reviews-grid reviews-grid-single">
+              <article className="review-card">
+                <div className="review-stars">★★★★★</div>
+                <p className="review-body">
+                  "Momak kulturan, brz, dosao je odmah i promenio sve 4 gume u roku od 15 minuta, pritom pazio da nista ne osteti ispod auta dizalicom itd.... sve preporuke!"
+                </p>
+                <div className="review-meta">
+                  <div className="review-author">
+                    <div className="review-avatar">L</div>
+                    <div>
+                      <div className="review-name">Ljuba</div>
+                      <div className="review-date">Google recenzija</div>
+                    </div>
+                  </div>
+                  <div className="review-source">Google</div>
+                </div>
+              </article>
+            </div>
+
+            <div className="gallery-grid gallery-grid-loc">
+              <div className="gallery-item">
+                <img src="/4.webp" data-full="/4.webp" alt="Mobilni vulkanizer na intervenciji noću u Beogradu" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), 360px" />
+                <div className="gallery-item-overlay"><span>Noćna intervencija</span></div>
+              </div>
+              <div className="gallery-item">
+                <img src="/7.webp" data-full="/7.webp" alt="Zamena pneumatika na parkingu ispred zgrade" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), 360px" />
+                <div className="gallery-item-overlay"><span>Rad na parkingu bloka</span></div>
+              </div>
+              <div className="gallery-item">
+                <img src="/1.webp" data-full="/1.webp" alt="Vulkanizerski alat na terenu" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), 360px" />
+                <div className="gallery-item-overlay"><span>Alat iz servisnog vozila</span></div>
+              </div>
+            </div>
+
+            <h2>Ako niste na Novom Beogradu</h2>
             <p>
-              Pozovite <strong>+381 64 12 90 929</strong>, kažite mi tačnu
-              adresu (blok, broj zgrade, ulaz) i šta se desilo sa gumom. Procenu
-              vremena dobijate odmah, fer cenu pre početka rada, profesionalnu
-              uslugu sa <strong>više od 10 godina iskustva</strong>. Non-stop
-              24 časa, svih 365 dana u godini — uključujući noći, vikende i
-              praznike.
+              Radim na putničkim vozilima, džipovima i kombijima. Kamione i autobuse ne radim,
+              za njih nemam opremu. Ako vam je auto stao izvan ove zone, pogledajte{' '}
+              <Link href="/mobilni-vulkanizer-ceo-beograd">mobilni vulkanizer Beograd</Link>,{' '}
+              <Link href="/mobilni-vulkanizer-zemun">mobilni vulkanizer Zemun</Link> i{' '}
+              <Link href="/mobilni-vulkanizer-aerodrom">mobilni vulkanizer Surčin i aerodrom</Link>.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="loc-faq" role="region" aria-labelledby="loc-faq-title">
+        <div className="container">
+          <div className="loc-content-inner">
+            <h2 id="loc-faq-title">Česta pitanja sa Novog Beograda</h2>
+            <div className="faq-list">
+              {FAQ.map((item) => (
+                <article className="faq-item" key={item.q}>
+                  <button className="faq-question" aria-expanded="false">
+                    <span>{item.q}</span>
+                    <span className="faq-icon">+</span>
+                  </button>
+                  <div className="faq-answer">
+                    <p>{item.a}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -275,19 +360,18 @@ export default async function NoviBeogradPage() {
               koje doba dana ili noći.
             </p>
             <div className="loc-final-cta-num">
-              <a href="tel:+381641290929">+381 64 12 90 929</a>
+              <a href="tel:+381641290929" data-cta="poziv" className="js-tel">+381 64 12 90 929</a>
             </div>
             <div className="loc-final-cta-actions">
-              <a href="tel:+381641290929" className="btn-primary">
+              <a href="tel:+381641290929" className="js-tel btn-primary" data-cta="poziv">
                 📞 Pozovi odmah
               </a>
-              <a href="https://wa.me/381641290929" className="btn-secondary">
+              <a href="https://wa.me/381641290929" className="btn-secondary" data-cta="whatsapp">
                 💬 WhatsApp
               </a>
               <a
                 href="viber://chat?number=%2B381641290929"
-                className="btn-secondary"
-              >
+                className="btn-secondary" data-cta="viber">
                 💬 Viber
               </a>
             </div>

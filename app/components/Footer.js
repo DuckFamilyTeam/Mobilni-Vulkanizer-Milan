@@ -21,7 +21,7 @@ export default function Footer() {
             </Link>
             <p>
               Profesionalna mobilna vulkanizerska usluga u Beogradu. Dolazim na
-              vašu adresu — brzo, profesionalno, u bilo koje doba dana ili noći.
+              vašu adresu, brzo, profesionalno, u bilo koje doba dana ili noći.
             </p>
             <p style={{ marginTop: '12px' }}>
               💳 Plaćanje: Gotovina · Dina · Visa · MasterCard · Maestro ·
@@ -33,7 +33,7 @@ export default function Footer() {
             <h3>Blog</h3>
             <ul>
               <li><Link href="/blog">Svi članci</Link></li>
-              <li><Link href="/blog/krpljenje-probusene-gume">Krpljenje gume — vodič</Link></li>
+              <li><Link href="/blog/krpljenje-probusene-gume">Krpljenje gume, vodič</Link></li>
               <li><Link href="/blog/hotel-za-gume-beograd">Hotel za gume</Link></li>
             </ul>
           </div>
@@ -60,7 +60,7 @@ export default function Footer() {
               <li><Link href="/mobilni-vulkanizer-borca">Borča</Link></li>
               <li><Link href="/mobilni-vulkanizer-krnjaca">Krnjača</Link></li>
               <li><Link href="/mobilni-vulkanizer-autoput-beograd">Autoput Beograd</Link></li>
-              <li><Link href="/vulkanizerska-radnja-borca">Radnja — Zrenjaninski put 146b</Link></li>
+              <li><Link href="/vulkanizerska-radnja-borca">Radnja, Zrenjaninski put 146b</Link></li>
             </ul>
           </div>
 
@@ -72,8 +72,8 @@ export default function Footer() {
               <li><a href="viber://chat?number=%2B381641290929">💬 Viber</a></li>
               <li>📍 Mobilna usluga: Ceo Beograd</li>
               <li>📍 Radnja: Zrenjaninski put 146b, Borča</li>
-              <li>🕒 Radimo 0–24h, svaki dan (mobilna usluga i radnja)</li>
-              <li>📅 Zakazivanje termina moguće — pozovite nas</li>
+              <li>🕒 Radimo 0-24h, svaki dan (mobilna usluga i radnja)</li>
+              <li>📅 Zakazivanje termina moguće, pozovite nas</li>
               <li>💳 Gotovina · kartice · IPS QR</li>
             </ul>
           </div>

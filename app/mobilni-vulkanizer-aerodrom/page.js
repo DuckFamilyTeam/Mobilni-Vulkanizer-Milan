@@ -1,19 +1,20 @@
+import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import StickyCall from '../components/StickyCall';
 import { getGbpRating } from '../lib/googlePlaces';
 
 export const metadata = {
-  title: 'Mobilni Vulkanizer Aerodrom | Dolazak za 30 min, 24/7',
+  title: 'Mobilni vulkanizer Surčin i aerodrom | Dolazim za 30 minuta',
   description:
-    'Mobilni vulkanizer u zoni Aerodroma Nikola Tesla, Surčin, Bežanija — dolazim za oko 30 minuta. Krpljenje gume, zamena pneumatika, balansiranje. Non-stop 24h. Pozovite +381 64 12 90 929.',
+    'Mobilni vulkanizer za Surčin, aerodrom Nikola Tesla, Bežaniju i Dobanovce. Dolazim na vašu adresu za oko 30 minuta, non-stop. Pozovite 064 12 90 929.',
   keywords:
     'mobilni vulkanizer aerodrom, vulkanizer 24h aerodrom nikola tesla, 24h vulkanizer surčin, krpljenje guma aerodrom beograd, hitna zamena guma surčin, mobilni vulkanizer bežanija, dežurni vulkanizer aerodrom, mobilni vulkanizer dobanovci, mobilni vulkanizer surčin, mobilni vulkanizer bežanijska kosa',
   alternates: {
     canonical: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-aerodrom',
   },
   openGraph: {
-    title: 'Mobilni Vulkanizer Aerodrom | Dolazak oko 30 min, 24/7',
+    title: 'Mobilni vulkanizer Surčin i aerodrom | Dolazim za 30 minuta',
     description:
       'Probušena guma kod Aerodroma Nikola Tesla, u Surčinu ili Bežaniji? Stižem za oko 30 minuta. Non-stop 24h.',
     url: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-aerodrom',
@@ -22,6 +23,25 @@ export const metadata = {
   },
 };
 
+const FAQ = [
+  {
+    q: 'Mogu li da vas zovem sa parkinga aerodroma Nikola Tesla?',
+    a: 'Možete. Recite mi na kom ste parkingu i na kom nivou ili u kom redu. Na aerodromskim parkinzima je oznaka mesta najbrži način da vas nađem.',
+  },
+  {
+    q: 'Letim za nekoliko sati. Stignete li na vreme?',
+    a: 'Recite mi odmah u koliko vam ističe vreme. Ako ne mogu da stignem tako da završimo pre nego što morate da krenete, reći ću vam to otvoreno, a ne da vas držim u čekanju.',
+  },
+  {
+    q: 'Radite li u Dobanovcima, na Bežaniji i Bežanijskoj kosi?',
+    a: 'Radim, cela ta zona je deo mog terena, zajedno sa samim Surčinom.',
+  },
+  {
+    q: 'Auto mi ostaje na parkingu, a ja putujem. Može li bez mene?',
+    a: 'Može, ali mi treba ključ i neko ko će biti tu da otvori auto. Bez pristupa vozilu ne mogu ništa da uradim. Dogovorimo se na telefonu kako to da rešimo.',
+  },
+];
+
 function buildLocationJsonLd(rating, reviewCount) {
   return {
   '@context': 'https://schema.org',
@@ -29,9 +49,9 @@ function buildLocationJsonLd(rating, reviewCount) {
     {
       '@type': 'Service',
       '@id': 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-aerodrom#service',
-      name: 'Mobilni Vulkanizer Aerodrom',
+      name: 'Mobilni vulkanizer Surčin i aerodrom',
       description:
-        'Mobilna vulkanizerska usluga u zoni Aerodroma Nikola Tesla, Surčina, Bežanije i Bežanijske kose — dolazak na adresu za oko 30 minuta. Non-stop 24h.',
+        'Mobilna vulkanizerska usluga u zoni Aerodroma Nikola Tesla, Surčina, Bežanije i Bežanijske kose, dolazak na adresu za oko 30 minuta. Non-stop 24h.',
       url: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-aerodrom',
       provider: { '@id': 'https://www.mobilnivulkanizermilan.com/#business' },
       areaServed: {
@@ -46,6 +66,24 @@ function buildLocationJsonLd(rating, reviewCount) {
         servicePhone: '+381641290929',
         availableLanguage: 'Serbian',
       },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-aerodrom#breadcrumb',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Početna', item: 'https://www.mobilnivulkanizermilan.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Mobilni vulkanizer Beograd', item: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd' },
+        { '@type': 'ListItem', position: 3, name: 'Surčin i aerodrom', item: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-aerodrom' },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-aerodrom#faq',
+      mainEntity: FAQ.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
     },
   ],
 };
@@ -67,32 +105,22 @@ export default async function AerodromPage() {
       <section className="loc-hero" role="region" aria-labelledby="loc-title">
         <div className="container">
           <div className="loc-hero-inner">
-            <div className="eyebrow">
-              <span className="live-pulse"></span>
-              Aerodrom Nikola Tesla · Dostupan sada
-            </div>
-
             <h1 id="loc-title">
-              Mobilni vulkanizer <span className="accent">Aerodrom</span>
+              Mobilni vulkanizer <span className="accent">Surčin</span> i aerodrom
               <br />
               dolazim za 30 minuta
             </h1>
 
             <p className="loc-hero-lead">
-              Probušena guma kod Aerodroma Nikola Tesla, u Surčinu, Bežaniji
-              ili Bežanijskoj kosi? Bez panike. Pozovite Milana — sa više od
-              10 godina iskustva u vulkanizerskom zanatu, dolazim na vašu
-              adresu u proseku za oko 30 minuta. Krpljenje, zamena pneumatika
-              i balansiranje na licu mesta — 24 časa dnevno, 7 dana u
-              nedelji.
+              Krpim i menjam gume na vašoj adresi u Surčinu i u zoni aerodroma, i kod vas sam
+              za oko 30 minuta.
             </p>
 
             <div className="loc-hero-cta">
               <a
                 href="tel:+381641290929"
-                className="btn-primary"
-                aria-label="Pozovi mobilnog vulkanizera Aerodrom"
-              >
+                className="js-tel btn-primary"
+                aria-label="Pozovi mobilnog vulkanizera Aerodrom" data-cta="poziv">
                 <svg
                   width="20"
                   height="20"
@@ -108,155 +136,173 @@ export default async function AerodromPage() {
                 </svg>
                 Pozovi: +381 64 12 90 929
               </a>
-              <a href="https://wa.me/381641290929" className="btn-secondary">
-                💬 WhatsApp
-              </a>
             </div>
 
+            <div className="loc-hero-alt">
+              <span className="loc-hero-alt-num">
+                Broj za kucanje i kopiranje: <strong>+381 64 12 90 929</strong>
+              </span>
+              <span className="loc-hero-alt-links">
+                <a href="https://wa.me/381641290929" className="btn-secondary btn-sm" data-cta="whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+                <a href="viber://chat?number=%2B381641290929" className="btn-secondary btn-sm" data-cta="viber">Viber</a>
+              </span>
+            </div>
+
+            <p className="loc-hero-why">
+              Vreme je realno zato što ceo dan radim u pokretu po gradu, pa prema vama krećem sa najbliže tačke, a ne iz jedne baze.
+            </p>
+
             <span className="loc-hero-quick">
-              ⚡ <strong>Surčin · Bežanija · Bežanijska kosa · Dobanovci</strong> — sve pokriveno
+              <strong>{rating.toFixed(1)}</strong> na Google Mapama, {reviewCount} recenzija
             </span>
           </div>
         </div>
       </section>
 
+      <nav className="loc-breadcrumb" aria-label="Putanja">
+        <div className="container">
+          <ol>
+            <li><Link href="/">Početna</Link></li>
+            <li><Link href="/mobilni-vulkanizer-ceo-beograd">Mobilni vulkanizer Beograd</Link></li>
+            <li aria-current="page">Surčin i aerodrom</li>
+          </ol>
+        </div>
+      </nav>
+
       <section className="loc-content">
         <div className="container">
           <div className="loc-content-inner">
-            <h2>Vulkanizer koji dolazi do Aerodroma Nikola Tesla</h2>
+
+            <h2>U zoni aerodroma vreme se meri satom, ne kilometrima</h2>
             <p>
-              Zonu Aerodroma Nikola Tesla, Surčin, Bežaniju i Bežanijsku kosu
-              pokrivam redovno. <strong>Mobilni vulkanizer kod aerodroma</strong>{' '}
-              znači jednu jednostavnu stvar: ne morate gurati auto do
-              najbliže radnje, ne morate zvati vučnu službu i ne morate
-              planirati pola dana za nešto što se rešava za 30 minuta.
-              Pozovete me, ja krenem, i u proseku sam kod vas za oko 30
-              minuta.
+              Poziv sa aerodroma skoro nikad nije običan kvar. Čovek ima let, ima dogovoreno
+              vreme vraćanja rentiranog auta ili nekoga čeka da sleti. Zato je prva stvar koju
+              vas pitam koliko vremena imate, pa tek onda gde ste.
+            </p>
+            <p>
+              Ako ne mogu da stignem tako da završimo pre nego što morate da krenete, reći ću
+              vam to odmah, a ne držati vas u čekanju. To je jedini pošten način na ovom terenu.
             </p>
 
+            <h2>Surčin, Bežanija, Bežanijska kosa i Dobanovci</h2>
             <p>
-              Već <strong>preko 10 godina</strong> se bavim vulkanizerskim
-              zanatom. Bilo da ste u Surčinu, na Bežaniji, na Bežanijskoj
-              kosi, kod samog aerodroma ili u nekom od okolnih mesta —
-              adresa nije problem. Stižem do vas bez zaobilaznica i bez
-              čekanja.
+              Pokrivam ceo Surčin, Bežaniju i Bežanijsku kosu, Dobanovce i samu zonu aerodroma
+              Nikola Tesla, uključujući prilazne puteve i parkinge.
             </p>
 
-            <div className="loc-quick-stats">
-              <div className="loc-stat">
-                <div className="loc-stat-num">~30</div>
-                <div className="loc-stat-label">min do dolaska</div>
-              </div>
-              <div className="loc-stat">
-                <div className="loc-stat-num">10+</div>
-                <div className="loc-stat-label">godina iskustva</div>
-              </div>
-              <div className="loc-stat">
-                <div className="loc-stat-num">24/7</div>
-                <div className="loc-stat-label">non-stop</div>
-              </div>
-              <div className="loc-stat">
-                <div className="loc-stat-num">{rating.toFixed(1)}★</div>
-                <div className="loc-stat-label">Google ocena</div>
-              </div>
-            </div>
-
-            <h2>Šta sve donosim sa sobom</h2>
+            <h2>Parkinzi aerodroma i kako da mi kažete gde ste</h2>
             <p>
-              Mobilni vulkanizer nije neko ko dođe sa krpom i kanapom. U
-              servisnom vozilu nosim kompletno opremljen mini-vulkanizer:
-              kompresor, hidrauličnu dizalicu, profesionalan vulkanizerski
-              alat, materijal za krpljenje, balansirku, set za demontažu i
-              montažu pneumatika i sve potrebne instrumente za kontrolu
-              pritiska. Sve što ima fiksna vulkanizerska radnja imam i ja u
-              kombiju — samo što meni nije problem da se to nađe ispred vas
-              u Surčinu ili kod aerodroma u 23:00.
+              Na aerodromskim parkinzima adresa ne znači ništa, ali oznaka parking mesta znači
+              sve. Recite mi koji je parking, koji nivo i koja je oznaka mesta i dolazim pravo
+              do vas. Na otvorenim parkinzima dovoljan je red i najbliži izlaz ka terminalu.
+            </p>
+            <p>
+              U podzemnim delovima i garažama sa niskim prilazom kombi ne prolazi svuda. Tada ga
+              ostavljam na prvom mestu gde mogu i donosim dizalicu i alat do vašeg auta. To
+              produži posao za nekoliko minuta, ali ga ne sprečava.
+            </p>
+
+            <h2>Šta radim na licu mesta</h2>
+            <p>
+              Krpim gumu iznutra, menjam pneumatik, balansiram točak, montiram vašu rezervnu
+              gumu i proveravam pritisak. Ako je guma takva da se ne sme krpiti, kažem vam to
+              odmah, jer na putu do aerodroma nije mesto za privremena rešenja.
+            </p>
+
+            <h2>Cena se zna pre polaska</h2>
+            <p>
+              Cena zavisi od lokacije, doba dana i vrste posla, i kažem vam je odmah kad me
+              pozovete. Bez skrivenih troškova i bez naplate koju biste saznali tek na licu
+              mesta.
+            </p>
+
+            <h2>Pozovite</h2>
+            <p>
+              Pozovite <strong>+381 64 12 90 929</strong>, recite mi koliko vremena imate i gde
+              ste tačno parkirani. Ako ste u zoni terminala, pošaljite lokaciju preko Vibera ili
+              WhatsApp-a, to je najbrže.
             </p>
 
             <div className="loc-cta-band">
-              <h3>Već sada vam treba vulkanizer kod aerodroma?</h3>
-              <p>
-                Jedan poziv i krećem ka vama. Procenu vremena dobijate odmah,
-                cenu pre početka rada — bez skrivenih troškova.
-              </p>
-              <a href="tel:+381641290929" className="btn-primary">
-                📞 Pozovi odmah: +381 64 12 90 929
+              <h3>Guma vas zaustavila na putu za aerodrom?</h3>
+              <p>Pozovite i recite koliko vremena imate. Ostalo je moj posao.</p>
+              <a href="tel:+381641290929" className="btn-primary js-tel" data-cta="poziv">
+                Pozovi: +381 64 12 90 929
               </a>
             </div>
 
-            <h2>Kada me najčešće zovu iz ove zone</h2>
-            <p>
-              Iz zone aerodroma dobijam pozive uglavnom u dve tipične
-              situacije. <strong>Prvo</strong> — putnik ili vozač rent-a-car
-              vozila primeti izduvanu gumu neposredno pre ili posle leta,
-              pod pritiskom vremena zbog transfera ili predaje vozila.
-              Umesto gubljenja sata na traženje vulkanizera, pozove me i
-              rešimo to na licu mesta, bez kašnjenja na let ili predaju
-              vozila.
-            </p>
-            <p>
-              <strong>Druga situacija</strong> — meštani Surčina, Bežanije i
-              Bežanijske kose nagaze nešto na putu, često na deonicama oko
-              aerodromske zone gde je saobraćaj gušći. Tad se ne usuđuju da
-              nastave, parkiraju na prvom bezbednom mestu, i zovu mene.
-              Reagujem brzo jer znam koliko je nezgodno čekati pored
-              saobraćajnice u blizini aerodroma.
-            </p>
+          </div>
+        </div>
+      </section>
 
-            <h2>Profesionalan rad, ne improvizacija</h2>
-            <p>
-              Vulkanizerski zanat nije mesto za improvizaciju. Kad krpim gumu,
-              krpim je <strong>iznutra</strong>, profesionalno, sa garancijom
-              od 30 dana. Kad menjam pneumatik, koristim opremu koja ne
-              oštećuje felnu, šelnu ni ventilski adapter. Kad balansiram,
-              balansiram do nule. To je razlika između nekoga ko "popravlja
-              gume" i pravog mobilnog vulkanizera koji iza sebe ima decenije
-              rada — kuda god išao u zoni aerodroma.
-            </p>
 
-            <h3>Delovi zone Aerodroma koje pokrivam</h3>
-            <ul>
-              <li>Aerodrom Nikola Tesla i neposredna okolina</li>
-              <li>Surčin — centar i okolna naselja</li>
-              <li>Bežanija</li>
-              <li>Bežanijska kosa</li>
-              <li>Dobanovci — uz dogovor</li>
-              <li>Okolna mesta uz dogovor</li>
-            </ul>
-            <p style={{ fontSize: '14px', color: 'var(--text-muted)' }}>
-              *Lista naselja je okvirna — javite tačnu adresu pri pozivu, dajem
-              realnu procenu vremena dolaska za svaku lokaciju.
-            </p>
+      <section className="loc-proof" role="region" aria-labelledby="loc-proof-title">
+        <div className="container">
+          <div className="loc-content-inner">
+            <h2 id="loc-proof-title">Recenzija sa Google profila</h2>
+            <div className="reviews-grid reviews-grid-single">
+              <article className="review-card">
+                <div className="review-stars">★★★★★</div>
+                <p className="review-body">
+                  "Sve preporuke za Mobilnog vulkanizera Milana iz Beograda! Zvala sam ga u nezgodno vreme i odazvao se odmah. Stigao je veoma brzo, bio je ljubazan, profesionalan i odmah pronašao problem."
+                </p>
+                <div className="review-meta">
+                  <div className="review-author">
+                    <div className="review-avatar">A</div>
+                    <div>
+                      <div className="review-name">Anastasija Stankovic</div>
+                      <div className="review-date">Google recenzija</div>
+                    </div>
+                  </div>
+                  <div className="review-source">Google</div>
+                </div>
+              </article>
+            </div>
 
-            <h2>Sezonska zamena guma — kod kuće ili pre puta</h2>
-            <p>
-              Pored hitnih intervencija, dosta klijenata iz ove zone bira da{' '}
-              <strong>sezonsku zamenu letnjih i zimskih guma</strong> obavi
-              upravo kod kuće — bez gubljenja pola dana u redu kod fiksne
-              radnje. Dogovorimo termin koji vama odgovara, dođem ispred vaše
-              adrese u Surčinu, na Bežaniji ili Bežanijskoj kosi, donosim
-              balansirku i sav alat, i sve uradim za 30-40 minuta.
-            </p>
+            <div className="gallery-grid gallery-grid-loc">
+              <div className="gallery-item">
+                <img src="/land-rover-dizalica.webp" data-full="/land-rover-dizalica.webp" alt="Auto podignut dizalicom na terenu kod aerodroma" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), 360px" />
+                <div className="gallery-item-overlay"><span>Dizalica na terenu</span></div>
+              </div>
+              <div className="gallery-item">
+                <img src="/8.webp" data-full="/8.webp" alt="Servisni kombi mobilnog vulkanizera u Beogradu" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), 360px" />
+                <div className="gallery-item-overlay"><span>Kombi na intervenciji</span></div>
+              </div>
+              <div className="gallery-item">
+                <img src="/brza-zamena-guma.webp" data-full="/brza-zamena-guma.webp" alt="Brza zamena gume na parkingu" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), 360px" />
+                <div className="gallery-item-overlay"><span>Brza zamena gume</span></div>
+              </div>
+            </div>
 
-            <h2>Pošteno o ceni — bez iznenađenja</h2>
+            <h2>Susedne zone</h2>
             <p>
-              Konačnu cenu uvek znate <strong>pre početka rada</strong>. Cena
-              zavisi od tipa intervencije, vremena (radni dan, vikend, noćna
-              tarifa) i specifičnosti vašeg vozila. Bez skrivenih troškova,
-              bez "dodatnih radova" koje vam nisu potrebni — to je jedini
-              način koji mi je posle decenije rada ostao da poslujem.
+              Radim na putničkim vozilima, džipovima i kombijima. Kamione i autobuse ne radim,
+              za njih nemam opremu. Ako vam je auto stao izvan ove zone, pogledajte{' '}
+              <Link href="/mobilni-vulkanizer-ceo-beograd">mobilni vulkanizer Beograd</Link>,{' '}
+              <Link href="/mobilni-vulkanizer-zemun">mobilni vulkanizer Zemun</Link> i{' '}
+              <Link href="/mobilni-vulkanizer-batajnica">mobilni vulkanizer Batajnica</Link>.
             </p>
+          </div>
+        </div>
+      </section>
 
-            <h2>Pozovi sada — kod aerodroma sam za oko 30 min</h2>
-            <p>
-              Nemate vremena za čekanje, a ni nervi vam ne trebaju pre leta ili
-              usred radnog dana. Pozovite <strong>+381 64 12 90 929</strong>,
-              recite mi tačnu adresu u zoni aerodroma i šta se desilo sa
-              gumom. Daću vam realno vreme dolaska pre nego što krenem, fer
-              cenu pre nego što počnem, i kvalitetno rešenje ubrzo nakon što
-              stignem. Bez izgovora, bez kašnjenja, bez skrivenih troškova —
-              to je moja reč.
-            </p>
+      <section className="loc-faq" role="region" aria-labelledby="loc-faq-title">
+        <div className="container">
+          <div className="loc-content-inner">
+            <h2 id="loc-faq-title">Česta pitanja iz Surčina i sa aerodroma</h2>
+            <div className="faq-list">
+              {FAQ.map((item) => (
+                <article className="faq-item" key={item.q}>
+                  <button className="faq-question" aria-expanded="false">
+                    <span>{item.q}</span>
+                    <span className="faq-icon">+</span>
+                  </button>
+                  <div className="faq-answer">
+                    <p>{item.a}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -265,25 +311,24 @@ export default async function AerodromPage() {
         <div className="container">
           <div className="loc-final-cta-inner">
             <div className="eyebrow">Hitan poziv</div>
-            <h2>Probušena guma kod aerodroma ne čeka — neću ni ja</h2>
+            <h2>Probušena guma kod aerodroma ne čeka, neću ni ja</h2>
             <p>
               Jedan poziv i krećem na vašu adresu. Non-stop, 24h, svih 365 dana
               u godini.
             </p>
             <div className="loc-final-cta-num">
-              <a href="tel:+381641290929">+381 64 12 90 929</a>
+              <a href="tel:+381641290929" data-cta="poziv" className="js-tel">+381 64 12 90 929</a>
             </div>
             <div className="loc-final-cta-actions">
-              <a href="tel:+381641290929" className="btn-primary">
+              <a href="tel:+381641290929" className="js-tel btn-primary" data-cta="poziv">
                 📞 Pozovi odmah
               </a>
-              <a href="https://wa.me/381641290929" className="btn-secondary">
+              <a href="https://wa.me/381641290929" className="btn-secondary" data-cta="whatsapp">
                 💬 WhatsApp
               </a>
               <a
                 href="viber://chat?number=%2B381641290929"
-                className="btn-secondary"
-              >
+                className="btn-secondary" data-cta="viber">
                 💬 Viber
               </a>
             </div>

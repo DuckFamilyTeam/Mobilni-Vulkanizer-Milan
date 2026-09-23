@@ -23,7 +23,7 @@ const servicesJsonLd = {
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Ispravka felni' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hitna vučna služba' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Kontrola i dopuna pritiska u gumama' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hotel za gume — sezonsko čuvanje' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hotel za gume, sezonsko čuvanje' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Poliranje farova' } },
     ],
   },
@@ -33,15 +33,14 @@ const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'Da li dolazite noću i vikendom?', acceptedAnswer: { '@type': 'Answer', text: 'Da, radimo non-stop, 365 dana u godini — uključujući noć, vikende i praznike. Dodaje se samo noćna taksa za intervencije između 22h i 06h.' } },
+    { '@type': 'Question', name: 'Da li dolazite noću i vikendom?', acceptedAnswer: { '@type': 'Answer', text: 'Da, radimo non-stop, 365 dana u godini, uključujući noć, vikende i praznike. Dodaje se samo noćna taksa za intervencije između 22h i 06h.' } },
     { '@type': 'Question', name: 'Koliko košta dolazak mobilnog vulkanizera?', acceptedAnswer: { '@type': 'Answer', text: 'Konačna cena zavisi od vaše lokacije, vremena intervencije, karakteristika vozila i tipa posla. Pozovite nas i daćemo vam fiksnu procenu pre polaska.' } },
     { '@type': 'Question', name: 'Koliko brzo stižete na lokaciju?', acceptedAnswer: { '@type': 'Answer', text: 'Prosečno vreme dolaska je 15-30 minuta od poziva. Vreme zavisi od trenutne lokacije i saobraćaja, ali uvek dajemo realnu procenu pre dolaska.' } },
     { '@type': 'Question', name: 'Za koje tipove vozila pružate usluge?', acceptedAnswer: { '@type': 'Answer', text: 'Servisiramo putnička osobna vozila i SUV-ove svih marki i modela. Za kombije i veća vozila pozovite nas radi konsultacije.' } },
     { '@type': 'Question', name: 'Šta ako guma nije popravljiva?', acceptedAnswer: { '@type': 'Answer', text: 'Ukoliko guma nije popravljiva, možemo ugraditi vašu rezervnu gumu ili po dogovoru obezbediti i ugraditi novu gumu na licu mesta.' } },
-    { '@type': 'Question', name: 'Pokrivate li prigradska mesta?', acceptedAnswer: { '@type': 'Answer', text: 'Primarno pokrivamo ceo Beograd uključujući prigradska naselja (Borča, Surčin, Mirijevo, Resnik, Kaluđerica). Za dalje lokacije pozovite — dogovaramo se.' } },
-    { '@type': 'Question', name: 'Mogu li platiti karticom?', acceptedAnswer: { '@type': 'Answer', text: 'Da — prihvatamo gotovinu, sve platne kartice (Dina, Visa, MasterCard, Maestro, American Express) i plaćanje IPS QR kodom. Za firme je dostupno i fakturisanje sa odloženim plaćanjem.' } },
-    { '@type': 'Question', name: 'Kakvu garanciju pružate na rad?', acceptedAnswer: { '@type': 'Answer', text: 'Na svako krpljenje gume dajemo garanciju od 30 dana. Korišćenu opremu i materijale takođe garantujemo prema deklaracijama proizvođača.' } },
-    { '@type': 'Question', name: 'Šta ako pada kiša ili sneg?', acceptedAnswer: { '@type': 'Answer', text: 'Radimo po svim vremenskim uslovima. Naša vozila su opremljena tako da možemo bezbedno raditi i u kiši, snegu ili magli.' } },
+    { '@type': 'Question', name: 'Pokrivate li prigradska mesta?', acceptedAnswer: { '@type': 'Answer', text: 'Primarno pokrivamo ceo Beograd uključujući prigradska naselja (Borča, Surčin, Mirijevo, Resnik, Kaluđerica). Za dalje lokacije pozovite, dogovaramo se.' } },
+    { '@type': 'Question', name: 'Mogu li platiti karticom?', acceptedAnswer: { '@type': 'Answer', text: 'Da, prihvatamo gotovinu, sve platne kartice (Dina, Visa, MasterCard, Maestro, American Express) i plaćanje IPS QR kodom. Za firme je dostupno i fakturisanje sa odloženim plaćanjem.' } },
+        { '@type': 'Question', name: 'Šta ako pada kiša ili sneg?', acceptedAnswer: { '@type': 'Answer', text: 'Radimo po svim vremenskim uslovima. Naša vozila su opremljena tako da možemo bezbedno raditi i u kiši, snegu ili magli.' } },
     { '@type': 'Question', name: 'Koliko traje krpljenje probušene gume?', acceptedAnswer: { '@type': 'Answer', text: 'Standardno krpljenje gume traje 15-25 minuta od početka rada. Zamena pneumatika 20-40 minuta, zavisno od broja guma.' } },
     { '@type': 'Question', name: 'Da li mogu rezervisati termin unapred?', acceptedAnswer: { '@type': 'Answer', text: 'Da, ako vam odgovara unapred dogovoren termin (npr. zamena letnjih i zimskih guma), pozovite ili pišite na Viber/WhatsApp. Hitne intervencije imaju prioritet.' } },
     { '@type': 'Question', name: 'Šta sve nosite sa sobom?', acceptedAnswer: { '@type': 'Answer', text: 'Kompletan profesionalan set: kompresor, dizalica, vulkanizerski alat, materijal za krpljenje, balanser, opremu za demontažu i montažu. Sve što imamo u radnji.' } },
@@ -81,7 +80,7 @@ export default async function HomePage() {
                         </h1>
         
                         <p className="hero-lead">
-                            Probušena guma? Zamena pneumatika? Dolazim na bilo koju lokaciju u Beogradu — brzo, profesionalno, u bilo koje doba dana ili noći. Jedan poziv je sve što vam treba.
+                            Probušena guma? Zamena pneumatika? Dolazim na bilo koju lokaciju u Beogradu, brzo, profesionalno, u bilo koje doba dana ili noći. Jedan poziv je sve što vam treba.
                         </p>
         
                         <div className="hero-cta">
@@ -160,7 +159,7 @@ export default async function HomePage() {
             <div className="container">
                 <div className="section-header">
                     <div className="eyebrow">Naše usluge</div>
-                    <h2 id="services-title">Sve što vam treba — na licu mesta</h2>
+                    <h2 id="services-title">Sve što vam treba, na licu mesta</h2>
                     <p>Mobilna ekipa opremljena profesionalnim alatima i materijalima. Bez vučne službe, bez čekanja u redu.</p>
                 </div>
         
@@ -170,7 +169,7 @@ export default async function HomePage() {
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></svg>
                         </div>
                         <h3>Krpljenje probušene gume</h3>
-                        <p>Brzo i pouzdano krpljenje na licu mesta — bez potrebe za vučnom službom ili odlaskom do vulkanizera. Garancija 30 dana.</p>
+                        <p>Brzo i pouzdano krpljenje na licu mesta, bez potrebe za vučnom službom ili odlaskom do vulkanizera. Garancija 30 dana.</p>
                     </Link>
         
                     <Link href="/blog/kada-promeniti-zimske-za-letnje-gume" className="service-card reveal">
@@ -178,7 +177,7 @@ export default async function HomePage() {
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 0 1 9-9"/></svg>
                         </div>
                         <h3>Zamena pneumatika</h3>
-                        <p>Menjam letnje i zimske gume direktno kod vas — kod kuće, na poslu, ili bilo gde na putu. Sezonska promena za sve modele.</p>
+                        <p>Menjam letnje i zimske gume direktno kod vas, kod kuće, na poslu, ili bilo gde na putu. Sezonska promena za sve modele.</p>
                     </Link>
 
                     <Link href="/blog/balansiranje-tockova" className="service-card reveal">
@@ -210,7 +209,7 @@ export default async function HomePage() {
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v6m0 0v6m0-6h6m-6 0H6"/><circle cx="12" cy="12" r="10"/></svg>
                         </div>
                         <h3>Kontrola i dopuna pritiska</h3>
-                        <p>Proveravam i punim sve četiri gume na ispravan pritisak — brzo i precizno uz svaku uslugu. Punjenje azotom po želji.</p>
+                        <p>Proveravam i punim sve četiri gume na ispravan pritisak, brzo i precizno uz svaku uslugu. Punjenje azotom po želji.</p>
                     </article>
 
                     <Link href="/vulkanizerska-radnja-borca" className="service-card reveal">
@@ -226,7 +225,7 @@ export default async function HomePage() {
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>
                         </div>
                         <h3>Poliranje farova</h3>
-                        <p>Vraćamo providnost pomućenim farovima u radnji u Borči — bolja vidljivost noću. Cena po dogovoru.</p>
+                        <p>Vraćamo providnost pomućenim farovima u radnji u Borči, bolja vidljivost noću. Cena po dogovoru.</p>
                     </Link>
                 </div>
             </div>
@@ -250,8 +249,8 @@ export default async function HomePage() {
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                             </div>
                             <div>
-                                <h3>Dolazak za 15–30 minuta</h3>
-                                <p>Uvek sam u pokretu po Beogradu — nema dugog čekanja, reagujem odmah.</p>
+                                <h3>Dolazak za 15,30 minuta</h3>
+                                <p>Uvek sam u pokretu po Beogradu, nema dugog čekanja, reagujem odmah.</p>
                             </div>
                         </div>
 
@@ -271,7 +270,7 @@ export default async function HomePage() {
                             </div>
                             <div>
                                 <h3>Transparentne cene</h3>
-                                <p>Cenu znate pre nego što počnem — bez skrivenih troškova ili iznenađenja.</p>
+                                <p>Cenu znate pre nego što počnem, bez skrivenih troškova ili iznenađenja.</p>
                             </div>
                         </div>
 
@@ -281,7 +280,7 @@ export default async function HomePage() {
                             </div>
                             <div>
                                 <h3>Garantovana kvalitetna usluga</h3>
-                                <p>Profesionalan alat i kvalitetni materijali sa garancijom na rad od 30 dana.</p>
+                                <p>Profesionalan alat i kvalitetni materijali, krpljenje iznutra a ne spolja na brzinu.</p>
                             </div>
                         </div>
                     </div>
@@ -295,8 +294,8 @@ export default async function HomePage() {
                 <div className="pricing-cta-block">
                     <div className="pricing-cta-inner">
                         <div className="pricing-cta-eyebrow">⚡ 30 sekundi je dovoljno</div>
-                        <h2 id="pricing-title" className="pricing-cta-title">Pošteno o ceni — bez iznenađenja</h2>
-                        <p className="pricing-cta-desc">Cena zavisi od lokacije, vremena i tipa posla — zato je ne šablonizujem. Pozovite, opišite problem, i <strong>dobijate fiksnu procenu pre nego što krenem</strong>.</p>
+                        <h2 id="pricing-title" className="pricing-cta-title">Pošteno o ceni, bez iznenađenja</h2>
+                        <p className="pricing-cta-desc">Cena zavisi od lokacije, vremena i tipa posla, zato je ne šablonizujem. Pozovite, opišite problem, i <strong>dobijate fiksnu procenu pre nego što krenem</strong>.</p>
 
                         <ul className="pricing-cta-list">
                             <li>Bez skrivenih troškova</li>
@@ -321,7 +320,7 @@ export default async function HomePage() {
             <div className="container">
                 <div className="section-header">
                     <div className="eyebrow">Kako funkcioniše</div>
-                    <h2 id="process-title">Jednostavno kao 1—2—3—4</h2>
+                    <h2 id="process-title">Jednostavno kao 1,2,3,4</h2>
                     <p>Od prvog poziva do rešenog problema, ceo proces traje obično ispod sat vremena.</p>
                 </div>
         
@@ -334,7 +333,7 @@ export default async function HomePage() {
                     <div className="process-step reveal">
                         <span className="process-num">02</span>
                         <h3>Potvrda dolaska</h3>
-                        <p>Odmah potvrđujem i dajem procenu vremena dolaska — obično 15-30 min.</p>
+                        <p>Odmah potvrđujem i dajem procenu vremena dolaska, obično 15-30 min.</p>
                     </div>
                     <div className="process-step reveal">
                         <span className="process-num">03</span>
@@ -344,7 +343,7 @@ export default async function HomePage() {
                     <div className="process-step reveal">
                         <span className="process-num">04</span>
                         <h3>Rešeno!</h3>
-                        <p>Guma je popravljena ili zamenjena — nastavljate put bezbrižno.</p>
+                        <p>Guma je popravljena ili zamenjena, nastavljate put bezbrižno.</p>
                     </div>
                 </div>
             </div>
@@ -358,7 +357,7 @@ export default async function HomePage() {
                 <div className="section-header reveal">
                     <div className="eyebrow">Pogledajte uživo</div>
                     <h2 id="video-showcase-title">Kako izgleda intervencija na terenu</h2>
-                    <p>Kratak snimak sa jedne od intervencija — kontrola pritiska i pumpanje gume, na licu mesta.</p>
+                    <p>Kratak snimak sa jedne od intervencija, kontrola pritiska i pumpanje gume, na licu mesta.</p>
                 </div>
                 <div className="video-frame reveal">
                     <video
@@ -406,14 +405,14 @@ export default async function HomePage() {
                 <div className="section-header">
                     <div className="eyebrow">Stranice po lokacijama</div>
                     <h2 id="locations-title">Pronađite svoju lokaciju</h2>
-                    <p>Detaljnije informacije o usluzi mobilnog vulkanizera za vaš deo Beograda — kliknite na svoju lokaciju.</p>
+                    <p>Detaljnije informacije o usluzi mobilnog vulkanizera za vaš deo Beograda, kliknite na svoju lokaciju.</p>
                 </div>
 
                 <div className="locations-grid">
                     <Link href="/mobilni-vulkanizer-ceo-beograd" className="location-card reveal">
                         <span className="location-card-pin">🏙️</span>
                         <h3>Ceo Beograd</h3>
-                        <p>Pokrivam svih 17 opština grada — od centra do najudaljenijih naselja.</p>
+                        <p>Pokrivam svih 17 opština grada, od centra do najudaljenijih naselja.</p>
                         <span className="location-card-time">⏱️ <strong>15-60 min</strong> · sve opštine</span>
                         <div>
                             <span className="location-card-arrow">
@@ -426,7 +425,7 @@ export default async function HomePage() {
                     <Link href="/mobilni-vulkanizer-novi-beograd" className="location-card reveal">
                         <span className="location-card-pin">📍</span>
                         <h3>Novi Beograd</h3>
-                        <p>Sve blokove, bulevare, poslovne zone i tržne centre — Ušće, Arena, Belville, Airport City.</p>
+                        <p>Sve blokove, bulevare, poslovne zone i tržne centre, Ušće, Arena, Belville, Airport City.</p>
                         <span className="location-card-time">⏱️ <strong>15-30 min</strong></span>
                         <div>
                             <span className="location-card-arrow">
@@ -439,7 +438,7 @@ export default async function HomePage() {
                     <Link href="/mobilni-vulkanizer-zemun" className="location-card reveal">
                         <span className="location-card-pin">📍</span>
                         <h3>Zemun</h3>
-                        <p>Stari Zemun, Gardoš, Tošin bunar, Bežanijska kosa, Altina — sve adrese pokrivene.</p>
+                        <p>Stari Zemun, Gardoš, Tošin bunar, Bežanijska kosa, Altina, sve adrese pokrivene.</p>
                         <span className="location-card-time">⏱️ <strong>15-30 min</strong></span>
                         <div>
                             <span className="location-card-arrow">
@@ -452,7 +451,7 @@ export default async function HomePage() {
                     <Link href="/mobilni-vulkanizer-borca" className="location-card reveal">
                         <span className="location-card-pin">📍</span>
                         <h3>Borča</h3>
-                        <p>Borča Centar, Greda, Sebeš, Borča III — od Pupinovog mosta do izlaza ka Pančevu.</p>
+                        <p>Borča Centar, Greda, Sebeš, Borča III, od Pupinovog mosta do izlaza ka Pančevu.</p>
                         <span className="location-card-time">⏱️ <strong>15-30 min</strong></span>
                         <div>
                             <span className="location-card-arrow">
@@ -465,7 +464,7 @@ export default async function HomePage() {
                     <Link href="/mobilni-vulkanizer-pancevo" className="location-card reveal">
                         <span className="location-card-pin">📍</span>
                         <h3>Pančevo</h3>
-                        <p>Centar, Kotež, Tesla, Strelište, Vojlovica — i okolna mesta uz dogovor.</p>
+                        <p>Centar, Kotež, Tesla, Strelište, Vojlovica, i okolna mesta uz dogovor.</p>
                         <span className="location-card-time">⏱️ <strong>~20 min</strong></span>
                         <div>
                             <span className="location-card-arrow">
@@ -478,7 +477,46 @@ export default async function HomePage() {
                     <Link href="/mobilni-vulkanizer-krnjaca" className="location-card reveal">
                         <span className="location-card-pin">📍</span>
                         <h3>Krnjača</h3>
-                        <p>Krnjača Centar, Reva, Kotež, Padinska skela — i industrijska zona.</p>
+                        <p>Krnjača Centar, Reva, Kotež, Padinska skela, i industrijska zona.</p>
+                        <span className="location-card-time">⏱️ <strong>15-30 min</strong></span>
+                        <div>
+                            <span className="location-card-arrow">
+                                Pogledaj detalje
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </Link>
+
+                    <Link href="/mobilni-vulkanizer-cukarica" className="location-card reveal">
+                        <span className="location-card-pin">📍</span>
+                        <h3>Čukarica</h3>
+                        <p>Banovo brdo, Žarkovo, Cerak, Julino brdo, Železnik, Makiš i Ada Ciganlija.</p>
+                        <span className="location-card-time">⏱️ <strong>15-30 min</strong></span>
+                        <div>
+                            <span className="location-card-arrow">
+                                Pogledaj detalje
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </Link>
+
+                    <Link href="/mobilni-vulkanizer-zvezdara" className="location-card reveal">
+                        <span className="location-card-pin">📍</span>
+                        <h3>Zvezdara</h3>
+                        <p>Mirijevo, Konjarnik, Mokri Lug, Cvetkova pijaca i Kaluđerica.</p>
+                        <span className="location-card-time">⏱️ <strong>15-30 min</strong></span>
+                        <div>
+                            <span className="location-card-arrow">
+                                Pogledaj detalje
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </Link>
+
+                    <Link href="/mobilni-vulkanizer-batajnica" className="location-card reveal">
+                        <span className="location-card-pin">📍</span>
+                        <h3>Batajnica</h3>
+                        <p>Batajnica, Ugrinovci, Banovci Dunav, Nova i Stara Pazova, Šimanovci.</p>
                         <span className="location-card-time">⏱️ <strong>15-30 min</strong></span>
                         <div>
                             <span className="location-card-arrow">
@@ -491,7 +529,7 @@ export default async function HomePage() {
                     <Link href="/mobilni-vulkanizer-aerodrom" className="location-card reveal">
                         <span className="location-card-pin">✈️</span>
                         <h3>Aerodrom</h3>
-                        <p>Aerodrom Nikola Tesla, Surčin, Bežanija, Bežanijska kosa — i Dobanovci uz dogovor.</p>
+                        <p>Aerodrom Nikola Tesla, Surčin, Bežanija, Bežanijska kosa, i Dobanovci uz dogovor.</p>
                         <span className="location-card-time">⏱️ <strong>~30 min</strong></span>
                         <div>
                             <span className="location-card-arrow">
@@ -504,7 +542,7 @@ export default async function HomePage() {
                     <Link href="/mobilni-vulkanizer-autoput-beograd" className="location-card reveal">
                         <span className="location-card-pin">🛣️</span>
                         <h3>Autoput Beograd</h3>
-                        <p>E-75, E-70, obilaznica, sve petlje — hitna intervencija na traci za zaustavljanje.</p>
+                        <p>E-75, E-70, obilaznica, sve petlje, hitna intervencija na traci za zaustavljanje.</p>
                         <span className="location-card-time">⏱️ <strong>Hitna intervencija 24/7</strong></span>
                         <div>
                             <span className="location-card-arrow">
@@ -523,17 +561,17 @@ export default async function HomePage() {
                 <div className="section-header">
                     <div className="eyebrow">Galerija radova</div>
                     <h2 id="gallery-title">Stvarne intervencije, stvarni klijenti</h2>
-                    <p>Dokumentacija sa terena — od probušenih guma na autoputu do zamene zimskih guma ispred kuće.</p>
+                    <p>Dokumentacija sa terena, od probušenih guma na autoputu do zamene zimskih guma ispred kuće.</p>
                 </div>
 
                 <div className="gallery-grid">
                     <div className="gallery-item">
                         <img src="/8.webp" data-full="/8.webp" alt="Mobilni vulkanizer Milan na intervenciji u centru Beograda - kombi pored Skupštine" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
-                        <div className="gallery-item-overlay"><span>Centar Beograda — intervencija na licu mesta</span></div>
+                        <div className="gallery-item-overlay"><span>Centar Beograda, intervencija na licu mesta</span></div>
                     </div>
                     <div className="gallery-item">
                         <img src="/2.webp" data-full="/2.webp" alt="Zamena pneumatika na parkingu - mobilni vulkanizer Novi Beograd" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
-                        <div className="gallery-item-overlay"><span>Zamena gume — Novi Beograd</span></div>
+                        <div className="gallery-item-overlay"><span>Zamena gume, Novi Beograd</span></div>
                     </div>
                     <div className="gallery-item">
                         <img src="/4.webp" data-full="/4.webp" alt="Mobilni vulkanizer servis BMW X6 noću u Beogradu - 24h dostupan" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
@@ -541,23 +579,23 @@ export default async function HomePage() {
                     </div>
                     <div className="gallery-item">
                         <img src="/autoput.webp" data-full="/autoput.webp" alt="Mobilni vulkanizer Milan - beli kombi sa natpisom Vaš prijatelj na putu parkiran u centru Beograda" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
-                        <div className="gallery-item-overlay"><span>Vaš prijatelj na putu — uvek tu</span></div>
+                        <div className="gallery-item-overlay"><span>Vaš prijatelj na putu, uvek tu</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/brza-zamena-guma.webp" data-full="/brza-zamena-guma.webp" alt="Beli Peugeot kombi mobilnog vulkanizera Milan parkiran pored smeđeg Mini Cooper Countrymana — zamena točka na terenu na ulici u Beogradu" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
-                        <div className="gallery-item-overlay"><span>Brza zamena gume — na terenu</span></div>
+                        <img src="/brza-zamena-guma.webp" data-full="/brza-zamena-guma.webp" alt="Beli Peugeot kombi mobilnog vulkanizera Milan parkiran pored smeđeg Mini Cooper Countrymana, zamena točka na terenu na ulici u Beogradu" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
+                        <div className="gallery-item-overlay"><span>Brza zamena gume, na terenu</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/nase-masine-su-potpuno-nove.webp" data-full="/nase-masine-su-potpuno-nove.webp" alt="Unutrašnjost servisnog kombija mobilnog vulkanizera — plava mašina za menjanje guma, balanser točkova RRXTT, agregat i alat — potpuno nova profesionalna oprema" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
+                        <img src="/nase-masine-su-potpuno-nove.webp" data-full="/nase-masine-su-potpuno-nove.webp" alt="Unutrašnjost servisnog kombija mobilnog vulkanizera, plava mašina za menjanje guma, balanser točkova RRXTT, agregat i alat, potpuno nova profesionalna oprema" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
                         <div className="gallery-item-overlay"><span>Profesionalna nova oprema u kombiju</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/tu-smo-za-sve-i-na-svim-lokacijama.webp" data-full="/tu-smo-za-sve-i-na-svim-lokacijama.webp" alt="Mobilni vulkanizer Milan noću ispred Skupštine Srbije u centru Beograda — servisiranje belog automobila sa hidrauličnom dizalicom i alatom, 24h non-stop" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
-                        <div className="gallery-item-overlay"><span>Na svim lokacijama — 24h non-stop</span></div>
+                        <img src="/tu-smo-za-sve-i-na-svim-lokacijama.webp" data-full="/tu-smo-za-sve-i-na-svim-lokacijama.webp" alt="Mobilni vulkanizer Milan noću ispred Skupštine Srbije u centru Beograda, servisiranje belog automobila sa hidrauličnom dizalicom i alatom, 24h non-stop" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
+                        <div className="gallery-item-overlay"><span>Na svim lokacijama, 24h non-stop</span></div>
                     </div>
                     <div className="gallery-item">
-                        <img src="/punjenje-gume-land-rover.webp" data-full="/punjenje-gume-land-rover.webp" alt="Vulkanizer puni gumu Land Rover vozila pored mobilnog servisnog kombija — intervencija na licu mesta" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
-                        <div className="gallery-item-overlay"><span>Punjenje gume — Land Rover, na licu mesta</span></div>
+                        <img src="/punjenje-gume-land-rover.webp" data-full="/punjenje-gume-land-rover.webp" alt="Vulkanizer puni gumu Land Rover vozila pored mobilnog servisnog kombija, intervencija na licu mesta" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), (max-width: 1024px) calc(33vw - 16px), 400px" />
+                        <div className="gallery-item-overlay"><span>Punjenje gume, Land Rover, na licu mesta</span></div>
                     </div>
                 </div>
 
@@ -628,7 +666,7 @@ export default async function HomePage() {
         
                 <div style={{ textAlign: 'center', marginTop: '50px', padding: '32px', background: 'var(--black-elev)', border: '1px solid var(--line)', borderRadius: '16px' }}>
                     <h3 style={{ fontFamily: '\'Inter\', sans-serif', fontSize: '18px', fontWeight: '700', marginBottom: '8px', color: 'var(--cream)' }}>Bili ste naš klijent?</h3>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '14px', marginBottom: '18px' }}>Vaša recenzija nam mnogo znači — i pomaže drugima koji traže pouzdanog vulkanizera.</p>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '14px', marginBottom: '18px' }}>Vaša recenzija nam mnogo znači, i pomaže drugima koji traže pouzdanog vulkanizera.</p>
                     <a href="https://www.google.com/maps/place/Mobilni+Vulkanizer+Milan/@44.8812194,20.4630735,621m/data=!3m2!1e3!4b1!4m6!3m5!1s0x475a637b18ce8a37:0x45f6e9ef011b2c0!8m2!3d44.8812156!4d20.4656484!16s%2Fg%2F11z5_7wp4p?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 28px', background: 'linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%)', color: 'var(--black)', borderRadius: '100px', fontWeight: '700', fontSize: '14px', textDecoration: 'none' }}>
                         ★ Ostavite recenziju na Google
                     </a>
@@ -645,7 +683,7 @@ export default async function HomePage() {
                         <h2 id="about-title">Posao radim sa srcem, već više od 10 godina</h2>
         
                         <p>
-                            Vulkanizerstvo je moj zanat već više od 10 godina — od malih gradskih automobila do velikih SUV-ova. Vozim potpuno opremljeno servisno vozilo po celom Beogradu, 24 časa dnevno, sa novom profesionalnom opremom i poštenim cenama.
+                            Vulkanizerstvo je moj zanat već više od 10 godina, od malih gradskih automobila do velikih SUV-ova. Vozim potpuno opremljeno servisno vozilo po celom Beogradu, 24 časa dnevno, sa novom profesionalnom opremom i poštenim cenama.
                         </p>
 
                         <blockquote className="about-quote">
@@ -670,7 +708,7 @@ export default async function HomePage() {
                 <div className="section-header">
                     <div className="eyebrow">Česta pitanja</div>
                     <h2 id="faq-title">Imate pitanja? Imamo odgovore</h2>
-                    <p>Sve što biste mogli da pitate pre nego što pozovete — ovde je odgovoreno.</p>
+                    <p>Sve što biste mogli da pitate pre nego što pozovete, ovde je odgovoreno.</p>
                 </div>
         
                 <div className="faq-list">
@@ -680,7 +718,7 @@ export default async function HomePage() {
                             <span className="faq-icon">+</span>
                         </button>
                         <div className="faq-answer">
-                            <p>Da, radim non-stop, 365 dana u godini — uključujući noć, vikende i praznike. Dodaje se samo noćna taksa za intervencije između 22h i 06h.</p>
+                            <p>Da, radim non-stop, 365 dana u godini, uključujući noć, vikende i praznike. Dodaje se samo noćna taksa za intervencije između 22h i 06h.</p>
                         </div>
                     </article>
         
@@ -690,7 +728,7 @@ export default async function HomePage() {
                             <span className="faq-icon">+</span>
                         </button>
                         <div className="faq-answer">
-                            <p>Konačna cena zavisi od <strong>4 ključna faktora</strong>: vaše lokacije, vremena intervencije, karakteristika vozila i tipa posla. Pozovite nas i pre polaska ćete dobiti <strong>fiksnu procenu troškova</strong> — bez skrivenih troškova i bez iznenađenja na licu mesta.</p>
+                            <p>Konačna cena zavisi od <strong>4 ključna faktora</strong>: vaše lokacije, vremena intervencije, karakteristika vozila i tipa posla. Pozovite nas i pre polaska ćete dobiti <strong>fiksnu procenu troškova</strong>, bez skrivenih troškova i bez iznenađenja na licu mesta.</p>
                         </div>
                     </article>
         
@@ -720,17 +758,7 @@ export default async function HomePage() {
                             <span className="faq-icon">+</span>
                         </button>
                         <div className="faq-answer">
-                            <p>Da — prihvatamo gotovinu, sve platne kartice (<strong>Dina, Visa, MasterCard, Maestro, American Express</strong>) i plaćanje <strong>IPS QR kodom</strong>. Za firme je dostupno i fakturisanje sa odloženim plaćanjem.</p>
-                        </div>
-                    </article>
-        
-                    <article className="faq-item">
-                        <button className="faq-question" aria-expanded="false">
-                            <span>Kakvu garanciju pružate na rad?</span>
-                            <span className="faq-icon">+</span>
-                        </button>
-                        <div className="faq-answer">
-                            <p>Na svako krpljenje gume dajem garanciju od <strong>30 dana</strong>. Korišćenu opremu i materijale takođe garantujem prema deklaracijama proizvođača.</p>
+                            <p>Da, prihvatamo gotovinu, sve platne kartice (<strong>Dina, Visa, MasterCard, Maestro, American Express</strong>) i plaćanje <strong>IPS QR kodom</strong>. Za firme je dostupno i fakturisanje sa odloženim plaćanjem.</p>
                         </div>
                     </article>
         
@@ -745,7 +773,7 @@ export default async function HomePage() {
             <div className="container">
                 <div className="contact-cta-inner">
                     <div className="eyebrow">Kontakt</div>
-                    <h2 id="contact-title">Probušena guma ne čeka — neću ni ja</h2>
+                    <h2 id="contact-title">Probušena guma ne čeka, neću ni ja</h2>
                     <p>Jedan poziv je sve što je potrebno. Dolazim za 15-30 minuta na bilo koju adresu u Beogradu, u bilo koje doba dana.</p>
         
                     <div className="contact-cta-num">

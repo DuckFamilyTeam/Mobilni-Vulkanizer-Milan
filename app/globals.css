@@ -3377,3 +3377,121 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     object-fit: cover;
     background: var(--black-elev);
 }
+
+/* ============================================================
+   LOKACIJSKE STRANICE — dodatak 2026-09-24
+   Rezerva za desktop, breadcrumb, dokaz poverenja i FAQ blok.
+   Dodato uz prepravku stranica lokacija (poziv iznad preloma,
+   tel/Viber/WhatsApp sa data-cta atributima, recenzija, FAQ).
+   ============================================================ */
+
+/* Rezerva za desktop: broj kao kopirljiv tekst + Viber i WhatsApp */
+.loc-hero-alt {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px 18px;
+    margin: -18px auto 26px;
+}
+.loc-hero-alt-num {
+    font-size: 14px;
+    color: var(--text-muted);
+    user-select: all;
+}
+.loc-hero-alt-num strong {
+    color: var(--cream);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+.loc-hero-alt-links {
+    display: inline-flex;
+    gap: 10px;
+}
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 13px;
+}
+
+/* Rečenica zašto je vreme dolaska realno, odmah ispod poziva */
+.loc-hero-why {
+    max-width: 640px;
+    margin: 0 auto 22px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* Breadcrumb */
+.loc-breadcrumb {
+    background: var(--black);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 0;
+}
+.loc-breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+    color: var(--text-dim);
+}
+.loc-breadcrumb li + li::before {
+    content: '/';
+    margin-right: 8px;
+    color: var(--line);
+}
+.loc-breadcrumb a {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+.loc-breadcrumb a:hover,
+.loc-breadcrumb a:focus-visible {
+    color: var(--gold-text);
+    text-decoration: underline;
+}
+.loc-breadcrumb li[aria-current='page'] {
+    color: var(--cream);
+}
+
+/* Dokaz poverenja: recenzija sa Google profila + slike sa intervencija */
+.loc-proof {
+    padding: 70px 0;
+    background: var(--black-soft);
+}
+.loc-proof h2,
+.loc-faq h2 {
+    font-family: var(--font-playfair), 'Playfair Display', serif;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 800;
+    color: var(--cream);
+    margin: 0 0 26px;
+    letter-spacing: -0.01em;
+}
+.reviews-grid-single {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 640px;
+}
+.gallery-grid-loc {
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 28px;
+}
+
+/* FAQ na stranici lokacije */
+.loc-faq {
+    padding: 70px 0;
+    background: var(--black);
+}
+
+@media (max-width: 640px) {
+    .loc-hero-alt {
+        margin: -10px auto 22px;
+        gap: 10px;
+    }
+    .gallery-grid-loc {
+        grid-template-columns: 1fr 1fr;
+    }
+}

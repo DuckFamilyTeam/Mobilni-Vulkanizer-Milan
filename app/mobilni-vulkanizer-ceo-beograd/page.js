@@ -1,61 +1,115 @@
+import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import StickyCall from '../components/StickyCall';
 import { getGbpRating } from '../lib/googlePlaces';
 
 export const metadata = {
-  title: 'Mobilni Vulkanizer Ceo Beograd | Pokrivenost celog grada, 24/7',
+  title: 'Mobilni vulkanizer Beograd | Dolazim na adresu, 24 sata',
   description:
-    'Mobilni vulkanizer za ceo Beograd, pokrivam ceo grad. Bliže lokacije 15-30 min, najudaljeniji delovi 30-60 min. Krpljenje gume, zamena pneumatika, balansiranje. 10+ godina iskustva. +381 64 12 90 929.',
+    'Mobilni vulkanizer za ceo Beograd. Dolazim na vašu adresu za 15 do 30 minuta, non-stop. Krpljenje i zamena gume na licu mesta. Pozovite 064 12 90 929.',
   keywords:
-    'mobilni vulkanizer ceo beograd, vulkanizer beograd, vulkanizer dolazi beograd, mobilni vulkanizer beograd, vulkanizer 24h beograd, krpljenje gume beograd, vulkanizer dolazi na adresu, vulkanizer noću, vulkanizer vikend, jeftini vulkanizer beograd, vulkanizer praznici',
+    'mobilni vulkanizer beograd, vulkanizer beograd, vulkanizer dolazi na adresu, mobilni vulkanizer 24h, krpljenje gume beograd, zamena gume na terenu beograd, vulkanizer noću beograd',
   alternates: {
     canonical: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
   },
   openGraph: {
-    title: 'Mobilni Vulkanizer Ceo Beograd | 24/7',
+    title: 'Mobilni vulkanizer Beograd | Dolazim na adresu, 24 sata',
     description:
-      'Pokrivam ceo Beograd. Bliže lokacije 15-30 min, najudaljeniji delovi 30-60 min. Sa preko 10 godina iskustva u zanatu.',
+      'Pukla vam je guma bilo gde u Beogradu? Dolazim na vašu adresu za 15 do 30 minuta, non-stop 24 sata.',
     url: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
     locale: 'sr_RS',
     type: 'website',
   },
 };
 
-function buildLocationJsonLd(rating, reviewCount) {
+const ZONE = [
+  'Novi Beograd', 'Zemun', 'Surčin', 'Batajnica', 'Borča', 'Krnjača', 'Karaburma',
+  'Kotež', 'Ovča', 'Padinska skela', 'Zvezdara', 'Mirijevo', 'Konjarnik', 'Kaluđerica',
+  'Čukarica', 'Banovo brdo', 'Žarkovo', 'Sremčica', 'Ostružnica', 'Umka', 'Železnik',
+  'Voždovac', 'Vračar', 'Rakovica', 'Palilula', 'Stari grad', 'Savski venac', 'Pančevo',
+];
+
+const FAQ = [
+  {
+    q: 'Pokrivate li i prigradska naselja kao što su Umka, Ostružnica i Sremčica?',
+    a: 'Da, izlazim i tamo. Za ta naselja vreme dolaska je duže nego u užem delu grada, realno 30 do 40 minuta. Procenu vam kažem odmah na telefonu, pre nego što krenem.',
+  },
+  {
+    q: 'Radite li na kamionima i autobusima?',
+    a: 'Ne. Radim na putničkim vozilima, džipovima i kombijima. Za kamione i autobuse nemam opremu i ne primam takve pozive, da vam ne bih gubio vreme.',
+  },
+  {
+    q: 'Ne znam tačnu adresu, stao sam pored puta. Kako da vam kažem gde sam?',
+    a: 'Najbrže je da mi pošaljete lokaciju preko Vibera ili WhatsApp-a. Ako to ne možete, dovoljna je najbliža raskrsnica, naziv naselja ili neki vidljiv orijentir, benzinska pumpa, most, tržni centar.',
+  },
+  {
+    q: 'Mogu li da vas zovem u tri ujutru?',
+    a: 'Možete. Radim non-stop, 24 sata, svaki dan u nedelji. Noćni pozivi su normalan deo posla i tada je saobraćaj rasterećen, pa često stignem brže nego u dnevnoj gužvi.',
+  },
+];
+
+function buildJsonLd(rating, reviewCount) {
   return {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Service',
-      '@id': 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd#service',
-      name: 'Mobilni Vulkanizer Ceo Beograd',
-      description:
-        'Mobilna vulkanizerska usluga za ceo Beograd — pokriva svih 17 opština. Bliže lokacije 15-30 min, najudaljeniji delovi 30-60 min. Non-stop 24h.',
-      url: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
-      provider: { '@id': 'https://www.mobilnivulkanizermilan.com/#business' },
-      areaServed: { '@type': 'City', name: 'Beograd', containedInPlace: { '@type': 'Country', name: 'Srbija' } },
-      serviceType: 'Mobilna vulkanizerska usluga',
-      availableChannel: {
-        '@type': 'ServiceChannel',
-        serviceUrl: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
-        servicePhone: '+381641290929',
-        availableLanguage: 'Serbian',
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd#service',
+        name: 'Mobilni vulkanizer Beograd',
+        description:
+          'Mobilna vulkanizerska usluga na terenu za ceo Beograd. Dolazak na adresu za 15 do 30 minuta, non-stop 24 sata. Krpljenje, zamena i balansiranje guma na licu mesta.',
+        url: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
+        provider: { '@id': 'https://www.mobilnivulkanizermilan.com/#business' },
+        areaServed: ZONE.map((name) => ({ '@type': 'Place', name })),
+        serviceType: 'Mobilna vulkanizerska usluga',
+        availableChannel: {
+          '@type': 'ServiceChannel',
+          serviceUrl: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
+          servicePhone: '+381641290929',
+          availableLanguage: 'Serbian',
+        },
       },
-    },
-  ],
-};
+      {
+        '@type': 'BreadcrumbList',
+        '@id': 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd#breadcrumb',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Početna',
+            item: 'https://www.mobilnivulkanizermilan.com/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Mobilni vulkanizer Beograd',
+            item: 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd',
+          },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': 'https://www.mobilnivulkanizermilan.com/mobilni-vulkanizer-ceo-beograd#faq',
+        mainEntity: FAQ.map((item) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: { '@type': 'Answer', text: item.a },
+        })),
+      },
+    ],
+  };
 }
 
 export default async function CeoBeogradPage() {
   const { rating, reviewCount } = await getGbpRating();
-  const locationJsonLd = buildLocationJsonLd(rating, reviewCount);
+  const jsonLd = buildJsonLd(rating, reviewCount);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(locationJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
       <main id="main-content">
@@ -63,31 +117,24 @@ export default async function CeoBeogradPage() {
       <section className="loc-hero" role="region" aria-labelledby="loc-title">
         <div className="container">
           <div className="loc-hero-inner">
-            <div className="eyebrow">
-              <span className="live-pulse"></span>
-              Ceo Beograd · Dostupan sada
-            </div>
 
             <h1 id="loc-title">
-              Mobilni vulkanizer <span className="accent">ceo Beograd</span>
+              Mobilni vulkanizer <span className="accent">Beograd</span>
               <br />
-              dolazim 24h, ceo grad
+              dolazim za 15 do 30 minuta, 24 sata
             </h1>
 
             <p className="loc-hero-lead">
-              Bilo gde u Beogradu da ste — stižem. Sa preko 10 godina iskustva
-              u vulkanizerskom zanatu, pokrivam ceo grad. Za bliže lokacije u
-              Beogradu dolazak je u proseku 15 do 30 minuta; za najudaljenije
-              delove grada računajte <strong>30 do 60 minuta</strong>.
-              Profesionalan rad, garancija na uslugu, non-stop 24 časa
-              dnevno.
+              Krpim i menjam gume na licu mesta, na vašoj adresi, i u najvećem delu
+              Beograda sam kod vas za 15 do 30 minuta.
             </p>
 
             <div className="loc-hero-cta">
               <a
                 href="tel:+381641290929"
-                className="btn-primary"
-                aria-label="Pozovi mobilnog vulkanizera Beograd"
+                className="btn-primary js-tel"
+                data-cta="poziv"
+                aria-label="Pozovi mobilnog vulkanizera u Beogradu"
               >
                 <svg
                   width="20"
@@ -104,154 +151,226 @@ export default async function CeoBeogradPage() {
                 </svg>
                 Pozovi: +381 64 12 90 929
               </a>
-              <a href="https://wa.me/381641290929" className="btn-secondary">
-                💬 WhatsApp
-              </a>
             </div>
 
+            <div className="loc-hero-alt">
+              <span className="loc-hero-alt-num">
+                Broj za kucanje i kopiranje: <strong>+381 64 12 90 929</strong>
+              </span>
+              <span className="loc-hero-alt-links">
+                <a
+                  href="https://wa.me/381641290929"
+                  className="btn-secondary btn-sm"
+                  data-cta="whatsapp"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  WhatsApp
+                </a>
+                <a
+                  href="viber://chat?number=%2B381641290929"
+                  className="btn-secondary btn-sm"
+                  data-cta="viber"
+                >
+                  Viber
+                </a>
+              </span>
+            </div>
+
+            <p className="loc-hero-why">
+              To vreme je realno zato što sam ceo dan u pokretu po gradu, pa prema vama
+              krećem sa najbliže tačke, a ne iz jedne baze.
+            </p>
+
             <span className="loc-hero-quick">
-              ⚡ <strong>Bliže lokacije 15-30 min · Najudaljeniji delovi 30-60 min</strong>
+              <strong>{rating.toFixed(1)}</strong> na Google Mapama, {reviewCount} recenzija
             </span>
+
           </div>
         </div>
       </section>
 
+      <nav className="loc-breadcrumb" aria-label="Putanja">
+        <div className="container">
+          <ol>
+            <li><Link href="/">Početna</Link></li>
+            <li aria-current="page">Mobilni vulkanizer Beograd</li>
+          </ol>
+        </div>
+      </nav>
+
       <section className="loc-content">
         <div className="container">
           <div className="loc-content-inner">
-            <h2>Mobilna vulkanizerska usluga za ceo Beograd</h2>
+
+            <h2>Šta radim kad izađem na vašu adresu</h2>
             <p>
-              Beograd je veliki grad. Od centra do oboda ima i po više
-              desetina kilometara — i kad nekome ko živi na obodu grada pukne
-              guma u dva ujutru, ne vredi mu da zna da neki vulkanizer u
-              centru radi non-stop. Treba mu neko ko stiže do njega. Zato kao{' '}
-              <strong>mobilni vulkanizer za ceo Beograd</strong> sa preko
-              decenije iskustva, ne pravim razliku između delova grada:
-              stižem svuda, ali otvoreno govorim koliko vremena treba — bez
-              "obećanja od 15 minuta" za adresu koja je daleko od centra.
+              U kombiju nosim kompresor, hidrauličnu dizalicu, balansirku, alat za
+              demontažu i montažu i materijal za krpljenje iznutra. To znači da na vašem
+              parkingu, u dvorištu ili pored puta mogu da uradim isto ono što bih uradio u
+              radnji: da zakrpim probušenu gumu, da zamenim pneumatik, da izbalansiram
+              točak, da montiram vašu rezervnu gumu i da proverim pritisak na sva četiri
+              točka pre nego što krenete dalje.
+            </p>
+            <p>
+              Radim na putničkim vozilima, džipovima i kombijima. Kamione i autobuse ne
+              radim, za njih nemam opremu i bolje je da to znate pre nego što me pozovete
+              nego da čekate uzalud.
             </p>
 
+            <h2>Naselja i opštine koje pokrivam</h2>
             <p>
-              Vreme dolaska zavisi od toga gde se trenutno nalazim i gde ste
-              vi. Za bliže lokacije u Beogradu računajte 15 do 30 minuta. Za
-              najudaljenije delove grada vreme dolaska je{' '}
-              <strong>30 do 60 minuta</strong>. Uvek vam dam realnu procenu
-              pre nego što krenem, da znate tačno na čemu ste — bez lažnih
-              obećanja i bez nepotrebnog kašnjenja.
+              Preko mosta pokrivam Novi Beograd, Zemun, Surčin i Batajnicu, a sa druge
+              strane Dunava Borču, Krnjaču, Karaburmu, Kotež, Ovču i Padinsku skelu. Na
+              istoku grada izlazim na Zvezdaru, u Mirijevo, na Konjarnik i u Kaluđericu.
+            </p>
+            <p>
+              Jugozapadno pokrivam Čukaricu, gde su Banovo brdo i Žarkovo, pa dalje Sremčicu,
+              Ostružnicu, Umku i Železnik. U samom gradu izlazim na Voždovac, Vračar, u
+              Rakovicu, na Palilulu, Stari grad i Savski venac. Van Beograda redovno radim
+              i u Pančevu.
+            </p>
+            <p>
+              Za svaku od tih zona postoji i posebna stranica sa detaljima o terenu, pa
+              pogledajte{' '}
+              <Link href="/mobilni-vulkanizer-novi-beograd">mobilni vulkanizer Novi Beograd</Link>,{' '}
+              <Link href="/mobilni-vulkanizer-zemun">mobilni vulkanizer Zemun</Link>,{' '}
+              <Link href="/mobilni-vulkanizer-aerodrom">mobilni vulkanizer Surčin i aerodrom</Link>,{' '}
+              <Link href="/mobilni-vulkanizer-borca">mobilni vulkanizer Borča</Link>,{' '}
+              <Link href="/mobilni-vulkanizer-krnjaca">mobilni vulkanizer Krnjača</Link>,{' '}
+              <Link href="/mobilni-vulkanizer-cukarica">mobilni vulkanizer Čukarica</Link>,{' '}
+              <Link href="/mobilni-vulkanizer-zvezdara">mobilni vulkanizer Zvezdara</Link>,{' '}
+              <Link href="/mobilni-vulkanizer-batajnica">mobilni vulkanizer Batajnica</Link>,{' '}
+              <Link href="/mobilni-vulkanizer-pancevo">mobilni vulkanizer Pančevo</Link> i{' '}
+              <Link href="/mobilni-vulkanizer-autoput-beograd">mobilni vulkanizer autoput</Link>.
+            </p>
+
+            <h2>Za koliko stižem i zašto je to vreme realno</h2>
+            <p>
+              U najvećem delu grada kod vas sam za 15 do 30 minuta. Za prigradska naselja
+              na obodu, kao što su Umka, Ostružnica ili Sremčica, računajte 30 do 40
+              minuta.
+            </p>
+            <p>
+              Razlog zašto tako kratko vreme uopšte stoji na ovoj stranici nije
+              reklamni. Ja ceo dan radim u pokretu, prelazim iz opštine u opštinu i retko
+              kad sam parkiran na jednom mestu. Kada me pozovete, ne krećem iz radnje u
+              Borči nego sa mesta na kome se tog trenutka nalazim, a to je najčešće negde u
+              vašoj blizini. Zato i mogu da vam kažem procenu odmah na telefonu, dok mi
+              opisujete gde ste.
             </p>
 
             <div className="loc-quick-stats">
               <div className="loc-stat">
                 <div className="loc-stat-num">15-30</div>
-                <div className="loc-stat-label">min · bliže lokacije</div>
+                <div className="loc-stat-label">min u gradu</div>
               </div>
               <div className="loc-stat">
-                <div className="loc-stat-num">30-60</div>
-                <div className="loc-stat-label">min · udaljeniji delovi</div>
+                <div className="loc-stat-num">30-40</div>
+                <div className="loc-stat-label">min na obodu</div>
               </div>
               <div className="loc-stat">
                 <div className="loc-stat-num">10+</div>
                 <div className="loc-stat-label">godina iskustva</div>
               </div>
               <div className="loc-stat">
-                <div className="loc-stat-num">24/7</div>
-                <div className="loc-stat-label">non-stop</div>
+                <div className="loc-stat-num">24h</div>
+                <div className="loc-stat-label">svaki dan</div>
               </div>
             </div>
 
-            <h2>Bliže lokacije u Beogradu — 15 do 30 minuta</h2>
+            <h2>Koliko košta</h2>
             <p>
-              Za bliže lokacije u Beogradu dolazak je u proseku{' '}
-              <strong>15 do 30 minuta</strong> od poziva. To su sve adrese
-              koje su u dohvatu standardnog gradskog saobraćaja — bilo da
-              ste ispred zgrade, na poslu, na parkingu tržnog centra ili
-              pored neke od većih saobraćajnica. Pokrivenost je puna, vreme
-              reagovanja brzo, a procenu vremena uvek dobijate odmah po
-              pozivu.
+              Cena zavisi od lokacije, doba dana i toga šta tačno treba uraditi. Kažem vam
+              je odmah kad me pozovete, pre nego što krenem, i ona se posle ne menja. Nema
+              skrivenih troškova i nema naplate izlaska koju biste saznali tek na licu
+              mesta. Izlazak na teren jeste skuplji od odlaska u vulkanizersku radnju, i to
+              vam otvoreno kažem, jer plaćate to što ja dolazim kod vas i što ne morate da
+              vučete auto nigde.
             </p>
+
+            <h2>Kako da me pozovete</h2>
             <p>
-              Najčešće intervencije u ovim delovima Beograda su klasične —
-              probušena guma usled šrafa ili eksera, "noćno punjenje" koje
-              vlasnik primeti tek ujutru, sezonska zamena letnjih i zimskih
-              guma, balansiranje. Sve to radim na licu mesta, sa kompletnim
-              alatom i materijalom u servisnom vozilu.
+              Pozovite <strong>+381 64 12 90 929</strong>, recite mi gde ste i šta se
+              desilo sa gumom. Ako ne znate tačnu adresu, pošaljite mi lokaciju preko
+              Vibera ili WhatsApp-a. Dobijate procenu vremena i cenu pre nego što krenem.
             </p>
 
             <div className="loc-cta-band">
-              <h3>Već sad vam treba vulkanizer u Beogradu?</h3>
-              <p>
-                Pozovite, kažite mi tačnu adresu, i dobijate realnu procenu
-                vremena pre nego što krenem.
-              </p>
-              <a href="tel:+381641290929" className="btn-primary">
-                📞 Pozovi odmah: +381 64 12 90 929
+              <h3>Stojite pored auta sa probušenom gumom?</h3>
+              <p>Jedan poziv i dobijate vreme dolaska i cenu, odmah.</p>
+              <a
+                href="tel:+381641290929"
+                className="btn-primary js-tel"
+                data-cta="poziv"
+              >
+                Pozovi: +381 64 12 90 929
               </a>
             </div>
 
-            <h2>Najudaljeniji delovi grada — 30 do 60 minuta</h2>
-            <p>
-              Za najudaljenije delove Beograda vreme dolaska je realno{' '}
-              <strong>30 do 60 minuta</strong>, u zavisnosti od saobraćaja i
-              tačne adrese. Ovo su delovi grada koji su značajno udaljeni od
-              centra — i tu se ne pravi pretvaranje da se može stići "za 15
-              minuta". Iskreno govorim koliko ću vam trebati, i tačno toliko
-              stignem.
-            </p>
-            <p>
-              I za udaljenije adrese radim potpuno isti obim posla kao i u
-              gradu — krpljenje, zamenu pneumatika, balansiranje, ispravku
-              felni, kontrolu pritiska. Sve što ima fiksna vulkanizerska
-              radnja, imam i ja u kombiju, i nije problem da se to nađe pred
-              vašom kućom u dva ujutru.
-            </p>
+          </div>
+        </div>
+      </section>
 
-            <h2>Sve usluge — kod vaše adrese</h2>
-            <p>
-              U servisnom vozilu nosim kompletnu vulkanizersku opremu:
-              kompresor, hidrauličnu dizalicu, balansirku, profesionalan alat
-              za demontažu i montažu, materijal za krpljenje gume iznutra,
-              instrumente za proveru pritiska. Sve standardne vulkanizerske
-              intervencije radim na licu mesta:
-            </p>
-            <ul>
-              <li>Krpljenje probušene gume — iznutra, sa garancijom 30 dana</li>
-              <li>Zamena letnjih i zimskih pneumatika</li>
-              <li>Balansiranje točkova do nule</li>
-              <li>Ispravka blago oštećenih felni</li>
-              <li>Kontrola i dopuna pritiska svih guma</li>
-              <li>Konsultacije za teže slučajeve i organizacija vučne ako treba</li>
-            </ul>
+      <section className="loc-proof" role="region" aria-labelledby="loc-proof-title">
+        <div className="container">
+          <div className="loc-content-inner">
+            <h2 id="loc-proof-title">Recenzija sa Google profila</h2>
+            <div className="reviews-grid reviews-grid-single">
+              <article className="review-card">
+                <div className="review-stars">★★★★★</div>
+                <p className="review-body">
+                  "Veoma sam zadovoljna kvalitetom usluge i brzim dolaskom u centar grada,
+                  po velikoj guzvi. Toplo preporučujem Milana."
+                </p>
+                <div className="review-meta">
+                  <div className="review-author">
+                    <div className="review-avatar">M</div>
+                    <div>
+                      <div className="review-name">Maja Maja</div>
+                      <div className="review-date">Google recenzija</div>
+                    </div>
+                  </div>
+                  <div className="review-source">Google</div>
+                </div>
+              </article>
+            </div>
 
-            <h2>Zašto sa mnom — 10+ godina iskustva</h2>
-            <p>
-              Vulkanizerski zanat radim već <strong>preko decenije</strong> —
-              i u tom vremenu sam pokrio bukvalno svaki deo Beograda. Od
-              noćnih intervencija u udaljenim naseljima do prepodnevnih
-              krpljenja u srcu grada, od porodičnih kuća na obodu do
-              servisnih intervencija u industrijskim zonama — sve su to
-              standardni dani na terenu. Tačno znam kako da pristupim svakoj
-              situaciji, koju opremu da uzmem i kojim putem da idem do vaše
-              tačne adrese.
-            </p>
+            <div className="gallery-grid gallery-grid-loc">
+              <div className="gallery-item">
+                <img src="/8.webp" data-full="/8.webp" alt="Mobilni vulkanizer Milan na intervenciji u centru Beograda" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), 360px" />
+                <div className="gallery-item-overlay"><span>Centar Beograda, intervencija na licu mesta</span></div>
+              </div>
+              <div className="gallery-item">
+                <img src="/kombi-oprema.webp" data-full="/kombi-oprema.webp" alt="Vulkanizerska oprema u kombiju, kompresor i balansirka" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), 360px" />
+                <div className="gallery-item-overlay"><span>Oprema koju nosim u kombiju</span></div>
+              </div>
+              <div className="gallery-item">
+                <img src="/intervencija.webp" data-full="/intervencija.webp" alt="Zamena gume na terenu u Beogradu" loading="lazy" decoding="async" width="800" height="800" sizes="(max-width: 640px) calc(50vw - 16px), 360px" />
+                <div className="gallery-item-overlay"><span>Zamena gume na terenu</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <h2>Pošteno o vremenu i ceni</h2>
-            <p>
-              Ne obećavam ono što ne mogu. Ako ste u udaljenijem delu grada
-              u 23h, neću vam reći "stižem za 15 minuta". Reći ću vam stvarnu
-              procenu — pa i ako je 50 minuta. Cena se određuje pre početka
-              rada, na osnovu lokacije, vremena, vozila i vrste intervencije,
-              bez skrivenih troškova. To je, posle 10+ godina, jedini način
-              koji mi je ostao da poslujem.
-            </p>
-
-            <h2>Pozovi sada — pokrivam ceo Beograd</h2>
-            <p>
-              Pozovite <strong>+381 64 12 90 929</strong>, kažite mi tačnu
-              adresu (ulica i broj, opština ili naselje) i šta se desilo sa
-              gumom. Procenu vremena dobijate odmah — bilo da ste u centru
-              (15-30 min) ili na obodu grada (30-60 min). Profesionalna
-              mobilna vulkanizerska usluga, non-stop 24h, svaki dan u godini.
-            </p>
+      <section className="loc-faq" role="region" aria-labelledby="loc-faq-title">
+        <div className="container">
+          <div className="loc-content-inner">
+            <h2 id="loc-faq-title">Česta pitanja o izlasku na teren u Beogradu</h2>
+            <div className="faq-list">
+              {FAQ.map((item) => (
+                <article className="faq-item" key={item.q}>
+                  <button className="faq-question" aria-expanded="false">
+                    <span>{item.q}</span>
+                    <span className="faq-icon">+</span>
+                  </button>
+                  <div className="faq-answer">
+                    <p>{item.a}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -260,26 +379,38 @@ export default async function CeoBeogradPage() {
         <div className="container">
           <div className="loc-final-cta-inner">
             <div className="eyebrow">Hitan poziv</div>
-            <h2>Bilo gde u Beogradu — stižem</h2>
+            <h2>Bilo gde u Beogradu, dolazim kod vas</h2>
             <p>
-              Pokrivam ceo grad. Bliže lokacije 15-30 min, najudaljeniji
-              delovi 30-60 min. Non-stop 24 časa.
+              U gradu 15 do 30 minuta, na obodu 30 do 40. Non-stop, svaki dan u nedelji.
             </p>
             <div className="loc-final-cta-num">
-              <a href="tel:+381641290929">+381 64 12 90 929</a>
+              <a href="tel:+381641290929" className="js-tel" data-cta="poziv">
+                +381 64 12 90 929
+              </a>
             </div>
             <div className="loc-final-cta-actions">
-              <a href="tel:+381641290929" className="btn-primary">
-                📞 Pozovi odmah
+              <a
+                href="tel:+381641290929"
+                className="btn-primary js-tel"
+                data-cta="poziv"
+              >
+                Pozovi odmah
               </a>
-              <a href="https://wa.me/381641290929" className="btn-secondary">
-                💬 WhatsApp
+              <a
+                href="https://wa.me/381641290929"
+                className="btn-secondary"
+                data-cta="whatsapp"
+                target="_blank"
+                rel="noopener"
+              >
+                WhatsApp
               </a>
               <a
                 href="viber://chat?number=%2B381641290929"
                 className="btn-secondary"
+                data-cta="viber"
               >
-                💬 Viber
+                Viber
               </a>
             </div>
           </div>
