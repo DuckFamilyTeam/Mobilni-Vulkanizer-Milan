@@ -173,7 +173,7 @@ export default async function HomePage() {
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></svg>
                         </div>
                         <h3>Krpljenje probušene gume</h3>
-                        <p>Brzo i pouzdano krpljenje na licu mesta, bez potrebe za vučnom službom ili odlaskom do vulkanizera. Garancija 30 dana.</p>
+                        <p>Brzo i pouzdano krpljenje na licu mesta, bez potrebe za vučnom službom ili odlaskom do vulkanizera.</p>
                     </Link>
         
                     <Link href="/blog/kada-promeniti-zimske-za-letnje-gume" className="service-card reveal">
@@ -253,7 +253,7 @@ export default async function HomePage() {
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                             </div>
                             <div>
-                                <h3>Dolazak za 15,30 minuta</h3>
+                                <h3>Dolazak za 15 do 30 minuta</h3>
                                 <p>Uvek sam u pokretu po Beogradu, nema dugog čekanja, reagujem odmah.</p>
                             </div>
                         </div>
@@ -324,7 +324,7 @@ export default async function HomePage() {
             <div className="container">
                 <div className="section-header">
                     <div className="eyebrow">Kako funkcioniše</div>
-                    <h2 id="process-title">Jednostavno kao 1,2,3,4</h2>
+                    <h2 id="process-title">Jednostavno kao 1, 2, 3, 4</h2>
                     <p>Od prvog poziva do rešenog problema, ceo proces traje obično ispod sat vremena.</p>
                 </div>
         
