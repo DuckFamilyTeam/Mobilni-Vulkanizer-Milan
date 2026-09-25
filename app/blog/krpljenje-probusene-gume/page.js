@@ -32,7 +32,7 @@ const articleJsonLd = {
   description:
     'Korak-po-korak vodič za krpljenje probušene gume, od bezbednosnih mera do umetanja čepa. Kada možete sami, a kada pozovite vulkanizera. Mobilni vulkanizer Milan, Beograd.',
   url: 'https://www.mobilnivulkanizermilan.com/blog/krpljenje-probusene-gume',
-  datePublished: '2025-05-01',
+  datePublished: '2026-05-01',
   dateModified: '2026-06-23',
   author: {
     '@type': 'Person',
@@ -83,7 +83,7 @@ export default function KrpljenjeGumePage() {
             <div className="blog-post-meta">
               <span className="blog-card-category">Vodič</span>
               <span className="blog-post-meta-sep">·</span>
-              <span>Maj 2025</span>
+              <span>Maj 2026</span>
               <span className="blog-post-meta-sep">·</span>
               <span>8 min čitanja</span>
             </div>
@@ -124,7 +124,7 @@ export default function KrpljenjeGumePage() {
                 POZOVITE NAS: +381 64 12 90 929
               </a>
               <span className="blog-post-hero-hint">
-                ⚡ Stižemo za 20–30 min u Beogradu
+                ⚡ Stižemo za 15-30 min u Beogradu
               </span>
             </div>
           </div>
@@ -152,7 +152,7 @@ export default function KrpljenjeGumePage() {
             <ul>
               <li>
                 <strong>Pronađite ravnu površinu.</strong> Nikada ne menjajte
-                niti krpite gumu na uzbrdici ili nizbrdici — auto može skliznuti
+                niti krpite gumu na uzbrdici ili nizbrdici. Auto može skliznuti
                 sa dizalice.
               </li>
               <li>
@@ -182,27 +182,27 @@ export default function KrpljenjeGumePage() {
             </p>
             <ul>
               <li>
-                <strong>Šilo sa hrapavom površinom (Reamer)</strong> — za
+                <strong>Šilo sa hrapavom površinom (Reamer)</strong>: za
                 čišćenje i proširivanje rupe
               </li>
               <li>
-                <strong>Igla za umetanje</strong> — alat sa prorezom na vrhu
+                <strong>Igla za umetanje</strong>: alat sa prorezom na vrhu
                 za guranje čepa
               </li>
               <li>
-                <strong>Gumene trake (Čepovi)</strong> — ljepljive,
-                vulkanizirajuće niti
+                <strong>Gumene trake (Čepovi)</strong>: lepljive niti koje
+                vulkanizuju
               </li>
               <li>
-                <strong>Lepak (Cement)</strong> — rastvor koji pomaže pri
+                <strong>Lepak (Cement)</strong>: rastvor koji pomaže pri
                 zaptivanju i lakšem ulasku čepa
               </li>
               <li>
-                <strong>Klešta</strong> — za vađenje stranog tela (eksera,
+                <strong>Klešta</strong>: za vađenje stranog tela (eksera,
                 šrafa)
               </li>
               <li>
-                <strong>Kompresor ili pumpa</strong> — bez vazduha, sav trud je
+                <strong>Kompresor ili pumpa</strong>: bez vazduha, sav trud je
                 uzaludan
               </li>
             </ul>
@@ -254,7 +254,7 @@ export default function KrpljenjeGumePage() {
               <h3>Priprema rupe (Reaming)</h3>
               <p>
                 Uzmite šilo sa hrapavom površinom. Namažite ga sa malo lepka i
-                gurnite ga u rupu. Pomerajte ga gore-dole nekoliko puta — cilj
+                gurnite ga u rupu. Pomerajte ga gore-dole nekoliko puta. Cilj
                 je da očistite rupu od prljavštine i da je malo proširite kako
                 bi čep mogao da uđe. Ostavite šilo unutra dok pripremate sledeći
                 alat kako biste sprečili prebrzi izlazak preostalog vazduha.
@@ -267,7 +267,7 @@ export default function KrpljenjeGumePage() {
               <p>
                 Provucite gumenu traku (čep) kroz oko igle za umetanje, baš kao
                 što biste provlačili konac kroz iglu za šivenje. Čep treba da
-                bude centriran — jednake dužine sa obe strane. Nanesite malo
+                bude centriran, jednake dužine sa obe strane. Nanesite malo
                 lepka na sam čep.
               </p>
             </div>
@@ -278,8 +278,8 @@ export default function KrpljenjeGumePage() {
               <p>
                 Izvucite šilo iz gume i brzo gurnite iglu sa čepom u rupu.
                 Treba da gurnete dok ne ostane samo oko{' '}
-                <strong>1–2 cm čepa van gume</strong>. Nemojte gurati do kraja
-                — čep ne bi smeo da upadne u unutrašnjost gume!
+                <strong>1-2 cm čepa van gume</strong>. Nemojte gurati do kraja.
+                Čep ne bi smeo da upadne u unutrašnjost gume!
               </p>
             </div>
 
@@ -301,7 +301,7 @@ export default function KrpljenjeGumePage() {
                 Ako imate kompresor, naduvajte gumu na propisani pritisak
                 (obično piše na nalepnici na vratima vozača). Proverite
                 sapunicom da li i dalje pušta. Višak gume koji viri možete
-                odseći skalpelom ili ostaviti — asfalt će ga sam „poravnati"
+                odseći skalpelom ili ostaviti. Asfalt će ga sam „poravnati"
                 tokom vožnje.
               </p>
             </div>
@@ -348,13 +348,13 @@ export default function KrpljenjeGumePage() {
             <ul>
               <li>Rupa je veća od <strong>6 mm</strong></li>
               <li>
-                <strong>Guma je „sažvakana"</strong> — ako ste vozili na
+                <strong>Guma je „sažvakana"</strong>, ako ste vozili na
                 potpuno ispumpanoj gumi, njena unutrašnja struktura (karkasa) je
                 verovatno uništena. Prepoznaćete je po tamnoj prašini unutar
                 gume ili promeni boje na bočnom zidu.
               </li>
               <li>
-                <strong>Guma je stara</strong> — ako je starija od 6–10 godina,
+                <strong>Guma je stara</strong>, ako je starija od 6-10 godina,
                 materijal gubi elastičnost i krpljenje je rizično.
               </li>
               <li>
@@ -390,10 +390,10 @@ export default function KrpljenjeGumePage() {
               <span className="accent">Milan je tu za vas!</span>
             </h2>
             <p>
-              Ukoliko vam sve ovo izgleda teško ili jednostavno nemate alat —
-              vaš Mobilni Vulkanizer Milan stiže najkasnije za{' '}
-              <strong>20–30 minuta</strong> na teritoriji Beograda.
-              Profesionalan rad, garancija na uslugu, non-stop 24 časa dnevno.
+              Ukoliko vam sve ovo izgleda teško ili jednostavno nemate alat,
+              vaš Mobilni Vulkanizer Milan stiže za{' '}
+              <strong>15 do 30 minuta</strong> na teritoriji Beograda.
+              Profesionalan rad, non-stop 24 časa dnevno.
             </p>
 
             <div className="blog-article-cta-num">
@@ -434,7 +434,7 @@ export default function KrpljenjeGumePage() {
             </div>
 
             <span className="blog-article-cta-hint">
-              ⚡ Dolazak 20–30 min · Non-stop 24h · Ceo Beograd
+              ⚡ Dolazak 15-30 min · Non-stop 24h · Ceo Beograd
             </span>
           </div>
         </div>
