@@ -1,15 +1,12 @@
 import './globals.css';
-import { Inter, Bebas_Neue, Playfair_Display } from 'next/font/google';
+import { Bebas_Neue, Playfair_Display } from 'next/font/google';
 import Script from 'next/script';
 import ClientEffects from './components/ClientEffects';
 
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  display: 'optional',
-  variable: '--font-inter',
-  preload: true,
-});
+// Inter uklonjen 2026-09-25 (Nikola odobrio): na srpskom je skidao 3 fajla, 142 KiB
+// (latin, latin-ext za č ć š ž, vietnamese za đ). Tekst sada koristi sistemski font
+// telefona, preko --font-inter u :root u globals.css. Vraćanje: vrati ovaj blok i
+// inter.variable u className na <html>.
 
 const bebasNeue = Bebas_Neue({
   subsets: ['latin', 'latin-ext'],
@@ -19,12 +16,14 @@ const bebasNeue = Bebas_Neue({
   preload: false,
 });
 
+// Playfair nosi h1 u herou, koji je LCP element na mobilnom (PSI 2026-09-25),
+// pa se preloaduje. Samo latin, jer h1 nema dijakritike; latin-ext se skida po potrebi.
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
   weight: ['700', '900'],
   display: 'optional',
   variable: '--font-playfair',
-  preload: false, // not above the fold
+  preload: true,
 });
 
 export const metadata = {
@@ -202,7 +201,7 @@ function buildLocalBusinessJsonLd() {
 export default async function RootLayout({ children }) {
   const localBusinessJsonLd = buildLocalBusinessJsonLd();
   return (
-    <html lang="sr-RS" className={`${inter.variable} ${bebasNeue.variable} ${playfairDisplay.variable}`}>
+    <html lang="sr-RS" className={`${bebasNeue.variable} ${playfairDisplay.variable}`}>
       <head>
         {/* Preconnect za Google servise — brža konekcija bez blokiranja */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />

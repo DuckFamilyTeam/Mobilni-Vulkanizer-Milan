@@ -125,8 +125,12 @@ export default async function HomePage() {
                             height="660"
                             sizes="(max-width: 768px) 100vw, 540px"
                             quality={75}
-                            priority
+                            loading="lazy"
                         />
+                        {/* Bez priority i bez eager (2026-09-25): na mobilnom je slika ispod preloma,
+                            a LCP je h1. priority, a i eager (React tada sam ubaci preload), skidali su
+                            107 KiB visokim prioritetom pre LCP teksta. Na desktopu je slika u ekranu,
+                            pa je lazy učitava odmah posle rasporeda. */}
                         <div className="hero-badge">
                             <div className="hero-badge-num">A+</div>
                             <div className="hero-badge-txt">Premium servis</div>
@@ -363,7 +367,7 @@ export default async function HomePage() {
                     <video
                         className="lazy-video"
                         data-src="/pumpanje-gume.mp4"
-                        poster="/pumpanje-gume-poster.webp"
+                        data-poster="/pumpanje-gume-poster-800.webp"
                         muted
                         loop
                         playsInline

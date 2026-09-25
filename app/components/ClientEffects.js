@@ -161,6 +161,9 @@ function setupEffects() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const video = entry.target;
+            // Poster se postavlja tek kad video priđe ekranu (2026-09-25): ranije se
+            // skidao odmah pri učitavanju strane, 41 KiB ispod preloma.
+            if (video.dataset.poster && !video.poster) video.poster = video.dataset.poster;
             const src = video.dataset.src;
             if (src && !video.src) {
               video.src = src;
