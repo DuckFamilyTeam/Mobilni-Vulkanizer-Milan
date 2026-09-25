@@ -324,7 +324,7 @@ export default async function HomePage() {
             <div className="container">
                 <div className="section-header">
                     <div className="eyebrow">Kako funkcioniše</div>
-                    <h2 id="process-title">Jednostavno kao 1, 2, 3, 4</h2>
+                    <h2 id="process-title">Jednostavno kao 1-2-3-4</h2>
                     <p>Od prvog poziva do rešenog problema, ceo proces traje obično ispod sat vremena.</p>
                 </div>
         
