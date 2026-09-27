@@ -2,9 +2,61 @@
 
 | Krug | Datum | Prosek | Najniža stavka | Odluka |
 |---|---|---|---|---|
+| 4 | 2026-09-27 | Nije ponovo ocenjeno kritičarom (vidi napomenu) | — | Sprovedene preostale 3 opisane ideje iz Kruga 3/KREATIVNE-OPCIJE; build čist; nova dizajn-kriticar ocena čeka poseban zahtev |
 | 3 | 2026-09-27 | 6,7 (snimci sa localhost:3002, sačekane slike i fontovi) | 6 Vizuali, 7 Raznolikost, 9 Originalnost (po 6) | prag NIJE ispunjen, poslednji krug ciklusa, stanje se prijavljuje Nikoli |
 | 2 | 2026-09-27 | 6,4 (snimci sa localhost:3001) | 2 Hijerarhija, 3 Tipografija, 6 Vizuali, 7 Raznolikost, 9 Originalnost, 10 Mobilni (po 6) | prag NIJE ispunjen |
 | 1 | 2026-09-27 | 5,4 (uslovno, vidi napomenu) | 8 Signature element (4) | prag NIJE ispunjen, odlučuju Nikola i Milan |
+
+## Krug 4 — sprovedene preostale opisane ideje (implementacija, ne nova kritička ocena)
+
+Nastavak na `KREATIVNE-OPCIJE-2026-09-27.md`, koji je posle Kruga 3 dao 3 kategorije opcija — deo je bio uživo implementiran (timeline proces, signature vodeni žig), a tri stavke su ostale SAMO opisane. Ovaj krug ih implementira. **Ovo NIJE novi prolaz kroz `dizajn-kriticar` potpodagenta** — nije traženo, pa prosek/ocena po stavkama nije osvežena brojkom. Ako Nikola želi svežu ocenu posle ovih izmena, to je poseban sledeći korak.
+
+Rađeno PREKO postojećih nekomitovanih izmena iz Kruga 3/kreativnih opcija (timeline + watermark), nije ih revertovalo. Potvrđeno čisto stanje i uspešan build PRE početka (uključujući Next.js 16 upgrade, koji nije dirat).
+
+### 1. "Pronađite svoju lokaciju" — mreža od 11 kartica → lista + mapa
+
+`app/page.js` (`locations-section`) i `app/globals.css` (`.locations-split`, `.locations-list*`, `.locations-map*`). Leva kolona: skrolabilna lista svih 11 lokacija (ista imena/opisi/vremena kao pre, samo u red-formatu). Desna kolona: Google Maps embed (isti `.coverage-map`/`.coverage-map-overlay` obrazac kao postojeća Coverage sekcija — ClientEffects.js ga već hvata generički, nije trebalo menjati JS). `.reveal` na svakoj stavci liste, K1 mehanizam (vidljivo po defaultu) netaknut.
+
+- Desktop 1440px: `assets-source/screenshots/kreativne-opcije/v5-2-lokacije-lista-mapa-1440.png`
+- Mobilni 390px: `assets-source/screenshots/kreativne-opcije/v5-2-lokacije-lista-mapa-390.png` (lista i mapa se slažu vertikalno, lista prva)
+
+**Napomena:** ovo delimično duplira postojeću "Mapa pokrivanja" (Coverage) sekciju odmah IZNAD ove (i ona ima tekst+mapu). Nisam spajao/uklanjao tu sekciju — van obima ovog zadatka, van vlasti da to sam odlučim — ali vredi da Nikola razmotri da li su sad obe potrebne jedna odmah iza druge.
+
+### 2. "Zašto baš mi" — plain lista → cik-cak (naizmenično levo/desno)
+
+`app/page.js` (dodata klasa `why-features-zigzag`) i `app/globals.css`. Desktop: centralna vertikalna linija, neparne stavke uvučene levo (ikona levo), parne uvučene desno i mirror-ovane (ikona desno, tekst desno poravnat). Na ≤640px se automatski vraća na plain vertikalnu listu (zigzag na uskom ekranu ne bi doneo ništa, samo suzio tekst).
+
+- Desktop 1440px: `assets-source/screenshots/kreativne-opcije/v5-3-zasto-mi-zigzag-1440.png`
+- Mobilni 390px: `assets-source/screenshots/kreativne-opcije/v5-3-zasto-mi-zigzag-390.png` (potvrđen čist fallback na plain listu, bez vizuelnog kvara)
+
+### 3. Signature element — favicon + mini-marker za liste
+
+**Favicon** (`app/layout.js`, `metadata.icons`): browser tab ikona promenjena sa punog loga (koji se na 16px svodio na nečitljivu mrlju — nalaz iz originalnog audit-a) na pojednostavljen signature motiv (isti kao SectionDivider/SignatureWatermark). Generisano `public/favicon-signature-32.png` i `-64.png` preko `sharp` iz iste SVG geometrije. Apple touch icon OSTAJE puni logo (veći prikaz na home screen-u, tamo ima smisla da se vidi ceo brend, ne skraćena verzija) — namerna odluka, ne previd.
+
+Testirao sam čitljivost na stvarnoj veličini pre nego što sam odlučio: na 64px se jasno vidi felna+navrtke+ukršteni ključevi; na simuliranih 16px (stvaran tab prikaz) detalji nestaju ali ostaje čitljiv, prepoznatljiv crveni "X" na crnoj pozadini — bolje od pune mrlje logotipa, ne savršeno, ali poboljšanje.
+
+**Mini-marker za liste** (`.loc-content ul li::before`, `app/globals.css`): generički ✓ zamenjen pojednostavljenim izvodom motiva (krug + ukrštene linije, BEZ felna-navrtki — testirao sam na stvarnoj 22px veličini i pun motiv sa navrtkama tu postaje mutna mrlja, ova reducirana verzija ostaje čitljiva). Implementirano kao inline SVG data-URI na `::before` pozadini, bez dodatnog HTTP zahteva.
+
+- Test na true-size (22px, 64px za favicon) urađen PRE ugradnje preko privremenih preview fajlova — obrisani, nisu deo isporuke.
+- **Napomena, važno:** trenutno nijedna prava lokacijska stranica (`/mobilni-vulkanizer-*`) nema `<ul>` unutar `.loc-content` — ovaj CSS je pre ove izmene bio potpuno neiskorišćen (samo `✓` je čekao da se neki `<ul>` doda). Da bih proverio da marker stvarno radi u pravom CSS kontekstu sajta (ne izolovano), napravio sam PRIVREMENU rutu (`app/preview-marker-temp`, uklonjena odmah posle snimka) sa test-listom. Screenshot: `assets-source/screenshots/kreativne-opcije/v11-3-lista-marker-preview.png` — ovo je **izolovan test prikaz, ne live stranica sajta**, jer live stranica sa ovim elementom trenutno ne postoji. Marker će se automatski primeniti čim/ako se neka lokacijska stranica proširi sa `<ul>` listom usluga.
+
+### Build
+
+`npm run build` posle sve tri izmene: čist, 22/22 stranica, `ƒ Proxy (Middleware)` prisutan kao i pre (Next 16 upgrade netaknut).
+
+### Stanje radnog stabla
+
+Sve tri izmene ostavljene primenjene (kao i timeline/watermark iz prethodnog kruga) — nema commit/push, Nikola radi taj korak sam.
+
+| Fajl | Status |
+|---|---|
+| `app/page.js` | Izmenjen (locations lista+mapa, why-us zigzag klasa) |
+| `app/globals.css` | Izmenjen (nova CSS pravila za sve gore) |
+| `app/layout.js` | Izmenjen (favicon) |
+| `public/favicon-signature-32.png`, `-64.png` | Novi fajlovi |
+| `app/components/SignatureWatermark.js` | Netaknuto od prošlog kruga |
+
+---
 
 ## Krug 3
 

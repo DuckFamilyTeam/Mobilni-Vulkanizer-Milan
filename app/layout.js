@@ -65,10 +65,17 @@ export const metadata = {
       'https://www.mobilnivulkanizermilan.com/logo.png',
     ],
   },
+  // KREATIVNA OPCIJA V11/N5 (2026-09-27) — browser tab favicon zamenjen sa punog
+  // loga (koji se na 16px svodio na nečitljivu mrlju) na pojednostavljen signature
+  // motiv (isti kao SectionDivider/SignatureWatermark: ukršteni ključevi + felna).
+  // Apple touch icon (veći prikaz, na home screen-u) ostaje puni logo — tamo se
+  // sav detalj i dalje vidi i ima smisla da bude ceo brend, ne skraćena verzija.
   icons: {
-    icon: 'https://www.mobilnivulkanizermilan.com/logo.png',
-    apple:
-      'https://www.mobilnivulkanizermilan.com/logo.png',
+    icon: [
+      { url: 'https://www.mobilnivulkanizermilan.com/favicon-signature-32.png', sizes: '32x32', type: 'image/png' },
+      { url: 'https://www.mobilnivulkanizermilan.com/favicon-signature-64.png', sizes: '64x64', type: 'image/png' },
+    ],
+    apple: 'https://www.mobilnivulkanizermilan.com/logo.png',
   },
   other: {
     'theme-color': '#0a0a0a',

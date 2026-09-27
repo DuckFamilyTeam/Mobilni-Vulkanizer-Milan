@@ -689,6 +689,47 @@ section {
     align-items: flex-start;
 }
 
+/* KREATIVNA OPCIJA V5 dopuna — cik-cak varijanta. Centralna vertikalna linija
+   (::before) + naizmenično levo/desno poravnanje i uvlačenje. Na uskim ekranima
+   (≤640px) se vraća na plain vertikalni spisak (zigzag na malom ekranu bi samo
+   suzio tekst kolonu bez ikakve vizuelne dobiti). */
+.why-features-zigzag {
+    position: relative;
+    padding-left: 2px;
+}
+.why-features-zigzag::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    bottom: 22px;
+    left: 21px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold-dark), var(--gold) 50%, var(--gold-dark));
+    opacity: 0.35;
+}
+.why-features-zigzag .why-feature:nth-child(even) {
+    flex-direction: row-reverse;
+    text-align: right;
+    margin-left: 48px;
+}
+.why-features-zigzag .why-feature:nth-child(odd) {
+    margin-right: 48px;
+}
+.why-features-zigzag .why-feature-icon {
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 6px var(--black);
+}
+@media (max-width: 640px) {
+    .why-features-zigzag::before { display: none; }
+    .why-features-zigzag .why-feature:nth-child(even) {
+        flex-direction: row;
+        text-align: left;
+        margin-left: 0;
+    }
+    .why-features-zigzag .why-feature:nth-child(odd) { margin-right: 0; }
+}
+
 .why-feature-icon {
     width: 44px;
     height: 44px;
@@ -838,6 +879,100 @@ section {
     line-height: 1.6;
 }
 
+/* KREATIVNA OPCIJA V5/V13 — "section-header-left": varijanta section-header-a koja
+   razbija centrirani obrazac ponovljen u services/why/pricing/locations. Koristi se
+   samo na .process (Kako funkcioniše) kao živi primer. */
+.section-header-left {
+    text-align: left;
+    max-width: 640px;
+    margin: 0 0 60px;
+}
+.section-header-left .eyebrow { justify-content: flex-start; margin: 0 0 14px; }
+
+/* KREATIVNA OPCIJA V5/V13 — horizontalna vremenska linija umesto kartica.
+   Desktop: 4 tačke povezane vodoravnom linijom. Mobilni: vertikalna linija levo,
+   koraci se ređaju odozgo nadole (uobičajen, čitljiv responsive obrazac za timeline). */
+.timeline {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 8px;
+}
+.timeline-track {
+    position: absolute;
+    top: 27px;
+    left: calc(12.5% + 2px);
+    right: calc(12.5% + 2px);
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold) 50%, var(--gold-dark));
+    opacity: 0.5;
+    z-index: 0;
+}
+.timeline-step {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+.timeline-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--black);
+    border: 2px solid var(--gold);
+    color: var(--gold-text);
+    font-family: var(--font-playfair), 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 19px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 0 6px var(--black), 0 0 20px rgba(216, 30, 40, 0.25);
+}
+.timeline-step h3 {
+    font-family: var(--font-inter), 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--cream);
+}
+.timeline-step p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 220px;
+    margin: 0 auto;
+}
+@media (max-width: 768px) {
+    .timeline {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        margin-left: 12px;
+    }
+    .timeline-track {
+        top: 0;
+        bottom: 0;
+        left: 27px;
+        right: auto;
+        width: 2px;
+        height: auto;
+        background: linear-gradient(180deg, var(--gold-dark), var(--gold) 50%, var(--gold-dark));
+    }
+    .timeline-step {
+        text-align: left;
+        padding-left: 76px;
+        min-height: 56px;
+    }
+    .timeline-dot {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-bottom: 0;
+    }
+    .timeline-step p { max-width: none; margin: 0; }
+}
+
 /* ============================================================
    === COVERAGE / MAP
    ============================================================ */
@@ -963,7 +1098,10 @@ section {
        preko SVIH slika (ne menja svaku sliku pojedinačno) ih vizuelno ujednačava
        u jednu "seriju", isti trik kao kod filmova/kataloga kad izvorni materijal
        nije snimljen u istoj sesiji. Suptilno namerno — i dalje su prepoznatljive
-       stvarne terenske fotografije, ne izgleda kao filter. */
+       stvarne terenske fotografije, ne izgleda kao filter.
+       (2026-09-27, kreativne opcije V8b: 3 jače varijante isprobane i screenshotovane
+       — vidi KREATIVNE-OPCIJE-2026-09-27.md — ali OVDE je vraćeno na originalnu,
+       suptilnu verziju dok Nikola ne izabere. Nijedna varijanta nije ostavljena aktivna.) */
     filter: contrast(1.08) saturate(0.92) brightness(0.97);
     width: 100%;
     height: 100%;
@@ -1249,11 +1387,31 @@ section {
    === CONTACT CTA
    ============================================================ */
 .contact-cta {
+    position: relative;
+    overflow: hidden;
     background:
         radial-gradient(ellipse at center, rgba(216, 30, 40, 0.1) 0%, transparent 60%),
         linear-gradient(135deg, var(--black) 0%, var(--black-soft) 100%);
     text-align: center;
     padding: 120px 0;
+}
+
+/* KREATIVNA OPCIJA V11/N5 — signature element kao vodeni žig, ne samo razdelnik. */
+.contact-cta-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 640px;
+    height: 640px;
+    transform: translate(-50%, -50%);
+    color: var(--chrome);
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+}
+.contact-cta-inner { position: relative; z-index: 1; }
+@media (max-width: 768px) {
+    .contact-cta-watermark { width: 420px; height: 420px; }
 }
 
 .contact-cta-inner {
@@ -2401,21 +2559,24 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     border-bottom: 1px dashed var(--line);
 }
 .loc-content ul li:last-child { border-bottom: none; }
+/* KREATIVNA OPCIJA V11/N5 (2026-09-27) — generički ✓ zamenjen pojednostavljenim
+   izvodom signature motiva (krug + ukrštene linije, bez felna-navrtki — testirano
+   na stvarnoj veličini 22px, pun motiv sa navrtkama postaje mutna mrlja ovde,
+   ova pojednostavljena verzija ostaje čitljiva i i dalje "iz iste porodice" kao
+   SectionDivider/SignatureWatermark/favicon). SVG je inline data-URI, bez dodatnog
+   HTTP zahteva, crta se oštro na svakoj rezoluciji. */
 .loc-content ul li::before {
-    content: '✓';
+    content: '';
     position: absolute;
     left: 0;
     top: 8px;
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: rgba(216, 30, 40, 0.15);
-    color: var(--gold-text);
-    font-weight: 800;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background:
+        rgba(216, 30, 40, 0.15)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff5c68' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='7' stroke-width='1.6'/%3E%3Cline x1='6.5' y1='6.5' x2='17.5' y2='17.5'/%3E%3Cline x1='17.5' y1='6.5' x2='6.5' y2='17.5'/%3E%3C/svg%3E")
+        center / 14px 14px no-repeat;
 }
 
 .loc-cta-band {
@@ -2642,6 +2803,85 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 .location-card-arrow svg {
     width: 16px;
     height: 16px;
+}
+
+/* KREATIVNA OPCIJA V5 dopuna — lista + mapa umesto kartica mreže (.locations-grid/
+   .location-card iznad ostaju u CSS-u neiskorišćeni, netaknuti, za lak povratak). */
+.locations-split {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 48px;
+    align-items: start;
+    margin-top: 50px;
+}
+.locations-list {
+    display: flex;
+    flex-direction: column;
+    max-height: 620px;
+    overflow-y: auto;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--black-elev);
+}
+.locations-list-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line);
+    color: var(--text);
+    transition: background 0.2s ease;
+}
+.locations-list-item:last-child { border-bottom: none; }
+.locations-list-item:hover,
+.locations-list-item:focus-visible {
+    background: rgba(216, 30, 40, 0.08);
+}
+.locations-list-pin { font-size: 19px; flex-shrink: 0; line-height: 1; }
+.locations-list-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+    min-width: 0;
+}
+.locations-list-info strong {
+    font-family: var(--font-playfair), 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--cream);
+}
+.locations-list-desc {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+.locations-list-time {
+    flex-shrink: 0;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold-text);
+    white-space: nowrap;
+}
+.locations-list-arrow {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    color: var(--chrome);
+    opacity: 0.7;
+}
+.locations-map-wrap {
+    position: sticky;
+    top: 100px;
+}
+.locations-map {
+    aspect-ratio: 1 / 1;
+}
+
+@media (max-width: 968px) {
+    .locations-split { grid-template-columns: 1fr; gap: 32px; }
+    .locations-map-wrap { position: static; }
+    .locations-list { max-height: 420px; }
 }
 
 @media (max-width: 768px) {
