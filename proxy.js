@@ -17,7 +17,7 @@ const RESTRICTED_COUNTRIES = new Set([
   'CH',
 ]);
 
-export function middleware(request) {
+export function proxy(request) {
   const response = NextResponse.next();
 
   // Vercel ubacuje geo-lokaciju posetioca kroz ovaj header na Edge-u — bez ikakvog

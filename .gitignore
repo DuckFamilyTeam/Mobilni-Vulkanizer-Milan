@@ -28,6 +28,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Claude Code agent worktrees (privremene, izolovane kopije, nikad se ne pushuju)
+/.claude/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
