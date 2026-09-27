@@ -108,7 +108,7 @@ export default async function HomePage() {
                                 <div className="stat-label">Non-stop dostupan</div>
                             </div>
                             <div>
-                                <div className="stat-num">500+</div>
+                                <div className="stat-num">1300+</div>
                                 <div className="stat-label">Zadovoljnih klijenata</div>
                             </div>
                             <div>
