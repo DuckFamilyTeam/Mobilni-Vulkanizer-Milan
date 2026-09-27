@@ -77,6 +77,58 @@ Nikola je posle prvog čitanja izveštaja tražio da se odmah urade popravke sa 
 
 ---
 
+## Primenjene izmene — Krug 2 (2026-09-27, posle live PSI testa)
+
+Kontekst: prošli krug fixeva je deploy-ovan (Nikola je push-ovao preko GitHub Desktop-a). Pravi PageSpeed Insights test (mobile, throttled, Lighthouse 13.5.0, Slow 4G) je posle toga izmerio: **Performance 93** (bilo 62→83 u avgustu), Accessibility 100, Best Practices 100, SEO 100, Agentic Browsing 3/3, **LCP 1,8s / FCP 1,4s / TBT 290ms / CLS 0 / Speed Index 3,1s**. Cilj "<2s" je postignut (LCP 1,8s). Nikola sad traži Performance 93→100. Otvorio sam pravi PSI izveštaj u browseru i **razrastio svaki nalaz pojedinačno** (ne čitao samo naslove) da vidim tačne resurse — sve niže brojke su iz tog izveštaja, ne procena.
+
+Ponovo: sve izmene su **samo u radnom stablu**, nema commit/push (Nikola to radi sam).
+
+### Tačni nalazi iz PSI-ja (razrasteno, ne sa naslovne stranice)
+
+| Nalaz | Tačan resurs | Brojka |
+|---|---|---|
+| Render-blocking requests | `css/1b543c18aa917aeb.css` (naš CSS, 1st party) | 12,9 KiB, 160 ms → Est. 770ms savings |
+| Use efficient cache lifetimes | `/wcm/loader.js` (**www.gstatic.com**, 3rd party) | 3 KiB, TTL 1h |
+| Improve image delivery | `/logo.webp` — servira se 200×200, prikazuje se ~63×63 | 8,3 KiB → Est. 7,6 KiB savings |
+| Legacy JavaScript | `chunks/117-....js` — `trimStart`/`trimEnd`/`Array.prototype.at`/`flat`/`flatMap`/`Object.fromEntries`/`Object.hasOwn` polyfili | 11,6 KiB "wasted" |
+| Reduce unused JavaScript | **Google Tag Manager, tačno 3 odvojena skripta:**<br>• `gtag/js?id=G-6D2KDDJT9X` (GA4)<br>• `gtag/js?id=AW-180...` (**Google Ads conversion** — nova informacija, nije bila u memoriji)<br>• `gtm.js?id=GTM-MKN47RW3` | 496,7 KiB preneseno, 213,3 KiB "neiskorišćeno" |
+| Avoid non-composited animations | `span.live-pulse` (zeleni "Trenutno dostupan" indikator) — **NE** `.flame-cta` kako je pretpostavljeno u zahtevu | animira `box-shadow` |
+| Minimize main-thread work / 6 long tasks | nije pojedinačno razrasteno u PSI UI (agregatna 2,1s brojka), ali se vremenski i po redu veličine poklapa sa parsiranjem/izvršavanjem gornja 3 GTM skripta | 2,1 s ukupno |
+
+### Urađeno (nisko-rizično, sprovedeno)
+
+1. **Logo — regenerisan u pravoj veličini.** `/logo.webp` (200×200, korišćen u Header/Footer na 44px CSS prikazu) zamenjen sa novim `/logo-header.webp` (132×132 — pokriva i 3× DPR telefone na 44px, sigurnija margina od PSI-jevog izmerenog 63×63 na jednom test uređaju). Kvalitet 82 — vizuelno uporedio oba fajla (`Read` alat, side-by-side), nema primetne razlike na logo/tekst grafici. **8,3 KB → 3,9 KB** (−4,4 KB, ~53%). `logo.png`/`logo.webp` (200×200) NISU dirani — i dalje se koriste za OG/Twitter/favicon u `layout.js`, gde 200×200 ima smisla. `Header.js` i `Footer.js` ažurirani da koriste novi fajl. `convert-images.js` proširen sa reproduktibilnim korakom za generisanje `logo-header.webp` (komentar objašnjava zašto 132px/quality 82), tako da se ovo ne izgubi pri sledećoj regeneraciji slika.
+
+2. **Non-composited animacija — `.live-pulse` prepravljen sa `box-shadow` na `transform`/`opacity`.** PSI je tačno naveo `span.live-pulse`, ne `.flame-cta` kako je zahtev pretpostavio — proverio sam u razrastenom nalazu pre nego što sam bilo šta menjao. Stari `@keyframes pulse` je animirao `box-shadow` (repaint svaki frejm, sve tri faze). Novi pristup: `.live-pulse` dobija `position: relative`, a vizuelni "rastući prsten" je premešten na `::after` pseudo-element (24×24, centriran, `background` fiksne boje) koji animira **samo** `transform: scale()` i `opacity` — obe compositor-only osobine (GPU, bez repaint-a). Vizuelni rezultat je identičan (isti rastući, iščezavajući zeleni prsten oko tačke), dodat je i `@media (prefers-reduced-motion: reduce)` gard (bonus, konzistentno sa `.flame-cta` koji to već ima). Nema layout uticaja (pseudo-element je `position: absolute`, van flow-a, `.live-pulse` zadržava iste 8×8px dimenzije za layout) — CLS ostaje 0.
+
+3. **`npm run build` posle oba fixa — čist, 23/23 stranica, identičan First Load JS** (103 kB / 97,9 kB, nepromenjeno — očekivano, ovo su CSS/slika izmene, ne JS). CSS chunk 60.998 B → 61.516 B (+518 B, zanemarljivo, od nove `.skip-link`/`.live-pulse` CSS-a iz oba kruga).
+
+### Istraženo, ALI namerno NIJE primenjeno (dokumentovano, čeka odluku)
+
+4. **Render-blocking CSS (770ms) — nema bezbednog fix-a u Next 14.2.x bez ponavljanja već odbačenog eksperimenta.** Next.js App Router automatski upravlja `<link rel="stylesheet">` tagom za globalno importovan CSS (`import './globals.css'` u `layout.js`) — nema javnog API-ja da se on označi kao ne-blokirajući. Jedina dva poznata rešenja:
+   - `experimental.optimizeCss` (`critters`) — **već isprobano i odbačeno u avgustu** (memorija: "kompajlira čisto ali ne proizvodi nikakav vidljiv efekat, critters je arhiviran/neodržavan"). Nisam ponovo probao istu stvar.
+   - Ručno razdvajanje CSS-a na "kritičan" (header/hero, mali, ostaje blokirajući) i "nekritičan" (sve ostalo, učitava se preko `<link rel="preload" as="style" onLoad="...">` trika) — ovo JESTE izvodljivo i JESTE pravo rešenje za ovaj nalaz, ali zahteva ručno tačno razvrstavanje CSS pravila za **20 različitih tipova stranica** (početna, 12 lokacijskih, blog, galerija...), i greška (izostavljeno pravilo koje je ipak iznad preloma na nekoj stranici) bi izazvala vidljiv "flash of unstyled content" koji ne bih mogao da uhvatim bez pune vizuelne provere na svakoj stranici. Ovo NISAM radio u ovom prolazu — rizik od tihog vizuelnog kvara je veći od 770ms (Lighthouse-ova optimistična procena) dobitka. **Preporuka: raditi ovo samo kao poseban zadatak sa punim screenshot/vizuelnim ciklusom, ne kao brz fix.**
+
+5. **Legacy JavaScript (11,6 KiB) — potvrđeno da je ovo Next.js-ov sopstveni, hardkodovani polyfill modul, ne nešto što naš `browserslist` kontroliše.** Otvorio sam kompajlirani `chunks/117-*.js` i pronašao tačan izvor: ručno pisan (ne `core-js`) polyfill blok za `trimStart`/`trimEnd`/`Symbol.prototype.description`/`Array.prototype.flat`/`flatMap`/`Promise.prototype.finally`/`Object.fromEntries`/`Array.prototype.at`/`Object.hasOwn`/`URL.canParse` — ovo je deo Next.js 14 sopstvenog build sistema (`next/dist/build/polyfills/...`), ubačen u deljeni "framework" chunk **bez obzira** na naš `browserslist` (koji je već postavljen na moderne browsere). Nema `.babelrc`/`babel.config.js` u projektu koji bi ovo mogao da nadjača. Jedini poznati načini da se ovo ukloni: (a) upgrade na noviji Next (van obima, već odloženo), ili (b) ručno webpack `resolve.alias` hakovanje da se ovaj Next-ov interni modul zameni praznim — nepodržano, krhko na svaki Next patch, previsok rizik za 11,6 KiB. **Nije primenjeno, dokumentovano kao prihvaćen tehnički dug vezan za isti Next-major kompromis.**
+
+6. **GTM payload (213 KiB) — Partytown NIJE implementiran. Dokumentovan kao opcija, čeka eksplicitno odobrenje.** Ovo je najveći pojedinačni lever (213 KiB od ukupno ~213+12+11.6 KiB "trošenja"), ali i najrizičniji za ovaj konkretan sajt, iz dva razloga specifična za ovaj GTM kontejner (ne generički):
+   - PSI je otkrio da GTM ovde ne učitava samo GA4 (`G-6D2KDDJT9X`) nego i **Google Ads conversion tracking** (`AW-180...`, prefiks `AW-` = Google Ads, ne GA4) — ovo NIJE pomenuto nigde u `agent_memory.md`. Ako Milan (ili neko u ime agencije) vodi Google Ads kampanje na ovaj sajt, konverzije iz tih kampanja zavise od ovog taga. Bilo kakva promena u načinu učitavanja GTM-a nosi rizik da poremeti atribuciju plaćenih konverzija, ne samo GA4 analitiku.
+   - Klik-tracking na tel/WhatsApp/Viber (najvredniji event na sajtu, po prošlom krugu izmena namerno RANO okinut) zavisi od toga da `gtm.js` na kraju stigne da izvrši i pročita `dataLayer` bafer. Partytown premešta IZVRŠAVANJE GTM-a u web worker — teoretski i dalje čita isti `dataLayer` (worker ima svoj proxy-ovan pristup `window`-u), ali GTM tagovi koji direktno manipulišu DOM-om (custom HTML tagovi, neki remarketing pikseli) mogu tiho da otkažu u worker okruženju bez ikakve vidljive greške u konzoli — ovo je poznato, dokumentovano ograničenje Partytown+GTM kombinacije, ne moja pretpostavka.
+   
+   **Zašto nisam implementirao kao "eksperiment" kako je ponuđeno u zahtevu:** da bih iskreno mogao da tvrdim "tracking i dalje radi", morao bih da deploy-ujem, otvorim live sajt u pravom browseru, kliknem "Pozovi"/WhatsApp/Viber i u GTM Preview modu (ili GA4/Google Ads real-time izveštaju) potvrdim da se i dalje beleže I obični eventi I Ads konverzija. Ovo zahteva pristup GTM/GA4/Ads nalozima i live deploy — nemam ni jedno ni drugo u ovoj sesiji (GTM MCP je vratio "Authentication required" i u prošlom i u ovom krugu). Bez te provere, "implementiraj pa vidi da li radi" bi značilo da Nikola otkrije da li je tracking pokvaren tek kad (ako) primeti da su Ads konverzije pale — to je upravo rizik koji je u zahtevu eksplicitno navedeno da izbegnem.
+   
+   **Šta bi trebalo uraditi ako se ovo prihvati:** `npm install @builder.io/partytown`, `npx partytown copylib public/~partytown` (kopira worker fajlove u `public/`), promena `<Script strategy="afterInteractive">` u `<Script strategy="worker">` za GTM inicijalizacioni tag u `layout.js`, zatim OBAVEZNO: (1) live deploy na preview URL (ne produkciju direktno), (2) ručni test klika na sva tri kontakt kanala uz GTM Preview mod otvoren, (3) provera da Google Ads Tag Assistant i dalje vidi `AW-180...` conversion fire, (4) tek onda merge u `main`. Ovo je 30-60 minuta posla + čekanje na realne podatke, ne nešto što se radi "u letu".
+
+### Alternativa za GTM payload koja NE zahteva Partytown (ali zahteva GTM pristup)
+
+Iz same PSI raščlanjenosti vidljivo je nešto popravljivo i BEZ Partytown rizika, ali **samo od strane nekog ko ima pristup GTM nalogu**: kontejner učitava `gtag.js` **dva puta nezavisno** — jednom za GA4 (`G-6D2KDDJT9X`, 188,2 KiB) i jednom za Google Ads (`AW-180...`, 158,0 KiB) — to su dva odvojena preuzimanja skoro identične gtag runtime biblioteke. Standardna GTM konfiguracija (GA4 Configuration tag + Google Ads Conversion Linker koji referencira ISTU GA4 config umesto da učitava sopstveni gtag) obično izbegava ovo dupliranje. Ovo bi realno moglo da smanji 100+ KiB bez ikakvog rizika po tracking (menja se SAMO kako se tagovi međusobno referenciraju unutar GTM-a, ne kod na sajtu) — ali zahteva nekoga sa pristupom GTM workspace-u da otvori kontejner i proveri konfiguraciju tagova. Zapisano ovde kao konkretan nalaz za taj razgovor, ne nešto što sam mogao sam da uradim (GTM MCP nedostupan, kao i prošli put).
+
+### Realna procena: da li je 100/100 dostižno bez GTM/Partytown poteza
+
+Ne iz ovog seta fixeva. Logo (~4,4 KB) i animacija (uklanja 1 od ~6 long-task uzročnika, verovatno mali TBT doprinos) su realni, ali mali pomaci — Performance skor na 90+ nivou reaguje najviše na TBT/long-tasks, a **6 long tasks i 290ms TBT su najverovatnije dominantno GTM/gtag parsiranje+izvršavanje** (3 skripte, 496,7 KiB ukupno, na glavnoj niti). Bez diranja GTM-a (Partytown ili sam kontejner), realno postižen dobitak ovim krugom je verovatno **93→94/95**, ne 93→100. Da bi se stiglo do 100, potreban je ili Partytown eksperiment (sa punim test protokolom iznad) ili GTM-kontejner-strana optimizacija (dupli gtag.js) — oba čekaju Nikolinu odluku i/ili pristup nalogu.
+
+---
+
 ## 1. Kod i tehnička implementacija — 7/10
 
 **Pozitivno:**

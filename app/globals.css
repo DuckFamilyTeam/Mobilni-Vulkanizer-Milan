@@ -212,20 +212,42 @@ section {
     box-shadow: 0 6px 20px rgba(216, 30, 40, 0.4);
 }
 
+/* Ispravljeno 2026-09-27 (PSI "Avoid non-composited animations"): pulsirajući prsten
+   je ranije animirao box-shadow, što nije compositable (browser mora da repaint-uje
+   svaki frejm). Isti vizuelni efekat (rastući, iščezavajući prsten oko tačke) sad je
+   na ::after pseudo-elementu koji animira samo transform/opacity — obe su
+   compositor-only osobine, GPU animira bez repaint-a. */
 .live-pulse {
+    position: relative;
     width: 8px;
     height: 8px;
     background: var(--success);
     border-radius: 50%;
-    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
-    animation: pulse 2s infinite;
     flex-shrink: 0;
 }
 
+.live-pulse::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    border-radius: 50%;
+    background: rgba(74, 222, 128, 0.7);
+    animation: pulse 2s infinite;
+    will-change: transform, opacity;
+}
+
 @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
-    70% { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+    0% { transform: scale(0.333); opacity: 0.7; }
+    70% { transform: scale(1); opacity: 0; }
+    100% { transform: scale(1); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .live-pulse::after { animation: none; opacity: 0; }
 }
 
 @media (max-width: 968px) {

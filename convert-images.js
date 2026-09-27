@@ -69,6 +69,22 @@ async function convert() {
 
   console.log('✅ Gotovo! Sve slike su konvertovane u WebP.');
   console.log('   Izvorni JPG fajlovi ostaju u assets-source/, van public/ (nisu deo deploy-a).');
+
+  // logo-header.webp — 2026-09-27, PSI "Improve image delivery" nalaz: Header/Footer
+  // prikazuju logo na 44px (36px mobilni) CSS širine, a servirali su puni logo.webp
+  // (200x200, iz logo.png, korišćen i za OG/Twitter/favicon gde 200x200 IMA smisla —
+  // taj fajl se ne dira). 132px pokriva i 3x DPR telefone za 44px prikaz.
+  // quality 82 vizuelno neprimetno od quality 100 na ovom mahom-flat logo grafičkom
+  // sadržaju (ručno upoređeno).
+  const logoSrc = path.join(publicDir, 'logo.png');
+  const logoOut = path.join(publicDir, 'logo-header.webp');
+  if (fs.existsSync(logoSrc)) {
+    await sharp(logoSrc)
+      .resize({ width: 132, height: 132, fit: 'contain' })
+      .webp({ quality: 82, effort: 6 })
+      .toFile(logoOut);
+    console.log(`✅ logo.png → logo-header.webp (${(fs.statSync(logoOut).size / 1024).toFixed(1)} KB)`);
+  }
 }
 
 convert();

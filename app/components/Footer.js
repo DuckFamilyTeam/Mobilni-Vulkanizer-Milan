@@ -8,7 +8,7 @@ export default function Footer() {
           <div className="footer-about">
             <Link href="/" className="logo">
               <img
-                src="/logo.webp"
+                src="/logo-header.webp"
                 alt="Mobilni Vulkanizer Milan - logo firme"
                 className="logo-img"
                 width="44"
