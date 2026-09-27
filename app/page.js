@@ -122,8 +122,8 @@ export default async function HomePage() {
                             src="/montaza-gume-land-rover.webp"
                             alt="Mobilni vulkanizer Milan montira gumu na Land Rover na parkingu u Beogradu"
                             width="600"
-                            height="660"
-                            sizes="(max-width: 768px) 100vw, 540px"
+                            height="800"
+                            sizes="(max-width: 768px) 100vw, 600px"
                             quality={75}
                             loading="lazy"
                         />
@@ -135,28 +135,15 @@ export default async function HomePage() {
                             <div className="hero-badge-num">A+</div>
                             <div className="hero-badge-txt">Premium servis</div>
                         </div>
-                        <div className="hero-quick-contact">
-                            <div className="hero-quick-contact-label">Hitan poziv</div>
-                            <div className="hero-quick-contact-num">+381 64 12 90 929</div>
-                            <div className="hero-quick-contact-actions">
-                                <a href="tel:+381641290929" className="quick-action">📞 Pozovi</a>
-                                <a href="https://wa.me/381641290929" className="quick-action">💬 Poruka</a>
-                            </div>
-                        </div>
+                        {/* "hero-quick-contact" kartica uklonjena (krug 3, V10/V4) — nudila je isti
+                            broj i iste akcije (poziv/poruka) koje već stoje u hero-cta iznad, tik
+                            uz ime "Hitan poziv" koje je duplirano sa loc-final-cta na lokacijskim
+                            stranicama. Sa vizuelno dominantnijom slikom (V1, krug 2) ova kartica
+                            je postala još upadljivija, a bila je čisto ponavljanje, ne novi CTA. */}
                     </div>
                 </div>
             </div>
         </section>
-        
-        {/* ============ EMERGENCY BAR ============ */}
-        <div className="emergency-bar" role="region" aria-label="Hitna intervencija">
-            <div className="container">
-                <div className="emergency-bar-inner">
-                    <span className="emergency-bar-text">⚡ Probušena guma sada? Stigao sam za 15-30 minuta na vašu adresu</span>
-                    <a href="tel:+381641290929" className="emergency-bar-cta">📞 Hitno - Pozovi</a>
-                </div>
-            </div>
-        </div>
         
         {/* ============ SERVICES ============ */}
         <section className="services" id="usluge" role="region" aria-labelledby="services-title">
@@ -292,6 +279,22 @@ export default async function HomePage() {
             </div>
         </section>
         
+        {/* ============ EMERGENCY BAR ============
+            Premešteno 2026-09-27 (vizuelna petlja V4/V5) — bilo je odmah posle
+            heroja, pa je posetilac video DVA jednako glasna crvena CTA poziva u
+            prve dve sekunde (hero dugme + ova traka). Ovde, posle "Zašto baš mi"
+            a pre cenovnika, i dalje hvata nekoga ko je čitao, ali ne duplira hero
+            i usput razbija ritam (puna crvena traka je drugačiji oblik od
+            eyebrow→h2→p šablona koji ponavljaju sve ostale sekcije). */}
+        <div className="emergency-bar" role="region" aria-label="Hitna intervencija">
+            <div className="container">
+                <div className="emergency-bar-inner">
+                    <span className="emergency-bar-text">⚡ Probušena guma sada? Stigao sam za 15-30 minuta na vašu adresu</span>
+                    <a href="tel:+381641290929" className="emergency-bar-cta">📞 Hitno - Pozovi</a>
+                </div>
+            </div>
+        </div>
+
         {/* ============ PRICING / TRANSPARENT (kratko) ============ */}
         <section className="pricing" id="cene" role="region" aria-labelledby="pricing-title">
             <div className="container">
@@ -307,7 +310,7 @@ export default async function HomePage() {
                             <li>Plaćate samo realan rad i izlazak na teren</li>
                         </ul>
 
-                        <a href="tel:+381641290929" className="btn-primary pricing-cta-btn flame-cta">
+                        <a href="tel:+381641290929" className="btn-primary pricing-cta-btn">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                             POZOVI ODMAH ZA CENU
                         </a>

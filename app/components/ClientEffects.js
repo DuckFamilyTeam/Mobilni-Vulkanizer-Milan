@@ -153,7 +153,14 @@ function setupEffects() {
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    // ".js-observed" se dodaje TEK sad, u istom trenutku kad observer stvarno počne
+    // da posmatra element — CSS (.js .reveal.js-observed) tek onda sme da ga sakrije.
+    // Redosled je namerno: klasa pa observe(), da nema prozora gde je element
+    // "obeležen za sakrivanje" a niko ga još ne posmatra (K1, vizuelna petlja 2026-09-27).
+    document.querySelectorAll('.reveal').forEach((el) => {
+      el.classList.add('js-observed');
+      observer.observe(el);
+    });
 
     // ============ LAZY VIDEO (učitava i pušta tek kad uđe u view, nula uticaja na LCP) ============
     const videoObserver = new IntersectionObserver(

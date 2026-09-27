@@ -209,6 +209,16 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="sr-RS" className={`${bebasNeue.variable} ${playfairDisplay.variable}`}>
       <head>
+        {/* 2026-09-27 (vizuelna petlja, K1): ".reveal" sekcije se sad podrazumevano
+            VIDE (globals.css) — sakrivaju se SAMO kad ovaj sinhroni inline script
+            stigne da doda ".js" klasu na <html>, pre prvog crtanja. Ako JS ne
+            proradi uopšte (padne, blokiran, spor uređaj), korisnik vidi normalan,
+            popunjen sadržaj — nikad trajno praznu sekciju. Namerno je ovo mali,
+            blokirajući <script> (ne next/script), jer mora da se izvrši PRE nego
+            što browser nacrta prvi frejm; jedna linija, nemerljiv uticaj na TBT. */}
+        <script
+          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
+        />
         {/* Preconnect za Google servise — brža konekcija bez blokiranja */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />

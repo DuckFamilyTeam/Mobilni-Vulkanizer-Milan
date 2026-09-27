@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import StickyCall from '../components/StickyCall';
+import SectionDivider from '../components/SectionDivider';
 import { getGbpRating } from '../lib/googlePlaces';
 
 export const metadata = {
@@ -99,6 +100,9 @@ export default async function KrnjacaPage() {
       <main id="main-content">
 
       <section className="loc-hero" role="region" aria-labelledby="loc-title">
+        <div className="loc-hero-media" aria-hidden="true">
+          <img src="/brza-zamena-guma.webp" alt="" loading="lazy" decoding="async" width="900" height="900" />
+        </div>
         <div className="container">
           <div className="loc-hero-inner">
             <h1 id="loc-title">
@@ -283,6 +287,8 @@ export default async function KrnjacaPage() {
         </div>
       </section>
 
+
+      <SectionDivider />
 
       <section className="loc-proof" role="region" aria-labelledby="loc-proof-title">
         <div className="container">

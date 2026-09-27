@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import StickyCall from '../components/StickyCall';
+import SectionDivider from '../components/SectionDivider';
 
 export const metadata = {
   title: 'Galerija radova | Mobilni Vulkanizer Milan, Beograd',
@@ -67,6 +68,10 @@ export default function GalerijaPage() {
                   <div className="gallery-item-overlay"><span>{img.caption}</span></div>
                 </div>
               ))}
+            </div>
+
+            <div style={{ marginTop: '48px' }}>
+              <SectionDivider />
             </div>
 
             <div style={{ textAlign: 'center', marginTop: '48px' }}>

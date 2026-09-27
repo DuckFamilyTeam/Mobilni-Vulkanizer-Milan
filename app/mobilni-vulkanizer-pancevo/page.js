@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import StickyCall from '../components/StickyCall';
+import SectionDivider from '../components/SectionDivider';
 import { getGbpRating } from '../lib/googlePlaces';
 
 export const metadata = {
@@ -99,6 +100,9 @@ export default async function PancevoPage() {
       <main id="main-content">
 
       <section className="loc-hero" role="region" aria-labelledby="loc-title">
+        <div className="loc-hero-media" aria-hidden="true">
+          <img src="/montaza-gume-land-rover.webp" alt="" loading="lazy" decoding="async" width="1000" height="1100" />
+        </div>
         <div className="container">
           <div className="loc-hero-inner">
             <h1 id="loc-title">
@@ -233,6 +237,8 @@ export default async function PancevoPage() {
         </div>
       </section>
 
+
+      <SectionDivider />
 
       <section className="loc-proof" role="region" aria-labelledby="loc-proof-title">
         <div className="container">

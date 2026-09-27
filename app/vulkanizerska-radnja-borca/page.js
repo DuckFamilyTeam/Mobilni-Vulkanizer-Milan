@@ -1,6 +1,7 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import StickyCall from '../components/StickyCall';
+import SectionDivider from '../components/SectionDivider';
 import Link from 'next/link';
 
 export const metadata = {
@@ -85,6 +86,9 @@ export default function VulkanizerskaRadnjaBorcaPage() {
 
       {/* ===== HERO ===== */}
       <section className="loc-hero" role="region" aria-labelledby="loc-title">
+        <div className="loc-hero-media" aria-hidden="true">
+          <img src="/kombi-oprema.webp" alt="" loading="lazy" decoding="async" width="900" height="900" />
+        </div>
         <div className="container">
           <div className="loc-hero-inner">
             <div className="eyebrow">
@@ -139,6 +143,8 @@ export default function VulkanizerskaRadnjaBorcaPage() {
       </section>
 
       {/* ===== CONTENT ===== */}
+      <SectionDivider />
+
       <section className="loc-content">
         <div className="container">
           <div className="loc-content-inner">
