@@ -22,25 +22,32 @@ const nextConfig = {
         ],
       },
       {
-        source: '/(:path*\\.webp)',
+        // Ispravljeno 2026-09-27: '/(:path*\\.webp)' NIJE validan path-to-regexp
+        // pattern (uglaste zagrade oko ':path*\.webp' se tretiraju kao literalan
+        // capture group, ne kao "bilo koja putanja koja se završava na .webp"),
+        // pa ovo pravilo nikad nije pogađalo nijedan zahtev — potvrđeno live
+        // (curl -I je vraćao 'max-age=0, must-revalidate' umesto 'immutable').
+        // Ispravan zapis: ':path*.webp' bez spoljašnjih zagrada i bez escape-a
+        // (Next.js sam parsira '.' u source stringu kao literal, ne kao regex).
+        source: '/:path*.webp',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
       {
-        source: '/(:path*\\.jpg)',
+        source: '/:path*.jpg',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
       {
-        source: '/(:path*\\.png)',
+        source: '/:path*.png',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
       {
-        source: '/(:path*\\.woff2)',
+        source: '/:path*.woff2',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],

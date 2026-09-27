@@ -28,8 +28,10 @@ export default function GbpRating({ variant = 'stat', rating, reviewCount }) {
         <div className="reviews-stars-big">{starString(rating)}</div>
         <div className="reviews-rating-num">{formatRating(rating)} / 5.0</div>
         <div className="reviews-rating-label">Bazirano na {reviewCount} Google recenzija</div>
+        {/* Koordinate ispravljene 2026-09-27 — vidi napomenu u layout.js. Prethodni
+            par (44.8092631,20.4348278) je bio ~8km od stvarne adrese biznisa. */}
         <a
-          href="https://www.google.com/maps/place/Mobilni+Vulkanizer+Milan/@44.8092631,20.4348278,102378m/data=!3m2!1e3!4b1!4m6!3m5!1s0x475a637b18ce8a37:0x45f6e9ef011b2c0!8m2!3d44.8092631!4d20.4348278!16s%2Fg%2F11z5_7wp4p"
+          href="https://www.google.com/maps/place/Mobilni+Vulkanizer+Milan/@44.8812156,20.4656484,621m/data=!3m2!1e3!4b1!4m6!3m5!1s0x475a637b18ce8a37:0x45f6e9ef011b2c0!8m2!3d44.8812156!4d20.4656484!16s%2Fg%2F11z5_7wp4p"
           target="_blank"
           rel="noopener"
           style={{

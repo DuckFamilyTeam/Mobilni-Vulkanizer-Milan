@@ -1,21 +1,60 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+// Selektor za sve elemente koje tastatura može da fokusira unutar drawer panela.
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const panelRef = useRef(null);
+  const hamburgerRef = useRef(null);
 
   useEffect(() => {
     if (!menuOpen) return;
     document.body.style.overflow = 'hidden';
-    const handleEsc = (e) => {
-      if (e.key === 'Escape') setMenuOpen(false);
+
+    // Fokus trap (WCAG 2.1.2 / dijalog obrazac): dok je drawer otvoren, Tab i
+    // Shift+Tab kruže isključivo kroz fokusabilne elemente panela, ne izlaze
+    // na sadržaj ispod overlay-a. ESC i dalje zatvara meni.
+    const panel = panelRef.current;
+    const getFocusable = () =>
+      panel ? Array.from(panel.querySelectorAll(FOCUSABLE_SELECTOR)) : [];
+
+    // Fokus ide na panel čim se otvori, da screen reader/tastatura odmah budu
+    // "unutra", a ne i dalje na hamburger dugmetu iza overlay-a.
+    const focusables = getFocusable();
+    (focusables[0] || panel)?.focus();
+
+    const handleKeydown = (e) => {
+      if (e.key === 'Escape') {
+        setMenuOpen(false);
+        return;
+      }
+      if (e.key !== 'Tab') return;
+
+      const items = getFocusable();
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
-    document.addEventListener('keydown', handleEsc);
+    document.addEventListener('keydown', handleKeydown);
     return () => {
       document.body.style.overflow = '';
-      document.removeEventListener('keydown', handleEsc);
+      document.removeEventListener('keydown', handleKeydown);
+      // Fokus se vraća na hamburger dugme koje je otvorilo meni, standardno
+      // ponašanje za dijalog/drawer obrasce.
+      hamburgerRef.current?.focus();
     };
   }, [menuOpen]);
 
@@ -67,6 +106,7 @@ export default function Header() {
             </a>
 
             <button
+              ref={hamburgerRef}
               className={`hamburger ${menuOpen ? 'is-open' : ''}`}
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label={menuOpen ? 'Zatvori meni' : 'Otvori meni'}
@@ -92,7 +132,14 @@ export default function Header() {
           onClick={closeMenu}
           aria-hidden="true"
         ></div>
-        <div className="mobile-drawer-panel" role="dialog" aria-label="Glavna navigacija">
+        <div
+          ref={panelRef}
+          className="mobile-drawer-panel"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Glavna navigacija"
+          tabIndex={-1}
+        >
           <div className="mobile-drawer-header">
             <span className="mobile-drawer-title">Meni</span>
             <button
@@ -156,11 +203,26 @@ export default function Header() {
             <Link href="/mobilni-vulkanizer-krnjaca" onClick={closeMenu}>
               <span aria-hidden="true">📍</span> Krnjača
             </Link>
+            <Link href="/mobilni-vulkanizer-cukarica" onClick={closeMenu}>
+              <span aria-hidden="true">📍</span> Čukarica
+            </Link>
+            <Link href="/mobilni-vulkanizer-zvezdara" onClick={closeMenu}>
+              <span aria-hidden="true">📍</span> Zvezdara
+            </Link>
+            <Link href="/mobilni-vulkanizer-batajnica" onClick={closeMenu}>
+              <span aria-hidden="true">📍</span> Batajnica
+            </Link>
+            <Link href="/mobilni-vulkanizer-aerodrom" onClick={closeMenu}>
+              <span aria-hidden="true">✈️</span> Aerodrom
+            </Link>
             <Link
               href="/mobilni-vulkanizer-autoput-beograd"
               onClick={closeMenu}
             >
               <span aria-hidden="true">🛣️</span> Autoput Beograd
+            </Link>
+            <Link href="/mobilni-vulkanizer-pancevo" onClick={closeMenu}>
+              <span aria-hidden="true">📍</span> Pančevo
             </Link>
           </nav>
 

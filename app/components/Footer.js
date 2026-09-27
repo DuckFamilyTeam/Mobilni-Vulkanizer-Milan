@@ -59,7 +59,12 @@ export default function Footer() {
               <li><Link href="/mobilni-vulkanizer-zemun">Zemun</Link></li>
               <li><Link href="/mobilni-vulkanizer-borca">Borča</Link></li>
               <li><Link href="/mobilni-vulkanizer-krnjaca">Krnjača</Link></li>
+              <li><Link href="/mobilni-vulkanizer-cukarica">Čukarica</Link></li>
+              <li><Link href="/mobilni-vulkanizer-zvezdara">Zvezdara</Link></li>
+              <li><Link href="/mobilni-vulkanizer-batajnica">Batajnica</Link></li>
+              <li><Link href="/mobilni-vulkanizer-aerodrom">Aerodrom</Link></li>
               <li><Link href="/mobilni-vulkanizer-autoput-beograd">Autoput Beograd</Link></li>
+              <li><Link href="/mobilni-vulkanizer-pancevo">Pančevo</Link></li>
               <li><Link href="/vulkanizerska-radnja-borca">Radnja, Zrenjaninski put 146b</Link></li>
             </ul>
           </div>

@@ -25,10 +25,17 @@
 - [Mobilni vulkanizer Zemun](https://mobilnivulkanizermilan.com/mobilni-vulkanizer-zemun): Stari Zemun, Gardoš, Bežanijska kosa, Altina — 15–30 min
 - [Mobilni vulkanizer Borča](https://mobilnivulkanizermilan.com/mobilni-vulkanizer-borca): Borča Centar, Greda, Sebeš, Borča III — 15–30 min
 - [Mobilni vulkanizer Krnjača](https://mobilnivulkanizermilan.com/mobilni-vulkanizer-krnjaca): Reva, Kotež, Padinska skela — 15–30 min
+- [Mobilni vulkanizer Čukarica](https://mobilnivulkanizermilan.com/mobilni-vulkanizer-cukarica): Banovo brdo, Žarkovo, Cerak, Železnik, Ada Ciganlija — 15–30 min
+- [Mobilni vulkanizer Zvezdara](https://mobilnivulkanizermilan.com/mobilni-vulkanizer-zvezdara): Mirijevo, Konjarnik, Mokri Lug, Kaluđerica — 15–30 min
+- [Mobilni vulkanizer Batajnica](https://mobilnivulkanizermilan.com/mobilni-vulkanizer-batajnica): Batajnica, Ugrinovci, Banovci Dunav, Nova i Stara Pazova — 15–30 min
+- [Mobilni vulkanizer Aerodrom](https://mobilnivulkanizermilan.com/mobilni-vulkanizer-aerodrom): Aerodrom Nikola Tesla, Surčin, Bežanija, Dobanovci — ~30 min
 - [Mobilni vulkanizer Autoput Beograd](https://mobilnivulkanizermilan.com/mobilni-vulkanizer-autoput-beograd): E-75, E-70, obilaznica — hitna intervencija 24/7
+- [Mobilni vulkanizer Pančevo](https://mobilnivulkanizermilan.com/mobilni-vulkanizer-pancevo): Centar, Kotež, Tesla, Strelište, Vojlovica — ~20 min
+- [Vulkanizerska radnja Borča](https://mobilnivulkanizermilan.com/vulkanizerska-radnja-borca): Zrenjaninski put 146b — zamena guma, hotel za gume, poliranje farova, radimo 0-24h
 
 ## Blog — Vodiči i saveti
 
+- [Hotel za gume u Beogradu](https://mobilnivulkanizermilan.com/blog/hotel-za-gume-beograd): Gde smestiti gume kad kod kuće nema mesta, čuvanje u radnji u Borči
 - [Krpljenje probušene gume — kompletan vodič](https://mobilnivulkanizermilan.com/blog/krpljenje-probusene-gume): Kada se guma može krpiti, kada ne, šta raditi na putu
 - [Kada promeniti zimske za letnje gume](https://mobilnivulkanizermilan.com/blog/kada-promeniti-zimske-za-letnje-gume): Zakon Srbije, kazne, pravi trenutak za sezonsku zamenu
 - [Balansiranje točkova — koliko često](https://mobilnivulkanizermilan.com/blog/balansiranje-tockova): Simptomi, statičko vs dinamičko, zašto je važno

@@ -74,8 +74,13 @@ export const metadata = {
     'theme-color': '#0a0a0a',
     'geo.region': 'RS-00',
     'geo.placename': 'Beograd',
-    'geo.position': '44.787197;20.457273',
-    ICBM: '44.787197, 20.457273',
+    // Koordinate ispravljene 2026-09-27: prethodne (44.787197, 20.457273) su bile
+    // generički centar Beograda, ne stvarna lokacija biznisa. Nove vrednosti su iz
+    // Google Maps sameAs linka ispod (isti CID 0x45f6e9ef011b2c0, 3d/4d parametri),
+    // nezavisno potvrđene geokodiranjem adrese "Zrenjaninski put 146b" (OpenStreetMap
+    // Nominatim: 44.8804936, 20.4659396 — ~90m razlike, isti blok).
+    'geo.position': '44.8812156;20.4656484',
+    ICBM: '44.8812156, 20.4656484',
   },
 };
 
@@ -132,8 +137,9 @@ function buildLocalBusinessJsonLd() {
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 44.787197,
-    longitude: 20.457273,
+    // Ispravljeno 2026-09-27, vidi napomenu uz 'geo.position' u metadata.other gore.
+    latitude: 44.8812156,
+    longitude: 20.4656484,
   },
   areaServed: [
     { '@type': 'City', name: 'Beograd' },
@@ -218,6 +224,12 @@ export default async function RootLayout({ children }) {
         />
       </head>
       <body>
+        {/* Skip link — WCAG 2.4.1 (Bypass Blocks). Prvi fokusabilni element na
+            stranici, vizuelno sakriven van ekrana dok nije fokusiran (vidi
+            .skip-link u globals.css). Vodi tastaturnog/screen-reader korisnika
+            direktno na <main id="main-content">, mimo Header/nav-a. */}
+        <a href="#main-content" className="skip-link">Preskoči na sadržaj</a>
+
         {/* Google Tag Manager (noscript fallback) */}
         <noscript>
           <iframe

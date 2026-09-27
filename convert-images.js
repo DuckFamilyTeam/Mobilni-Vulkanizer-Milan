@@ -10,20 +10,12 @@ const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs');
 
+// Izvorni .jpg fajlovi premešteni 2026-09-27 iz public/ u assets-source/ — bili su
+// mrtav teret na produkciji (nijedan se ne referencira iz app/, ali su i dalje bili
+// javno servirani jer je sve u public/ dostupno preko URL-a). Izlaz (.webp) i dalje
+// ide u public/, samo ulaz sad dolazi iz odvojenog, ne-javnog foldera.
+const sourceDir = path.join(__dirname, 'assets-source');
 const publicDir = path.join(__dirname, 'public');
-
-const jpgFiles = [
-  'autoput.jpg',
-  'intervencija.jpg',
-  'brza-zamena-guma.jpg',
-  'naše-mašine-su-potpuno-nove.jpg',
-  'tu-smo-za-sve-i-na-svim-lokacijama.jpg',
-  'kombi-oprema.jpg',
-  'punjenje-gume-land-rover.jpg',
-  'land-rover-dizalica.jpg',
-  'montaza-gume-land-rover.jpg',
-  // Rename target (nase-masine... bez dijakritika)
-];
 
 // Mapping: source JPG → output WebP name → max širina (px) za stvarnu prikaznu veličinu.
 // Svi ovi fajlovi se prikazuju ili kao ~800x800 galerija thumbnail (sizes max 400px CSS,
@@ -47,7 +39,7 @@ async function convert() {
   console.log('🔄 Konvertovanje JPG → WebP...\n');
 
   for (const { src, out, width, quality } of conversions) {
-    const srcPath = path.join(publicDir, src);
+    const srcPath = path.join(sourceDir, src);
     const outPath = path.join(publicDir, out);
 
     if (!fs.existsSync(srcPath)) {
@@ -76,7 +68,7 @@ async function convert() {
   }
 
   console.log('✅ Gotovo! Sve slike su konvertovane u WebP.');
-  console.log('   Originalne JPG fajlove možeš obrisati posle deploy-a ako hoćeš.');
+  console.log('   Izvorni JPG fajlovi ostaju u assets-source/, van public/ (nisu deo deploy-a).');
 }
 
 convert();
